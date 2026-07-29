@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "validated_utc": "2026-07-27T01:33:15Z",
+  "host": {
+    "ssh_alias": "hongda-133",
+    "hostname": "rx1000",
+    "deployment_path": "/lab/hongda/user-inference-V0"
+  },
+  "container": {
+    "image": "djrmcp-user-inference:v0",
+    "image_id": "sha256:88be8ff60b222875dae45bb7eaf4940d653893f2b22d289bc2d5e7cd6974a7b6",
+    "cache_volume": "djrmcp-esmc6b-cache"
+  },
+  "runtime": {
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+    "driver": "580.95.05",
+    "python": "3.12.3",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "transformers": "4.57.6",
+    "transformers_revision": "ef32577f55da19a4989cd7b22e004dc43a4998cb",
+    "model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a",
+    "parameter_count": 6352005184,
+    "peak_gpu_memory_bytes": 13047401984
+  },
+  "smoke_test": {
+    "input": "examples/synthetic_example.faa",
+    "input_sha256": "dd99fab2eea35f67961c65aef8945a7e86749ac7ffbd7513bf23dd887170d02e",
+    "record_count": 2,
+    "elapsed_seconds": 6.980649616569281,
+    "final_prediction_counts": {
+      "non_djr": 2
+    },
+    "predictions_sha256": "0eb6e208ca08f2afd7c633180458b1433a64b44b66359d765d894d1053466d87",
+    "run_metadata_sha256": "5a66da6a7c122fd944c34517a7368a0278be26f43c563ca095e8667c0a9be43c"
+  },
+  "preflight_finding": "Biohub ESMCConfig exposes d_model rather than hidden_size; the loader now accepts both fields and has a regression test.",
+  "kernel_path": "The frozen Biohub environment and this deployment both use the pure-PyTorch fallback without transformer-engine, xformers, or flash-attn."
+}

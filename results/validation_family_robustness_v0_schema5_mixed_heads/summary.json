@@ -1,0 +1,286 @@
+{
+  "all_6b_positive_control": "exact_row_and_bootstrap_equivalence",
+  "amendment_c_byte_equivalence": {
+    "artifacts": {
+      "accuracy_cost_pareto.tsv": "10e9654c993ad7c664312607025cca0f38db56488a8541e4fcc29916c1115279",
+      "candidate_nomination.tsv": "940a6fa9b970c5d72119da88a62a04105f71a67c557472742ac47ec702c6d8a8",
+      "single_model_predictions.tsv": "a2b1099d6aef8b47ff0585b5074754ee6a3dce6aeecbf45431f12f51d8faaf84",
+      "system_expected_path_predictions.tsv": "8c4d402683264dd595e36330bca6ad7d61127dc5f46b854dd3928be1640070e5",
+      "system_predictions.tsv": "927921b88cd98c15efaa74e68bc866ec24886138b125d782262c9ba4a6efb54b",
+      "system_registry.tsv": "31100c5b48c7e11b243edc9de91488275adc0c4b550cbb1d2ce84740c79a4bb2",
+      "train_cv_candidate_summary.tsv": "ccc51f25e685c64e424a51558eda3c4614719b5c731bfb02a52eea5661204cc9"
+    },
+    "interpretation": "predictions_thresholds_cv_scores_and_candidate_order_byte_equivalent",
+    "source_checksums_sha256": "aa9f3cef647487d4eaec7749ceeb49c58085657a38d0d99c7577f3655448e72c",
+    "source_result_dir": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/results",
+    "source_validation_sha256": "2b63cecae7788cce3d4c8ef96d48bf1becfbe8d74b9e9c084b2ab69a47542bcb",
+    "status": "PASS"
+  },
+  "analysis_id": "project_v0_validation_family_robustness_schema5_mixed_heads",
+  "applicable_heads": {
+    "background_non_djr": [
+      "head1"
+    ],
+    "cellular_djr_none": [
+      "head1",
+      "head2"
+    ],
+    "hard_non_djr": [
+      "head1"
+    ],
+    "viral_vma_djr": [
+      "head1",
+      "head2",
+      "head3_phylum"
+    ]
+  },
+  "bootstrap": {
+    "interval": "paired_percentile_95pct_descriptive",
+    "replicates": 10000,
+    "seed": 20260728,
+    "unit": "dependence_block",
+    "weighting": "equal_dependence_block_then_source_cluster_then_member"
+  },
+  "calibration_fit_operations": 0,
+  "data_curation_version": "V3",
+  "evaluation_role": "auxiliary_post_freeze_multimodel_stress_test",
+  "h3_rare_endpoint_contract": {
+    "derivation": "frozen_family_manifest_join_to_existing_per_record_predictions",
+    "model_inference_repeated_for_subgroups": false,
+    "pooled_endpoint_role": "secondary_pooled_diagnostic",
+    "prediction_threshold_cv_nomination_equivalence_to_amendment_c_required": true,
+    "raw_reject_counts_reported": true,
+    "refit_recalibration_or_threshold_change_permitted": false,
+    "subgroup_support": {
+      "Produgelaviricota": {
+        "dependence_blocks": 2,
+        "parents": 2,
+        "records": 7
+      },
+      "literature-unclassified": {
+        "dependence_blocks": 1,
+        "interpretation": "single_record_descriptive_only_no_generalization",
+        "parents": 1,
+        "records": 1
+      }
+    }
+  },
+  "homogeneous_systems": 8,
+  "interpretation": "development_candidate_nomination_requires_external_confirmation",
+  "legacy_numerical_operator_runtime": {
+    "artifact": "legacy_numerical_operator_runtime.json",
+    "artifact_sha256": "33d121ed73038444daff0270cbc81d3afc637ca2794dd158c83172d9cfa0b215",
+    "exact_numeric_string_replay_required": true,
+    "operator_id": "schema4_job_4968695_python3117_blas_threads4",
+    "pbs_job_id": "4968878.fe3-adm",
+    "python_version": "3.11.7",
+    "runtime_preload_modules": [
+      "scipy.linalg",
+      "sklearn.linear_model"
+    ],
+    "status": "PASS",
+    "threadpool_count": 3
+  },
+  "limits": [
+    "Schema-5 was planned after schema-4 and is not an independent Test.",
+    "ESM-2 650M and ESM-C 6B preserve checksum-bound schema-4 serialized rows only after the attested legacy four-thread operator exactly replays every numeric string across all 92,844 rows; Amendment-B tolerances remain diagnostic upper bounds only.",
+    "The four robustness sources are never pooled to reorder candidates.",
+    "N/A heads have no prediction rows and are not zeros.",
+    "Produgelaviricota rejection is a 7-record/2-parent descriptive subgroup; literature-unclassified rejection is a single-record descriptive result with no generalization claim.",
+    "The pooled 8-record/3-parent rare-or-unclassified H3 rejection endpoint is secondary and is not general unknown detection.",
+    "The nominee is only a candidate for prospective external confirmation and cannot replace V0."
+  ],
+  "lineage_sha256": {
+    "benchmark_config": "c52f937888166a9097d207bb772ca89b5eededef5d8140baba1f7ac72732cc8c",
+    "comparison_summary": "4b4e0088f65f82e8ca18301c263c1fea4520ca5f63550947d0ef8c640f094c9c",
+    "config": "d58fa812527a7e4338ef6aa85c50eac854338b282417211a4af9568dfdaa434d",
+    "hardnegative_manifest": "ec55863a86014952d107e870bffe428adcf5ea4f6fb800520fc4e957479b41c4",
+    "legacy_numerical_operator_runtime": "33d121ed73038444daff0270cbc81d3afc637ca2794dd158c83172d9cfa0b215",
+    "protocol": "6b09fefaa4b8b9412205a0caac814c94ee9b8656e7cbaa9d20097766231e16db",
+    "schema3_family_manifest": "8cd9e9ce45ad965eb745cc4ecdf08d7e3205f57b830bca00bcf0041e5bcdf541",
+    "schema4_predictions": "147da84cd1c4733e4cb33c5509fa2bd446863c7e261a102edd2f1101cdc9b8d8",
+    "schema4_result_checksums": "66533e7cf66da8f5066554afdda238b84ff922855d1c483c680422002002c0f6",
+    "schema4_validation": "268ef8ee61a4a377e148a2fe529888494469a60be00e3f768efb6fa7cf84a612"
+  },
+  "model_state": "frozen",
+  "models": [
+    "esm2_650m",
+    "esm2_3b",
+    "esmc_300m",
+    "esmc_600m",
+    "esmc_6b",
+    "prott5_xl",
+    "prostt5",
+    "esm3_open_1_4b"
+  ],
+  "multiple_comparisons": {
+    "families": "eight_nontrivial_candidates_vs_all_esmc_6b_within_each_source",
+    "method": "Holm",
+    "positive_control_excluded_from_hypothesis_count": true
+  },
+  "nomination_primary_evidence": "train_only_shared_five_fold_cv",
+  "nominee": {
+    "candidate_id": "h12_esm2_3b__h3_esmc_6b",
+    "interpretation": "train_cv_nominated_schema5_diagnostic_only_not_independent_validation",
+    "mean_train_cv_score": 0.9976446243098959,
+    "nomination_status": "recommended_for_external_confirmation",
+    "one_se_cost_accuracy_pareto": 1,
+    "prospective_external_confirmation_required": 1,
+    "released_v0_change_permitted": 0,
+    "robustness_used_for_candidate_ordering": 0,
+    "source_specific_warning_count": 0,
+    "source_specific_warnings": "",
+    "within_one_paired_se": 1
+  },
+  "primary_mixed_candidate_labels": 9,
+  "project_version": "V0",
+  "record_counts": {
+    "h3_endpoint_rows": 102,
+    "h3_subgroup_endpoint_rows": 34,
+    "hardnegative_h2_h3_predictions": 0,
+    "materialization_or_reuse_attestations": 24,
+    "new_materialization_receipts": 18,
+    "path_bootstrap_rows": 680000,
+    "reuse_attestations": 6,
+    "schema4_continuity_predictions": 92844,
+    "schema4_recomputation_audit_rows": 92844,
+    "schema4_recomputation_audit_summary_rows": 10,
+    "single_model_predictions": 371376,
+    "system_expected_paths": 338691,
+    "system_predictions": 789174,
+    "test_records": 0
+  },
+  "released_v0_artifacts_modified": 0,
+  "released_v0_feedback_permitted": false,
+  "robustness_role_in_nomination": "source_specific_warning_not_reranking",
+  "schema4_canonical_prediction_cache": {
+    "amendment_b_tolerances_retained_as_upper_bound": true,
+    "canonical_models": [
+      "esm2_650m",
+      "esmc_6b"
+    ],
+    "canonical_prediction_rows_sha256": "32a3476827b6f32a71460e870312f71bda27ccc0feb98afaf4e42326d494c676",
+    "canonical_source": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/results/predictions.tsv",
+    "canonical_source_sha256": "147da84cd1c4733e4cb33c5509fa2bd446863c7e261a102edd2f1101cdc9b8d8",
+    "canonicalization": "all_rows_substituted_only_after_complete_audit_pass",
+    "canonicalized_rows": 92844,
+    "derived_decision_mismatches": 0,
+    "exact_numeric_string_comparisons": 464220,
+    "exact_numeric_string_replay_required": true,
+    "interpretation": "legacy_four_thread_operator_exact_numeric_replay_no_endpoint_or_model_change",
+    "legacy_numerical_operator_id": "schema4_job_4968695_python3117_blas_threads4",
+    "numeric_fields": {
+      "member_probability": {
+        "absolute_tolerance": 5e-07,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "member_raw_decision_score": {
+        "absolute_tolerance": 1e-05,
+        "blank_pairs": 26108,
+        "comparisons": 66736,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "representative_probability": {
+        "absolute_tolerance": 5e-07,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "representative_raw_decision_score": {
+        "absolute_tolerance": 1e-05,
+        "blank_pairs": 26108,
+        "comparisons": 66736,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "threshold": {
+        "absolute_tolerance": 0.0,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 0.0
+      }
+    },
+    "numeric_string_mismatches": 0,
+    "policy": "checksum_bound_schema4_serialized_rows_after_legacy_operator_exact_numeric_replay",
+    "prediction_fields": 26,
+    "prediction_keys": 92844,
+    "recomputed_prediction_rows_sha256": "32a3476827b6f32a71460e870312f71bda27ccc0feb98afaf4e42326d494c676",
+    "row_level_audit_rows": 92844,
+    "semantic_comparisons": 1671192,
+    "semantic_fields": [
+      "source_dataset",
+      "paired_representative_id",
+      "paired_representative_protein_id",
+      "source_cluster_id",
+      "source_cluster_key",
+      "dependence_block_id",
+      "train_relationship_stratum",
+      "truth_label",
+      "expected_prediction",
+      "member_prediction",
+      "member_predicted_label",
+      "member_correct",
+      "representative_prediction",
+      "representative_predicted_label",
+      "representative_correct",
+      "applicable_to_source",
+      "metric_eligible",
+      "test_record"
+    ],
+    "semantic_mismatches": 0,
+    "status": "PASS",
+    "test_records": 0
+  },
+  "schema5_robustness_reranking_permitted": false,
+  "schema_version": 5,
+  "selection_feedback_permitted": false,
+  "sources": [
+    "viral_vma_djr",
+    "cellular_djr_none",
+    "background_non_djr",
+    "hard_non_djr"
+  ],
+  "status": "complete_eight_model_nine_candidate_four_source",
+  "test_predictions_or_metrics_computed": 0,
+  "test_vectors_selected_for_inference": 0,
+  "threshold_optimization_operations": 0,
+  "train_cv_candidate_nomination_permitted": true,
+  "training_operations": 0,
+  "unique_prediction_systems": 16
+}

@@ -1,0 +1,7 @@
+work/*
+!work/v01_fit_contract.tsv
+!work/v01_reference_contract.tsv
+!work/v01_reproduction.json
+logs/
+*.o*
+*.e*

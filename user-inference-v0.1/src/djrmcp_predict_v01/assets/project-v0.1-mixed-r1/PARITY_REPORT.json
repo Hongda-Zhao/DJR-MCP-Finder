@@ -1,0 +1,59 @@
+{
+  "encoders": {
+    "esm2_3b": {
+      "dimension": 2560,
+      "embedding_sha256": "c9fcf47cf43f4f9aa978651d2b709c624185e74994dd792d53cbedbc3da2f988",
+      "heads": [
+        "head1",
+        "head2"
+      ],
+      "rows": 11060,
+      "status": "exact_parity"
+    },
+    "esmc_6b": {
+      "dimension": 2560,
+      "embedding_sha256": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+      "heads": [
+        "head3_phylum"
+      ],
+      "rows": 11060,
+      "status": "exact_parity"
+    }
+  },
+  "head_encoder_map": {
+    "head1": "esm2_3b",
+    "head2": "esm2_3b",
+    "head3_phylum": "esmc_6b"
+  },
+  "heads": {
+    "head1": {
+      "encoder_id": "esm2_3b",
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0,
+      "rows": 11060
+    },
+    "head2": {
+      "encoder_id": "esm2_3b",
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0,
+      "rows": 11060
+    },
+    "head3_phylum": {
+      "encoder_id": "esmc_6b",
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0,
+      "rows": 11060
+    }
+  },
+  "schema_version": 2,
+  "status": "exact_parity"
+}

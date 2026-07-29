@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -N djrmcp-v0-data
+#PBS -q SMALL
+#PBS -l select=1:ncpus=8:mem=48gb
+#PBS -l walltime=08:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+cd "$PROJECT_ROOT"
+
+export PROJECT_ROOT
+export NCPUS="${NCPUS:-8}"
+bash scripts/build_v0_dataset.sh

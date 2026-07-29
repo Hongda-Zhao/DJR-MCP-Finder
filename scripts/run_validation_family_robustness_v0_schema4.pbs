@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+#PBS -N djr_v0_robust_s4
+#PBS -q cdb
+#PBS -l select=1:ncpus=4:mem=32gb
+#PBS -l walltime=02:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+ARCHIVE_ROOT="${DJRMCP_ARCHIVE_ROOT:?set DJRMCP_ARCHIVE_ROOT to the local checksum-bound archive root}"
+ANALYSIS_ROOT="${SCHEMA4_ANALYSIS_ROOT:-$ARCHIVE_ROOT/project-V0__validation-family-robustness-schema4__20260728/schema4_v1}"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+CONFIG="${DJRMCP_SCHEMA4_CONFIG:-$PROJECT_ROOT/configs/validation_family_robustness_v0_schema4.yaml}"
+RESULTS="$ANALYSIS_ROOT/results"
+FIGURES="$ANALYSIS_ROOT/figures"
+VALIDATION="$ANALYSIS_ROOT/validation.json"
+
+for value in "$PROJECT_ROOT" "$ANALYSIS_ROOT" "$VENV_ROOT"; do
+    if [[ "$value" != /* || "$value" == "/" ]]; then
+        echo "Required roots must be non-root absolute paths: $value" >&2
+        exit 2
+    fi
+done
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+
+cd "$PROJECT_ROOT"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="$VENV_ROOT/bin:$PATH"
+export VIRTUAL_ENV="$VENV_ROOT"
+export PYTHONPATH="$PROJECT_ROOT/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export PYTHONHASHSEED=20260724
+export SCHEMA4_ANALYSIS_ROOT="$ANALYSIS_ROOT"
+
+# Bind every writable path in the rendered config to this no-overwrite
+# generation before any scorer, validator, or plotter can create output.
+python - "$CONFIG" "$ANALYSIS_ROOT" "$RESULTS" "$VALIDATION" "$FIGURES" <<'PY'
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import yaml
+
+
+config_path, requested_root, requested_results, requested_validation, requested_figures = (
+    Path(value) for value in sys.argv[1:]
+)
+with config_path.open(encoding="utf-8") as handle:
+    config = yaml.safe_load(handle)
+if not isinstance(config, dict):
+    raise SystemExit("schema-4 config root is not a mapping")
+
+
+def absolute(value: object, label: str) -> Path:
+    path = Path(str(value))
+    if not path.is_absolute() or path == Path("/"):
+        raise SystemExit(f"{label} must be a non-root absolute path: {path}")
+    return path
+
+
+analysis_root = absolute(config.get("analysis_root"), "analysis_root")
+result_dir = absolute(config.get("result_dir"), "result_dir")
+figure_dir = absolute(config.get("figure_dir"), "figure_dir")
+validation_path = result_dir.with_name("validation.json")
+if analysis_root != requested_root:
+    raise SystemExit("launcher/config analysis-root mismatch")
+if (result_dir, validation_path, figure_dir) != (
+    requested_results,
+    requested_validation,
+    requested_figures,
+):
+    raise SystemExit("launcher/config write-path mismatch")
+if result_dir.parent != analysis_root or validation_path.parent != analysis_root:
+    raise SystemExit("result/validation path escaped the schema-4 root")
+if figure_dir.parent != analysis_root:
+    raise SystemExit("figure path escaped the schema-4 root")
+print(f"schema4_path_preflight=PASS analysis_root={analysis_root}")
+PY
+
+test ! -e "$RESULTS"
+test ! -e "$FIGURES"
+test ! -e "$VALIDATION"
+
+python scripts/score_validation_family_robustness_v0_schema4.py --config "$CONFIG"
+python scripts/validate_validation_family_robustness_v0_schema4.py \
+    --config "$CONFIG" --output "$VALIDATION"
+python scripts/plot_validation_family_robustness_v0_schema4.py --config "$CONFIG"
+
+(
+    cd "$RESULTS"
+    sha256sum -c CHECKSUMS.sha256
+)
+(
+    cd "$FIGURES"
+    sha256sum -c CHECKSUMS.sha256
+)
+python - <<'PY'
+import json
+import os
+from pathlib import Path
+
+analysis = Path(os.environ["SCHEMA4_ANALYSIS_ROOT"])
+validation = json.loads((analysis / "validation.json").read_text(encoding="utf-8"))
+qa = json.loads((analysis / "figures/QA.json").read_text(encoding="utf-8"))
+if validation.get("status") != "PASS" or qa.get("status") != "pass":
+    raise SystemExit("schema-4 validation or figure QA did not pass")
+print("schema4_complete validation=PASS figure_QA=pass")
+PY

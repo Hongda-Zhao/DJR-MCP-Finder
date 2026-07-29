@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "djrmcp-user-inference"
+version = "0.1.0"
+description = "Frozen project-V0 ESM-C 6B inference for user-provided protein FASTA files"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+inference = [
+  "torch>=2.6",
+  "transformers @ git+https://github.com/Biohub/transformers.git@ef32577f55da19a4989cd7b22e004dc43a4998cb",
+]
+dev = [
+  "pytest>=7.4",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+djrmcp-predict = "djrmcp_predict.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+djrmcp_predict = [
+  "assets/project-v0-esmc6b-r1/*.json",
+  "assets/project-v0-esmc6b-r1/*.md",
+  "assets/project-v0-esmc6b-r1/*.sha256",
+  "assets/project-v0-esmc6b-r1/heads/*.npz",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

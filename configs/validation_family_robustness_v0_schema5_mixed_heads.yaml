@@ -1,0 +1,200 @@
+schema_version: 5
+analysis_id: project_v0_validation_family_robustness_schema5_mixed_heads
+project_version: V0
+data_curation_version: V3
+evaluation_role: auxiliary_post_freeze_multimodel_stress_test
+interpretation: development_candidate_nomination_requires_external_confirmation
+selection_feedback_permitted: false
+released_v0_feedback_permitted: false
+train_cv_candidate_nomination_permitted: true
+schema5_robustness_reranking_permitted: false
+model_state: frozen
+protocol: VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md
+protocol_amendment: D_h3_rare_subgroup_transparency_no_model_change
+schema4_prediction_cache_policy: checksum_bound_schema4_serialized_rows_after_legacy_operator_exact_numeric_replay
+schema4_expected_prediction_rows: 92844
+schema4_recomputation_tolerances:
+  probability: {absolute: 5.0e-7, relative: 1.0e-6}
+  raw_decision_score: {absolute: 1.0e-5, relative: 1.0e-6}
+  threshold: {absolute: 0.0, relative: 0.0}
+legacy_schema4_numerical_operator:
+  operator_id: schema4_job_4968695_python3117_blas_threads4
+  canonical_schema4_job: 4968695
+  pbs_ncpus: 4
+  pbs_memory_gb: 32
+  omp_num_threads: 4
+  mkl_num_threads: 4
+  openblas_num_threads: 4
+  pythonhashseed: 20260724
+  python_module: Python/3.11.7
+  python_version: 3.11.7
+  venv_root: /aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0
+  runtime_preload_modules: [scipy.linalg, sklearn.linear_model]
+  required_threadpool_count: 3
+  required_threadpool_user_api_counts: {blas: 2, openmp: 1}
+  exact_numeric_string_replay_required: true
+  amendment_b_tolerances_retained_as_upper_bound: true
+  diagnostic_jobs:
+    schema4_canonical: {job_id: 4968695, overall_exit_status: 1, role: canonical_prediction_generation_and_validation_valid_then_later_job_step_failed_threads4}
+    first_schema5_failure: {job_id: 4968800, role: pre_metric_exact_continuity_failure_threads12}
+    flawed_aggregation: {job_id: 4968804, role: maximum_absolute_row_relative_value_misread_as_global}
+    amendment_b_failure: {job_id: 4968816, role: pre_metric_raw_tolerance_failure_threads12}
+    corrected_threads12: {job_id: 4968818, role: all_92844_row_numeric_aggregation_threads12_record_payload_defect_disclosed}
+    exact_threads4_replay: {job_id: 4968820, overall_exit_status: 0, role: all_92844_keys_five_numeric_fields_exact_finite_test0_diagnostic_only}
+embedding_materialization_protocol_sha256: 81aedf884f3c82a75363b5f6c59aed1ee2775e146e58cb585553c28aae881b6f
+embedding_materialization_config_sha256: 4419907984b0b0ebd11af3eb23e3d46f3025effa71dc088ceb01ae9d7c3adb94
+test_policy: no_test_vector_selection_or_performance_scoring
+bootstrap_replicates: 10000
+bootstrap_seed: 20260728
+bootstrap_unit: shared_sha_unioned_original_component_block_with_source_cluster_nesting
+h3_rare_endpoint_contract:
+  derivation: frozen_family_manifest_join_to_existing_per_record_predictions
+  model_inference_repeated_for_subgroups: false
+  refit_recalibration_or_threshold_change_permitted: false
+  prediction_threshold_cv_nomination_equivalence_to_amendment_c_required: true
+  subgroup_fields: [head3_status, head3_phylum_label]
+  raw_reject_counts_required: true
+  endpoints:
+    Produgelaviricota_reject_recall:
+      endpoint_role: descriptive_subgroup
+      expected_records: 7
+      expected_parents: 2
+      expected_dependence_blocks: 2
+      bootstrap_seed_offset: 6100
+      interpretation: rare_formal_phylum_rejection_descriptive_not_general_unknown_detection
+    literature_unclassified_reject_recall:
+      endpoint_role: descriptive_single_record_subgroup
+      expected_records: 1
+      expected_parents: 1
+      expected_dependence_blocks: 1
+      bootstrap_seed_offset: 6110
+      interpretation: single_record_descriptive_only_no_generalization
+    rare_or_unclassified_reject_recall:
+      endpoint_role: secondary_pooled_diagnostic
+      expected_records: 8
+      expected_parents: 3
+      expected_dependence_blocks: 3
+      bootstrap_seed_offset: 6100
+      interpretation: secondary_pooled_small_prespecified_diagnostic_not_general_unknown_detection
+
+models:
+  - esm2_650m
+  - esm2_3b
+  - esmc_300m
+  - esmc_600m
+  - esmc_6b
+  - prott5_xl
+  - prostt5
+  - esm3_open_1_4b
+homogeneous_models:
+  - esm2_650m
+  - esm2_3b
+  - esmc_300m
+  - esmc_600m
+  - esmc_6b
+  - prott5_xl
+  - prostt5
+  - esm3_open_1_4b
+h12_candidates: [esm2_650m, esm2_3b, esmc_6b]
+h3_candidates: [esmc_300m, esmc_600m, esmc_6b]
+primary_mixed_candidates:
+  - {candidate_id: h12_esm2_650m__h3_esmc_300m, head1_model: esm2_650m, head2_model: esm2_650m, head3_model: esmc_300m}
+  - {candidate_id: h12_esm2_650m__h3_esmc_600m, head1_model: esm2_650m, head2_model: esm2_650m, head3_model: esmc_600m}
+  - {candidate_id: h12_esm2_650m__h3_esmc_6b, head1_model: esm2_650m, head2_model: esm2_650m, head3_model: esmc_6b}
+  - {candidate_id: h12_esm2_3b__h3_esmc_300m, head1_model: esm2_3b, head2_model: esm2_3b, head3_model: esmc_300m}
+  - {candidate_id: h12_esm2_3b__h3_esmc_600m, head1_model: esm2_3b, head2_model: esm2_3b, head3_model: esmc_600m}
+  - {candidate_id: h12_esm2_3b__h3_esmc_6b, head1_model: esm2_3b, head2_model: esm2_3b, head3_model: esmc_6b}
+  - {candidate_id: h12_esmc_6b__h3_esmc_300m, head1_model: esmc_6b, head2_model: esmc_6b, head3_model: esmc_300m}
+  - {candidate_id: h12_esmc_6b__h3_esmc_600m, head1_model: esmc_6b, head2_model: esmc_6b, head3_model: esmc_600m}
+  - {candidate_id: h12_esmc_6b__h3_esmc_6b, head1_model: esmc_6b, head2_model: esmc_6b, head3_model: esmc_6b}
+
+score_weights: {head1_ap: 0.60, head2_ap: 0.30, head3_known_macro_f1: 0.10}
+nomination_primary_evidence: train_only_shared_five_fold_cv
+robustness_role_in_nomination: source_specific_warning_not_reranking
+multiple_comparison_method: holm
+multiple_comparison_family: eight_nontrivial_primary_mixed_candidates_vs_all_esmc_6b
+contextual_reference_model_id: esm2_650m
+confidence_level: 0.95
+
+benchmark_config: configs/model_benchmark_v0_metric_revision_1.yaml
+comparison_summary: results/model_benchmark_v0_metric_revision_1/model_comparison.json
+master_manifest: data/processed/v0/master_manifest.tsv
+schema3_config: configs/validation_family_robustness_v0.yaml
+schema4_config: configs/validation_family_robustness_v0_schema4.yaml
+schema4_result_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/results
+schema4_result_checksums: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/results/CHECKSUMS.sha256
+schema4_result_checksums_sha256: 66533e7cf66da8f5066554afdda238b84ff922855d1c483c680422002002c0f6
+schema4_validation: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/validation.json
+schema4_validation_sha256: 268ef8ee61a4a377e148a2fe529888494469a60be00e3f768efb6fa7cf84a612
+schema3_family_member_manifest_sha256: 8cd9e9ce45ad965eb745cc4ecdf08d7e3205f57b830bca00bcf0041e5bcdf541
+amendment_c_result_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/results
+amendment_c_result_checksums_sha256: aa9f3cef647487d4eaec7749ceeb49c58085657a38d0d99c7577f3655448e72c
+amendment_c_validation: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/validation.json
+amendment_c_validation_sha256: 2b63cecae7788cce3d4c8ef96d48bf1becfbe8d74b9e9c084b2ab69a47542bcb
+amendment_d_required_byte_equivalent_artifacts:
+  - single_model_predictions.tsv
+  - system_predictions.tsv
+  - system_expected_path_predictions.tsv
+  - system_registry.tsv
+  - train_cv_candidate_summary.tsv
+  - accuracy_cost_pareto.tsv
+  - candidate_nomination.tsv
+
+analysis_root: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d
+inputs:
+  viral_family:
+    manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/viral_family/validation_source_entities.tsv
+    fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/viral_family/validation_source_entities.faa
+    expected_records: 13074
+    manifest_sha256: d96ab256de26414706c9d4993f1d9e2d64adaea8cece32645bb16a2b18b7e6f3
+    fasta_sha256: 9650b5703ce413ca438c9cb84740aa8bd4e14be6a1f183027419fdc9fefe6b7d
+  graph_family:
+    manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/graph_family/scored_validation_manifest.tsv
+    fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/graph_family/scored_validation_sequences.faa
+    expected_records: 3391
+    manifest_sha256: 25f0ceaed999cc62ee933d6258c88bfcbad4ff4596900099ae0e8a046b10d33b
+    fasta_sha256: 1e7478a7eedaee0d14952018797d18637cf1c316a6d0781dc179a32cfc50bee0
+  hardnegative_matched:
+    manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/hardnegative_matched/member_manifest.tsv
+    fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/inputs/hardnegative_matched/member_sequences.faa
+    expected_records: 3478
+    manifest_sha256: ec55863a86014952d107e870bffe428adcf5ea4f6fb800520fc4e957479b41c4
+    fasta_sha256: f274b6ac9ea5df52f6dcbe4428e22454649aecd93131f0eee7826087d6eaaf66
+
+embedding_registries:
+  viral_family:
+    esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/embeddings/esm2_650m
+    esm2_3b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_esm2_3b
+    esmc_300m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_esmc_300m
+    esmc_600m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_esmc_600m
+    esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/embeddings/esmc_6b
+    prott5_xl: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_prott5_xl
+    prostt5: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_prostt5
+    esm3_open_1_4b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/viral_family_esm3_open_1_4b
+  graph_family:
+    esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/embeddings/esm2_650m
+    esm2_3b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_esm2_3b
+    esmc_300m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_esmc_300m
+    esmc_600m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_esmc_600m
+    esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/embeddings/esmc_6b
+    prott5_xl: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_prott5_xl
+    prostt5: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_prostt5
+    esm3_open_1_4b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/graph_family_esm3_open_1_4b
+  hardnegative_matched:
+    esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/embeddings/hardnegative_matched_esm2_650m
+    esm2_3b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_esm2_3b
+    esmc_300m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_esmc_300m
+    esmc_600m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_esmc_600m
+    esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/embeddings/hardnegative_matched_esmc_6b
+    prott5_xl: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_prott5_xl
+    prostt5: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_prostt5
+    esm3_open_1_4b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/embeddings/hardnegative_matched_esm3_open_1_4b
+
+receipt_root: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/receipts
+materialization_receipt_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/receipts/materialization
+reuse_attestation_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/receipts/reuse
+normalized_embedding_attestation_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/receipts/attestations
+result_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d/results
+figure_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d/figures
+active_compact_result_dir: results/validation_family_robustness_v0_schema5_mixed_heads
+active_compact_figure_dir: results/figures/project_v0/validation_family_robustness_v0_schema5_mixed_heads

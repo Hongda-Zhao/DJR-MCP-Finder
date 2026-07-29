@@ -1,0 +1,51 @@
+#!/bin/bash
+#PBS -N djrmcp-ur-v0-v01
+#PBS -q SMALL
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/../../.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+BENCHMARK_ROOT="${PROJECT_ROOT}/benchmarks/ultra_remote_v0_v01"
+PARENT_ROOT="${PROJECT_ROOT}/benchmarks/plm_vs_classical_v0"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+
+mkdir -p "${BENCHMARK_ROOT}/logs"
+LIVE_LOG="${BENCHMARK_ROOT}/logs/run.${PBS_JOBID:-manual}.log"
+exec >"${LIVE_LOG}" 2>&1
+echo "LIVE_LOG ${LIVE_LOG}"
+
+cd "${PROJECT_ROOT}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module purge
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="${VENV_ROOT}/bin:${PATH}"
+export VIRTUAL_ENV="${VENV_ROOT}"
+export PYTHONPATH="${PROJECT_ROOT}/src:${PARENT_ROOT}/scripts:${BENCHMARK_ROOT}/scripts:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${NCPUS:-12}"
+export MKL_NUM_THREADS="${NCPUS:-12}"
+export OPENBLAS_NUM_THREADS="${NCPUS:-12}"
+
+CONFIG="${DJRMCP_ULTRA_CONFIG:-$BENCHMARK_ROOT/config/benchmark.json}"
+SCORE_ARGS=()
+if [[ "${DJRMCP_FORCE_V01:-0}" == "1" ]]; then
+    SCORE_ARGS+=(--force)
+fi
+python "${BENCHMARK_ROOT}/scripts/score_v01.py" --config "${CONFIG}" "${SCORE_ARGS[@]}"
+python "${BENCHMARK_ROOT}/scripts/analyze.py" --config "${CONFIG}"
+if [[ "${DJRMCP_SKIP_FIGURES:-0}" == "1" ]]; then
+    echo "PASS numeric stages complete; figure render/QA intentionally deferred"
+else
+    python "${BENCHMARK_ROOT}/scripts/plot.py" --config "${CONFIG}"
+    python "${BENCHMARK_ROOT}/scripts/validate.py" --config "${CONFIG}"
+fi
+echo "PASS complete"

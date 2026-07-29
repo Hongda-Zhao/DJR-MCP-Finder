@@ -1,0 +1,85 @@
+{
+  "embedding": {
+    "allowed_residues": "ACDEFGHIKLMNPQRSTVWXY",
+    "classifier_input_quantization": "float16_roundtrip",
+    "compute_precision": "bfloat16_on_cuda",
+    "dimension": 2560,
+    "model_name": "Biohub/ESMC-6B",
+    "model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a",
+    "pooling": "residue_mean_then_window_mean",
+    "special_token_policy": "BOS/EOS/padding excluded",
+    "stride": 511,
+    "transformers_code_revision": "ef32577f55da19a4989cd7b22e004dc43a4998cb",
+    "transformers_repository": "https://github.com/Biohub/transformers.git",
+    "window_batch_size": 1,
+    "window_residues": 1022
+  },
+  "export_environment": {
+    "joblib": "1.5.3",
+    "numpy": "2.4.6",
+    "platform": "Linux-4.18.0-425.3.1.el8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.7"
+  },
+  "heads": {
+    "head1": {
+      "artifact": "heads/head1.npz",
+      "classes": [
+        "non_djr",
+        "djr"
+      ],
+      "input_dimension": 2560,
+      "sha256": "cc555dc90bccdb138f00ca4a2993b518f8a97496b49c941f34284a417c924685",
+      "source_joblib_sha256": "3dc82197353fd47bc9fad011af16feebd6b7c6998977db0e0724e4a56415d458",
+      "temperature": 1168.1537298613255,
+      "threshold": 0.9687754839244975,
+      "threshold_rule": ">= for H1/H2; H3 rejects when max_probability < threshold"
+    },
+    "head2": {
+      "artifact": "heads/head2.npz",
+      "classes": [
+        "none",
+        "viral_morphogenesis_associated"
+      ],
+      "input_dimension": 2560,
+      "sha256": "bc2564aa7cd5f39a6165470090bb6e31e5ec5a0653cb25b24e42fdcb2fa49f36",
+      "source_joblib_sha256": "c309cba4a67b4996578acd819710840b8a8105462080b164ae828557266a08d9",
+      "temperature": 0.8241381150130028,
+      "threshold": 0.9639353725025007,
+      "threshold_rule": ">= for H1/H2; H3 rejects when max_probability < threshold"
+    },
+    "head3_phylum": {
+      "artifact": "heads/head3_phylum.npz",
+      "classes": [
+        "Nucleocytoviricota",
+        "Preplasmiviricota"
+      ],
+      "input_dimension": 2560,
+      "sha256": "8c0597145a4790c23a4235884e5eb54a4f9d2d324853be78e791dcafd51c3dea",
+      "source_joblib_sha256": "88c3f87f349d65e19e33a38130ee8095afc49c29c3d8a254336208338e9e06ba",
+      "temperature": 4.2474179687096845,
+      "threshold": 0.7126488980564439,
+      "threshold_rule": ">= for H1/H2; H3 rejects when max_probability < threshold"
+    }
+  },
+  "limitations": [
+    "ESM-C 6B has not been evaluated on a new prospective external Test.",
+    "Scores are not prevalence-adjusted posterior probabilities.",
+    "H3 unknown/other rejects only from two known phyla and is not a general OOD detector.",
+    "Inputs outside the training length/alphabet domain require extra caution."
+  ],
+  "parity": {
+    "embedding_sha256": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+    "report": "PARITY_REPORT.json",
+    "rows": 11060,
+    "status": "exact_parity"
+  },
+  "release_id": "project-v0-esmc6b-r1-user-inference",
+  "schema_version": 1,
+  "source_calibration_sha256": "c654e402428c35b5284ad12aed5418bf9116104ff951daa7b84d349e94c28747",
+  "source_project": "DJR-MCP-Finder project V0; data-curation V3",
+  "training_domain": {
+    "length_max": 2906,
+    "length_min": 130,
+    "representative_count": 11060
+  }
+}

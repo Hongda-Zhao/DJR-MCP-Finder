@@ -1,0 +1,64 @@
+schema_version: 3
+analysis_id: project_v0_validation_family_robustness
+analysis_scope: all_source_all_clade_with_separate_unpaired_hardnegative
+supersedes_schema_versions: [2]
+project_version: V0
+data_curation_version: V3
+evaluation_role: auxiliary_post_freeze_support
+selection_feedback_permitted: false
+model_state: frozen
+interpretation: supporting_validation_family_consistency_not_model_selection_or_independent_test
+protocol: VALIDATION_FAMILY_ROBUSTNESS_V0_PROTOCOL.md
+models: [esm2_650m, esmc_6b]
+frozen_primary_model_id: esmc_6b
+fixed_reference_model_id: esm2_650m
+bootstrap_replicates: 10000
+bootstrap_seed: 20260724
+bootstrap_unit: shared_sha_unioned_original_component_block
+test_policy: no_test_vector_selection_or_performance_scoring__all_split_artifact_integrity_and_class_census_permitted
+
+master_manifest: data/processed/v0/master_manifest.tsv
+global_component_membership: data/processed/v0/global_component_membership.tsv
+benchmark_config: configs/model_benchmark_v0_metric_revision_1.yaml
+comparison_summary: results/model_benchmark_v0_metric_revision_1/model_comparison.json
+source_family_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/source_family
+relationship_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/relationships
+member_embeddings:
+  esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/embeddings/esm2_650m
+  esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs/embeddings/esmc_6b
+
+# Checksum-bound Validation-only cellular/background graph-family extension.
+# These records are auxiliary support and never enter fitting, calibration,
+# threshold selection, model selection, or the frozen Test benchmark.
+graph_family_trace: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/graph_family/scored_validation_manifest.tsv
+graph_member_embeddings:
+  esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/embeddings/esm2_650m
+  esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/embeddings/esmc_6b
+frozen_input_root_manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/FROZEN_INPUTS_SCHEMA3_CHECKSUMS.sha256
+frozen_input_root_manifest_sha256: be2ef5557ea41e4de44c4a1689b9544e7a1395a2cb92e8a63949aa08f7958d55
+
+# SHA-attested unpaired hard-negative challenge.  Complete status requires
+# checksum-bound integrity plus both embedding bundles; pending emits no metric.
+hard_negative_challenge:
+  status: complete_checksum_bound_embeddings
+  manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/challenge_manifest.tsv
+  fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/hardnegative_unpaired_challenge_v0.faa
+  summary: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/summary.json
+  embeddings:
+    esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/embeddings/esm2_650m
+    esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/embeddings/esmc_6b
+  integrity_manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/integrity/query_integrity.tsv
+  integrity_summary: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/frozen_inputs_all_source_20260727/hardnegative_unpaired_challenge/integrity/SUMMARY.json
+  scoring_permitted_when_status_complete: true
+  expected_registry_records: 5878
+  interpretation: unpaired_auxiliary_h1_hard_negative_challenge_not_paired_family_score
+
+cohort_dir: data/processed/validation_family_robustness_v0
+result_dir: results/validation_family_robustness_v0
+figure_dir: results/figures/project_v0/validation_family_robustness_v0
+
+mmseqs_relationship_threshold:
+  min_seq_id: 0.30
+  min_query_coverage: 0.80
+  min_target_coverage: 0.80
+  cov_mode: 0

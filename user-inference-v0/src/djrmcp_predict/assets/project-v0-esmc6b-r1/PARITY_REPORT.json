@@ -1,0 +1,29 @@
+{
+  "dimension": 2560,
+  "embedding_sha256": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+  "heads": {
+    "head1": {
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0
+    },
+    "head2": {
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0
+    },
+    "head3_phylum": {
+      "exact_probabilities": true,
+      "exact_raw_scores": true,
+      "exact_threshold_decisions": true,
+      "max_abs_probability_delta": 0.0,
+      "max_abs_raw_score_delta": 0.0
+    }
+  },
+  "rows": 11060,
+  "status": "exact_parity"
+}

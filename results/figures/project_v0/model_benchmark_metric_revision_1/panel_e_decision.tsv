@@ -1,0 +1,15 @@
+model_id	label	selected	selectable	within_one_paired_se	mean_delta_s_reference_minus_candidate	paired_delta_se	validation_gate	license	pretraining_overlap_risk	source_kind	decision_reason
+esmc_6b	ESM-C 6B	True	True	True	0.0	0.0	PASS	MIT	not_flagged	sequence MLM	selected; tie-break rank 1
+esm2_3b	ESM-2 3B	False	True	False	0.0022717408395502847	0.001056095823278522	PASS	MIT	not_flagged	sequence MLM	outside paired one-SE set
+esmc_300m	ESM-C 300M	False	True	False	0.0037005667174584422	0.0013483947762210175	PASS	MIT	not_flagged	sequence MLM	outside paired one-SE set
+prostt5	ProstT5	False	True	False	0.00396022849512101	0.001958558192998597	PASS	MIT	high	sequence-structure translation	outside paired one-SE set
+prott5_xl	ProtT5-XL-U50	False	True	False	0.004672942922963275	0.0015553032220100723	PASS	Apache-2.0	not_flagged	sequence denoising	outside paired one-SE set
+esm3_open_1_4b	ESM3-open 1.4B	False	True	False	0.004728859963187504	0.0016159938727509902	PASS	MIT	low_for_viruses_training_set_excluded_viruses	multimodal sequence-structure-function model	outside paired one-SE set
+esmc_600m	ESM-C 600M	False	True	False	0.0049514993331580825	0.002593990674883061	PASS	MIT	not_flagged	sequence MLM	outside paired one-SE set
+esm2_650m	ESM-2 650M	False	True	False	0.006768408253099767	0.0019730741456165787	PASS	MIT	not_flagged	sequence MLM	outside paired one-SE set
+mimic_1b	MIMIC 1.0	False	False	False	0.007811221217599473	0.0012960539134434402	FAIL H3	MIT	high	multimodal central-dogma encoder	excluded by Validation H3
+protrek_650m	ProTrek 650M	False	False	False	0.00973328885437652	0.0024409809265184936	FAIL H3	MIT	high	sequence-structure-text contrastive	excluded by Validation H3
+amplify_350m	AMPLIFY 350M	False	False	False	0.011781732516099597	0.0015052281692831458	FAIL H1,H3	MIT	not_flagged	sequence MLM	excluded by Validation H1,H3
+protsent_150m	ProtSent 150M	False	False	False	0.012474348806316704	0.004033627648200167	FAIL H1,H3	MIT	high	contrastive sequence embedding	excluded by Validation H1,H3
+esm2_150m	ESM-2 150M	False	False	False	0.014303777034270992	0.0028567934884775378	FAIL H3	MIT	not_flagged	sequence MLM	excluded by Validation H3
+ankh3_large	Ankh3 Large	False	False	False	0.015341905022502433	0.0028125798555907007	FAIL H3	CC-BY-NC-SA-4.0	not_flagged	sequence multi-objective	excluded by Validation H3

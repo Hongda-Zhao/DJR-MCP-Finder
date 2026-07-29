@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "plm-vs-classical-v0-internal-crossfit",
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-v1",
+  "title": "INTERNAL CROSS-FITTED DEVELOPMENT BENCHMARK — NOT AN EXTERNAL TEST",
+  "seed": 20260722,
+  "project_root": "/aptmp/hongda/DJR-MCP-Finder",
+  "benchmark_root": "benchmarks/plm_vs_classical_v0",
+  "inputs": {
+    "train_manifest": "data/processed/v0/splits/train.tsv",
+    "train_fasta": "data/processed/v0/splits/train.faa",
+    "master_manifest": "data/processed/v0/master_manifest.tsv",
+    "fold_map": "results/model_benchmark_v0/frozen_global_component_folds.tsv",
+    "fold_metadata": "results/model_benchmark_v0/frozen_global_component_folds.json",
+    "postsplit_audit": "results/postsplit_integrity_v0/report/SUMMARY.json"
+  },
+  "expected_sha256": {
+    "train_manifest": "2b58aab1ee29c6c7604eaf3c8c5d9a279bb2673a22f23b0d01ae1ad8dbf435a9",
+    "train_fasta": "fd6b091293bb056185860406a64b04a2c0c1e17daefcba7497882535c6a10602",
+    "master_manifest": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+    "fold_map": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+    "fold_metadata": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252"
+  },
+  "embeddings": {
+    "esmc6b": "/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/data/processed/embeddings/v0_benchmark_esmc_6b",
+    "esm2_650m": "data/processed/embeddings/v0_benchmark_esm2_650m"
+  },
+  "classifier": {
+    "head1_alpha": 0.00001,
+    "head1_epochs": 20,
+    "head1_negative_ratio": 3,
+    "head2_c": 0.01,
+    "logistic_max_iter": 5000,
+    "historical_cv_json": "results/model_benchmark_v0_metric_revision_1/esmc_6b/metrics/cross_validation.json",
+    "reproduction_tolerance": 1e-10
+  },
+  "tools": {
+    "blastp": "/usr/appli/freeware/blast+/2.17.0/bin/blastp",
+    "makeblastdb": "/usr/appli/freeware/blast+/2.17.0/bin/makeblastdb",
+    "blastdbcmd": "/usr/appli/freeware/blast+/2.17.0/bin/blastdbcmd",
+    "psiblast": "/usr/appli/freeware/blast+/2.17.0/bin/psiblast",
+    "diamond": "/usr/appli/freeware/diamond/2.2.4/bin/diamond",
+    "mmseqs": "/usr/appli/freeware/mmseqs2/18-8cc5c/gcc/15.2.0/bin/mmseqs",
+    "mafft": "/usr/appli/freeware/mafft/7.526/bin/mafft",
+    "hmmbuild": "/usr/appli/freeware/hmmer/3.4/bin/hmmbuild",
+    "hmmpress": "/usr/appli/freeware/hmmer/3.4/bin/hmmpress",
+    "hmmscan": "/usr/appli/freeware/hmmer/3.4/bin/hmmscan"
+  },
+  "tool_versions": {
+    "blast_plus": "2.17.0",
+    "diamond": "2.2.4",
+    "mmseqs2_module": "18-8cc5c",
+    "mafft": "7.526",
+    "hmmer": "3.4"
+  },
+  "parameters": {
+    "threads": 12,
+    "folds": 5,
+    "calibration_fold_offset": 1,
+    "fit_fold_count": 3,
+    "search_evalue": 1000.0,
+    "pairwise_max_target_policy": "all_reference_records",
+    "psiblast_enrichment_max_target_policy": "all_reference_records",
+    "psiblast_scan_max_target_policy": "all_query_records",
+    "mmseqs_max_seqs": 50000,
+    "mmseqs_sensitivity": 7.5,
+    "psiblast_iterations": 3,
+    "psiblast_inclusion_evalue": 0.002,
+    "bootstrap_replicates": 10000,
+    "specificity_ladder": [0.99, 0.995, 0.999],
+    "primary_specificity": 0.995
+  },
+  "protected_split_policy": {
+    "allowed_splits": ["train"],
+    "validation_prediction_rows": 0,
+    "test_prediction_rows": 0,
+    "fpm_estimable": false,
+    "specificity_0.999_status": "RESOLUTION_LIMITED_SECONDARY"
+  }
+}

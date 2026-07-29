@@ -1,0 +1,15 @@
+model_id	label	selected	known_output_1	known_output_2	rejection_output	validation_known_two_class_macro_f1	validation_unknown_diagnostic_recall	validation_unknown_diagnostic_n	validation_ood_auroc_descriptive	unknown_scope_note
+esmc_6b	ESM-C 6B	True	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9579874213836478	0.8	5	0.9775700934579439	diagnostic rejection only; not arbitrary unseen-virus detection
+esm2_3b	ESM-2 3B	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9506377551020408	0.6	5	0.9401869158878504	diagnostic rejection only; not arbitrary unseen-virus detection
+esmc_300m	ESM-C 300M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9579874213836478	0.4	5	0.9364485981308411	diagnostic rejection only; not arbitrary unseen-virus detection
+prostt5	ProstT5	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9579874213836478	0.2	5	0.9065420560747663	diagnostic rejection only; not arbitrary unseen-virus detection
+prott5_xl	ProtT5-XL-U50	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9579874213836478	0.6	5	0.7738317757009345	diagnostic rejection only; not arbitrary unseen-virus detection
+esm3_open_1_4b	ESM3-open 1.4B	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9506377551020408	1.0	5	0.994392523364486	diagnostic rejection only; not arbitrary unseen-virus detection
+esmc_600m	ESM-C 600M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9579874213836478	0.6	5	0.9663551401869159	diagnostic rejection only; not arbitrary unseen-virus detection
+esm2_650m	ESM-2 650M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9506377551020408	0.8	5	0.9233644859813084	diagnostic rejection only; not arbitrary unseen-virus detection
+mimic_1b	MIMIC 1.0	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9256639364606603	0.4	5	0.7644859813084112	diagnostic rejection only; not arbitrary unseen-virus detection
+protrek_650m	ProTrek 650M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.8854088050314466	0.0	5	0.5551401869158878	diagnostic rejection only; not arbitrary unseen-virus detection
+amplify_350m	AMPLIFY 350M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.8974025974025974	0.2	5	0.8411214953271028	diagnostic rejection only; not arbitrary unseen-virus detection
+protsent_150m	ProtSent 150M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.8854088050314466	0.2	5	0.8186915887850468	diagnostic rejection only; not arbitrary unseen-virus detection
+esm2_150m	ESM-2 150M	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.9089605734767026	0.4	5	0.9121495327102803	diagnostic rejection only; not arbitrary unseen-virus detection
+ankh3_large	Ankh3 Large	False	Nucleocytoviricota	Preplasmiviricota	unknown/other	0.8449443638122884	0.0	5	0.6242990654205607	diagnostic rejection only; not arbitrary unseen-virus detection

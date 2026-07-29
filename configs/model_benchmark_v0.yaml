@@ -1,0 +1,252 @@
+project:
+  name: DJR-MCP-Finder
+  version: project-v0-model-benchmark__source-database-v3-560
+  seed: 20260722
+
+paths:
+  v0_manifest: data/processed/v0/master_manifest.tsv
+  v0_fasta: data/interim/v0/model_representatives.faa
+  embedding_output: data/processed/embeddings/model_benchmark_placeholder
+  result_output: results/model_benchmark_v0/placeholder
+  # The canonical production manifest resolves its append-only/O_EXCL Test
+  # lifecycle state in code to the fixed external DJRMCP_Develope registry.
+  # Production paths.test_state_dir overrides are intentionally forbidden;
+  # only non-production test manifests may supply a temporary state directory.
+  # Immutable Train-only component fold map shared by all three heads and all
+  # 14 representation candidates.  It must be frozen before any calibration.
+  benchmark_cv_fold_map: results/model_benchmark_v0/frozen_global_component_folds.tsv
+  benchmark_cv_fold_metadata: results/model_benchmark_v0/frozen_global_component_folds.json
+  known_output: data/interim/known_mcps
+  dataset_output: data/processed/v0
+
+embedding:
+  # Replaced from benchmark.common + benchmark.models.<id> by the runner.
+  benchmark_model_id: placeholder
+  model_name: placeholder
+  model_revision: main
+  backend: transformer_residue
+  model_loader: auto
+  tokenizer_loader: auto
+  sequence_format: raw
+  sequence_prefix: ""
+  replace_rare_with_x: false
+  trust_remote_code: false
+  record_batch_size: 1
+  window_batch_size: 1
+  window_residues: 1022
+  stride: 511
+  precision: float16
+  output_dtype: float16
+  device: auto
+
+classifier:
+  cross_validation_folds: 5
+  head1_alpha_grid: [0.000001, 0.00001, 0.0001]
+  head1_epochs: 20
+  head1_negative_ratio: 3
+  logistic_c_grid: [0.01, 0.1, 1.0, 10.0]
+  logistic_max_iter: 5000
+  head3_known_recall_target: 0.95
+
+known_mcps: {}
+dataset: {}
+
+benchmark:
+  common:
+    model_revision: main
+    tokenizer_loader: auto
+    sequence_format: raw
+    sequence_prefix: ""
+    replace_rare_with_x: false
+    trust_remote_code: false
+    window_residues: 1022
+    stride: 511
+    output_dtype: float16
+    device: auto
+  models:
+    esm2_150m:
+      label: ESM-2 150M
+      model_name: facebook/esm2_t30_150M_UR50D
+      model_revision: a695f6045e2e32885fa60af20c13cb35398ce30c
+      backend: transformer_residue
+      model_loader: auto
+      precision: float16
+      record_batch_size: 16
+      window_batch_size: 32
+      license: MIT
+      source_kind: sequence MLM
+    esm2_650m:
+      label: ESM-2 650M
+      model_name: facebook/esm2_t33_650M_UR50D
+      model_revision: 08e4846e537177426273712802403f7ba8261b6c
+      backend: transformer_residue
+      model_loader: auto
+      precision: float16
+      record_batch_size: 8
+      window_batch_size: 12
+      reported_parameter_count: 650000000
+      license: MIT
+      source_kind: sequence MLM
+    esm2_3b:
+      label: ESM-2 3B
+      model_name: facebook/esm2_t36_3B_UR50D
+      model_revision: 476b639933c8baad5ad09a60ac1a87f987b656fc
+      backend: transformer_residue
+      model_loader: auto
+      precision: float16
+      record_batch_size: 2
+      window_batch_size: 2
+      license: MIT
+      source_kind: sequence MLM
+    esmc_300m:
+      label: ESM-C 300M
+      model_name: Biohub/ESMC-300M
+      model_revision: a59b831785f907e96e6a246b1d142bfb76df31ee
+      backend: esmc_transformer
+      model_loader: masked_lm
+      transformers_code_revision: ef32577f55da19a4989cd7b22e004dc43a4998cb
+      precision: bfloat16
+      record_batch_size: 12
+      window_batch_size: 16
+      license: MIT
+      source_kind: sequence MLM
+    esmc_600m:
+      label: ESM-C 600M
+      model_name: Biohub/ESMC-600M
+      model_revision: a7e82012c83126b9eedb055fea9fa84b6c02f094
+      backend: esmc_transformer
+      model_loader: masked_lm
+      transformers_code_revision: ef32577f55da19a4989cd7b22e004dc43a4998cb
+      precision: bfloat16
+      record_batch_size: 8
+      window_batch_size: 8
+      license: MIT
+      source_kind: sequence MLM
+    esmc_6b:
+      label: ESM-C 6B
+      model_name: Biohub/ESMC-6B
+      model_revision: 45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a
+      backend: esmc_transformer
+      model_loader: masked_lm
+      transformers_code_revision: ef32577f55da19a4989cd7b22e004dc43a4998cb
+      precision: bfloat16
+      record_batch_size: 1
+      window_batch_size: 1
+      license: MIT
+      source_kind: sequence MLM
+    prott5_xl:
+      label: ProtT5-XL-U50
+      model_name: Rostlab/prot_t5_xl_half_uniref50-enc
+      model_revision: 94a6abc029ae13029317b140b7424e012bf8dfbf
+      backend: transformer_residue
+      model_loader: t5_encoder
+      tokenizer_loader: t5
+      sequence_format: space_separated
+      replace_rare_with_x: true
+      precision: float16
+      record_batch_size: 8
+      window_batch_size: 8
+      license: Apache-2.0
+      source_kind: sequence denoising
+    ankh3_large:
+      label: Ankh3 Large
+      model_name: ElnaggarLab/ankh3-large
+      model_revision: 2be091622e8a393f0ef21735070084123c874b6e
+      backend: transformer_residue
+      model_loader: t5_encoder
+      tokenizer_loader: t5
+      sequence_prefix: "[NLU]"
+      prefix_token_count: 2
+      precision: float16
+      record_batch_size: 4
+      window_batch_size: 4
+      license: CC-BY-NC-SA-4.0
+      source_kind: sequence multi-objective
+    amplify_350m:
+      label: AMPLIFY 350M
+      model_name: multimolecule/amplify-350m
+      model_revision: 3abbb10b26ec94d9602aa60c0fca3a9642447d58
+      backend: transformer_residue
+      model_loader: auto
+      trust_remote_code: false
+      library_import: multimolecule
+      precision: bfloat16
+      record_batch_size: 8
+      window_batch_size: 12
+      license: MIT
+      source_kind: sequence MLM
+    protsent_150m:
+      label: ProtSent 150M
+      model_name: oriel9p/protsent-esm2-150M
+      model_revision: 30df216065be8bb7ca71254bab60784945f94e53
+      backend: sentence_transformer
+      repo_subfolder: final
+      # The pinned checkpoint declares max_seq_length=512 and adds CLS/EOS.
+      # Use a model-native 510-residue window so no residue can be truncated.
+      native_model_max_tokens: 512
+      window_residues: 510
+      stride: 255
+      precision: float16
+      record_batch_size: 24
+      window_batch_size: 32
+      license: MIT
+      source_kind: contrastive sequence embedding
+      pretraining_overlap_risk: high
+    protrek_650m:
+      label: ProTrek 650M
+      model_name: yosshstd/ProTrek_650M_UniRef50_protein_encoder
+      model_revision: 309644142efa3ff0b1607a4684bc2b831bc3ae7f
+      backend: sentence_transformer
+      native_model_max_tokens: 1026
+      precision: float16
+      record_batch_size: 12
+      window_batch_size: 16
+      license: MIT
+      source_kind: sequence-structure-text contrastive
+      pretraining_overlap_risk: high
+    prostt5:
+      label: ProstT5
+      model_name: Rostlab/ProstT5
+      model_revision: d7d097d5bf9a993ab8f68488b4681d6ca70db9e5
+      backend: transformer_residue
+      model_loader: t5_encoder
+      tokenizer_loader: t5
+      sequence_format: space_separated
+      sequence_prefix: <AA2fold>
+      prefix_token_count: 1
+      replace_rare_with_x: true
+      precision: float16
+      record_batch_size: 4
+      window_batch_size: 4
+      reported_parameter_count: 3000000000
+      license: MIT
+      source_kind: sequence-structure translation
+      pretraining_overlap_risk: high
+    mimic_1b:
+      label: MIMIC 1.0
+      model_name: polymathic-ai/MIMIC
+      model_revision: 40bb974c1b66598168117f2b561e158e769a4a8b
+      backend: mimic
+      mimic_checkpoint_version: "1.0"
+      mimic_code_revision: 15f5ef3050ea471b4c00e3f7d2be05165ff3dce8
+      precision: bfloat16
+      record_batch_size: 4
+      window_batch_size: 4
+      reported_parameter_count: 1250000000
+      license: MIT
+      source_kind: multimodal central-dogma encoder
+      pretraining_overlap_risk: high
+    esm3_open_1_4b:
+      label: ESM3-open 1.4B
+      model_name: biohub/esm3-sm-open-v1
+      model_revision: 47f0545b2b6daf26a93439a3cd610f4f7f3d5478
+      backend: esm3
+      esm_code_revision: 67838dc8ac76f4145613e6cb36c5f3d758542f7c
+      transformers_code_revision: ef32577f55da19a4989cd7b22e004dc43a4998cb
+      precision: bfloat16
+      record_batch_size: 1
+      window_batch_size: 1
+      reported_parameter_count: 1400000000
+      license: MIT
+      source_kind: multimodal sequence-structure-function model
+      pretraining_overlap_risk: low_for_viruses_training_set_excluded_viruses

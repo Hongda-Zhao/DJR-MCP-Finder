@@ -1,0 +1,8 @@
+job_id	job_name	job_state	exit_status	queue	resources_used_walltime	resources_used_cput	resources_used_mem	resources_used_ncpus	resources_used_cpupercent	exec_host
+4969642.fe3-adm	djrmcp-plm-oof-v0	F	0	SMALL	00:00:17	00:01:20	506172kb	12	168	cs02-adm/2*12
+4969644.fe3-adm	djrmcp-classical-one-v0	F	0	SMALL	00:45:29	01:16:47	939788kb	12	953	cs35-adm/0*12
+4969652[2].fe3-adm	djrmcp-classical-cyclic-v0	F	0	SMALL	00:55:54	01:26:13	545980kb	12	507	cs02-adm/2*12
+4969652[3].fe3-adm	djrmcp-classical-cyclic-v0	F	0	SMALL	00:53:58	01:26:57	1020632kb	12	1097	cm37-adm/1*12
+4969652[4].fe3-adm	djrmcp-classical-cyclic-v0	F	0	SMALL	00:43:26	01:16:21	655088kb	12	584	cm29-adm/5*12
+4969652[5].fe3-adm	djrmcp-classical-cyclic-v0	F	0	SMALL	00:41:57	01:14:23	1031592kb	12	560	cl12-adm/2*12
+4969671.fe3-adm	djrmcp-classical-merge-v0	F	0	SMALL	00:11:54	00:01:19	1001472kb	1	21	cs29-adm/7

@@ -1,0 +1,79 @@
+{
+  "component_count_by_fold": {
+    "1": 825,
+    "2": 1180,
+    "3": 1160,
+    "4": 1200,
+    "5": 1201
+  },
+  "fold_map_path": "results/model_benchmark_v0/frozen_global_component_folds.tsv",
+  "fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+  "folds": 5,
+  "group_field": "global_component_id",
+  "hierarchy_stratum_count": {
+    "head1::non_djr": 6000,
+    "head2::none": 298,
+    "head3::Nucleocytoviricota": 249,
+    "head3::Preplasmiviricota": 70,
+    "head3::unknown/other": 17
+  },
+  "hierarchy_stratum_count_by_fold": {
+    "1": {
+      "head1::non_djr": 1200,
+      "head2::none": 59,
+      "head3::Nucleocytoviricota": 37,
+      "head3::Preplasmiviricota": 14,
+      "head3::unknown/other": 4
+    },
+    "2": {
+      "head1::non_djr": 1200,
+      "head2::none": 59,
+      "head3::Nucleocytoviricota": 102,
+      "head3::Preplasmiviricota": 14,
+      "head3::unknown/other": 3
+    },
+    "3": {
+      "head1::non_djr": 1200,
+      "head2::none": 62,
+      "head3::Nucleocytoviricota": 36,
+      "head3::Preplasmiviricota": 14,
+      "head3::unknown/other": 3
+    },
+    "4": {
+      "head1::non_djr": 1200,
+      "head2::none": 59,
+      "head3::Nucleocytoviricota": 37,
+      "head3::Preplasmiviricota": 14,
+      "head3::unknown/other": 4
+    },
+    "5": {
+      "head1::non_djr": 1200,
+      "head2::none": 59,
+      "head3::Nucleocytoviricota": 37,
+      "head3::Preplasmiviricota": 14,
+      "head3::unknown/other": 3
+    }
+  },
+  "manifest_path": "data/processed/v0/master_manifest.tsv",
+  "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+  "method": "StratifiedGroupKFold_on_train_hierarchy_stratum",
+  "record_count_by_fold": {
+    "1": 1314,
+    "2": 1378,
+    "3": 1315,
+    "4": 1314,
+    "5": 1313
+  },
+  "schema_version": 1,
+  "seed": 20260722,
+  "software": {
+    "numpy": "2.4.6",
+    "python": "3.11.7",
+    "scikit_learn": "1.9.0"
+  },
+  "split": "train",
+  "status": "frozen",
+  "stratification_field": "derived_hierarchical_operational_label",
+  "train_global_component_count": 5566,
+  "train_record_count": 6634
+}

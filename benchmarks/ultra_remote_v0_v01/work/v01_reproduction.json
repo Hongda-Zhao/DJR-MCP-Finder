@@ -1,0 +1,72 @@
+{
+  "benchmark_id": "djrmcp-ultra-remote-v0-v01-development-audit",
+  "classifier_module_sha256": "5f700c53a447d2040bca26de5c816458239966aba559c286e0aff97695800c30",
+  "config_sha256": "9b5dadd661e1076bd1f3e405bb1e513406897b85d94de3930f9be736ba717ad1",
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-ultra-remote-audit-v1",
+  "embedding_dimension": 2560,
+  "embedding_index_sha256": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+  "embedding_metadata_sha256": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59",
+  "embedding_model_name": "facebook/esm2_t36_3B_UR50D",
+  "embedding_model_revision": "476b639933c8baad5ad09a60ac1a87f987b656fc",
+  "head1_expected_fold_ap": [
+    0.9994639902216153,
+    0.9978159424162629,
+    0.9999999999999999,
+    0.999235371434358,
+    1.0
+  ],
+  "head1_observed_fold_ap": [
+    0.9994639902216153,
+    0.9978159424162629,
+    0.9999999999999999,
+    0.999235371434358,
+    1.0
+  ],
+  "head2_expected_fold_ap": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "head2_observed_fold_ap": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "historical_cv_sha256": "f0b8cde0b53b40ae3ace6d82e6c3627bc2b196d0f9c55887a4542b7f4dee1183",
+  "max_absolute_deviation": 0.0,
+  "numpy": "2.4.6",
+  "parent_cohort_sha256": "dca57cdb0149d3af9d7e6c9890213d70a34bc4e3a742fdf14bd51a5c34c9914c",
+  "parent_config_sha256": "de4159149914f54fdaef0c30c316bc589ab9e76c74323756acca32beb18d1eba",
+  "parent_contract": {
+    "calibration_fold_offset": 1,
+    "folds": 5,
+    "head1_alpha": 1e-05,
+    "head1_epochs": 20,
+    "head1_negative_ratio": 3,
+    "head2_c": 0.01,
+    "logistic_max_iter": 5000,
+    "seed": 20260722
+  },
+  "parent_plm_reproduction_sha256": "065ba198d61347e3b7ad271a68d6885ab5a57abea79dd23736003a559b470907",
+  "parent_query_scores_sha256": "d21bf8534a04b98a11f7502ce275dc6ff346b43d4433ba5551c223e77d904fdb",
+  "parent_run_plm_sha256": "46fd52804d12c97c76314fbe99ca5bfb85bf05fb81430970e2cc5de5bb18b3e0",
+  "platform": "Linux-4.18.0-425.3.1.el8.x86_64-x86_64-with-glibc2.28",
+  "python": "3.11.7 (main, Dec 19 2023, 10:18:56) [GCC 12.3.0]",
+  "score_rows": 55608,
+  "score_script_sha256": "6acb36d109206e4acfa4844da5d5153bbc23e27b2879ad4494901b569fff166e",
+  "score_sha256": "b27a96a9ea7c26ab2c47ae2b3a7d5156cb775a9eab935a6cd17a87caed6ed2fa",
+  "selected_split_counts": {
+    "test": 0,
+    "train": 6634,
+    "validation": 0
+  },
+  "status": "PASS",
+  "test_prediction_rows": 0,
+  "tolerance": 1e-10,
+  "validation_prediction_rows": 0,
+  "wall_seconds": 11.142377166077495
+}

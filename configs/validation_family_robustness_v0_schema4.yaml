@@ -1,0 +1,75 @@
+schema_version: 4
+analysis_id: project_v0_validation_family_robustness_schema4
+project_version: V0
+data_curation_version: V3
+evaluation_role: auxiliary_post_freeze_support
+selection_feedback_permitted: false
+release_gate: false
+model_state: frozen
+protocol: VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA4_PROTOCOL.md
+models: [esm2_650m, esmc_6b]
+frozen_primary_model_id: esmc_6b
+fixed_reference_model_id: esm2_650m
+bootstrap_replicates: 10000
+bootstrap_seed: 20260724
+test_policy: no_test_vector_selection_or_performance_scoring
+
+benchmark_config: configs/model_benchmark_v0_metric_revision_1.yaml
+comparison_summary: results/model_benchmark_v0_metric_revision_1/model_comparison.json
+master_manifest: data/processed/v0/master_manifest.tsv
+global_component_membership: data/processed/v0/global_component_membership.tsv
+component_nodes: data/interim/v0/component_nodes.tsv
+component_fasta: data/interim/v0/component_input.faa
+
+schema3:
+  config: configs/validation_family_robustness_v0.yaml
+  full_cohort_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/schema3_final_full_artifacts_20260727/data/processed/validation_family_robustness_v0
+  full_result_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/schema3_final_full_artifacts_20260727/results/validation_family_robustness_v0
+  family_member_manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness__20260724/schema3_final_full_artifacts_20260727/data/processed/validation_family_robustness_v0/family_member_manifest.tsv
+
+hardnegative_recovery:
+  root: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1
+  validation: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1/postprocess/legacy4_recovery_v1/operational_validation_v1/HARDNEG_SOURCE_RECONSTRUCTION_VALIDATION.json
+  member_map: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1/postprocess/legacy4_recovery_v1/cluster_replay_ab_v1/member_map_a_with_sha.tsv
+  integrated_candidates: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1/postprocess/legacy4_recovery_v1/filter_integration/integrated/integrated_candidates.tsv
+  tier1_fasta_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1/postprocess/legacy4_recovery_v1/filter_integration/integrated/family_fastas
+
+analysis_root: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1
+hardnegative_matched:
+  candidate_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/candidates
+  integrity_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1
+  positive_audit_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1
+  relationship_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1
+  legal_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1/legal
+  legal_manifest: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1/legal/member_manifest.tsv
+  legal_fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1/legal/member_sequences.faa
+  legal_summary: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/hardnegative_matched/integrity_v1/legal/summary.json
+  member_embeddings:
+    esm2_650m: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/embeddings/hardnegative_matched_esm2_650m
+    esmc_6b: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/embeddings/hardnegative_matched_esmc_6b
+  expected_validation_anchors: 1000
+  expected_candidate_clusters: 382
+  expected_candidate_members: 3478
+
+positive_exclusion:
+  combined_positive_fasta: /aptmp/hongda/DJRMCP_Develope/project-V0__hardneg-source-reconstruction__20260727/run_small_v1/inputs/combined_cellular_viral_djr.faa
+  cellular_positive_hmm: /aptmp/hongda/database/DJR-non-MCP/expansion/cellular_djr_v2/expanded_hmm_v3/DJR-cellular.expanded-v3.hmm
+  viral_positive_hmm: /aptmp/hongda/database/DJR-MCPs/ICTV/Glod_NCBI_Models/RefSeq_HMM/RefSeq_Contain.trim_gt0.05.hmm
+  cellular_positive_models: /aptmp/hongda/database/DJR-non-MCP/expansion/cellular_djr_v2/training_package/positive_tier1/models
+  viral_positive_models: /aptmp/hongda/database/DJR-MCPs/ICTV/Glod_NCBI_Models/AF3_predictions/Golds_DJRMCP_Candidates/predictions
+  uniprot50_foldseek_db: /usr/appli/freeware/foldseek/databases/Alphafold/UniProt50
+  mmseqs_min_seq_id: 0.30
+  mmseqs_coverage: 0.80
+  mmseqs_cov_mode: 0
+  hmm_max_i_evalue: 1.0e-3
+  hmm_min_coverage: 0.60
+  foldseek_max_evalue: 1.0e-3
+  foldseek_min_prob: 0.90
+  foldseek_min_alntmscore: 0.50
+  foldseek_min_qcov: 0.60
+  foldseek_min_lddt: 0.50
+
+result_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/results
+figure_dir: /aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema4__20260728/schema4_v1/figures
+active_compact_result_dir: results/validation_family_robustness_v0_schema4
+active_compact_figure_dir: results/figures/project_v0/validation_family_robustness_v0_schema4

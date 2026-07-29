@@ -1,0 +1,51 @@
+#!/bin/bash
+#PBS -N djrmcp-plm-oof-v0
+#PBS -q SMALL
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=03:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/../../.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+BENCHMARK_ROOT="${PROJECT_ROOT}/benchmarks/plm_vs_classical_v0"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+CONFIG_PATH="${DJRMCP_PLM_CONFIG:-$BENCHMARK_ROOT/config/benchmark.json}"
+
+cd "${PROJECT_ROOT}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module purge
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="${VENV_ROOT}/bin:${PATH}"
+export VIRTUAL_ENV="${VENV_ROOT}"
+export PYTHONPATH="${PROJECT_ROOT}/src:${BENCHMARK_ROOT}/scripts:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${NCPUS:-12}"
+export MKL_NUM_THREADS="${NCPUS:-12}"
+export OPENBLAS_NUM_THREADS="${NCPUS:-12}"
+
+LOCK_PARENT="${BENCHMARK_ROOT}/work/locks"
+LOCK_DIR="${LOCK_PARENT}/plm_stage.lock"
+mkdir -p "${LOCK_PARENT}"
+if ! mkdir "${LOCK_DIR}"; then
+    echo "Another PLM stage owns ${LOCK_DIR}" >&2
+    exit 3
+fi
+trap 'rmdir "${LOCK_DIR}"' EXIT
+
+python -m unittest discover -s "${BENCHMARK_ROOT}/tests" -v
+python "${BENCHMARK_ROOT}/scripts/prepare_inputs.py" \
+    --config "${CONFIG_PATH}"
+PLM_FORCE_ARGS=()
+if [[ "${DJRMCP_FORCE_PLM:-0}" == "1" ]]; then
+    PLM_FORCE_ARGS+=(--force)
+fi
+python "${BENCHMARK_ROOT}/scripts/run_plm.py" \
+    --config "${CONFIG_PATH}" \
+    "${PLM_FORCE_ARGS[@]}"

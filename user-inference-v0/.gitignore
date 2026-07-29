@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+build/
+dist/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.tmp
+run_output/
+
+# The frozen NumPy heads are small, checksum-bound source assets.  The parent
+# repository ignores generated *.npz files, so explicitly keep this release.
+!src/djrmcp_predict/assets/project-v0-esmc6b-r1/heads/
+!src/djrmcp_predict/assets/project-v0-esmc6b-r1/heads/*.npz

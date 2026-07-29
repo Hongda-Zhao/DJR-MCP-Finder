@@ -1,0 +1,6 @@
+evaluation_fold	calibration_fold	fit_folds	fit_records_h1	fit_records_h2	fit_components	calibration_records	evaluation_records
+1	2	3,4,5	3942	342	3561	1378	1314
+2	3	1,4,5	3941	341	3226	1315	1378
+3	4	1,2,5	4005	405	3206	1314	1315
+4	5	1,2,3	4007	407	3165	1313	1314
+5	1	2,3,4	4007	407	3540	1314	1313

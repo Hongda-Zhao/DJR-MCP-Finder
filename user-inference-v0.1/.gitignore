@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+build/
+dist/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.tmp
+run_output/
+
+# The repository root ignores *.npz globally. These three small, pickle-free
+# frozen heads are required runtime assets and are intentionally versioned.
+!src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/heads/*.npz

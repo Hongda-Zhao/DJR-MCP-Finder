@@ -1,0 +1,18 @@
+{
+  "benchmark_id": "djrmcp-ultra-remote-v0-v01-development-audit",
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-ultra-remote-audit-v1",
+  "formal_ultra_remote_claim_allowed": false,
+  "formal_ultra_remote_minimum_components": 100,
+  "parent_query_scores_sha256": "d21bf8534a04b98a11f7502ce275dc6ff346b43d4433ba5551c223e77d904fdb",
+  "reason": "Strict qcov>=80 and pident<20 strata are BLAST-defined and contain far fewer than 100 independent positive components.",
+  "score_rows_analyzed": 305844,
+  "status": "PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE",
+  "strict_ultra_remote_positive_components": {
+    "h1_djr": 1,
+    "h2_vma_conditional": 1,
+    "vma_end_to_end": 1
+  },
+  "test_prediction_rows": 0,
+  "v01_query_scores_sha256": "b27a96a9ea7c26ab2c47ae2b3a7d5156cb775a9eab935a6cd17a87caed6ed2fa",
+  "validation_prediction_rows": 0
+}

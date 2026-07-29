@@ -1,0 +1,190 @@
+{
+  "binary_ranking_score_source": "raw_decision_function",
+  "created_utc": "2026-07-23T22:44:41.914006+00:00",
+  "cv_fold_contract": {
+    "fold_map_path": "results/model_benchmark_v0/frozen_global_component_folds.tsv",
+    "fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+    "fold_metadata_path": "results/model_benchmark_v0/frozen_global_component_folds.json",
+    "fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+    "folds": 5,
+    "group_field": "global_component_id",
+    "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+    "method": "StratifiedGroupKFold_on_train_hierarchy_stratum",
+    "schema_version": 1,
+    "seed": 20260722,
+    "split": "train",
+    "train_global_component_count": 5566
+  },
+  "embedding_metadata_sha256": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41",
+  "head3_policy": {
+    "external_unknown_label": "unknown/other",
+    "known_classes": [
+      "Nucleocytoviricota",
+      "Preplasmiviricota"
+    ],
+    "unknown_diagnostic_mask": "head3_unknown_diagnostic_mask"
+  },
+  "heads": {
+    "head1": {
+      "best_parameter": 1e-05,
+      "classes": [
+        "non_djr",
+        "djr"
+      ],
+      "decision_threshold": 0.9687754839244975,
+      "model_path": "results/model_benchmark_v0_metric_revision_1/esmc_6b/models/head1.joblib",
+      "model_sha256": "3dc82197353fd47bc9fad011af16feebd6b7c6998977db0e0724e4a56415d458",
+      "open_set": null,
+      "temperature": 1168.1537298613255,
+      "temperature_search": {
+        "boundary_policy": "fail",
+        "coarse_best_index": 363,
+        "coarse_boundary_hit": false,
+        "coarse_points": 481,
+        "fine_best_index": 140,
+        "fine_boundary_hit": false,
+        "fine_points": 401,
+        "label_smoothing": 0.001,
+        "log10_max": 6.0,
+        "log10_min": -6.0,
+        "objective": "stable_label_smoothed_logit_nll"
+      },
+      "threshold_metric": "mcc",
+      "threshold_metric_value": 0.9581005553403392,
+      "validation_nll": 0.1498088059513469
+    },
+    "head2": {
+      "best_parameter": 0.01,
+      "classes": [
+        "none",
+        "viral_morphogenesis_associated"
+      ],
+      "decision_threshold": 0.9639353725025007,
+      "model_path": "results/model_benchmark_v0_metric_revision_1/esmc_6b/models/head2.joblib",
+      "model_sha256": "c309cba4a67b4996578acd819710840b8a8105462080b164ae828557266a08d9",
+      "open_set": null,
+      "temperature": 0.8241381150130028,
+      "temperature_search": {
+        "boundary_policy": "fail",
+        "coarse_best_index": 237,
+        "coarse_boundary_hit": false,
+        "coarse_points": 481,
+        "fine_best_index": 128,
+        "fine_boundary_hit": false,
+        "fine_points": 401,
+        "label_smoothing": 0.001,
+        "log10_max": 6.0,
+        "log10_min": -6.0,
+        "objective": "stable_label_smoothed_logit_nll"
+      },
+      "threshold_metric": "macro_f1",
+      "threshold_metric_value": 1.0,
+      "validation_nll": 0.009156904432139757
+    },
+    "head3_phylum": {
+      "best_parameter": 10.0,
+      "classes": [
+        "Nucleocytoviricota",
+        "Preplasmiviricota"
+      ],
+      "decision_threshold": 0.7126488980564439,
+      "model_path": "results/model_benchmark_v0_metric_revision_1/esmc_6b/models/head3_phylum.joblib",
+      "model_sha256": "88c3f87f349d65e19e33a38130ee8095afc49c29c3d8a254336208338e9e06ba",
+      "open_set": {
+        "interpretation": "Development-only diagnostic. Produgelaviricota and literature-only unclassified VMA proteins are excluded from known-class fitting and are not used to choose the confidence threshold.",
+        "known_recall_target": 0.95,
+        "method": "validation_known_confidence_quantile",
+        "validation_closed_set_accuracy": 0.9813084112149533,
+        "validation_known_acceptance": 0.9532710280373832,
+        "validation_known_false_unknown_count": 5,
+        "validation_ood_auroc": 0.9775700934579439,
+        "validation_unknown_by_reason": {
+          "no_formal_ICTV_MSL41_phylum": {
+            "confidence_median": 0.6912987913123928,
+            "confidence_p95": 0.6912987913123928,
+            "denominator": 1,
+            "numerator": 1,
+            "unknown_recall": 1.0,
+            "unknown_recall_naive_row_level_descriptive_wilson_95pct_ci": [
+              0.20654931437723742,
+              1.0
+            ]
+          },
+          "rare_formal_phylum_mapped_to_operational_unknown": {
+            "confidence_median": 0.6108867444560602,
+            "confidence_p95": 0.714522143311433,
+            "denominator": 4,
+            "numerator": 3,
+            "unknown_recall": 0.75,
+            "unknown_recall_naive_row_level_descriptive_wilson_95pct_ci": [
+              0.3006418425824019,
+              0.9544127391902995
+            ]
+          }
+        },
+        "validation_unknown_by_status": {
+          "literature_unclassified_unknown_diagnostic": {
+            "confidence_median": 0.6912987913123928,
+            "confidence_p95": 0.6912987913123928,
+            "denominator": 1,
+            "numerator": 1,
+            "unknown_recall": 1.0,
+            "unknown_recall_naive_row_level_descriptive_wilson_95pct_ci": [
+              0.20654931437723742,
+              1.0
+            ]
+          },
+          "rare_formal_unknown_diagnostic": {
+            "confidence_median": 0.6108867444560602,
+            "confidence_p95": 0.714522143311433,
+            "denominator": 4,
+            "numerator": 3,
+            "unknown_recall": 0.75,
+            "unknown_recall_naive_row_level_descriptive_wilson_95pct_ci": [
+              0.3006418425824019,
+              0.9544127391902995
+            ]
+          }
+        },
+        "validation_unknown_denominator": 5,
+        "validation_unknown_diagnostic_n": 5,
+        "validation_unknown_diagnostic_rejected": 4,
+        "validation_unknown_numerator": 4,
+        "validation_unknown_precision": 0.4444444444444444,
+        "validation_unknown_recall": 0.8,
+        "validation_unknown_recall_naive_row_level_descriptive_wilson_95pct_ci": [
+          0.37553462976252533,
+          0.9637758913675698
+        ]
+      },
+      "temperature": 4.2474179687096845,
+      "temperature_search": {
+        "boundary_policy": "fail",
+        "coarse_best_index": 265,
+        "coarse_boundary_hit": false,
+        "coarse_points": 481,
+        "fine_best_index": 225,
+        "fine_boundary_hit": false,
+        "fine_points": 401,
+        "label_smoothing": 0.001,
+        "log10_max": 6.0,
+        "log10_min": -6.0,
+        "objective": "stable_label_smoothed_logit_nll"
+      },
+      "threshold_metric": "known_acceptance_quantile",
+      "threshold_metric_value": 0.9532710280373832,
+      "validation_nll": 0.2806679422980895
+    }
+  },
+  "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+  "schema_version": 4,
+  "seed": 20260722,
+  "software": {
+    "joblib": "1.5.3",
+    "numpy": "2.4.6",
+    "platform": "Linux-4.18.0-425.3.1.el8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.7",
+    "scikit_learn": "1.9.0"
+  },
+  "test_evaluated": false
+}

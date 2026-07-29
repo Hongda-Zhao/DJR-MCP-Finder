@@ -1,0 +1,60 @@
+{
+  "benchmark_id": "plm-vs-classical-v0-internal-crossfit",
+  "claim_boundary": "INTERNAL CROSS-FITTED DEVELOPMENT BENCHMARK \u2014 NOT AN EXTERNAL TEST",
+  "cohort_records": 6634,
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-v1",
+  "fpm_status": "NOT_ESTIMABLE",
+  "methods": [
+    "esmc6b_cosine",
+    "esm2_650m_cosine",
+    "blastp",
+    "diamond_ultra",
+    "mmseqs_s7.5",
+    "hmmer_component",
+    "psiblast_longest_seed_positiveDB_3iter",
+    "hmmer_family",
+    "esmc6b_supervised"
+  ],
+  "metric_recomputation": {
+    "bootstrap_recomputed": false,
+    "bootstrap_validation": "CI schema, finite range, ordering, replicate count, comparison registry, and point deltas validated",
+    "independent_implementation": true,
+    "methods": 9,
+    "metrics_cycle_rows": 135,
+    "metrics_primary_rows": 27,
+    "paired_delta_rows": 12,
+    "primary_specificity": 0.995,
+    "query_score_rows": 250236,
+    "raw_score_rows": 250236,
+    "status": "PASS",
+    "tasks": 3
+  },
+  "pbs_job_receipt_rows": 7,
+  "raw_receipt_rows": 6007,
+  "specificity_0.999_status": "RESOLUTION_LIMITED_SECONDARY",
+  "status": "PASS",
+  "stop_gates_passed": [
+    "frozen_source_and_derived_checksums",
+    "cyclic_component_role_isolation",
+    "attestation_source_and_output_bindings",
+    "exact_reference_contracts",
+    "exact_hmm_profile_partition",
+    "deterministic_psiblast_seed_and_inclusion",
+    "raw_receipt_stage_and_checksum_contract",
+    "exact_cyclic_score_matrix",
+    "independent_cycle_and_primary_metric_recomputation",
+    "paired_ci_schema_no_p_holm",
+    "h2_singleton_resolution_disclosure",
+    "protected_split_zero_predictions",
+    "pbs_resource_receipts",
+    "release_checksum_coverage"
+  ],
+  "tasks": [
+    "h1_djr",
+    "h2_vma_conditional",
+    "vma_end_to_end"
+  ],
+  "test_prediction_rows": 0,
+  "validation_prediction_rows": 0,
+  "validator_sha256": "553d54ec80f8caf704e4f0125c2781b53cf533f1e141d7edbae78dbd491cb626"
+}
