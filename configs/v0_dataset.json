@@ -1,0 +1,79 @@
+{
+  "version": "v0",
+  "project_release": "project_v0",
+  "upstream_database_release": "v3_complete_20260722",
+  "version_mapping": "database V3 -> project V0",
+  "schema_version": 2,
+  "positive_release_contract": {
+    "database_data_curation_version": "V3",
+    "release_id": "v3_complete_20260722",
+    "exact_sequence_representatives": 560,
+    "source_sha256": {
+      "fasta": "e7741d920af947ccfb8f0a3b54b245e10dd853eef1ef2425cc8f706579acb7c6",
+      "manifest": "1c48926200d71299e0f2481247871d3879c511d893f9c5b02717686c52a570f0",
+      "inventory": "3009ce3f1019c6b26c6b1da9fe9c4177b29dc226c329ea2c1557c51a7bfc8a3b",
+      "release_validation": "ee3454d729ef55b50264ca77c072bfed7720730d0b99a8d756c7e8a88e323d69",
+      "source_provenance": "c1291fd847358ad214485bb9a34b87184b25b0dd0154d0fc4f70691d7c19d59c"
+    }
+  },
+  "seed": 20260722,
+  "split_fractions": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2
+  },
+  "mmseqs": {
+    "module": "mmseqs2/18-8cc5c",
+    "min_sequence_identity": 0.3,
+    "coverage": 0.8,
+    "coverage_mode": 0,
+    "cluster_mode": 1,
+    "full_search_sensitivity": 7.5,
+    "full_search_max_seqs": 50000,
+    "threads": 8
+  },
+  "expected_counts": {
+    "viral_vma": 560,
+    "viral_vma_formal_phylum": 558,
+    "head3_known": 532,
+    "head3_unknown_diagnostic": 28,
+    "model_representatives": 11060,
+    "component_graph_nodes": 27427
+  },
+  "head3": {
+    "known_classes": [
+      "Nucleocytoviricota",
+      "Preplasmiviricota"
+    ],
+    "rare_formal_phyla_as_unknown": [
+      "Produgelaviricota"
+    ],
+    "unknown_operational_label": "unknown/other",
+    "allow_literature_unclassified_as_unknown": true
+  },
+  "sources": {
+    "viral_vma": {
+      "fasta": "/aptmp/hongda/database/DJR-MCPs/Positives/Frozen_Cluster_Scaffold_20260722/v3_complete/unique_representative_proteins.faa",
+      "manifest": "/aptmp/hongda/database/DJR-MCPs/Positives/Frozen_Cluster_Scaffold_20260722/v3_complete/unique_representative_proteins_ictv.tsv",
+      "inventory": "/aptmp/hongda/database/DJR-MCPs/Positives/Frozen_Cluster_Scaffold_20260722/v3_complete/official_cluster_catalog_ictv.tsv",
+      "release_validation": "/aptmp/hongda/database/DJR-MCPs/Positives/Frozen_Cluster_Scaffold_20260722/v3_complete/validation.json",
+      "source_provenance": "/aptmp/hongda/database/DJR-MCPs/Positives/Frozen_Cluster_Scaffold_20260722/v3_complete/source_provenance.tsv"
+    },
+    "cellular_djr": {
+      "representative_fasta": "/aptmp/hongda/database/DJR-non-MCP/Models/sequences/representatives/all_representatives.faa",
+      "member_fasta": "/aptmp/hongda/database/DJR-non-MCP/Models/sequences/members/all_members.faa",
+      "catalog": "/aptmp/hongda/database/DJR-non-MCP/Models/catalog/cluster_catalog.tsv",
+      "membership": "/aptmp/hongda/database/DJR-non-MCP/Models/catalog/cluster_membership.tsv"
+    },
+    "hard_non_djr": {
+      "fasta": "/aptmp/hongda/database/DJR-HardNeg/sequences/hard_negative_5000.faa",
+      "metadata": "/aptmp/hongda/database/DJR-HardNeg/metadata/hard_negative_5000_metadata.tsv"
+    },
+    "background_non_djr": {
+      "representative_fasta": "/aptmp/hongda/database/DJR_background/final/sequences/cluster_representatives_5000.faa",
+      "member_fasta": "/aptmp/hongda/database/DJR_background/final/sequences/background_non_djr_20000.faa",
+      "cluster_metadata": "/aptmp/hongda/database/DJR_background/final/metadata/cluster_metadata.tsv",
+      "sequence_metadata": "/aptmp/hongda/database/DJR_background/final/metadata/sequence_metadata.tsv"
+    }
+  }
+}

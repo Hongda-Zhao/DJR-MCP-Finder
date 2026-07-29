@@ -1,0 +1,70 @@
+{
+  "baseline_model_id": "esm2_650m",
+  "binary_ranking_score_source": "raw_decision_function",
+  "candidate_count_after": 14,
+  "candidate_count_before": 14,
+  "candidate_model_ids": [
+    "esm2_150m",
+    "esm2_650m",
+    "esm2_3b",
+    "esmc_300m",
+    "esmc_600m",
+    "esmc_6b",
+    "prott5_xl",
+    "ankh3_large",
+    "amplify_350m",
+    "protsent_150m",
+    "protrek_650m",
+    "prostt5",
+    "mimic_1b",
+    "esm3_open_1_4b"
+  ],
+  "caption_sha256": "df887c46a320a6d29d92af7b66412001aae9acfdd1d5f42d8dc74a5ee572c054",
+  "comparison_checksum_manifest_verified": true,
+  "excluded_candidate_count": 0,
+  "export_qa_sha256": "35dbc7510cf273e803da31ea1ac8e2476637cba30545c85e8050c5449e233132",
+  "export_sha256": {
+    "figure_1_model_selection_project_v0_metric_revision_1.pdf": "366db144af21feaa67d314cc877517330a6c9e652439d6dc91d2b117d18ebc1d",
+    "figure_1_model_selection_project_v0_metric_revision_1.png": "b3f476343707de11541c8914b1d40eb1ae93e25ddd8da4b3b3c804f9a9e1b0d9",
+    "figure_1_model_selection_project_v0_metric_revision_1.svg": "cc5ca23a2fe0456496a53eeba3652adc39a075e61f52867ae17c6c69709cfe00",
+    "figure_1_model_selection_project_v0_metric_revision_1.tiff": "069fdd4c6b4a05c13b39379301cbeaf1f4bdc2bd902ea94dd52fa1d885def8d7"
+  },
+  "figure_contract": "Figure 1 \u2014 development-only 14-model selection",
+  "final_size_mm": [
+    183,
+    238
+  ],
+  "input_sha256": {
+    "benchmark_config": "c52f937888166a9097d207bb772ca89b5eededef5d8140baba1f7ac72732cc8c",
+    "comparison_checksums": "1bd78ba5e654ace2f9b805fbbd7a96e28657aa8a147fe6a511ed772aa294f574",
+    "fold_scores.tsv": "ec293fe7c825532956b23ea4819aa4a34b6f814ee8a03d69255d6c00a7412585",
+    "model_comparison.json": "4b4e0088f65f82e8ca18301c263c1fea4520ca5f63550947d0ef8c640f094c9c",
+    "model_comparison.tsv": "f887eb5dc9ad3a23f60334d2738ed2167e1e0abdac936632f752f3070843cae2"
+  },
+  "metric_revision_id": "raw-score-stable-calibration-v1",
+  "pareto_status": "not_inferred",
+  "peak_memory_status": "NA: frozen comparison has no per-model peak_gpu_memory_source attestation",
+  "project_mapping": "data-curation V3 (560 VMA-DJR) -> project V0",
+  "qa_notes_sha256": "f67c2d6336161b7bbdcafbf50382c0ef2877fad2b3906352818ba58d33fb7407",
+  "render_environment": {
+    "backend": "agg",
+    "matplotlib": "3.8.3",
+    "numpy": "1.26.4",
+    "pillow": "9.2.0",
+    "platform": "macOS-26.5.1-x86_64-i386-64bit",
+    "python": "3.9.18"
+  },
+  "render_environment_sha256": "19cbf7f7a4d4d2e615637c70f334ca9ee6723a9d35f8b576da18c28478eb8acf",
+  "schema_version": 1,
+  "script_sha256": "04994b7ecb9585cffcd644bda87abd4b106eac38160dba882dd141764ef8155d",
+  "selected_model_id": "esmc_6b",
+  "source_data_sha256": {
+    "panel_a_cv_metrics.tsv": "add291379126792b4b1afcab2c906edcd32dbdbbfeb8d520aca9c0a3fe73ae49",
+    "panel_b_validation_one_se.tsv": "b92cf4f33e05398f647e0198ee2aa1f79eb1c677cdc0d02ed72d3bc5fb50d08f",
+    "panel_c_compute.tsv": "399bd428f6bd533702d0a69909f06e06d7523a330c2fea192e783c0e2fda7985",
+    "panel_d_h3_contract.tsv": "d4176f625fca8cbec22efc52e4f8d9a3378089a7a858eaf71ce94233a586eee6",
+    "panel_e_decision.tsv": "0f7a4e5761e6bea7645aaf057cdd2082a53709b37e6cfaf7f1bda920d48be4a6"
+  },
+  "test_metrics_read": false,
+  "timing_group_count": 2
+}

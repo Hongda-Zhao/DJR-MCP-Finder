@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "validated_utc_date": "2026-07-29",
+  "host": "hongda-133",
+  "status": "PASS",
+  "scope": "engineering_reproduction_not_prospective_external_confirmation",
+  "release_id": "project-v0.1-candidate-esm2-3b-esmc-6b-user-inference",
+  "package_version": "0.2.1",
+  "formal_v0": {
+    "image": "djrmcp-user-inference:v0",
+    "image_id": "sha256:88be8ff60b222875dae45bb7eaf4940d653893f2b22d289bc2d5e7cd6974a7b6",
+    "unchanged": true
+  },
+  "candidate": {
+    "image": "djrmcp-user-inference:v0.1",
+    "image_id": "sha256:8ffc3bd738681099f63267bb4e9ca8b6e1a65edcc70fa6c4a8f78ffc6f0f71a0",
+    "image_size_bytes": 3076582541,
+    "cache_volume": "djrmcp-v01-hf-cache",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"
+  },
+  "fixture": {
+    "record_count": 12,
+    "total_residues": 6629,
+    "h3_reached_record_count": 4,
+    "input_sha256": "0eb255d3162afc937f3f6a87aff8d767d272beb5110f0b18f07d735087bd4090",
+    "golden_predictions_sha256": "11a0cee44f96613215252ced567ae2e1e2fc01476b18f0e1c15269edd628473c"
+  },
+  "comparison": {
+    "absolute_tolerance": 5e-07,
+    "relative_tolerance": 1e-06,
+    "online_mismatch_count": 0,
+    "offline_mismatch_count": 0,
+    "maximum_absolute_probability_delta": 0.0,
+    "online_offline_predictions_byte_identical": true
+  },
+  "online": {
+    "predictions_sha256": "919eb5e5fcdbaf9eb5b6f6d00e0d5290de000e68f433d3e0b21d239f797bddc3",
+    "run_metadata_sha256": "58d146fa14c82fd446f10c3c9dc81c060a5f05345d6854bc57c57bc48dca55e9",
+    "checksums_verified": true
+  },
+  "offline": {
+    "docker_network": "none",
+    "predictions_sha256": "919eb5e5fcdbaf9eb5b6f6d00e0d5290de000e68f433d3e0b21d239f797bddc3",
+    "run_metadata_sha256": "57952887b606d1ea6240176adee0bacbf5a66300801d4dec1abfb547999edcb1",
+    "checksums_verified": true
+  },
+  "runtime": {
+    "numpy": "2.5.1",
+    "torch": "2.13.0+cu130",
+    "cuda_runtime": "13.0",
+    "esm2_transformers": "5.14.1",
+    "esmc_transformers": "4.57.6",
+    "esmc_transformers_revision": "ef32577f55da19a4989cd7b22e004dc43a4998cb",
+    "esm2_model_revision": "476b639933c8baad5ad09a60ac1a87f987b656fc",
+    "esmc_model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a",
+    "esm2_peak_gpu_memory_bytes": 5881962496,
+    "esmc_peak_gpu_memory_bytes": 13679258624
+  },
+  "cpu_contract_tests": {
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0
+  }
+}

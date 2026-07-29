@@ -1,0 +1,20 @@
+{
+  "analysis_id": "djrmcp-ultra-remote-v0-v01-development-audit",
+  "artifact_role": "compact_active_release_pointer",
+  "archive_root": "/aptmp/hongda/DJRMCP_Develope/project-V0__ultra-remote-v0-v01__20260729/full_v1",
+  "archive_layout": "original_complete_benchmark_tree",
+  "archive_full_manifest": "CHECKSUMS.sha256",
+  "archive_full_manifest_sha256": "dcd33fa981f4064a027e9d27a184cba947bfd16f3c2c85030e0288d509215384",
+  "archive_full_manifest_validation": "PASS",
+  "validated_status": "PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE",
+  "active_policy": "protocol_code_small_results_validation_figure_source_data_png_pdf_svg_small_reproduction_contracts",
+  "archive_only": [
+    "row-level query scores and supervised diagnostics",
+    "logs",
+    "TIFF export",
+    "Python caches",
+    "duplicated explanatory notes"
+  ],
+  "released_v0_changed": false,
+  "data_deleted": false
+}

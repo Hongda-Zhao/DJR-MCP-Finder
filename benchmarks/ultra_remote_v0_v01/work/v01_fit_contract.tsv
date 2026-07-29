@@ -1,0 +1,6 @@
+evaluation_fold	calibration_fold	fit_folds	h1_fit_records	h2_fit_records	fit_components	calibration_components	evaluation_components	fit_calibration_component_overlap	fit_evaluation_component_overlap	calibration_evaluation_component_overlap	status
+1	2	3,4,5	3942	342	3561	1180	825	0	0	0	PASS
+2	3	1,4,5	3941	341	3226	1160	1180	0	0	0	PASS
+3	4	1,2,5	4005	405	3206	1200	1160	0	0	0	PASS
+4	5	1,2,3	4007	407	3165	1201	1200	0	0	0	PASS
+5	1	2,3,4	4007	407	3540	825	1201	0	0	0	PASS

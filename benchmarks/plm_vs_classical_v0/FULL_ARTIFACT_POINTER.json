@@ -1,0 +1,31 @@
+{
+  "analysis_id": "plm-vs-classical-v0-internal-crossfit",
+  "artifact_role": "compact_active_release_pointer",
+  "archive_root": "/aptmp/hongda/DJRMCP_Develope/project-V0__plm-vs-classical-v0__20260729/full_v1",
+  "archive_layout": "original_complete_benchmark_tree",
+  "archive_full_manifest": "CHECKSUMS.sha256",
+  "archive_full_manifest_sha256": "6273f88a618726046162f9e83cbfb447602796c0e9bb7d68af92440faf023ab7",
+  "archive_full_manifest_entries": 20424,
+  "archive_full_manifest_validation": "PASS",
+  "figure_source_data_recovery": {
+    "status": "PASS_EXACT_SHA256",
+    "reason": "three checksum-listed TSV files were omitted from the active copy",
+    "method": "deterministic extraction from frozen validated result tables using the frozen plot contract",
+    "files": {
+      "benchmark_low_coverage_stratum.tsv": "3767ac522dd6d8ade49a5c18e9aec2924866241819fdeef583a11854933bbdc5",
+      "benchmark_summary_metrics.tsv": "6c12d30e3bd5ded7139633fd824754f1481c8f62d30e3ffffa0eaaaef1f67eb6",
+      "benchmark_summary_paired_deltas.tsv": "4596254a89e4318a026f58798013bf8a17d8a4e1a99419b77a32383ead379f41"
+    },
+    "scientific_values_changed": false
+  },
+  "active_policy": "protocol_code_compact_results_validation_figure_source_data_png_pdf_svg",
+  "archive_only": [
+    "inputs",
+    "logs",
+    "work",
+    "large row-level result ledgers",
+    "TIFF exports",
+    "Python caches"
+  ],
+  "data_deleted": false
+}

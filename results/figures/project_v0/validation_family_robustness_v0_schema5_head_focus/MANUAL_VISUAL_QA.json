@@ -1,0 +1,23 @@
+{
+  "analysis_id": "project_v0_validation_family_robustness_schema5_head_focus",
+  "checks": {
+    "all_panel_titles_readable": true,
+    "all_requested_panels_present": true,
+    "ci_whiskers_visible": true,
+    "colorbar_not_clipped": true,
+    "no_axis_or_annotation_clipping": true,
+    "no_text_or_panel_overlap": true,
+    "panel_a_56_endpoints_legible": true,
+    "panel_b_32_cells_legible": true,
+    "panel_c_choose_assign_check_order_clear": true,
+    "selection_vs_robustness_boundary_visible": true
+  },
+  "figure_png_pixels": {
+    "height": 2716,
+    "width": 2161
+  },
+  "figure_png_sha256": "e7fede6cfb0a55e264751ea56f5f4319833ce44d3efdcf5171d42939a73a6c35",
+  "reviewed_at": "2026-07-28T17:01:09+09:00",
+  "reviewed_generation": "figures_head_focus_v3",
+  "status": "PASS"
+}

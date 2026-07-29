@@ -1,0 +1,85 @@
+{
+  "amendment_b_tolerances_retained_as_upper_bound": true,
+  "cache_policy": "checksum_bound_schema4_serialized_rows_after_legacy_operator_exact_numeric_replay",
+  "canonical_schema4_job": 4968695,
+  "canonical_schema4_job_overall_status": "Exit1_after_valid_prediction_generation_and_independent_prediction_validation",
+  "environment": {
+    "MKL_NUM_THREADS": "4",
+    "OMP_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "PYTHONHASHSEED": "20260724",
+    "SCHEMA5_LEGACY_OPERATOR_ID": "schema4_job_4968695_python3117_blas_threads4",
+    "SCHEMA5_PBS_MEMORY_GB": "32",
+    "SCHEMA5_PBS_NCPUS": "4",
+    "SCHEMA5_PYTHON_MODULE": "Python/3.11.7",
+    "VIRTUAL_ENV": "/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0"
+  },
+  "exact_numeric_string_replay_required": true,
+  "lineage_sha256": {
+    "config": "d58fa812527a7e4338ef6aa85c50eac854338b282417211a4af9568dfdaa434d",
+    "pbs_launcher": "df63c48c4c4ce16258b36ce1d0ee569fa529ed0fe791357f0ee4a2b16d6bd430",
+    "protocol": "6b09fefaa4b8b9412205a0caac814c94ee9b8656e7cbaa9d20097766231e16db",
+    "scorer": "c0344d9f745d452066e271fd0110ab59b182b1b5a5610ddd8fea9976ab51e886"
+  },
+  "operator_id": "schema4_job_4968695_python3117_blas_threads4",
+  "pbs": {
+    "job_id": "4968878.fe3-adm",
+    "job_name": "djr_v0_robust_s5",
+    "memory_gb": 32,
+    "ncpus": 4
+  },
+  "python": {
+    "configured_venv_python": "/usr/appli/freeware/Python/3.11.7/gcc/12.3.0/bin/python3.11",
+    "executable": "/usr/appli/freeware/Python/3.11.7/gcc/12.3.0/bin/python3.11",
+    "module": "Python/3.11.7",
+    "version": "3.11.7"
+  },
+  "runtime_preload_modules": [
+    {
+      "module": "scipy.linalg",
+      "module_file": "/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0/lib/python3.11/site-packages/scipy/linalg/__init__.py",
+      "package_version": "1.17.1"
+    },
+    {
+      "module": "sklearn.linear_model",
+      "module_file": "/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0/lib/python3.11/site-packages/sklearn/linear_model/__init__.py",
+      "package_version": "1.9.0"
+    }
+  ],
+  "schema_version": 1,
+  "status": "PASS",
+  "threadpool_count": 3,
+  "threadpool_user_api_counts": {
+    "blas": 2,
+    "openmp": 1
+  },
+  "threadpools": [
+    {
+      "file_basename": "libscipy_openblas-6cdc3b4a.so",
+      "filepath": "/lustre/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so",
+      "internal_api": "openblas",
+      "num_threads": 4,
+      "prefix": "libscipy_openblas",
+      "user_api": "blas",
+      "version": "0.3.30"
+    },
+    {
+      "file_basename": "libscipy_openblas64_-32a4b2a6.so",
+      "filepath": "/lustre/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-32a4b2a6.so",
+      "internal_api": "openblas",
+      "num_threads": 4,
+      "prefix": "libscipy_openblas",
+      "user_api": "blas",
+      "version": "0.3.31.188.0"
+    },
+    {
+      "file_basename": "libgomp-e985bcbb.so.1.0.0",
+      "filepath": "/lustre/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0/lib/python3.11/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+      "internal_api": "openmp",
+      "num_threads": 4,
+      "prefix": "libgomp",
+      "user_api": "openmp",
+      "version": "None"
+    }
+  ]
+}

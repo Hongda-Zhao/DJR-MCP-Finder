@@ -1,0 +1,83 @@
+{
+  "classical_scores_sha256": "006d597bf60bde29857997d936c0791a8e0e69491b5e812764d7d00f9aaf6081",
+  "common_script_sha256": "8231d94372e337aec306862841ab59a7233978d271fa0ab88eb054526aa1ceda",
+  "config_sha256": "de4159149914f54fdaef0c30c316bc589ab9e76c74323756acca32beb18d1eba",
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-v1",
+  "executables": {
+    "blastdbcmd": {
+      "path": "/usr/appli/freeware/blast+/2.17.0/bin/blastdbcmd",
+      "sha256": "7b7985134ac696b2f28428baf8a210554c4e2d6c38cc1dfdd46d207dc4cc762f"
+    },
+    "blastp": {
+      "path": "/usr/appli/freeware/blast+/2.17.0/bin/blastp",
+      "sha256": "5ce267c04e4988c265357bfbedc64e809545b6fcfae7ff6775266fabbee8ba0e"
+    },
+    "diamond": {
+      "path": "/usr/appli/freeware/diamond/2.2.4/bin/diamond",
+      "sha256": "39d5be939915f1f4f0004b5fe7f1b07c4a7abd46cb943e0cd9abbfa5c3dc9e65"
+    },
+    "hmmbuild": {
+      "path": "/usr/appli/freeware/hmmer/3.4/bin/hmmbuild",
+      "sha256": "1d51f59f038fb654d829a82de66a4e341a337e71c0ebfe2bfa2231ce585cbb5f"
+    },
+    "hmmpress": {
+      "path": "/usr/appli/freeware/hmmer/3.4/bin/hmmpress",
+      "sha256": "03ae2c65da5ada841c3aacf00a76b896d07f2e35115f46d8a49a5d539a8e2f6b"
+    },
+    "hmmscan": {
+      "path": "/usr/appli/freeware/hmmer/3.4/bin/hmmscan",
+      "sha256": "bb9529a43599f2f278858108fb0c1f588248add15673234bf9b69a6331e3c778"
+    },
+    "mafft": {
+      "path": "/usr/appli/freeware/mafft/7.526/bin/mafft",
+      "sha256": "0c112f58bfbb087f424c7cf2a4f4e06bfbe08db3c0170a23af28b70179239852"
+    },
+    "makeblastdb": {
+      "path": "/usr/appli/freeware/blast+/2.17.0/bin/makeblastdb",
+      "sha256": "c1ffdcf6f15d1d8d75377cc9f37afa42bc9fa06678903bad77c2641e60778fce"
+    },
+    "mmseqs": {
+      "path": "/usr/appli/freeware/mmseqs2/18-8cc5c/gcc/15.2.0/bin/mmseqs",
+      "sha256": "19ef518c30e5188733d17a306742560140ff188ab0904eb09df78e7b3616a0c5"
+    },
+    "psiblast": {
+      "path": "/usr/appli/freeware/blast+/2.17.0/bin/psiblast",
+      "sha256": "b210bf9f0abc47f09dbc06c99cb8a0f485f1633e767f41a748590b58b3bef10b"
+    }
+  },
+  "fold_attestation_sha256": {
+    "work/classical/fold_attestation.fold_1.json": "455768766a374aec9c19464f6a8d4e098346de290eb971723aa1460f481ccf91",
+    "work/classical/fold_attestation.fold_2.json": "25b5acbbecbe8d4b9e54ea2ad638af482995ac0b823782b8401bf2178604c32b",
+    "work/classical/fold_attestation.fold_3.json": "970de4f7991aa2175577bbda358e4c97cb7ae0210212ed48e3701bb1b57c2135",
+    "work/classical/fold_attestation.fold_4.json": "8f87cf9a8c44d8f50882ba577f99926d0af54305ae1c5807b3d629c692cb4615",
+    "work/classical/fold_attestation.fold_5.json": "acf769db9a1d4ea2379cb3ad5866ec008cf73c9e9243b52af3e09fe2c9dae504"
+  },
+  "input_attestation_sha256": "bb257947d3ab12525a9b6bc89f13ce47ff652689906738365168b05362700d0a",
+  "merged_output_sha256": {
+    "work/classical_reference_contract.tsv": "bdb706528bfad266dbe101f13a83e1f0ef277af7992d0415568515650870c901",
+    "work/profile_artifact_registry.tsv": "275442b9c5bb6bf55a470c443925e0577c645471476a10fc2607cd1a97f3e67e",
+    "work/profile_inclusion_ledger.tsv": "a0dae357329c51764a1d7737307fe3587897de8a9c3e363cd68a90e6e9e9a5ea",
+    "work/profile_members.tsv": "ee76bbb8a9daed2fb09a2268b547f04f38d05adc0031d9e3b717c0ab69f237c4",
+    "work/psiblast_seed_ledger.tsv": "45ce370dc9cd5ac6893f67b88d74c063dd62703ce76fc1cb9f01526edf20420c",
+    "work/raw_receipt_ledger.tsv": "25e61a493cdb05eb0948d9f0cfa86c42462580655c7fdd56bd335b66ed9a13cc",
+    "work/runtime_resources.tsv": "9097d3b0a3cf2039e8b2c64bb6445c0775bc4a427a9b5dfe7bc91dd6a2f816d8",
+    "work/scores/classical_scores.tsv": "006d597bf60bde29857997d936c0791a8e0e69491b5e812764d7d00f9aaf6081"
+  },
+  "method_reference_contract_rows": 60,
+  "profile_artifact_rows": 3815,
+  "profile_inclusion_rows": 1153301,
+  "profile_member_rows": 5820,
+  "psiblast_seed_rows": 1803,
+  "raw_receipt_ledger_sha256": "25e61a493cdb05eb0948d9f0cfa86c42462580655c7fdd56bd335b66ed9a13cc",
+  "raw_receipt_rows": 6007,
+  "run_classical_script_sha256": "f3099c4e87362c9a5c71a3c5441879ed69e73a50c1c1a357d19562d9117f02f5",
+  "runtime_rows": 6007,
+  "score_role_counts": {
+    "calibration": 83412,
+    "evaluation": 83412
+  },
+  "score_rows": 166824,
+  "status": "PASS",
+  "test_prediction_rows": 0,
+  "validation_prediction_rows": 0
+}

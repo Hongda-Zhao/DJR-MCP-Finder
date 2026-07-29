@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#PBS -N djrmcp-v0-test
+#PBS -q SMALL
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+CONFIG="${DJRMCP_BENCHMARK_CONFIG:-$PROJECT_ROOT/configs/model_benchmark_v0.yaml}"
+SUMMARY="${DJRMCP_BENCHMARK_SUMMARY:-$PROJECT_ROOT/results/model_benchmark_v0/model_comparison.json}"
+cd "${PROJECT_ROOT}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+source "$VENV_ROOT/bin/activate"
+export PYTHONPATH="${PROJECT_ROOT}/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${NCPUS:-12}"
+export MKL_NUM_THREADS="${NCPUS:-12}"
+export OPENBLAS_NUM_THREADS="${NCPUS:-12}"
+export PYTHONHASHSEED=20260722
+
+echo "$(date --iso-8601=seconds) START selected-only frozen Test"
+python scripts/evaluate_selected_benchmark_model.py \
+    --config "$CONFIG" \
+    --summary "$SUMMARY"
+python scripts/finalize_v0_results.py \
+    --manifest data/processed/v0/master_manifest.tsv \
+    --result-dir results/model_benchmark_v0/esm2_650m
+echo "$(date --iso-8601=seconds) COMPLETE selected-only frozen Test"

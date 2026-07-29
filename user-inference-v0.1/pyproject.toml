@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "djrmcp-user-inference-v01"
+version = "0.2.1"
+description = "Mixed-encoder DJR-MCP V0.1 candidate inference for user protein FASTA"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==2.5.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "pytest>=7.4",
+  "ruff>=0.4",
+]
+
+[project.scripts]
+djrmcp-predict-v01 = "djrmcp_predict_v01.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+djrmcp_predict_v01 = [
+  "assets/project-v0.1-mixed-r1/*.json",
+  "assets/project-v0.1-mixed-r1/*.sha256",
+  "assets/project-v0.1-mixed-r1/heads/*.npz",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

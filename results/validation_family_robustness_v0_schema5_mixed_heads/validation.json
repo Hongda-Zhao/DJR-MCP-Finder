@@ -1,0 +1,152 @@
+{
+  "analysis_id": "project_v0_validation_family_robustness_schema5_mixed_heads",
+  "counts": {
+    "amendment_c_byte_equivalent_artifacts": 7,
+    "contextual_pairwise_rows": 27,
+    "embedding_attestations": 24,
+    "h3_endpoint_rows": 102,
+    "h3_subgroup_endpoint_rows": 34,
+    "path_bootstrap_rows": 680000,
+    "path_predictions": 338691,
+    "primary_pairwise_rows": 36,
+    "recomputed_endpoints": 289,
+    "schema4_exact_numeric_string_comparisons": 464220,
+    "schema4_numeric_string_mismatches": 0,
+    "schema4_recomputation_audit_rows": 92844,
+    "schema4_recomputation_audit_summary_rows": 10,
+    "single_model_predictions": 371376,
+    "system_predictions": 789174,
+    "test_records": 0,
+    "verified_artifacts": 20
+  },
+  "gates": {
+    "all_6b_positive_control_exact": "PASS",
+    "amendment_c_predictions_threshold_cv_order_byte_equivalent": "PASS",
+    "applicable_heads_only_na_absent": "PASS",
+    "checksum_exact_bundle": "PASS",
+    "contextual_650m_deltas_descriptive_only": "PASS",
+    "eight_models_three_embedding_shards": "PASS",
+    "eighteen_materialization_plus_six_reuse_attestations": "PASS",
+    "expected_paths_independently_rederived": "PASS",
+    "fixed_seed_nested_bootstrap_independently_recomputed": "PASS",
+    "h3_rare_subgroups_independently_recomputed": "PASS",
+    "mixed_heads_recomposed_from_real_per_record_predictions": "PASS",
+    "released_v0_unchanged_external_confirmation_required": "PASS",
+    "schema4_canonical_cache_full_recomputation_audit": "PASS",
+    "schema4_legacy_operator_runtime_and_exact_numeric_replay": "PASS",
+    "schema4_two_model_per_record_continuity": "PASS",
+    "schema5_robustness_not_used_for_reranking": "PASS",
+    "source_specific_holm_diagnostics_recomputed": "PASS",
+    "strict_cluster_endpoints_recomputed": "PASS",
+    "test_record_count_zero": "PASS",
+    "train_only_cv_one_se_nomination_recomputed": "PASS"
+  },
+  "input_sha256": {
+    "amendment_c_result_checksums": "aa9f3cef647487d4eaec7749ceeb49c58085657a38d0d99c7577f3655448e72c",
+    "amendment_c_validation": "2b63cecae7788cce3d4c8ef96d48bf1becfbe8d74b9e9c084b2ab69a47542bcb",
+    "config": "d58fa812527a7e4338ef6aa85c50eac854338b282417211a4af9568dfdaa434d",
+    "legacy_numerical_operator_runtime": "33d121ed73038444daff0270cbc81d3afc637ca2794dd158c83172d9cfa0b215",
+    "result_checksums": "1c1fc284a646bd4ccf01fd29081e097e402b25f61e08cab509dbff576d8ba653",
+    "schema3_family_manifest": "8cd9e9ce45ad965eb745cc4ecdf08d7e3205f57b830bca00bcf0041e5bcdf541",
+    "schema4_predictions": "147da84cd1c4733e4cb33c5509fa2bd446863c7e261a102edd2f1101cdc9b8d8",
+    "schema4_result_checksums": "66533e7cf66da8f5066554afdda238b84ff922855d1c483c680422002002c0f6",
+    "schema4_validation": "268ef8ee61a4a377e148a2fe529888494469a60be00e3f768efb6fa7cf84a612"
+  },
+  "legacy_numerical_operator_runtime": {
+    "operator_id": "schema4_job_4968695_python3117_blas_threads4",
+    "pbs_job_id": "4968878.fe3-adm",
+    "python_version": "3.11.7",
+    "runtime_preload_modules": [
+      "scipy.linalg",
+      "sklearn.linear_model"
+    ],
+    "runtime_sha256": "33d121ed73038444daff0270cbc81d3afc637ca2794dd158c83172d9cfa0b215",
+    "status": "PASS",
+    "threadpool_count": 3,
+    "threadpool_user_api_counts": {
+      "blas": 2,
+      "openmp": 1
+    }
+  },
+  "schema4_canonical_prediction_cache": {
+    "aggregate_audit_rows": 10,
+    "canonical_source_sha256": "147da84cd1c4733e4cb33c5509fa2bd446863c7e261a102edd2f1101cdc9b8d8",
+    "exact_numeric_string_comparisons": 464220,
+    "legacy_numerical_operator_id": "schema4_job_4968695_python3117_blas_threads4",
+    "numeric_fields": {
+      "member_probability": {
+        "absolute_tolerance": 5e-07,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "member_raw_decision_score": {
+        "absolute_tolerance": 1e-05,
+        "blank_pairs": 26108,
+        "comparisons": 66736,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "representative_probability": {
+        "absolute_tolerance": 5e-07,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "representative_raw_decision_score": {
+        "absolute_tolerance": 1e-05,
+        "blank_pairs": 26108,
+        "comparisons": 66736,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 1e-06
+      },
+      "threshold": {
+        "absolute_tolerance": 0.0,
+        "blank_pairs": 0,
+        "comparisons": 92844,
+        "max_absolute_delta": 0.0,
+        "max_absolute_delta_key": "",
+        "max_relative_delta": 0.0,
+        "max_relative_delta_key": "",
+        "max_tolerance_ratio": 0.0,
+        "max_tolerance_ratio_key": "",
+        "nonexact_comparisons": 0,
+        "relative_tolerance": 0.0
+      }
+    },
+    "numeric_string_mismatches": 0,
+    "prediction_keys": 92844,
+    "recomputed_prediction_rows_sha256": "32a3476827b6f32a71460e870312f71bda27ccc0feb98afaf4e42326d494c676",
+    "row_level_audit_rows": 92844,
+    "test_records": 0
+  },
+  "schema_version": 5,
+  "status": "PASS",
+  "validated_result_status": "complete_eight_model_nine_candidate_four_source"
+}

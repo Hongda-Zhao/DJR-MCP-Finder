@@ -1,0 +1,65 @@
+{
+  "classifier_module_sha256": "5f700c53a447d2040bca26de5c816458239966aba559c286e0aff97695800c30",
+  "common_script_sha256": "8231d94372e337aec306862841ab59a7233978d271fa0ab88eb054526aa1ceda",
+  "config_sha256": "de4159149914f54fdaef0c30c316bc589ab9e76c74323756acca32beb18d1eba",
+  "design_id": "cyclic-fivefold-3fit-1calibration-1evaluation-v1",
+  "embedding_attestations": {
+    "esm2_650m_cosine": {
+      "directory": "/lustre/aptmp/hongda/DJR-MCP-Finder/data/processed/embeddings/v0_benchmark_esm2_650m",
+      "embedding_dimension": 1280,
+      "index_sha256": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+      "metadata_sha256": "2649aae033100c3b7171a49ea30a1a5e71b76ebbddaf0d074e6949c0d514ff5d",
+      "model_name": "facebook/esm2_t33_650M_UR50D",
+      "resolved_model_revision": "08e4846e537177426273712802403f7ba8261b6c"
+    },
+    "esmc6b_cosine": {
+      "directory": "/lustre/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/data/processed/embeddings/v0_benchmark_esmc_6b",
+      "embedding_dimension": 2560,
+      "index_sha256": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+      "metadata_sha256": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41",
+      "model_name": "Biohub/ESMC-6B",
+      "resolved_model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a"
+    }
+  },
+  "head1_expected_fold_ap": [
+    0.9981157492461559,
+    0.9990952027257143,
+    0.9994757687350382,
+    0.9976934857205962,
+    0.997969138461325
+  ],
+  "head1_observed_fold_ap": [
+    0.9981157492461559,
+    0.9990952027257143,
+    0.9994757687350382,
+    0.9976934857205962,
+    0.997969138461325
+  ],
+  "head2_expected_fold_ap": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "head2_observed_fold_ap": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "historical_cross_validation_sha256": "4d52c464d1f5cd73b7621ee43fe9c3a5d2e415c94d1a9c06ab1887c1eabd26b9",
+  "input_attestation_sha256": "bb257947d3ab12525a9b6bc89f13ce47ff652689906738365168b05362700d0a",
+  "max_absolute_deviation": 0.0,
+  "numpy": "2.4.6",
+  "platform": "Linux-4.18.0-425.3.1.el8.x86_64-x86_64-with-glibc2.28",
+  "python": "3.11.7 (main, Dec 19 2023, 10:18:56) [GCC 12.3.0]",
+  "run_plm_script_sha256": "46fd52804d12c97c76314fbe99ca5bfb85bf05fb81430970e2cc5de5bb18b3e0",
+  "score_sha256": "a613fd940a99d6d1f13dae9b323abd38fa81e3ec6b92fb887c3b026a81129bdb",
+  "status": "PASS",
+  "test_prediction_rows": 0,
+  "tolerance": 1e-10,
+  "validation_prediction_rows": 0,
+  "wall_seconds": 9.899726063013077
+}

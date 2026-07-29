@@ -1,0 +1,30 @@
+{
+  "physical_size_mm": [
+    183,
+    238
+  ],
+  "raster": {
+    ".png": {
+      "dpi": [
+        299.9994,
+        299.9994
+      ],
+      "pixels": [
+        2161,
+        2811
+      ]
+    },
+    ".tiff": {
+      "dpi": [
+        600.0,
+        600.0
+      ],
+      "pixels": [
+        4322,
+        5622
+      ]
+    }
+  },
+  "status": "PASS",
+  "svg_editable_text": true
+}

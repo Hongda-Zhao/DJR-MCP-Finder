@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+#PBS -N djr_v0_robust_s5
+#PBS -q cdb
+#PBS -l select=1:ncpus=4:mem=32gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+ARCHIVE_ROOT="${DJRMCP_ARCHIVE_ROOT:?set DJRMCP_ARCHIVE_ROOT to the local checksum-bound archive root}"
+ANALYSIS_ROOT="${SCHEMA5_ANALYSIS_ROOT:-$ARCHIVE_ROOT/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d}"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:?set DJRMCP_VENV_ROOT to the attested schema-5 replay environment}}"
+CONFIG="${DJRMCP_SCHEMA5_CONFIG:-$PROJECT_ROOT/configs/validation_family_robustness_v0_schema5_mixed_heads.yaml}"
+RESULTS="$ANALYSIS_ROOT/results"
+VALIDATION="$ANALYSIS_ROOT/validation.json"
+FIGURES="$ANALYSIS_ROOT/figures"
+
+for value in "$PROJECT_ROOT" "$ANALYSIS_ROOT" "$VENV_ROOT"; do
+    if [[ "$value" != /* || "$value" == "/" ]]; then
+        echo "Required roots must be non-root absolute paths: $value" >&2
+        exit 2
+    fi
+done
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+
+cd "$PROJECT_ROOT"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="$VENV_ROOT/bin:$PATH"
+export VIRTUAL_ENV="$VENV_ROOT"
+export PYTHONPATH="$PROJECT_ROOT/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export PYTHONHASHSEED=20260724
+export SCHEMA5_LEGACY_OPERATOR_ID=schema4_job_4968695_python3117_blas_threads4
+export SCHEMA5_PBS_NCPUS=4
+export SCHEMA5_PBS_MEMORY_GB=32
+export SCHEMA5_PYTHON_MODULE=Python/3.11.7
+
+# Amendment D is a new, no-overwrite analysis generation. Its config is the
+# sole authority for every path: only results/validation/figures may live
+# under the new root, while frozen inputs, embeddings, and receipts must
+# resolve outside it. This launcher never creates or normalizes attestations.
+python - "$CONFIG" "$ANALYSIS_ROOT" "$RESULTS" "$VALIDATION" "$FIGURES" <<'PY'
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import yaml
+
+
+config_path, requested_root, requested_results, requested_validation, requested_figures = (
+    Path(value) for value in sys.argv[1:]
+)
+with config_path.open(encoding="utf-8") as handle:
+    config = yaml.safe_load(handle)
+if not isinstance(config, dict):
+    raise SystemExit("schema-5 config root is not a mapping")
+
+expected_amendment = "D_h3_rare_subgroup_transparency_no_model_change"
+legacy_root = requested_root.with_name("schema5_v1")
+
+
+def absolute(value: object, label: str) -> Path:
+    path = Path(str(value))
+    if not path.is_absolute() or path == Path("/"):
+        raise SystemExit(f"{label} must be a non-root absolute path: {path}")
+    return path
+
+
+analysis_root = absolute(config.get("analysis_root"), "analysis_root")
+result_dir = absolute(config.get("result_dir"), "result_dir")
+figure_dir = absolute(config.get("figure_dir"), "figure_dir")
+validation_path = result_dir.with_name("validation.json")
+if config.get("protocol_amendment") != expected_amendment:
+    raise SystemExit("config is not frozen to schema-5 Amendment D")
+if analysis_root != requested_root or analysis_root == legacy_root:
+    raise SystemExit("launcher/config analysis-root mismatch or legacy-root reuse")
+if (result_dir, validation_path, figure_dir) != (
+    requested_results,
+    requested_validation,
+    requested_figures,
+):
+    raise SystemExit("launcher/config write-path mismatch")
+if result_dir.parent != analysis_root or validation_path.parent != analysis_root:
+    raise SystemExit("result/validation path escaped the Amendment-D root")
+if figure_dir.parent != analysis_root:
+    raise SystemExit("figure path escaped the Amendment-D root")
+
+read_paths: list[tuple[str, Path]] = []
+for source, spec in config.get("inputs", {}).items():
+    if not isinstance(spec, dict):
+        raise SystemExit(f"invalid input-source spec: {source}")
+    for field in ("manifest", "fasta"):
+        read_paths.append(
+            (f"inputs.{source}.{field}", absolute(spec.get(field), field))
+        )
+for source, registry in config.get("embedding_registries", {}).items():
+    if not isinstance(registry, dict):
+        raise SystemExit(f"invalid embedding registry: {source}")
+    for model, path in registry.items():
+        read_paths.append(
+            (f"embedding_registries.{source}.{model}", absolute(path, model))
+        )
+for field in (
+    "receipt_root",
+    "materialization_receipt_dir",
+    "reuse_attestation_dir",
+    "normalized_embedding_attestation_dir",
+):
+    read_paths.append((field, absolute(config.get(field), field)))
+
+for label, path in read_paths:
+    if path == analysis_root or analysis_root in path.parents:
+        raise SystemExit(
+            f"frozen read path points into writable Amendment-D root: {label}"
+        )
+    if not path.exists():
+        raise SystemExit(f"frozen read path is absent: {label}={path}")
+
+receipt_expectations = {
+    "materialization_receipt_dir": 18,
+    "reuse_attestation_dir": 6,
+    "normalized_embedding_attestation_dir": 24,
+}
+for field, expected_count in receipt_expectations.items():
+    directory = absolute(config[field], field)
+    observed = sum(
+        path.is_file() and not path.is_symlink()
+        for path in directory.glob("*.json")
+    )
+    if observed != expected_count:
+        raise SystemExit(
+            f"frozen {field} inventory changed: {observed}/{expected_count}"
+        )
+
+print(
+    "amendment_d_path_preflight=PASS "
+    f"analysis_root={analysis_root} frozen_read_paths={len(read_paths)} "
+    "receipts=18+6+24"
+)
+PY
+
+# Stable products are never replaced. Failed scorer generations retain their
+# PID/job-tagged temporary directory for diagnosis; validator publishes only
+# after the exact result bundle has been independently recomputed.
+test ! -e "$RESULTS"
+test ! -e "$VALIDATION"
+test ! -e "$FIGURES"
+
+python scripts/score_validation_family_robustness_v0_schema5_mixed_heads.py \
+    --config "$CONFIG"
+python scripts/validate_validation_family_robustness_v0_schema5_mixed_heads.py \
+    --config "$CONFIG" \
+    --output "$VALIDATION"
+
+(
+    cd "$RESULTS"
+    sha256sum -c CHECKSUMS.sha256
+)
+python - "$VALIDATION" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    validation = json.load(handle)
+if validation.get("status") != "PASS":
+    raise SystemExit("schema-5 independent validation did not PASS")
+if validation.get("counts", {}).get("test_records") != 0:
+    raise SystemExit("schema-5 Test count is not zero")
+counts = validation.get("counts", {})
+if (
+    counts.get("h3_endpoint_rows") != 102
+    or counts.get("h3_subgroup_endpoint_rows") != 34
+    or counts.get("amendment_c_byte_equivalent_artifacts") != 7
+):
+    raise SystemExit("schema-5 Amendment-D endpoint/equivalence counts changed")
+gates = validation.get("gates", {})
+expected_gates = {
+    "checksum_exact_bundle",
+    "eight_models_three_embedding_shards",
+    "eighteen_materialization_plus_six_reuse_attestations",
+    "applicable_heads_only_na_absent",
+    "mixed_heads_recomposed_from_real_per_record_predictions",
+    "all_6b_positive_control_exact",
+    "expected_paths_independently_rederived",
+    "fixed_seed_nested_bootstrap_independently_recomputed",
+    "strict_cluster_endpoints_recomputed",
+    "source_specific_holm_diagnostics_recomputed",
+    "contextual_650m_deltas_descriptive_only",
+    "train_only_cv_one_se_nomination_recomputed",
+    "schema5_robustness_not_used_for_reranking",
+    "schema4_canonical_cache_full_recomputation_audit",
+    "schema4_legacy_operator_runtime_and_exact_numeric_replay",
+    "schema4_two_model_per_record_continuity",
+    "amendment_c_predictions_threshold_cv_order_byte_equivalent",
+    "h3_rare_subgroups_independently_recomputed",
+    "test_record_count_zero",
+    "released_v0_unchanged_external_confirmation_required",
+}
+if set(gates) != expected_gates:
+    raise SystemExit(
+        "schema-5 Amendment-D gate inventory changed: "
+        f"missing={sorted(expected_gates - set(gates))} "
+        f"unexpected={sorted(set(gates) - expected_gates)}"
+    )
+failed_gates = sorted(gate for gate in expected_gates if gates[gate] != "PASS")
+if failed_gates:
+    raise SystemExit(f"schema-5 Amendment-D gates did not all PASS: {failed_gates}")
+print("schema5_amendment_d_complete validation=PASS Test=0 h3=102 equivalence=7")
+PY

@@ -1,0 +1,10 @@
+# Figure 1 | Frozen development-only selection of protein representations
+
+**a,** Four frozen Train-only scores for all 14 candidates. H1/H2 AP is computed from raw decision-function scores; H3 uses uncalibrated class probabilities. Values are means ± SE, where SE is the sample standard deviation of five scores on one shared global-component fold map divided by √5. S = 0.60·H1 AP + 0.30·H2 AP + 0.10·H3 two-known-class macro-F1. **b,** Validation metric differences relative to the fresh ESM-2 650M baseline (red region: regression greater than 0.01) and paired one-SE evidence relative to esmc_6b; ΔS = S_reference − S_candidate and SEΔ is calculated from the five same-fold differences. **c,** Descriptive S–embedding-time comparison. Times are accumulated inference duration excluding model load; markers distinguish 2 non-identical timing-comparability groups. Peak GPU memory is NA: frozen comparison has no per-model peak_gpu_memory_source attestation; therefore no Pareto frontier is inferred. **d,** H3 Validation evidence separates the supervised two-class metric (Nucleocytoviricota versus Preplasmiviricota) from operational `unknown/other` rejection recall (diagnostic n = 5); the latter does not establish detection of arbitrary unseen viruses. **e,** Complete decision audit; the corrected protocol selects ESM-C 6B. The frozen Validation baseline is ESM-2 650M. No candidate is omitted and no Test prediction or metric is read.
+
+Source data: `panel_a_cv_metrics.tsv` through `panel_e_decision.tsv`. Train/Validation/Test boundary:
+selection uses Train component-aware CV and Validation only; no Test prediction or metric was read or
+generated in R1 selection (`test_evaluation_permitted=false`). The existing cohort had already been
+opened in the historical ESM-2 650M lifecycle, cannot evaluate ESM-C 6B, and requires replacement by
+a prospective cohort. No hypothesis test or multiple-comparison correction is used; intervals in a
+and b are fold-derived uncertainty, not confidence intervals.

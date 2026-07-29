@@ -1,0 +1,26 @@
+extends: model_benchmark_v0.yaml
+extends_sha256: bcd5feb7f78ff6b10dd38824bf76b91012b952780002bc77b39670e41f1e550c
+
+project:
+  version: project-v0-model-benchmark-metric-revision-1__data-curation-v3-560
+  metric_revision_id: raw-score-stable-calibration-v1
+  test_evaluation_permitted: false
+
+paths:
+  # Final minimization retained only the historical selected 650M embedding in
+  # the active tree.  The other immutable, checksum-verified bundles are read
+  # directly from their recoverable archive; no large bundle is restored here.
+  benchmark_embedding_root: /aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/data/processed/embeddings
+  benchmark_embedding_overrides:
+    esm2_650m: data/processed/embeddings/v0_benchmark_esm2_650m
+  benchmark_result_root: results/model_benchmark_v0_metric_revision_1
+
+classifier:
+  binary_ranking_score: raw_decision_function
+  temperature_objective: stable_label_smoothed_logit_nll
+  temperature_label_smoothing: 0.001
+  temperature_log10_min: -6.0
+  temperature_log10_max: 6.0
+  temperature_coarse_points: 481
+  temperature_fine_points: 401
+  temperature_boundary_policy: fail

@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+#PBS -N djr_hn_member_v0
+#PBS -q cdb
+#PBS -l select=1:ncpus=16:mem=320gb
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+# Per-member HardNeg positive exclusion and all-node integrity audit.
+# This job is CPU-only and preserves every frozen model/config/threshold.
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+DATABASE_ROOT="${DJRMCP_DATABASE_ROOT:?set DJRMCP_DATABASE_ROOT to the local frozen database root}"
+ARCHIVE_ROOT="${DJRMCP_ARCHIVE_ROOT:?set DJRMCP_ARCHIVE_ROOT to the local checksum-bound archive root}"
+HARDNEG_BASE="${HARDNEG_BASE:-$DATABASE_ROOT/DJR-HardNeg}"
+RECOVERY_ROOT="${HARDNEG_RECOVERY_ROOT:-$ARCHIVE_ROOT/project-V0__hardneg-source-reconstruction__20260727/run_small_v1}"
+INPUT_DIR="${HARDNEG_MEMBER_INPUT_DIR:-$PROJECT_ROOT/data/processed/hardnegative_matched_member_inputs_v0}"
+OUTPUT_DIR="${HARDNEG_MEMBER_INTEGRITY_DIR:-$PROJECT_ROOT/data/processed/hardnegative_matched_member_integrity_v0}"
+CANDIDATE_MANIFEST="$INPUT_DIR/candidate_manifest.tsv"
+CANDIDATE_FASTA="$INPUT_DIR/candidate_sequences.faa"
+CANDIDATE_CHECKSUMS="$INPUT_DIR/CHECKSUMS.sha256"
+
+POSITIVE_FASTA="${POSITIVE_FASTA:-$RECOVERY_ROOT/inputs/combined_cellular_viral_djr.faa}"
+CELLULAR_POSITIVE_HMM="${CELLULAR_POSITIVE_HMM:-$DATABASE_ROOT/DJR-non-MCP/expansion/cellular_djr_v2/expanded_hmm_v3/DJR-cellular.expanded-v3.hmm}"
+VIRAL_POSITIVE_HMM="${VIRAL_POSITIVE_HMM:-$DATABASE_ROOT/DJR-MCPs/ICTV/Glod_NCBI_Models/RefSeq_HMM/RefSeq_Contain.trim_gt0.05.hmm}"
+CELLULAR_POSITIVE_MODELS="${CELLULAR_POSITIVE_MODELS:-$DATABASE_ROOT/DJR-non-MCP/expansion/cellular_djr_v2/training_package/positive_tier1/models}"
+VIRAL_POSITIVE_MODELS="${VIRAL_POSITIVE_MODELS:-$DATABASE_ROOT/DJR-MCPs/ICTV/Glod_NCBI_Models/AF3_predictions/Golds_DJRMCP_Candidates/predictions}"
+UNIPROT50_DB="${UNIPROT50_DB:?set UNIPROT50_DB to the local Foldseek UniProt50 database prefix}"
+
+ALL_NODE_MEMBERSHIP="${ALL_NODE_MEMBERSHIP:-$PROJECT_ROOT/data/processed/v0/global_component_membership.tsv}"
+ALL_NODE_FASTA="${ALL_NODE_FASTA:-$PROJECT_ROOT/data/interim/v0/component_input.faa}"
+THREADS="${NCPUS:-16}"
+JOB_WORK="${TMPDIR:-/tmp}/djr_hardnegative_matched_member_${PBS_JOBID:-manual}"
+
+POSITIVE_MMSEQS="$JOB_WORK/positive_mmseqs.tsv"
+CELLULAR_HMM_DOMTBL="$JOB_WORK/cellular_positive_hmmscan.domtblout"
+VIRAL_HMM_DOMTBL="$JOB_WORK/viral_positive_hmmscan.domtblout"
+POSITIVE_FOLDSEEK="$JOB_WORK/positive_foldseek.tsv"
+CANDIDATE_VS_ALL="$JOB_WORK/candidate_vs_all_nodes.tsv"
+CANDIDATE_VS_CANDIDATE_WITH_SELF="$JOB_WORK/candidate_vs_candidate.with_self.tsv"
+CANDIDATE_VS_CANDIDATE="$JOB_WORK/candidate_vs_candidate.tsv"
+RUN_METADATA="$JOB_WORK/RUN_METADATA.txt"
+MMSEQS_FORMAT='query,target,pident,qcov,tcov,alnlen,evalue,bits'
+FOLDSEEK_FORMAT='query,target,evalue,bits,prob,alntmscore,qtmscore,ttmscore,qcov,tcov,lddt'
+
+cd "$PROJECT_ROOT"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module load Python/3.11.7 foldseek/10-941cd33/cpu hmmer/3.4 mmseqs2/18-8cc5c
+export PYTHONPATH="$PROJECT_ROOT/src:${PYTHONPATH:-}"
+
+if [[ -e "$OUTPUT_DIR" ]]; then
+    echo "Refusing to overwrite versioned HardNeg matched-member integrity output: $OUTPUT_DIR" >&2
+    exit 2
+fi
+if [[ -e "$JOB_WORK" ]]; then
+    echo "Refusing to reuse integrity workspace: $JOB_WORK" >&2
+    exit 2
+fi
+for required in \
+    "$CANDIDATE_MANIFEST" \
+    "$CANDIDATE_FASTA" \
+    "$CANDIDATE_CHECKSUMS" \
+    "$POSITIVE_FASTA" \
+    "$CELLULAR_POSITIVE_HMM" \
+    "$VIRAL_POSITIVE_HMM" \
+    "$UNIPROT50_DB.lookup" \
+    "$ALL_NODE_MEMBERSHIP" \
+    "$ALL_NODE_FASTA"; do
+    if [[ ! -f "$required" ]]; then
+        echo "Missing required frozen integrity input: $required" >&2
+        exit 2
+    fi
+done
+if [[ ! -d "$CELLULAR_POSITIVE_MODELS" || ! -d "$VIRAL_POSITIVE_MODELS" ]]; then
+    echo "Missing positive structure-model inventory" >&2
+    exit 2
+fi
+if [[ "$(grep -c '^>' "$CANDIDATE_FASTA")" -ne 3478 ]]; then
+    echo "Candidate FASTA does not contain the frozen 3,478 members" >&2
+    exit 2
+fi
+(
+    cd "$INPUT_DIR"
+    sha256sum -c CHECKSUMS.sha256
+)
+mkdir -p "$JOB_WORK/mmseqs_positive" "$JOB_WORK/mmseqs_all" \
+    "$JOB_WORK/mmseqs_candidate" "$JOB_WORK/foldseek"
+
+# Original HardNeg sequence exclusion: combined cellular+viral positives, 30/80.
+mmseqs easy-search \
+    "$CANDIDATE_FASTA" "$POSITIVE_FASTA" "$POSITIVE_MMSEQS" \
+    "$JOB_WORK/mmseqs_positive" \
+    -s 7.5 --min-seq-id 0.30 -c 0.80 --cov-mode 0 --max-seqs 1000 \
+    --format-output "$MMSEQS_FORMAT" --threads "$THREADS"
+
+# Original cellular and viral profile exclusion: i-Evalue <=1e-3 and HMM coverage >=0.60
+# are reapplied by the fail-closed finalizer to these complete 1e-2 search outputs.
+hmmscan --cpu "$THREADS" -E 1e-2 --domE 1e-2 --noali \
+    --tblout "$JOB_WORK/cellular_positive_hmmscan.tblout" \
+    --domtblout "$CELLULAR_HMM_DOMTBL" \
+    "$CELLULAR_POSITIVE_HMM" "$CANDIDATE_FASTA" \
+    > "$JOB_WORK/cellular_positive_hmmscan.out" \
+    2> "$JOB_WORK/cellular_positive_hmmscan.stderr.log"
+hmmscan --cpu "$THREADS" -E 1e-2 --domE 1e-2 --noali \
+    --tblout "$JOB_WORK/viral_positive_hmmscan.tblout" \
+    --domtblout "$VIRAL_HMM_DOMTBL" \
+    "$VIRAL_POSITIVE_HMM" "$CANDIDATE_FASTA" \
+    > "$JOB_WORK/viral_positive_hmmscan.out" \
+    2> "$JOB_WORK/viral_positive_hmmscan.stderr.log"
+
+# Rehydrate the original AlphaFoldDB structures for the source-member IDs.
+awk -F '\t' 'NR == 1 {for (i=1; i<=NF; i++) if ($i=="source_member_id") c=i; next} {print $c}' \
+    "$CANDIDATE_MANIFEST" | LC_ALL=C sort -u > "$JOB_WORK/foldseek/candidate_ids.txt"
+awk -F '\t' 'NR == FNR {wanted[$1]=1; next} ($2 in wanted) {print $1}' \
+    "$JOB_WORK/foldseek/candidate_ids.txt" "$UNIPROT50_DB.lookup" \
+    > "$JOB_WORK/foldseek/candidate_keys.txt"
+if [[ "$(wc -l < "$JOB_WORK/foldseek/candidate_keys.txt")" -ne 3478 ]]; then
+    echo "UniProt50 structure DB did not resolve all 3,478 candidate IDs" >&2
+    exit 2
+fi
+foldseek createsubdb \
+    "$JOB_WORK/foldseek/candidate_keys.txt" "$UNIPROT50_DB" \
+    "$JOB_WORK/foldseek/candidateDB" --id-mode 0
+
+mapfile -d '' POSITIVE_STRUCTURES < <({
+    find "$CELLULAR_POSITIVE_MODELS" -type f -name '*.pdb' -print0
+    find "$VIRAL_POSITIVE_MODELS" -mindepth 2 -maxdepth 2 -type f -name '*_model.cif' -print0
+} | LC_ALL=C sort -z)
+POSITIVE_STRUCTURE_COUNT="${#POSITIVE_STRUCTURES[@]}"
+if [[ "$POSITIVE_STRUCTURE_COUNT" -le 702 ]]; then
+    echo "Combined cellular+viral positive structure inventory is incomplete" >&2
+    exit 2
+fi
+foldseek createdb "${POSITIVE_STRUCTURES[@]}" "$JOB_WORK/foldseek/positiveDB"
+foldseek search \
+    "$JOB_WORK/foldseek/positiveDB" "$JOB_WORK/foldseek/candidateDB" \
+    "$JOB_WORK/foldseek/resultDB" "$JOB_WORK/foldseek/tmp" \
+    --threads "$THREADS" -a -s 9.5 -e 1e-2 -c 0.50 --cov-mode 2 \
+    --max-seqs 1000 --split-memory-limit 24G --db-load-mode 1
+foldseek convertalis \
+    "$JOB_WORK/foldseek/positiveDB" "$JOB_WORK/foldseek/candidateDB" \
+    "$JOB_WORK/foldseek/resultDB" "$POSITIVE_FOLDSEEK" \
+    --format-output "$FOLDSEEK_FORMAT" --threads "$THREADS"
+
+# Ordinary 30/80 relationships are audit strata/dependence only, never exclusions.
+mmseqs easy-search \
+    "$CANDIDATE_FASTA" "$ALL_NODE_FASTA" "$CANDIDATE_VS_ALL" \
+    "$JOB_WORK/mmseqs_all" \
+    -s 7.5 --min-seq-id 0.30 -c 0.80 --cov-mode 0 --max-seqs 50000 \
+    --format-output "$MMSEQS_FORMAT" --threads "$THREADS"
+mmseqs easy-search \
+    "$CANDIDATE_FASTA" "$CANDIDATE_FASTA" "$CANDIDATE_VS_CANDIDATE_WITH_SELF" \
+    "$JOB_WORK/mmseqs_candidate" \
+    -s 7.5 --min-seq-id 0.30 -c 0.80 --cov-mode 0 --max-seqs 50000 \
+    --format-output "$MMSEQS_FORMAT" --threads "$THREADS"
+awk -F '\t' 'BEGIN {OFS=FS} $1 != $2 {print}' \
+    "$CANDIDATE_VS_CANDIDATE_WITH_SELF" > "$CANDIDATE_VS_CANDIDATE"
+SELF_EDGES_REMOVED="$(awk -F '\t' '$1 == $2 {n++} END {print n+0}' \
+    "$CANDIDATE_VS_CANDIDATE_WITH_SELF")"
+
+{
+    echo "status=complete"
+    echo "analysis_id=project_v0_hardnegative_matched_member_integrity"
+    echo "mmseqs_version=$(mmseqs version 2>&1 | head -n1)"
+    echo "hmmer_version=$(hmmscan -h | awk '/^# HMMER/{print; exit}')"
+    echo "foldseek_version=$(foldseek version 2>&1 | head -n1)"
+    echo "mmseqs_module=mmseqs2/18-8cc5c"
+    echo "hmmer_module=hmmer/3.4"
+    echo "foldseek_module=foldseek/10-941cd33/cpu"
+    echo "min_seq_id=0.30"
+    echo "min_query_coverage=0.80"
+    echo "min_target_coverage=0.80"
+    echo "cov_mode=0"
+    echo "sensitivity=7.5"
+    echo "hmm_max_ievalue=1e-3"
+    echo "hmm_min_coverage=0.60"
+    echo "structure_max_evalue=1e-3"
+    echo "structure_min_probability=0.90"
+    echo "structure_min_alntmscore=0.50"
+    echo "structure_min_qcov=0.60"
+    echo "structure_min_lddt=0.50"
+    echo "structure_qtmscore_used_for_exclusion=false"
+    echo "exact_positive_exclusion=complete"
+    echo "mmseqs_positive_exclusion=complete"
+    echo "cellular_hmm_positive_exclusion=complete"
+    echo "viral_hmm_positive_exclusion=complete"
+    echo "foldseek_positive_exclusion=complete"
+    echo "candidate_vs_all_nodes=complete"
+    echo "candidate_vs_candidate=complete_self_edges_removed"
+    echo "candidate_self_edges_removed=$SELF_EDGES_REMOVED"
+    echo "positive_structure_count=$POSITIVE_STRUCTURE_COUNT"
+    echo "threads=$THREADS"
+    echo "job_id=${PBS_JOBID:-manual}"
+    echo "hostname=$(hostname)"
+} > "$RUN_METADATA"
+
+python3 scripts/finalize_hardnegative_matched_member_integrity_v0.py \
+    --candidate-manifest "$CANDIDATE_MANIFEST" \
+    --candidate-fasta "$CANDIDATE_FASTA" \
+    --candidate-checksums "$CANDIDATE_CHECKSUMS" \
+    --positive-fasta "$POSITIVE_FASTA" \
+    --positive-mmseqs "$POSITIVE_MMSEQS" \
+    --positive-hmm-domtbl "$CELLULAR_HMM_DOMTBL" \
+    --positive-hmm-domtbl "$VIRAL_HMM_DOMTBL" \
+    --positive-foldseek "$POSITIVE_FOLDSEEK" \
+    --all-node-membership "$ALL_NODE_MEMBERSHIP" \
+    --all-node-fasta "$ALL_NODE_FASTA" \
+    --candidate-vs-all-nodes "$CANDIDATE_VS_ALL" \
+    --candidate-vs-candidate "$CANDIDATE_VS_CANDIDATE" \
+    --run-metadata "$RUN_METADATA" \
+    --output-dir "$OUTPUT_DIR"
+
+(
+    cd "$OUTPUT_DIR"
+    sha256sum -c CHECKSUMS.sha256
+)

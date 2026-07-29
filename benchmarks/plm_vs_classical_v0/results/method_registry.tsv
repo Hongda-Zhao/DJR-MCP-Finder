@@ -1,0 +1,10 @@
+method	track	native_score	task_specific_information	primary_eligible	inference_role	profile_count_all_cycles_tasks	singleton_member_rows_all_cycles_tasks	external_pretraining_exposure
+esmc6b_cosine	controlled_primary	maximum cosine similarity	fit-fold positive reference IDs only	1	primary_anchor	0	0	model_dependent
+esm2_650m_cosine	controlled_primary	maximum cosine similarity	fit-fold positive reference IDs only	1	controlled_plm_comparator	0	0	model_dependent
+blastp	controlled_primary	maximum bit score	fit-fold positive reference IDs only	1	pre_registered_classical_anchor	0	0	none_for_task_specific_database
+diamond_ultra	controlled_primary	maximum bit score	fit-fold positive reference IDs only	1	pre_registered_classical_anchor	0	0	none_for_task_specific_database
+mmseqs_s7.5	controlled_primary	maximum bit score	fit-fold positive reference IDs only	1	pre_registered_classical_anchor	0	0	none_for_task_specific_database
+hmmer_component	controlled_primary	maximum full-sequence HMM bit score	fit-fold positives grouped only by global component	1	pre_registered_classical_anchor	1803	1638	none_for_task_specific_database
+psiblast_longest_seed_positiveDB_3iter	resource_augmented_secondary	maximum frozen-PSSM bit score	longest positive seed plus positive-only database; three iterations	0	secondary_descriptive	0	0	none_for_task_specific_database
+hmmer_family	metadata_augmented_secondary	maximum full-sequence HMM bit score	fit-fold positives plus frozen family/taxonomy grouping metadata	0	secondary_descriptive	189	55	none_for_task_specific_database
+esmc6b_supervised	operational_descriptive	fit-once head logit or nested tail-evidence cascade	three fit folds with labelled positives and negatives	0	operational_descriptive_only	0	0	model_dependent

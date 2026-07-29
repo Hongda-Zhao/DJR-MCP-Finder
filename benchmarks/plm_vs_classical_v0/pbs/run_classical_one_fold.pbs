@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N djrmcp-classical-one-v0
+#PBS -q SMALL
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../../.." && pwd -P)}}"
+BENCHMARK_ROOT="$PROJECT_ROOT/benchmarks/plm_vs_classical_v0"
+export PBS_ARRAY_INDEX="${DJRMCP_EVALUATION_FOLD:?set DJRMCP_EVALUATION_FOLD to 1..5}"
+exec bash "${BENCHMARK_ROOT}/pbs/run_classical_stage.pbs"

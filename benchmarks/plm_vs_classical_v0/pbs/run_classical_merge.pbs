@@ -1,0 +1,39 @@
+#!/bin/bash
+#PBS -N djrmcp-classical-merge-v0
+#PBS -q SMALL
+#PBS -l select=1:ncpus=1:mem=8gb
+#PBS -l walltime=01:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/../../.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+BENCHMARK_ROOT="${PROJECT_ROOT}/benchmarks/plm_vs_classical_v0"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+CONFIG_PATH="${DJRMCP_PLM_CONFIG:-$BENCHMARK_ROOT/config/benchmark.json}"
+
+cd "${PROJECT_ROOT}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module purge
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="${VENV_ROOT}/bin:${PATH}"
+export VIRTUAL_ENV="${VENV_ROOT}"
+export PYTHONPATH="${PROJECT_ROOT}/src:${BENCHMARK_ROOT}/scripts:${PYTHONPATH:-}"
+
+mkdir -p "${BENCHMARK_ROOT}/work/locks"
+exec 9>"${BENCHMARK_ROOT}/work/locks/classical.merge.lock"
+if ! flock -n 9; then
+    echo "Another classical merge owns the benchmark lock" >&2
+    exit 75
+fi
+
+python "${BENCHMARK_ROOT}/scripts/run_classical.py" \
+    --config "${CONFIG_PATH}" \
+    --merge

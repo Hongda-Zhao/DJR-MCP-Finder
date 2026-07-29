@@ -1,0 +1,49 @@
+{
+  "analysis_id": "project_v0_validation_family_robustness_schema5_head_focus",
+  "backend": "python_matplotlib_only",
+  "benchmark_checksum_manifest_sha256": "1bd78ba5e654ace2f9b805fbbd7a96e28657aa8a147fe6a511ed772aa294f574",
+  "cross_head_average_plotted": false,
+  "cross_source_average_plotted": false,
+  "exports": [
+    "validation_family_robustness_v0_schema5_head_focus.svg",
+    "validation_family_robustness_v0_schema5_head_focus.pdf",
+    "validation_family_robustness_v0_schema5_head_focus.png",
+    "validation_family_robustness_v0_schema5_head_focus.tiff"
+  ],
+  "external_confirmation_required": true,
+  "figure_contract": "head_resolved_plus_expected_path_plus_choose_assign_check",
+  "figure_size_mm": {
+    "height": 230.0,
+    "width": 183.0
+  },
+  "h3_robustness_metric": "expected_label_accuracy_not_train_cv_macro_f1",
+  "head_endpoint_count": 7,
+  "head_robustness_used_for_reranking": false,
+  "head_rows_expected": 56,
+  "head_rows_plotted": 56,
+  "head_uncertainty": "95pct_dependence_block_bootstrap_ci",
+  "homogeneous_models": 8,
+  "manual_visual_qa_required_before_publication": true,
+  "minimum_text_pt": 5.8,
+  "mixed_head_duplicate_component_rows_plotted": 0,
+  "nominee": "h12_esm2_3b__h3_esmc_6b",
+  "nominee_source_rows_plotted": 4,
+  "path_rows_plotted": 32,
+  "released_v0_changed": false,
+  "result_checksum_manifest_sha256": "f37f7a729452d4bf1fadeb68cf9d6ccc3e12c4ae02c7204cf475327e18fc64c4",
+  "result_validation_sha256": "1933b8c8b1a0f6c158872fe9b233ed91c84cdbcf9fa07c56dd2c086ae0075aaf",
+  "rows_excluded_from_requested_scope": 0,
+  "source_data_tables": [
+    "panel_a_head_robustness.tsv",
+    "panel_b_expected_path.tsv",
+    "panel_c_nominee_check.tsv",
+    "panel_c_train_cv_components.tsv",
+    "panel_c_train_cv_recipes.tsv"
+  ],
+  "source_specific_warning_count": 0,
+  "status": "pass_pending_manual_visual_qa",
+  "svg_text_editable": true,
+  "test_records": 0,
+  "train_cv_recipes_plotted": 9,
+  "weighting": "equal_dependence_block_then_source_cluster_then_member"
+}

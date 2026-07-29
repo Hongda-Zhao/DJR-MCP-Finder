@@ -1,0 +1,96 @@
+#!/bin/bash
+#PBS -N djrmcp-classical-cyclic-v0
+#PBS -q SMALL
+#PBS -J 1-5
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/../../.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+BENCHMARK_ROOT="${PROJECT_ROOT}/benchmarks/plm_vs_classical_v0"
+CONFIG_PATH="${DJRMCP_PLM_CONFIG:-$BENCHMARK_ROOT/config/benchmark.json}"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-${VENV_ROOT:-$PROJECT_ROOT/.venv-v0}}"
+EVALUATION_FOLD="${PBS_ARRAY_INDEX:?PBS_ARRAY_INDEX is required for the 1-5 array}"
+
+case "${EVALUATION_FOLD}" in
+    1|2|3|4|5) ;;
+    *) echo "Invalid PBS_ARRAY_INDEX: ${EVALUATION_FOLD}" >&2; exit 2 ;;
+esac
+
+JOB_TAG="${PBS_JOBID:-manual}"
+JOB_TAG="${JOB_TAG//[^A-Za-z0-9_.-]/_}"
+LOCK_ROOT="${BENCHMARK_ROOT}/work/locks"
+STATUS_ROOT="${BENCHMARK_ROOT}/work/job_status"
+STATUS_PATH="${STATUS_ROOT}/classical.fold_${EVALUATION_FOLD}.${JOB_TAG}.json"
+STARTED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+MERGE_STATUS="dedicated_merge_job"
+
+mkdir -p "${LOCK_ROOT}" "${STATUS_ROOT}"
+
+write_status() {
+    local state="$1"
+    local return_code="$2"
+    local temporary="${STATUS_PATH}.tmp.${BASHPID}"
+    python -c 'import json, os, pathlib, sys; p=pathlib.Path(sys.argv[1]); payload={"status":sys.argv[2],"return_code":int(sys.argv[3]),"evaluation_fold":int(sys.argv[4]),"pbs_job_id":sys.argv[5],"started_at_utc":sys.argv[6],"finished_at_utc":sys.argv[7],"merge_status":sys.argv[8]}; p.write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n",encoding="utf-8"); os.replace(p,sys.argv[9])' \
+        "${temporary}" "${state}" "${return_code}" "${EVALUATION_FOLD}" \
+        "${PBS_JOBID:-manual}" "${STARTED_AT}" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+        "${MERGE_STATUS}" "${STATUS_PATH}"
+}
+
+finish_job() {
+    local return_code=$?
+    trap - EXIT
+    if [[ ${return_code} -eq 0 ]]; then
+        write_status "PASS" "${return_code}"
+    else
+        write_status "FAILED" "${return_code}"
+    fi
+    exit "${return_code}"
+}
+trap finish_job EXIT
+
+cd "${PROJECT_ROOT}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module purge
+module load Python/3.11.7 blast+/2.17.0 diamond/2.2.4 mmseqs2/18-8cc5c mafft/7.526 hmmer/3.4
+
+if [[ ! -x "${VENV_ROOT}/bin/python" ]]; then
+    echo "Benchmark Python is unavailable: ${VENV_ROOT}/bin/python" >&2
+    exit 3
+fi
+export PATH="${VENV_ROOT}/bin:${PATH}"
+export VIRTUAL_ENV="${VENV_ROOT}"
+export PYTHONPATH="${PROJECT_ROOT}/src:${BENCHMARK_ROOT}/scripts:${PYTHONPATH:-}"
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+
+python -c 'import json, pathlib, sys; config=json.loads(pathlib.Path(sys.argv[1]).read_text()); att=json.loads(pathlib.Path(sys.argv[2]).read_text()); valid=att.get("status")=="PASS" and att.get("design_id")==config.get("design_id") and att.get("validation_prediction_rows")==0 and att.get("test_prediction_rows")==0; raise SystemExit(0 if valid else "prepared cyclic inputs lack a matching PASS attestation")' \
+    "${CONFIG_PATH}" "${BENCHMARK_ROOT}/inputs/input_attestation.json"
+
+write_status "RUNNING" "0"
+
+# Preflight is short, atomic, and serialized so array tasks cannot overwrite it concurrently.
+exec 8>"${LOCK_ROOT}/classical.preflight.lock"
+flock 8
+python "${BENCHMARK_ROOT}/scripts/preflight_tools.py" --config "${CONFIG_PATH}"
+flock -u 8
+
+# A duplicate job for the same fold must not mutate the same .building paths.
+exec 9>"${LOCK_ROOT}/classical.fold_${EVALUATION_FOLD}.lock"
+if ! flock -n 9; then
+    echo "Another job owns classical fold ${EVALUATION_FOLD}" >&2
+    exit 75
+fi
+
+python "${BENCHMARK_ROOT}/scripts/run_classical.py" \
+    --config "${CONFIG_PATH}" \
+    --fold "${PBS_ARRAY_INDEX}"

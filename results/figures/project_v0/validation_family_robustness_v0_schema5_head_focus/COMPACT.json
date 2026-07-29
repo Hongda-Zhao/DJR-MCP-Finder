@@ -1,0 +1,21 @@
+{
+  "analysis_id": "project_v0_validation_family_robustness_schema5_head_focus",
+  "full_generation_checksum_manifest_sha256": "4f62b6f550aa5a7093194a5a1dadb5f9fd5cec14d4d9a34e78d57f59a1ffe8b4",
+  "full_generation_path": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d/figures_head_focus_v3",
+  "included": {
+    "editable_vector_exports": 2,
+    "manual_visual_qa": 1,
+    "panel_source_data_tables": 5,
+    "plain_language_guide": 1,
+    "png_preview": 1,
+    "renderer_qa": 1
+  },
+  "omitted_from_active_compact": {
+    "reason": "full-resolution archival raster retained in full generation",
+    "tiff": 1
+  },
+  "publication_status": "PASS",
+  "result_or_model_changed": false,
+  "source_generation": "figures_head_focus_v3",
+  "test_accessed": 0
+}

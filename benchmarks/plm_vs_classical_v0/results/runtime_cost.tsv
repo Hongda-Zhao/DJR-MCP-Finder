@@ -1,0 +1,21 @@
+record_kind	method	reference_kind	stage_count	summed_stage_wall_seconds	maximum_stage_wall_seconds	ok_stage_count	reused_stage_count	failed_stage_count	job_id	job_name	pbs_wall	pbs_cput	pbs_mem	cost_caveat
+summed_stage_runtime	blastp	djr	10	410.71059400000001	84.146907999999996	10	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	blastp	vma	10	265.95479399999999	56.514781999999997	10	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	diamond_ultra	djr	10	10.831650999999999	1.909127	10	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	diamond_ultra	vma	10	8.3959200000000003	1.449567	10	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	hmmer_component	djr	1285	6485.8040429999883	1430.345327	1285	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	hmmer_component	vma	703	2886.7156320000013	639.86997499999995	703	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	hmmer_family	djr	196	2543.4008490000015	461.52545600000002	196	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	hmmer_family	vma	147	1046.6494549999998	116.07085600000001	147	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	mmseqs_s7.5	djr	5	34.642846999999996	7.7316609999999999	5	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	mmseqs_s7.5	vma	5	31.289223	6.9219200000000001	5	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	psiblast_longest_seed_positiveDB_3iter	djr	2362	3097.2381649999993	5.4949260000000004	2362	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+summed_stage_runtime	psiblast_longest_seed_positiveDB_3iter	vma	1264	1400.4302719999978	3.0778449999999999	1264	0	0						stage wall times are summed receipts, not elapsed parallel job wall time
+pbs_job_resource_receipt									4969642.fe3-adm	djrmcp-plm-oof-v0	00:00:17	00:01:20	506172kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969644.fe3-adm	djrmcp-classical-one-v0	00:45:29	01:16:47	939788kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969652[2].fe3-adm	djrmcp-classical-cyclic-v0	00:55:54	01:26:13	545980kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969652[3].fe3-adm	djrmcp-classical-cyclic-v0	00:53:58	01:26:57	1020632kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969652[4].fe3-adm	djrmcp-classical-cyclic-v0	00:43:26	01:16:21	655088kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969652[5].fe3-adm	djrmcp-classical-cyclic-v0	00:41:57	01:14:23	1031592kb	scheduler-reported job resource receipt
+pbs_job_resource_receipt									4969671.fe3-adm	djrmcp-classical-merge-v0	00:11:54	00:01:19	1001472kb	scheduler-reported job resource receipt
+plm_combined_scoring_runtime	PLM_STAGE_COMBINED		1	9.8997260630130768	9.8997260630130768	1	0	0						combined PLM scoring/fitting receipt; precomputed embedding generation cost is excluded and cannot be allocated per PLM method

@@ -1,0 +1,198 @@
+{
+  "candidate": {
+    "candidate_id": "h12_esm2_3b__h3_esmc_6b",
+    "interpretation": "train_cv_nominated_schema5_diagnostic_only_not_independent_validation",
+    "mean_train_cv_score": 0.9976446243098959,
+    "nomination_primary_evidence": "train_only_shared_five_fold_cv",
+    "nomination_status": "recommended_for_external_confirmation",
+    "prospective_external_confirmation_required": true,
+    "released_v0_change_permitted": false,
+    "test_records": 0
+  },
+  "encoders": {
+    "esm2_3b": {
+      "backend": "transformer_residue",
+      "classifier_input_quantization": "float16_roundtrip",
+      "compute_precision": "float16",
+      "dimension": 2560,
+      "license": "MIT",
+      "long_sequence_policy": "overlapping_windows_no_truncation",
+      "model_loader": "auto",
+      "model_name": "facebook/esm2_t36_3B_UR50D",
+      "model_revision": "476b639933c8baad5ad09a60ac1a87f987b656fc",
+      "output_dtype": "float16",
+      "pooling": "residue_mean_then_window_mean",
+      "record_batch_size": 2,
+      "replace_rare_with_x": false,
+      "sequence_format": "raw",
+      "sequence_prefix": "",
+      "special_token_policy": "special_and_padding_tokens_excluded_by_tokenizer_mask",
+      "stride": 511,
+      "tokenizer_loader": "auto",
+      "transformers_version": "5.14.1",
+      "trust_remote_code": false,
+      "window_batch_size": 2,
+      "window_residues": 1022
+    },
+    "esmc_6b": {
+      "backend": "esmc_transformer",
+      "classifier_input_quantization": "float16_roundtrip",
+      "compute_precision": "bfloat16",
+      "dimension": 2560,
+      "license": "MIT",
+      "long_sequence_policy": "overlapping_windows_no_truncation",
+      "model_loader": "masked_lm",
+      "model_name": "Biohub/ESMC-6B",
+      "model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a",
+      "output_dtype": "float16",
+      "pooling": "residue_mean_then_window_mean",
+      "record_batch_size": 1,
+      "replace_rare_with_x": false,
+      "sequence_format": "raw",
+      "sequence_prefix": "",
+      "special_token_policy": "bos_eos_and_padding_excluded; sequence_only_residues_mean_pooled",
+      "stride": 511,
+      "tokenizer_loader": "auto",
+      "transformers_code_revision": "ef32577f55da19a4989cd7b22e004dc43a4998cb",
+      "transformers_repository": "https://github.com/Biohub/transformers.git",
+      "transformers_version": "4.57.6",
+      "trust_remote_code": false,
+      "window_batch_size": 1,
+      "window_residues": 1022
+    }
+  },
+  "export_environment": {
+    "joblib": "1.5.3",
+    "numpy": "2.4.6",
+    "platform": "Linux-4.18.0-425.3.1.el8.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.7",
+    "scikit_learn": "1.9.0"
+  },
+  "heads": {
+    "head1": {
+      "artifact": "heads/head1.npz",
+      "best_parameter": 1e-05,
+      "best_parameter_name": "alpha",
+      "classes": [
+        "non_djr",
+        "djr"
+      ],
+      "classifier": "SGDClassifier",
+      "encoder_id": "esm2_3b",
+      "input_dimension": 2560,
+      "sha256": "4cadabc814b044d07dece3ab7e03f3df051cca2256d5393e95500d17cc282587",
+      "source_joblib_sha256": "a6ba94cb38a71e73b3a24559bd5c416cfd8061e8fcb826f0a16df5c0d6a0264b",
+      "temperature": 879.5286685349943,
+      "threshold": 0.9354350741395616,
+      "threshold_rule": ">= positive-class probability for H1/H2; H3 rejects to unknown/other when maximum known-class probability is below threshold"
+    },
+    "head2": {
+      "artifact": "heads/head2.npz",
+      "best_parameter": 0.01,
+      "best_parameter_name": "C",
+      "classes": [
+        "none",
+        "viral_morphogenesis_associated"
+      ],
+      "classifier": "LogisticRegression",
+      "encoder_id": "esm2_3b",
+      "input_dimension": 2560,
+      "sha256": "32f840e196fbdec5d507bab3191b76aebef25ebcdf92fcb483932a8654d9ce32",
+      "source_joblib_sha256": "b65ea84c6a8894bdfd453886452555847c248684498f8f61a316be766af31a50",
+      "temperature": 0.9041698059234516,
+      "threshold": 0.9722235071411139,
+      "threshold_rule": ">= positive-class probability for H1/H2; H3 rejects to unknown/other when maximum known-class probability is below threshold"
+    },
+    "head3_phylum": {
+      "artifact": "heads/head3_phylum.npz",
+      "best_parameter": 10.0,
+      "best_parameter_name": "C",
+      "classes": [
+        "Nucleocytoviricota",
+        "Preplasmiviricota"
+      ],
+      "classifier": "LogisticRegression",
+      "encoder_id": "esmc_6b",
+      "input_dimension": 2560,
+      "sha256": "8c0597145a4790c23a4235884e5eb54a4f9d2d324853be78e791dcafd51c3dea",
+      "source_joblib_sha256": "88c3f87f349d65e19e33a38130ee8095afc49c29c3d8a254336208338e9e06ba",
+      "temperature": 4.2474179687096845,
+      "threshold": 0.7126488980564439,
+      "threshold_rule": ">= positive-class probability for H1/H2; H3 rejects to unknown/other when maximum known-class probability is below threshold"
+    }
+  },
+  "limitations": [
+    "This is a development candidate for prospective external confirmation, not a replacement for released V0.",
+    "No prospective external Test records were evaluated during candidate nomination.",
+    "Scores are not prevalence-adjusted posterior probabilities.",
+    "H3 unknown/other rejects only from two known phyla and is not a general OOD detector.",
+    "Inputs outside the training length/alphabet domain require extra caution.",
+    "The two frozen encoders require separately pinned runtime environments unless cross-environment parity is established."
+  ],
+  "parity": {
+    "encoders": {
+      "esm2_3b": {
+        "dimension": 2560,
+        "embedding_sha256": "c9fcf47cf43f4f9aa978651d2b709c624185e74994dd792d53cbedbc3da2f988",
+        "heads": [
+          "head1",
+          "head2"
+        ],
+        "rows": 11060
+      },
+      "esmc_6b": {
+        "dimension": 2560,
+        "embedding_sha256": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+        "heads": [
+          "head3_phylum"
+        ],
+        "rows": 11060
+      }
+    },
+    "report": "PARITY_REPORT.json",
+    "status": "exact_parity"
+  },
+  "release_id": "project-v0.1-candidate-esm2-3b-esmc-6b-user-inference",
+  "release_status": "development_candidate_external_confirmation_required",
+  "released_v0_unchanged": true,
+  "routing": {
+    "conditional_h3_embedding": true,
+    "head1_head2_share_embedding": true,
+    "head1_positive_class": "djr",
+    "head2_positive_class": "viral_morphogenesis_associated",
+    "head3_not_reached_label": "not_reached",
+    "head3_rejection_label": "unknown/other",
+    "order": [
+      "head1",
+      "head2",
+      "head3_phylum"
+    ]
+  },
+  "schema_version": 2,
+  "source_calibrations": {
+    "esm2_3b": {
+      "selected_heads": [
+        "head1",
+        "head2"
+      ],
+      "sha256": "14ca860b6cf2723aebfcc81744dbae98dcdc328459390f5ae9f7da9569b06e95",
+      "training_embedding_metadata_sha256": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59",
+      "training_manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7"
+    },
+    "esmc_6b": {
+      "selected_heads": [
+        "head3_phylum"
+      ],
+      "sha256": "c654e402428c35b5284ad12aed5418bf9116104ff951daa7b84d349e94c28747",
+      "training_embedding_metadata_sha256": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41",
+      "training_manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7"
+    }
+  },
+  "source_project": "DJR-MCP-Finder project V0; data-curation V3",
+  "training_domain": {
+    "allowed_residues": "ACDEFGHIKLMNPQRSTVWXY",
+    "length_max": 2906,
+    "length_min": 130,
+    "representative_count": 11060
+  }
+}

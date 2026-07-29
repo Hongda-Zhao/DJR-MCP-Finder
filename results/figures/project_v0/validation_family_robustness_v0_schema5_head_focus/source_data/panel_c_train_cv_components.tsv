@@ -1,0 +1,7 @@
+component_role	model_id	cv_head1_average_precision	cv_head2_average_precision	cv_head3_macro_f1
+H1_and_H2_candidate	esm2_650m	0.9979167329400008	1.0	
+H1_and_H2_candidate	esm2_3b	0.9993030608144473	1.0	
+H1_and_H2_candidate	esmc_6b	0.9984698689777659	1.0	
+H3_candidate	esmc_300m			0.9617754233275507
+H3_candidate	esmc_600m			0.9628521543740944
+H3_candidate	esmc_6b			0.980627878212277

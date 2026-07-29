@@ -1,0 +1,19 @@
+task	method	track	distance_stratum	positive_records	positive_components	component_balanced_sensitivity_at_99.5pct_specificity	inference_status	stratum_caveat
+h1_djr	blastp	controlled_primary	best_local_qcov_lt80	362	264	0.8578621581670361	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h1_djr	diamond_ultra	controlled_primary	best_local_qcov_lt80	362	264	0.8907828282828282	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h1_djr	esm2_650m_cosine	controlled_primary	best_local_qcov_lt80	362	264	0.8615914065609188	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h1_djr	esmc6b_cosine	controlled_primary	best_local_qcov_lt80	362	264	0.6400235942918869	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h1_djr	hmmer_component	controlled_primary	best_local_qcov_lt80	362	264	0.898989898989899	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h1_djr	mmseqs_s7.5	controlled_primary	best_local_qcov_lt80	362	264	0.86489898989899	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	blastp	controlled_primary	best_local_qcov_lt80	147	100	0.9	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	diamond_ultra	controlled_primary	best_local_qcov_lt80	147	100	0.89	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	esm2_650m_cosine	controlled_primary	best_local_qcov_lt80	147	100	1.0	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	esmc6b_cosine	controlled_primary	best_local_qcov_lt80	147	100	0.917560975609756	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	hmmer_component	controlled_primary	best_local_qcov_lt80	147	100	0.93	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+h2_vma_conditional	mmseqs_s7.5	controlled_primary	best_local_qcov_lt80	147	100	0.8599999999999999	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	blastp	controlled_primary	best_local_qcov_lt80	147	100	0.89	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	diamond_ultra	controlled_primary	best_local_qcov_lt80	147	100	0.89	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	esm2_650m_cosine	controlled_primary	best_local_qcov_lt80	147	100	0.9892682926829268	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	esmc6b_cosine	controlled_primary	best_local_qcov_lt80	147	100	0.9168292682926829	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	hmmer_component	controlled_primary	best_local_qcov_lt80	147	100	0.93	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate
+vma_end_to_end	mmseqs_s7.5	controlled_primary	best_local_qcov_lt80	147	100	0.8499999999999999	DESCRIPTIVE	BLASTP best local query coverage and identity; not a global evolutionary-distance estimate

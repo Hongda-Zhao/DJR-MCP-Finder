@@ -1,0 +1,138 @@
+{
+  "active_destinations": {
+    "figure": "/lustre/aptmp/hongda/DJR-MCP-Finder/results/figures/project_v0/validation_family_robustness_v0_schema5_mixed_heads",
+    "result": "/lustre/aptmp/hongda/DJR-MCP-Finder/results/validation_family_robustness_v0_schema5_mixed_heads"
+  },
+  "amendment_c_fixed_lineage": {
+    "result_checksums_sha256": "aa9f3cef647487d4eaec7749ceeb49c58085657a38d0d99c7577f3655448e72c",
+    "result_dir": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/results",
+    "validation_path": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1/validation.json",
+    "validation_sha256": "2b63cecae7788cce3d4c8ef96d48bf1becfbe8d74b9e9c084b2ab69a47542bcb"
+  },
+  "analysis_id": "project_v0_validation_family_robustness_schema5_mixed_heads",
+  "artifact_role": "checksum_bound_schema5_compact_source_binding",
+  "data_curation_version": "V3",
+  "figure_core": {
+    "active_inventory_authority": "CHECKSUMS.sha256",
+    "excluded_from_active": [
+      "validation_family_robustness_v0_schema5_mixed_heads.tiff"
+    ],
+    "figure_manifest_scope": "complete_source_figure_generation",
+    "included_from_full": [
+      "QA.json",
+      "figure_manifest.tsv",
+      "source_data/panel_a_evidence.tsv",
+      "source_data/panel_b_homogeneous.tsv",
+      "source_data/panel_c_mixed_candidates.tsv",
+      "source_data/panel_d_accuracy_cost_pareto.tsv",
+      "source_data/panel_d_h3_boundary.tsv",
+      "validation_family_robustness_v0_schema5_mixed_heads.pdf",
+      "validation_family_robustness_v0_schema5_mixed_heads.png",
+      "validation_family_robustness_v0_schema5_mixed_heads.svg"
+    ]
+  },
+  "h3_rare_endpoint_contract": {
+    "derivation": "frozen_family_manifest_join_to_existing_per_record_predictions",
+    "model_inference_repeated_for_subgroups": false,
+    "pooled_endpoint_role": "secondary_pooled_diagnostic",
+    "prediction_threshold_cv_nomination_equivalence_to_amendment_c_required": true,
+    "raw_reject_counts_reported": true,
+    "refit_recalibration_or_threshold_change_permitted": false,
+    "subgroup_support": {
+      "Produgelaviricota": {
+        "dependence_blocks": 2,
+        "parents": 2,
+        "records": 7
+      },
+      "literature-unclassified": {
+        "dependence_blocks": 1,
+        "interpretation": "single_record_descriptive_only_no_generalization",
+        "parents": 1,
+        "records": 1
+      }
+    }
+  },
+  "project_version": "V0",
+  "protocol_amendment": "D_h3_rare_subgroup_transparency_no_model_change",
+  "publication_contract": "valid_only_at_config_active_compact_paths",
+  "result_core": {
+    "excluded_high_volume": [
+      "path_bootstrap_replicates.tsv",
+      "schema4_recomputation_audit.tsv",
+      "single_model_predictions.tsv",
+      "system_expected_path_predictions.tsv",
+      "system_predictions.tsv"
+    ],
+    "included_from_full": [
+      "accuracy_cost_pareto.tsv",
+      "candidate_nomination.tsv",
+      "contextual_source_path_delta.tsv",
+      "h3_class_summary.tsv",
+      "legacy_numerical_operator_runtime.json",
+      "materialization_summary.tsv",
+      "model_cost_registry.tsv",
+      "pairwise_source_path_delta.tsv",
+      "schema4_recomputation_audit_summary.tsv",
+      "source_head_summary.tsv",
+      "source_path_summary.tsv",
+      "strict_cluster_summary.tsv",
+      "summary.json",
+      "system_registry.tsv",
+      "train_cv_candidate_summary.tsv"
+    ],
+    "included_validation_as": "validation.json"
+  },
+  "schema_version": 1,
+  "source_analysis_root": "/aptmp/hongda/DJRMCP_Develope/project-V0__validation-family-robustness-schema5-mixed-heads__20260728/schema5_v1_amendment_d",
+  "source_artifact_sha256": {
+    "full_figure": {
+      "QA.json": "b669067be600fcfdb220460203e143cff00dbb95aa68949d3f38c97e01ae4c60",
+      "figure_manifest.tsv": "bcf2394815d60ab0beeb9570cafac75babb2e4a3c8dc0edb435b826ff8dd03b9",
+      "source_data/panel_a_evidence.tsv": "7a14aabc3d7d50f874c8ee62f3d2f8a477d5aa6673bd792ec41ffcb8b8062b35",
+      "source_data/panel_b_homogeneous.tsv": "078f055022cb31e60915bfcd58e6b2b0360006ff52045b011fa72755856da590",
+      "source_data/panel_c_mixed_candidates.tsv": "b88371f5ce553e8175a71c7ea68fb1ad78ba6375c439db31538f4a5b498502f2",
+      "source_data/panel_d_accuracy_cost_pareto.tsv": "10e9654c993ad7c664312607025cca0f38db56488a8541e4fcc29916c1115279",
+      "source_data/panel_d_h3_boundary.tsv": "2608dc01b850e477a2fb75b5f681427fa530e52536e528d48868d3ebbc0f6961",
+      "validation_family_robustness_v0_schema5_mixed_heads.pdf": "1f9178e2e45f82230469364183201a59f83715e0a3e6d1565484efadc2d40317",
+      "validation_family_robustness_v0_schema5_mixed_heads.png": "268cecdd7c8c7f63337248e355ecd7fe49f8934f21131cd5caf2d07c112d9cae",
+      "validation_family_robustness_v0_schema5_mixed_heads.svg": "7a85437d906ebabb64082eb6e177b90c2ff5496ec80b1ff547bf674511e5ac4d",
+      "validation_family_robustness_v0_schema5_mixed_heads.tiff": "faa85cadc2b19a45ad1715593d64c562913d50aac99530e42f4e50f44d171d3c"
+    },
+    "full_result": {
+      "accuracy_cost_pareto.tsv": "10e9654c993ad7c664312607025cca0f38db56488a8541e4fcc29916c1115279",
+      "candidate_nomination.tsv": "940a6fa9b970c5d72119da88a62a04105f71a67c557472742ac47ec702c6d8a8",
+      "contextual_source_path_delta.tsv": "48ce974ae4f03335c371ac084bea11a237f1e498dea909878802b2b169f076cb",
+      "h3_class_summary.tsv": "5a1852deafc7ebe34fc99b204d6b3f1d6c1d947ec688715ad4dfd55e15f4ddb1",
+      "legacy_numerical_operator_runtime.json": "33d121ed73038444daff0270cbc81d3afc637ca2794dd158c83172d9cfa0b215",
+      "materialization_summary.tsv": "9b7443092d02f0b54c8e7343bbe272a57c80db4e0e00e50767de5ce5cae3f9f3",
+      "model_cost_registry.tsv": "5112bd0c893767841f7afa1d4c32df1eebf5e74455a1824ca2e4125723a6e439",
+      "pairwise_source_path_delta.tsv": "eaebb830e9fd19b6772875a6c53cfe734762adce8d6aa6c15b8a1c0547efedd9",
+      "path_bootstrap_replicates.tsv": "a90395d3508abb50c624efcd6f255f980ee9e49408f84a49c1af1413d717778f",
+      "schema4_recomputation_audit.tsv": "c72ce2ae5f9deed999ed6439d0d213c915249b85f658fc2513ff926eb88785bc",
+      "schema4_recomputation_audit_summary.tsv": "2363b118e5cafd41a9e2004b5413a6bec7deabdcbbccd75cf281951ccf950c40",
+      "single_model_predictions.tsv": "a2b1099d6aef8b47ff0585b5074754ee6a3dce6aeecbf45431f12f51d8faaf84",
+      "source_head_summary.tsv": "27299b9d95dd0697a5d47ec2dbf63d32c3e68647808b5419a6ecfb785f9bc058",
+      "source_path_summary.tsv": "6179828aea97a33a8a68d2f1ff4309219da94ebd69d98db16da422dae39d6bc2",
+      "strict_cluster_summary.tsv": "62d11edef249f9e6ec77bb3a9375cb9bc43a912cc996a1f9d3f2d0169d68833c",
+      "summary.json": "21925a03fc7d5443b4ec39073396949d4c0d37aa6a63b68fc2c6fbfda2842c81",
+      "system_expected_path_predictions.tsv": "8c4d402683264dd595e36330bca6ad7d61127dc5f46b854dd3928be1640070e5",
+      "system_predictions.tsv": "927921b88cd98c15efaa74e68bc866ec24886138b125d782262c9ba4a6efb54b",
+      "system_registry.tsv": "31100c5b48c7e11b243edc9de91488275adc0c4b550cbb1d2ce84740c79a4bb2",
+      "train_cv_candidate_summary.tsv": "ccc51f25e685c64e424a51558eda3c4614719b5c731bfb02a52eea5661204cc9"
+    }
+  },
+  "source_schema_version": 5,
+  "source_sha256": {
+    "amendment_c_result_checksums": "aa9f3cef647487d4eaec7749ceeb49c58085657a38d0d99c7577f3655448e72c",
+    "amendment_c_validation": "2b63cecae7788cce3d4c8ef96d48bf1becfbe8d74b9e9c084b2ab69a47542bcb",
+    "comparison_summary": "4b4e0088f65f82e8ca18301c263c1fea4520ca5f63550947d0ef8c640f094c9c",
+    "config": "d58fa812527a7e4338ef6aa85c50eac854338b282417211a4af9568dfdaa434d",
+    "full_figure_checksums": "48526ab81bd7fd5d07b76ca0839b0ec2b53dc16dfbc4ddeaf0a043d3e657b130",
+    "full_figure_qa": "b669067be600fcfdb220460203e143cff00dbb95aa68949d3f38c97e01ae4c60",
+    "full_result_checksums": "1c1fc284a646bd4ccf01fd29081e097e402b25f61e08cab509dbff576d8ba653",
+    "independent_validation": "1933b8c8b1a0f6c158872fe9b233ed91c84cdbcf9fa07c56dd2c086ae0075aaf",
+    "protocol": "6b09fefaa4b8b9412205a0caac814c94ee9b8656e7cbaa9d20097766231e16db",
+    "schema3_family_member_manifest": "8cd9e9ce45ad965eb745cc4ecdf08d7e3205f57b830bca00bcf0041e5bcdf541"
+  },
+  "test_records": 0
+}

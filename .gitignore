@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.venv-v0/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+
+# HPC logs
+*.o[0-9]*
+*.e[0-9]*
+*.OU
+logs/
+
+# Large or generated data
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# Dataset release identity (the underlying generated dataset remains excluded)
+!data/processed/v0/
+data/processed/v0/*
+!data/processed/v0/CHECKSUMS.sha256
+
+# Generated results
+results/*
+!results/README.md
+!results/.gitkeep
+
+# Compact, checksum-bound evidence published with the repository
+!results/figures/
+!results/figures/project_v0/
+!results/figures/project_v0/**
+# Historical helper figure, not part of the current two-figure release.
+results/figures/project_v0/hardneg_source_recovery_v0/
+!results/validation_family_robustness_v0_schema5_mixed_heads/
+!results/validation_family_robustness_v0_schema5_mixed_heads/**
+
+# Small identity files required by PROJECT_V0_RELEASE_CHECKSUMS.sha256
+!results/postsplit_integrity_v0/
+results/postsplit_integrity_v0/*
+!results/postsplit_integrity_v0/CHECKSUMS.sha256
+!results/model_benchmark_v0/
+results/model_benchmark_v0/*
+!results/model_benchmark_v0/frozen_global_component_folds.json
+!results/model_benchmark_v0/frozen_global_component_folds.tsv
+!results/model_benchmark_v0/COMPARISON_CHECKSUMS.sha256
+!results/model_benchmark_v0/fold_scores.tsv
+!results/model_benchmark_v0/model_comparison.json
+!results/model_benchmark_v0/model_comparison.tsv
+!results/model_benchmark_v0_metric_revision_1/
+results/model_benchmark_v0_metric_revision_1/*
+!results/model_benchmark_v0_metric_revision_1/COMPARISON_CHECKSUMS.sha256
+!results/model_benchmark_v0_metric_revision_1/INDEPENDENT_VALIDATION.json
+!results/model_benchmark_v0_metric_revision_1/fold_scores.tsv
+!results/model_benchmark_v0_metric_revision_1/model_comparison.json
+!results/model_benchmark_v0_metric_revision_1/model_comparison.tsv
+!results/model_benchmark_v0_metric_revision_1/esmc_6b/
+results/model_benchmark_v0_metric_revision_1/esmc_6b/*
+!results/model_benchmark_v0_metric_revision_1/esmc_6b/**
+
+# Model caches and checkpoints
+.cache/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+*.npy
+*.npz
+*.parquet

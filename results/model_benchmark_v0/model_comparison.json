@@ -1,0 +1,1803 @@
+{
+  "benchmark_config_path": "configs/model_benchmark_v0.yaml",
+  "benchmark_config_sha256": "bcd5feb7f78ff6b10dd38824bf76b91012b952780002bc77b39670e41f1e550c",
+  "benchmark_version": "project-v0-model-benchmark__source-database-v3-560",
+  "candidate_artifact_hashes": {
+    "amplify_350m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "2621fe04c49d4e7522a81f205c867523abfa88b64e0c83963c91c84674b112d8",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "f7d21ea4027ec96e8c3e968cddd79de3e7e9b4b244b86ecd2526f2caa5675de0"
+      },
+      "input_sha256": {
+        "calibration": "b99e2ff204411e312da8ea7590cf8321b8f03a976204981c3775456bab97f95f",
+        "cross_validation": "05cc06764ceaeb2752dfce33d2f916f55f0023d0f571298b9efb11d252ce5ec4",
+        "embedding_checksums": "871ed9fd272c141046cda9c2349f1359c47a3aa4ed1513c88a2d7e79bf6b49d9",
+        "embedding_metadata": "f7d21ea4027ec96e8c3e968cddd79de3e7e9b4b244b86ecd2526f2caa5675de0",
+        "validation": "2c6c06fe3f92f344e8a73ca49b61a12c5b4b0e315af79fe8d8fde50565ef83a0"
+      },
+      "model_sha256": {
+        "head1": "5689f8c1e5997ad3ec68f6ad33663d50958f93813d260859a1b64acfc370cc45",
+        "head2": "ae3d8a110b2c073023e01142c6804a09c2147579c7a98b7b8551925f1b629509",
+        "head3_phylum": "7ed76c794d836004cbd8bfffed858cecd39b7e1511d1b964e04e21cdea254958"
+      }
+    },
+    "ankh3_large": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "71f82e7a1475cad5a01a08452cdb6b159d0c5a151aec3e6cbf75a82c94c853df",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "afcf4c9f9f2b3899a71d6c09c18daf20293967e741d736f4192a93d65c491888"
+      },
+      "input_sha256": {
+        "calibration": "5f49784e64999daa9f01c551ef3c11f6222a0ee1adaba457b463e87eccd3d4cf",
+        "cross_validation": "f62c8e4c544926c4fd925f14e8f2c20f09ff5dfeb5aa5e31a6441b9c66687cbd",
+        "embedding_checksums": "674d53bef747794eeb6f1273877c5815f7acf6b0e81a4a7439e21ed58656281f",
+        "embedding_metadata": "afcf4c9f9f2b3899a71d6c09c18daf20293967e741d736f4192a93d65c491888",
+        "validation": "814e22da9ea949ab416adecfc2ae5d4da3875365d10f2168a51d28c1d5660edb"
+      },
+      "model_sha256": {
+        "head1": "726e54ba5afc7db52a72035173ad99950fd32f0dc64d528a6185a9b79138509c",
+        "head2": "b510d9e1427d40319bdf0d4ddd27a683f2d6ef48f0715e6496c2d9597fd6cee1",
+        "head3_phylum": "cc02bb9f842720ff1ee7b35103be390c6248faceaed4a96c5e13b2d0f937bed9"
+      }
+    },
+    "esm2_150m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "7a490208d4817f01282d0f68bb5059c94882b03796f0dbea52e3e55a59a97161",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "76628bbd1481883b47a656b76e44ac909270d5d455b50c4df775fd78263f1d6f"
+      },
+      "input_sha256": {
+        "calibration": "3cc01220e63ad9f83aaba9d0d27585797dfbf94becda70373a5325371b44b7d5",
+        "cross_validation": "ac36f4465d9353620cee61e06773389ed2bec99cc9809f33febe388961a8bf5e",
+        "embedding_checksums": "6f5ef84e9ba7963d20d8823d578f2931e5846e128b68341cdb75d86330242952",
+        "embedding_metadata": "76628bbd1481883b47a656b76e44ac909270d5d455b50c4df775fd78263f1d6f",
+        "validation": "7d9f10283fbc8cbcbaa7e2b33b81e277a29993c753c477d6933299958a489fd0"
+      },
+      "model_sha256": {
+        "head1": "a8ed8bc1d618c91137b8f3b63816291b30366fae86c39e4856cd9a9f9f25079b",
+        "head2": "2a9b8fead982b779e9762adcd7c051c31ad8868f90979c0914e9c760c82b3ade",
+        "head3_phylum": "c034941112c2246558839abf1324d442ec45a41ed3cfdde4b8e184b7e25b52f3"
+      }
+    },
+    "esm2_3b": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "c9fcf47cf43f4f9aa978651d2b709c624185e74994dd792d53cbedbc3da2f988",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59"
+      },
+      "input_sha256": {
+        "calibration": "109ff95a301490e4cfafdb3165cc3d5c14da22a6422606b3a3d235e7cdd41ad4",
+        "cross_validation": "f192c20a86afd35c2af6db8098f0576ba4833ec1b4d8f62c06cf420e1ead33d1",
+        "embedding_checksums": "53580d8888c5cdb042af53283c7900793c59d31dde856557121394acd1961cdc",
+        "embedding_metadata": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59",
+        "validation": "8cf7e02f9f647fdb2d98c8ce9201b0609c8384e1469e841da783a4edb49a0667"
+      },
+      "model_sha256": {
+        "head1": "f50cc14809df7c7f5a6c140c0caa9af3f6af65fdace801ec169cef866738a5f1",
+        "head2": "bbd67d65f01943092dbabba51525fff5185a37c6bcbaa938d77ce385076ce4e5",
+        "head3_phylum": "c5b51014022d35c023fc038405493a8e2478dc84df06c02aa5451717a3ce4d9e"
+      }
+    },
+    "esm2_650m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "7506a01b32b4ac4dbb2052ab30d78690c9cd860972418d971a90e962b1610984",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "2649aae033100c3b7171a49ea30a1a5e71b76ebbddaf0d074e6949c0d514ff5d"
+      },
+      "input_sha256": {
+        "calibration": "71359996b8ece4aebada38d969bb3b08d4c7dfeb2caa7f3e7c7b649df1405514",
+        "cross_validation": "7a56bb37e37ff7bc541bb2b3dc0a0144b01ab95e3270914a2c6e7ab2b90229b2",
+        "embedding_checksums": "39cbd954a2b74e29ad1988a997a49419a8ab22fdad612abe1e76964be2cbcea7",
+        "embedding_metadata": "2649aae033100c3b7171a49ea30a1a5e71b76ebbddaf0d074e6949c0d514ff5d",
+        "validation": "37187796ae5b05e90bff0eff52dbed5841b8111eaa10401c92ee48e263d14b0c"
+      },
+      "model_sha256": {
+        "head1": "659917343f1e482d94638554d05447fe046f6313f45cb21c0d5367368a992f0a",
+        "head2": "4787780ec484f4502aca40c3bde91a1e7bc6da7f685672b420ad87c2f071be00",
+        "head3_phylum": "59071a51100ccc1d75a96105d7585710e51cb51a5a263a37a3d36ab0c820d6b4"
+      }
+    },
+    "esm3_open_1_4b": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "de2bb5adec1bc14f14f536cdce83ad70df0e690ff3d34172b226e37224100661",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "ab3c42b41ec3d22d2efdc586798a5f6138f71438f822c69c0c24e0e2dff420e0"
+      },
+      "input_sha256": {
+        "calibration": "1ffc09ed35133454818eea6a2d490d5466b892e50acde14d04a9ccb4f07acb0d",
+        "cross_validation": "93171ba0e51961f07d4f48cfeb231d11e00142998a283cf06044aa5d1587d64e",
+        "embedding_checksums": "ca533794cbdde062aa17877cc7f8004b9133e00f43dd420ef94bb2e0b9245d03",
+        "embedding_metadata": "ab3c42b41ec3d22d2efdc586798a5f6138f71438f822c69c0c24e0e2dff420e0",
+        "validation": "09d3e1fd9f812d7a194e15c80cf97501908d1d69bbae88f0940fb0ac9c4b43db"
+      },
+      "model_sha256": {
+        "head1": "b3466e30376789441bfac30bc384dca5c593292c8a79cde9a572c8064c68f049",
+        "head2": "7132fddd70575d8d97041268501cb097f01d0ce2584bb7072db1d2bc2dff4530",
+        "head3_phylum": "d686cdb5372ceff4efed86a449703602cd678727b31f6d8143aa5bb225ac31cb"
+      }
+    },
+    "esmc_300m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "24b884e7465ecc23ca837b0115a223c741f1bb019fe1e95771541aaf61f2b5be",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "a1c8e667830ed5579fcff36cd9a73f6ac7acd372d33084d7e9cfa323a046b4b5"
+      },
+      "input_sha256": {
+        "calibration": "1f5a8fa01ec5daef85c8214ea4aebe4a5c34169987ea05a789740b5ab3811598",
+        "cross_validation": "9e30cabbdb88a66f35329aca342233f1d2a0b75620f0c98bf926584388544aa5",
+        "embedding_checksums": "1743b14dcab80d2aeed9eed8287204fb217cef17217605320a84386952f84e36",
+        "embedding_metadata": "a1c8e667830ed5579fcff36cd9a73f6ac7acd372d33084d7e9cfa323a046b4b5",
+        "validation": "723a50777bc233f8ae7413b7e07461fe8fcef581588052301e5d0dc78988f038"
+      },
+      "model_sha256": {
+        "head1": "07a83cfefcd9928671aec35d8db50d1e1991cc5ae1c463229ddb704589477113",
+        "head2": "153b13d78f26fc67e865a62a5cefd9e458b862d3944721e664f7e5171734d332",
+        "head3_phylum": "d94a3b563f914cdc03800abdf0670f2db15545fd1dcd80eb05f2fb119d1381ad"
+      }
+    },
+    "esmc_600m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "b409dbefd34a1524e656cb29caffb4469d661402bf8364dc984ccf917f03ba27",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "a39f0d03e9ced16b1cad43442a1de48fe94e2d096a88955be6e95564aeb28c61"
+      },
+      "input_sha256": {
+        "calibration": "d1cdee07706eb84ed5677d07fb670f65a4a6c7b2618b694ae7802fefb493f745",
+        "cross_validation": "f26f7d9db619939081988a43c74e0f2c16ca760acaf82fb73199363fdf1e824f",
+        "embedding_checksums": "698c966a0f09fdaf9ca23458d5e105d0d8a3fc1691e07bd393e397a21b83eb2b",
+        "embedding_metadata": "a39f0d03e9ced16b1cad43442a1de48fe94e2d096a88955be6e95564aeb28c61",
+        "validation": "531fcbafef212c7192fff5dcf1011bb288930adb8ffe0545f96aa85c7219a8eb"
+      },
+      "model_sha256": {
+        "head1": "7ab417cf05a6c6a7252d2ad2c361a4e23d662d8cdb2e25cc75a5bb09ea5df699",
+        "head2": "bcce0d38e7768b7d5c44e925713ec4e0ea26b46e125d5a9f8db1c0d2b1841c39",
+        "head3_phylum": "a177e0498102f4a5d60d54e708e6c8eea1bfa3b8f751a8821bac22a5e660d331"
+      }
+    },
+    "esmc_6b": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41"
+      },
+      "input_sha256": {
+        "calibration": "3a5e124f716703f746c901fa21f7b0dc6922be081cceee988df3215c31a5a153",
+        "cross_validation": "6d911050298bc50af030aa0ca03b7d538023ca7b111b507c793142181660e1fa",
+        "embedding_checksums": "1ae9b27960295fdd26459271b676da8093c4f8526a0bb6327d12a5738d03a8d1",
+        "embedding_metadata": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41",
+        "validation": "970659500706fda5b5e1ac0e08f0be18617e40ec154d47d8c1ed692ebb028bdf"
+      },
+      "model_sha256": {
+        "head1": "32f4e5bca3451f8801e7a27ef6557bdced8acec1badba70d2eec4c54bd2c7548",
+        "head2": "511a5deb7fd727c757b577811044b6e83d9778585e0d4f33114afc88a1eb888a",
+        "head3_phylum": "f5c1574053218ea6cbcf4e2fc609f56e0b351ffdd8859da0e434664644181e5a"
+      }
+    },
+    "mimic_1b": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "6b5224e63c0c454133a9037e3134c9c4ada72425f7fa4a1bc3c1ce5489d4130c",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "dd2617e0088134276c7f614fcfb22617953c690fb627ee830296909343549484"
+      },
+      "input_sha256": {
+        "calibration": "5884f11c1c7bcf329067853438c4f4f50b3d6ad315d2ff267af292a9d0ca6e08",
+        "cross_validation": "90c7b6ea547e4e68c69879d85b80e1216b0a02611a3c1ef36c28e0c815b98510",
+        "embedding_checksums": "fb895163ca4e27ef307c5c2f28ce09c5a434465ba84de879ad79a76fa6e885f8",
+        "embedding_metadata": "dd2617e0088134276c7f614fcfb22617953c690fb627ee830296909343549484",
+        "validation": "36878bf3b8fd97d6d67928f6586befffb078b34af600b7e4bc2415d8b0b46e9c"
+      },
+      "model_sha256": {
+        "head1": "4f608f28ce63c0cdcf2801c970a8c55e0285c3f628532ed6a58ab6062758f87d",
+        "head2": "c75207bd6fdd4e4d20eef4c634ce37de314afdad13aeadc864665b403ebfbde2",
+        "head3_phylum": "4343b4b411ead2a2e62f250b7c1d758bd0f26097fdfe0ee3b216dc8b5ba31113"
+      }
+    },
+    "prostt5": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "6761051978f4ce28dbb42a37792867c989bb79f2c77c7e94e5fe762f397ed2d8",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "60c0e95de54c1881748ba9fddeedbda388e1c37548bdc42443aa62b76842de29"
+      },
+      "input_sha256": {
+        "calibration": "8be052d3e41b90f03a91b2511a142301500fe54d760df5cfabf51f1d536c270d",
+        "cross_validation": "42d236e2e03c101e8a55ee1ebd2574250d2a36284e9091e15cc8708afbbbe6a8",
+        "embedding_checksums": "124a9a7f037b783230fe8e2a77b8b8e4df9b6a5f6f73fcf346811bff6a7dfbb3",
+        "embedding_metadata": "60c0e95de54c1881748ba9fddeedbda388e1c37548bdc42443aa62b76842de29",
+        "validation": "1e278b905b872d7956f33faa4fdff83622383a707dbe7b3405b2d74b93ab6d5b"
+      },
+      "model_sha256": {
+        "head1": "ba416f87c01fc1849a62efc4a0ab34d924eabb21a43f186f03fcdaebaa61cb74",
+        "head2": "0d6aa4105fa15253d588676984add4207a46294d8d535fb59fbad51f8d28ec38",
+        "head3_phylum": "48036f4e3ab6bd9afab9fa403ccba4e29c23e3d3649de9f36e100d6a12a1e0a1"
+      }
+    },
+    "protrek_650m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "c6d0b1c03d73d68fb82588613ac5a326b962b08f94114d5f5af77aeac4c1409b",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "fb0fbb1791ebcf2949b8348402e7e07d90a6c89cf24418805802858e22b37fec"
+      },
+      "input_sha256": {
+        "calibration": "c177f53df414bb290c12f4bef0319e9abfd8cc981f89ba97c099fdf4c76bd681",
+        "cross_validation": "29ec95f18c04aeb7c6c6ccdbc28562827660f53b398b6c3147460f6c37d516a1",
+        "embedding_checksums": "877a9f046808cbd4e07d73b46e7ce0bc182b577feade116d540a88f8b328d396",
+        "embedding_metadata": "fb0fbb1791ebcf2949b8348402e7e07d90a6c89cf24418805802858e22b37fec",
+        "validation": "4aae1516d35bb2135582d3ebde988101c88981c9e0f92e9747b8423d8445aa67"
+      },
+      "model_sha256": {
+        "head1": "8e452fe984f81e37cc489c8b65b6847885f497d01caa77f31682f35b5fd6dad2",
+        "head2": "3ef44e931f6d23ee6a2060588a1ee1a41f83f7cc6cfb7806d61fc90a96da36b0",
+        "head3_phylum": "89c6239973eb543fd0a1857bcddef09ead49e1191aa096b181e5130931b2f7a8"
+      }
+    },
+    "protsent_150m": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "747809751790bb143379de05c4e51a511fbcb1717adcd1ee646ba16b24e008e7",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "192ecdb39cf2384edc1ae3f4aaeacd7528f9d8cba05828dd2167775b5da0c233"
+      },
+      "input_sha256": {
+        "calibration": "def3add2a9f4b993c820152c8d89015ed53ff69d38f5f5f891a690b92419963e",
+        "cross_validation": "aeca56b360b34c02a7d8a4fdd2a64120207ac733b16d142496332e3d2c773cf0",
+        "embedding_checksums": "5907136bd22312256d7a0266928cc05d42e2363017a9228e5a1be0cbd28f743b",
+        "embedding_metadata": "192ecdb39cf2384edc1ae3f4aaeacd7528f9d8cba05828dd2167775b5da0c233",
+        "validation": "c38517b2070e286bc22ff3a75bf9e2c66eb3089dc733ecb8db28bb91c53c7da5"
+      },
+      "model_sha256": {
+        "head1": "2d8a2f446d73f0ec4a34159651c988d271028a8c60eb5c0dd9cf0346cf7b29dd",
+        "head2": "9711a1dc454c98088f0407f0164497c278cafc9fe93bbc981a89436c8b5b7d17",
+        "head3_phylum": "979eb12ed67721a4e5662489b750d2f50bbb55c8454e4522a9c5b427ab612b95"
+      }
+    },
+    "prott5_xl": {
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "e0f75d4a2ceefe54e93bfe65d26c075a57eca220ac4207ca6f0aaf7758c41ddf",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "43c378044b87456447279ea0034e3c3157077ca682316d447218f39baedfc57f"
+      },
+      "input_sha256": {
+        "calibration": "5a696346b469e2bd1dd0c8c7fb831a1c43b62dfeab5b51523212dc78290368e1",
+        "cross_validation": "d881dbbe722e21e6879c9d94b654aee598666d4f9ddbcca06a01851786e453c4",
+        "embedding_checksums": "fce88a8ae290096d69f6a48cb2ccaa0ae16d1a7d07bd97a25b473060ffe8ff3d",
+        "embedding_metadata": "43c378044b87456447279ea0034e3c3157077ca682316d447218f39baedfc57f",
+        "validation": "11e1046fd3af5107d20a284c664f3fec86a4bf50d157ecd32ea70fe95f8753ff"
+      },
+      "model_sha256": {
+        "head1": "10ca9b87f3509662273ce984c69d2e4912cd9b88a0f443b4c0cecbdd5b37faaf",
+        "head2": "18aaf3d786e126749c3f48a60a5703b25cee0a6aa5a06eceee5405d88998880a",
+        "head3_phylum": "162ef5704774d64fa6317a2097a8977f0941986975312419636ec17ecfdbb8ae"
+      }
+    }
+  },
+  "candidate_model_ids": [
+    "esm2_150m",
+    "esm2_650m",
+    "esm2_3b",
+    "esmc_300m",
+    "esmc_600m",
+    "esmc_6b",
+    "prott5_xl",
+    "ankh3_large",
+    "amplify_350m",
+    "protsent_150m",
+    "protrek_650m",
+    "prostt5",
+    "mimic_1b",
+    "esm3_open_1_4b"
+  ],
+  "complete_model_count": 14,
+  "config_path": "configs/model_benchmark_v0.yaml",
+  "config_sha256": "bcd5feb7f78ff6b10dd38824bf76b91012b952780002bc77b39670e41f1e550c",
+  "cv_fold_contract": {
+    "fold_map_path": "results/model_benchmark_v0/frozen_global_component_folds.tsv",
+    "fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+    "fold_metadata_path": "results/model_benchmark_v0/frozen_global_component_folds.json",
+    "fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+    "folds": 5,
+    "group_field": "global_component_id",
+    "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+    "method": "StratifiedGroupKFold_on_train_hierarchy_stratum",
+    "schema_version": 1,
+    "seed": 20260722,
+    "split": "train",
+    "train_global_component_count": 5566
+  },
+  "highest_selectable_cv_model_id": "prott5_xl",
+  "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+  "models": [
+    {
+      "composite_fold_scores": [
+        0.9196961337891972,
+        0.9485932343234323,
+        0.8647599990065744,
+        0.892900077830205,
+        0.8834173086214743
+      ],
+      "composite_score": 0.9018733507141766,
+      "composite_se": 0.014661079619099753,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8565468183905882,
+      "cv_head1_se": 0.02259372762461633,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.8794525967982381,
+      "cv_head3_se": 0.018059910985622558,
+      "difference_from_best_selectable_cv": 0.007895828449390407,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "7a490208d4817f01282d0f68bb5059c94882b03796f0dbea52e3e55a59a97161",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "76628bbd1481883b47a656b76e44ac909270d5d455b50c4df775fd78263f1d6f"
+      },
+      "embedding_dimension": 640,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esm2_150m",
+      "embedding_seconds": 38.093015141785145,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.003444214750613485,
+      "input_sha256": {
+        "calibration": "3cc01220e63ad9f83aaba9d0d27585797dfbf94becda70373a5325371b44b7d5",
+        "cross_validation": "ac36f4465d9353620cee61e06773389ed2bec99cc9809f33febe388961a8bf5e",
+        "embedding_checksums": "6f5ef84e9ba7963d20d8823d578f2931e5846e128b68341cdb75d86330242952",
+        "embedding_metadata": "76628bbd1481883b47a656b76e44ac909270d5d455b50c4df775fd78263f1d6f",
+        "validation": "7d9f10283fbc8cbcbaa7e2b33b81e277a29993c753c477d6933299958a489fd0"
+      },
+      "label": "ESM-2 150M",
+      "license": "MIT",
+      "model_id": "esm2_150m",
+      "model_name": "facebook/esm2_t30_150M_UR50D",
+      "model_sha256": {
+        "head1": "a8ed8bc1d618c91137b8f3b63816291b30366fae86c39e4856cd9a9f9f25079b",
+        "head2": "2a9b8fead982b779e9762adcd7c051c31ad8868f90979c0914e9c760c82b3ade",
+        "head3_phylum": "c034941112c2246558839abf1324d442ec45a41ed3cfdde4b8e184b7e25b52f3"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.018468477045063346,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.008557820241797742,
+        -0.03919332051175384,
+        0.04520505666743657,
+        -0.027359274186408822,
+        0.05226886003587994
+      ],
+      "parameter_count": 148138841,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 1211379712,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 6,
+      "record_count": 11060,
+      "resolved_model_revision": "a695f6045e2e32885fa60af20c13cb35398ce30c",
+      "result_dir": "results/model_benchmark_v0/esm2_150m",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9935052175553808,
+      "val_head1_fpr_at_95pct_recall": 0.0015,
+      "val_head1_mcc": 0.974185400204782,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9337349397590362,
+      "val_head3_brier": 0.11930873438615168,
+      "val_head3_ece": 0.030903608265460833,
+      "val_head3_macro_f1": 0.9089605734767026,
+      "val_head3_ood_auroc": 0.9121495327102803,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.4,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.005859220567878798,
+        "head2": 0.0,
+        "head3": -0.04167718162533829
+      },
+      "validation_gate_failures": [
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.9265130833781283,
+        0.9136936427282886,
+        0.8818922305764411,
+        0.8922038983159085,
+        0.9151481824705131
+      ],
+      "composite_score": 0.905890207493856,
+      "composite_se": 0.008170448784820952,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8571065771717816,
+      "cv_head1_se": 0.014987917504096037,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9162626119078701,
+      "cv_head3_se": 0.025071512257661504,
+      "difference_from_best_selectable_cv": 0.003878971669711073,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "7506a01b32b4ac4dbb2052ab30d78690c9cd860972418d971a90e962b1610984",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "2649aae033100c3b7171a49ea30a1a5e71b76ebbddaf0d074e6949c0d514ff5d"
+      },
+      "embedding_dimension": 1280,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esm2_650m",
+      "embedding_seconds": 81.89469560049474,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.007404583689013991,
+      "input_sha256": {
+        "calibration": "71359996b8ece4aebada38d969bb3b08d4c7dfeb2caa7f3e7c7b649df1405514",
+        "cross_validation": "7a56bb37e37ff7bc541bb2b3dc0a0144b01ab95e3270914a2c6e7ab2b90229b2",
+        "embedding_checksums": "39cbd954a2b74e29ad1988a997a49419a8ab22fdad612abe1e76964be2cbcea7",
+        "embedding_metadata": "2649aae033100c3b7171a49ea30a1a5e71b76ebbddaf0d074e6949c0d514ff5d",
+        "validation": "37187796ae5b05e90bff0eff52dbed5841b8111eaa10401c92ee48e263d14b0c"
+      },
+      "label": "ESM-2 650M",
+      "license": "MIT",
+      "model_id": "esm2_650m",
+      "model_name": "facebook/esm2_t33_650M_UR50D",
+      "model_sha256": {
+        "head1": "659917343f1e482d94638554d05447fe046f6313f45cb21c0d5367368a992f0a",
+        "head2": "4787780ec484f4502aca40c3bde91a1e7bc6da7f685672b420ad87c2f071be00",
+        "head3_phylum": "59071a51100ccc1d75a96105d7585710e51cb51a5a263a37a3d36ab0c820d6b4"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.00966190363135261,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.001740870652866655,
+        -0.004293728916610062,
+        0.02807282509756992,
+        -0.026663094672112364,
+        0.020537986186841106
+      ],
+      "parameter_count": 651040661,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 2009298432,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 3,
+      "record_count": 11060,
+      "resolved_model_revision": "08e4846e537177426273712802403f7ba8261b6c",
+      "result_dir": "results/model_benchmark_v0/esm2_650m",
+      "selectable": true,
+      "selected": true,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "speed_tie_break_status": "used_comparable_same_fpr_group",
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "tie_break_rank": 1,
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9993644381232596,
+      "val_head1_fpr_at_95pct_recall": 0.0,
+      "val_head1_mcc": 0.9895660377358491,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9430220883534137,
+      "val_head3_brier": 0.06836206747950047,
+      "val_head3_ece": 0.018494860867886244,
+      "val_head3_macro_f1": 0.9506377551020408,
+      "val_head3_ood_auroc": 0.9233644859813084,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.8,
+      "validation_delta_vs_esm2_650m": {
+        "head1": 0.0,
+        "head2": 0.0,
+        "head3": 0.0
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": true
+    },
+    {
+      "composite_fold_scores": [
+        0.9744990736293145,
+        0.9492710182418801,
+        0.9606134530314857,
+        0.9536884915377261,
+        0.9398228078146296
+      ],
+      "composite_score": 0.9555789688510072,
+      "composite_se": 0.00580920455720531,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.9338130616188975,
+      "cv_head1_se": 0.009514702743966298,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9529113187966866,
+      "cv_head3_se": 0.007418014304168231,
+      "difference_from_best_selectable_cv": -0.045809789687440206,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "c9fcf47cf43f4f9aa978651d2b709c624185e74994dd792d53cbedbc3da2f988",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59"
+      },
+      "embedding_dimension": 2560,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esm2_3b",
+      "embedding_seconds": 260.1775455577299,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.023524190375924944,
+      "input_sha256": {
+        "calibration": "109ff95a301490e4cfafdb3165cc3d5c14da22a6422606b3a3d235e7cdd41ad4",
+        "cross_validation": "f192c20a86afd35c2af6db8098f0576ba4833ec1b4d8f62c06cf420e1ead33d1",
+        "embedding_checksums": "53580d8888c5cdb042af53283c7900793c59d31dde856557121394acd1961cdc",
+        "embedding_metadata": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59",
+        "validation": "8cf7e02f9f647fdb2d98c8ce9201b0609c8384e1469e841da783a4edb49a0667"
+      },
+      "label": "ESM-2 3B",
+      "license": "MIT",
+      "model_id": "esm2_3b",
+      "model_name": "facebook/esm2_t36_3B_UR50D",
+      "model_sha256": {
+        "head1": "f50cc14809df7c7f5a6c140c0caa9af3f6af65fdace801ec169cef866738a5f1",
+        "head2": "bbd67d65f01943092dbabba51525fff5185a37c6bcbaa938d77ce385076ce4e5",
+        "head3_phylum": "c5b51014022d35c023fc038405493a8e2478dc84df06c02aa5451717a3ce4d9e"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.013394063458400569,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        -0.04624511959831956,
+        -0.03987110443020159,
+        -0.05064839735747473,
+        -0.0881476878939299,
+        -0.004136639157275357
+      ],
+      "parameter_count": 2839000481,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 5953074176,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 1,
+      "record_count": 11060,
+      "resolved_model_revision": "476b639933c8baad5ad09a60ac1a87f987b656fc",
+      "result_dir": "results/model_benchmark_v0/esm2_3b",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9298245614035088,
+      "val_head1_fpr_at_95pct_recall": 0.008,
+      "val_head1_mcc": 0.9604092694847758,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9430220883534137,
+      "val_head3_brier": 0.05063570774416349,
+      "val_head3_ece": 0.03881478253516388,
+      "val_head3_macro_f1": 0.9506377551020408,
+      "val_head3_ood_auroc": 0.9401869158878504,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.6,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.06953987671975081,
+        "head2": 0.0,
+        "head3": 0.0
+      },
+      "validation_gate_failures": [
+        "head1"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.8894245131471409,
+        0.8789853267902048,
+        0.8583253435602428,
+        0.8851063829787232,
+        0.8842180433834588
+      ],
+      "composite_score": 0.8792119219719542,
+      "composite_se": 0.005479066726110872,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8050572993986652,
+      "cv_head1_se": 0.009736116120909846,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9617754233275507,
+      "cv_head3_se": 0.01684498058010544,
+      "difference_from_best_selectable_cv": 0.03055725719161284,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "24b884e7465ecc23ca837b0115a223c741f1bb019fe1e95771541aaf61f2b5be",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "a1c8e667830ed5579fcff36cd9a73f6ac7acd372d33084d7e9cfa323a046b4b5"
+      },
+      "embedding_dimension": 960,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esmc_300m",
+      "embedding_seconds": 45.91846141219139,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.004151759621355461,
+      "input_sha256": {
+        "calibration": "1f5a8fa01ec5daef85c8214ea4aebe4a5c34169987ea05a789740b5ab3811598",
+        "cross_validation": "9e30cabbdb88a66f35329aca342233f1d2a0b75620f0c98bf926584388544aa5",
+        "embedding_checksums": "1743b14dcab80d2aeed9eed8287204fb217cef17217605320a84386952f84e36",
+        "embedding_metadata": "a1c8e667830ed5579fcff36cd9a73f6ac7acd372d33084d7e9cfa323a046b4b5",
+        "validation": "723a50777bc233f8ae7413b7e07461fe8fcef581588052301e5d0dc78988f038"
+      },
+      "label": "ESM-C 300M",
+      "license": "MIT",
+      "model_id": "esmc_300m",
+      "model_name": "Biohub/ESMC-300M",
+      "model_sha256": {
+        "head1": "07a83cfefcd9928671aec35d8db50d1e1991cc5ae1c463229ddb704589477113",
+        "head2": "153b13d78f26fc67e865a62a5cefd9e458b862d3944721e664f7e5171734d332",
+        "head3_phylum": "d94a3b563f914cdc03800abdf0670f2db15545fd1dcd80eb05f2fb119d1381ad"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.01315766398108192,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.038829440883854094,
+        0.030414587021473705,
+        0.051639712113768166,
+        -0.019565579334927086,
+        0.05146812527389544
+      ],
+      "parameter_count": 332997184,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 4230754304,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 8,
+      "record_count": 11060,
+      "resolved_model_revision": "a59b831785f907e96e6a246b1d142bfb76df31ee",
+      "result_dir": "results/model_benchmark_v0/esmc_300m",
+      "selectable": true,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "4.57.6"
+      },
+      "val_head1_average_precision": 0.9935769245163727,
+      "val_head1_fpr_at_95pct_recall": 0.0025,
+      "val_head1_mcc": 0.9630715419750578,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9578313253012047,
+      "val_head3_brier": 0.04589707496390182,
+      "val_head3_ece": 0.01820210142470526,
+      "val_head3_macro_f1": 0.9579874213836478,
+      "val_head3_ood_auroc": 0.9364485981308411,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.4,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.005787513606886896,
+        "head2": 0.0,
+        "head3": 0.007349666281606937
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.848846431146359,
+        0.8492756480293068,
+        0.8350226024582509,
+        0.8120481927710843,
+        0.8741258741258741
+      ],
+      "composite_score": 0.843863749706175,
+      "composite_se": 0.010149648959291869,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.745964223781276,
+      "cv_head1_se": 0.017079381964565692,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9628521543740944,
+      "cv_head3_se": 0.016248653357646473,
+      "difference_from_best_selectable_cv": 0.06590542945739208,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "b409dbefd34a1524e656cb29caffb4469d661402bf8364dc984ccf917f03ba27",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "a39f0d03e9ced16b1cad43442a1de48fe94e2d096a88955be6e95564aeb28c61"
+      },
+      "embedding_dimension": 1152,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esmc_600m",
+      "embedding_seconds": 69.3265040051192,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.006268219168636456,
+      "input_sha256": {
+        "calibration": "d1cdee07706eb84ed5677d07fb670f65a4a6c7b2618b694ae7802fefb493f745",
+        "cross_validation": "f26f7d9db619939081988a43c74e0f2c16ca760acaf82fb73199363fdf1e824f",
+        "embedding_checksums": "698c966a0f09fdaf9ca23458d5e105d0d8a3fc1691e07bd393e397a21b83eb2b",
+        "embedding_metadata": "a39f0d03e9ced16b1cad43442a1de48fe94e2d096a88955be6e95564aeb28c61",
+        "validation": "531fcbafef212c7192fff5dcf1011bb288930adb8ffe0545f96aa85c7219a8eb"
+      },
+      "label": "ESM-C 600M",
+      "license": "MIT",
+      "model_id": "esmc_600m",
+      "model_name": "Biohub/ESMC-600M",
+      "model_sha256": {
+        "head1": "7ab417cf05a6c6a7252d2ad2c361a4e23d662d8cdb2e25cc75a5bb09ea5df699",
+        "head2": "bcce0d38e7768b7d5c44e925713ec4e0ea26b46e125d5a9f8db1c0d2b1841c39",
+        "head3_phylum": "a177e0498102f4a5d60d54e708e6c8eea1bfa3b8f751a8821bac22a5e660d331"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.0048495074054241165,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.07940752288463593,
+        0.06012426578237173,
+        0.0749424532157601,
+        0.05349261087271184,
+        0.06156029453148015
+      ],
+      "parameter_count": 575036992,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 4787057664,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 9,
+      "record_count": 11060,
+      "resolved_model_revision": "a7e82012c83126b9eedb055fea9fa84b6c02f094",
+      "result_dir": "results/model_benchmark_v0/esmc_600m",
+      "selectable": true,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "4.57.6"
+      },
+      "val_head1_average_precision": 0.9939292973415258,
+      "val_head1_fpr_at_95pct_recall": 0.001,
+      "val_head1_mcc": 0.9764773166595453,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9578313253012047,
+      "val_head3_brier": 0.05130533372586932,
+      "val_head3_ece": 0.022695681521278,
+      "val_head3_macro_f1": 0.9579874213836478,
+      "val_head3_ood_auroc": 0.9663551401869159,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.6,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.005435140781733794,
+        "head2": 0.0,
+        "head3": 0.007349666281606937
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.7948380566801619,
+        0.7779754200863478,
+        0.7391557951326944,
+        0.7737704918032787,
+        0.7704918032786885
+      ],
+      "composite_score": 0.7712463133962343,
+      "composite_se": 0.009051500849561729,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.6219725426250109,
+      "cv_head1_se": 0.015690907264959215,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.980627878212277,
+      "cv_head3_se": 0.00953174642758758,
+      "difference_from_best_selectable_cv": 0.13852286576733275,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41"
+      },
+      "embedding_dimension": 2560,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esmc_6b",
+      "embedding_seconds": 658.408062197268,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.059530566202284634,
+      "input_sha256": {
+        "calibration": "3a5e124f716703f746c901fa21f7b0dc6922be081cceee988df3215c31a5a153",
+        "cross_validation": "6d911050298bc50af030aa0ca03b7d538023ca7b111b507c793142181660e1fa",
+        "embedding_checksums": "1ae9b27960295fdd26459271b676da8093c4f8526a0bb6327d12a5738d03a8d1",
+        "embedding_metadata": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41",
+        "validation": "970659500706fda5b5e1ac0e08f0be18617e40ec154d47d8c1ed692ebb028bdf"
+      },
+      "label": "ESM-C 6B",
+      "license": "MIT",
+      "model_id": "esmc_6b",
+      "model_name": "Biohub/ESMC-6B",
+      "model_sha256": {
+        "head1": "32f4e5bca3451f8801e7a27ef6557bdced8acec1badba70d2eec4c54bd2c7548",
+        "head2": "511a5deb7fd727c757b577811044b6e83d9778585e0d4f33114afc88a1eb888a",
+        "head3_phylum": "f5c1574053218ea6cbcf4e2fc609f56e0b351ffdd8859da0e434664644181e5a"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.014170478978765052,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.13341589735083303,
+        0.13142449372533072,
+        0.17080926054131662,
+        0.09177031184051743,
+        0.16519436537866572
+      ],
+      "parameter_count": 6352005184,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 14998504448,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 14,
+      "record_count": 11060,
+      "resolved_model_revision": "45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a",
+      "result_dir": "results/model_benchmark_v0/esmc_6b",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "4.57.6"
+      },
+      "val_head1_average_precision": 0.7324711536452013,
+      "val_head1_fpr_at_95pct_recall": 0.0375,
+      "val_head1_mcc": 0.834523287041333,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9578313253012047,
+      "val_head3_brier": 0.0717005107194919,
+      "val_head3_ece": 0.08011060423276835,
+      "val_head3_macro_f1": 0.9579874213836478,
+      "val_head3_ood_auroc": 0.9775700934579439,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.8,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.26689328447805827,
+        "head2": 0.0,
+        "head3": 0.007349666281606937
+      },
+      "validation_gate_failures": [
+        "head1"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.928253954030995,
+        0.9093999138116785,
+        0.909965055674011,
+        0.8655408036437962,
+        0.9356861686573542
+      ],
+      "composite_score": 0.909769179163567,
+      "composite_se": 0.012185444538353716,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8590246176484045,
+      "cv_head1_se": 0.019984034557440394,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9435440857452431,
+      "cv_head3_se": 0.0128059476874984,
+      "difference_from_best_selectable_cv": 0.0,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "e0f75d4a2ceefe54e93bfe65d26c075a57eca220ac4207ca6f0aaf7758c41ddf",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "43c378044b87456447279ea0034e3c3157077ca682316d447218f39baedfc57f"
+      },
+      "embedding_dimension": 1024,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_prott5_xl",
+      "embedding_seconds": 197.74476939998567,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.017879273905966154,
+      "input_sha256": {
+        "calibration": "5a696346b469e2bd1dd0c8c7fb831a1c43b62dfeab5b51523212dc78290368e1",
+        "cross_validation": "d881dbbe722e21e6879c9d94b654aee598666d4f9ddbcca06a01851786e453c4",
+        "embedding_checksums": "fce88a8ae290096d69f6a48cb2ccaa0ae16d1a7d07bd97a25b473060ffe8ff3d",
+        "embedding_metadata": "43c378044b87456447279ea0034e3c3157077ca682316d447218f39baedfc57f",
+        "validation": "11e1046fd3af5107d20a284c664f3fec86a4bf50d157ecd32ea70fe95f8753ff"
+      },
+      "label": "ProtT5-XL-U50",
+      "license": "Apache-2.0",
+      "model_id": "prott5_xl",
+      "model_name": "Rostlab/prot_t5_xl_half_uniref50-enc",
+      "model_sha256": {
+        "head1": "10ca9b87f3509662273ce984c69d2e4912cd9b88a0f443b4c0cecbdd5b37faaf",
+        "head2": "18aaf3d786e126749c3f48a60a5703b25cee0a6aa5a06eceee5405d88998880a",
+        "head3_phylum": "162ef5704774d64fa6317a2097a8977f0941986975312419636ec17ecfdbb8ae"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.0,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parameter_count": 1208141824,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 6738370048,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 2,
+      "record_count": 11060,
+      "resolved_model_revision": "94a6abc029ae13029317b140b7424e012bf8dfbf",
+      "result_dir": "results/model_benchmark_v0/prott5_xl",
+      "selectable": true,
+      "selected": false,
+      "source_kind": "sequence denoising",
+      "speed_tie_break_eligible": true,
+      "speed_tie_break_status": "not_invoked_single_model_after_fpr",
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "tie_break_rank": 3,
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9978332261561357,
+      "val_head1_fpr_at_95pct_recall": 0.001,
+      "val_head1_mcc": 0.9817823109739147,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9578313253012047,
+      "val_head3_brier": 0.05879310326241148,
+      "val_head3_ece": 0.02571394152947501,
+      "val_head3_macro_f1": 0.9579874213836478,
+      "val_head3_ood_auroc": 0.7738317757009345,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.6,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.0015312119671239133,
+        "head2": 0.0,
+        "head3": 0.007349666281606937
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": true
+    },
+    {
+      "composite_fold_scores": [
+        0.8233695453632162,
+        0.7992832083359593,
+        0.7733831400535236,
+        0.7726784605834884,
+        0.8069513457556935
+      ],
+      "composite_score": 0.7951331400183762,
+      "composite_se": 0.009827163292840242,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.6799787689006752,
+      "cv_head1_se": 0.01593326970170117,
+      "cv_head2_average_precision": 0.9999350649350649,
+      "cv_head2_se": 6.493506493505663e-05,
+      "cv_head3_macro_f1": 0.8716535919745162,
+      "cv_head3_se": 0.014349656413493587,
+      "difference_from_best_selectable_cv": 0.11463603914519083,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "71f82e7a1475cad5a01a08452cdb6b159d0c5a151aec3e6cbf75a82c94c853df",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "afcf4c9f9f2b3899a71d6c09c18daf20293967e741d736f4192a93d65c491888"
+      },
+      "embedding_dimension": 1536,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_ankh3_large",
+      "embedding_seconds": 188.19786938373,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.0170160822227604,
+      "input_sha256": {
+        "calibration": "5f49784e64999daa9f01c551ef3c11f6222a0ee1adaba457b463e87eccd3d4cf",
+        "cross_validation": "f62c8e4c544926c4fd925f14e8f2c20f09ff5dfeb5aa5e31a6441b9c66687cbd",
+        "embedding_checksums": "674d53bef747794eeb6f1273877c5815f7acf6b0e81a4a7439e21ed58656281f",
+        "embedding_metadata": "afcf4c9f9f2b3899a71d6c09c18daf20293967e741d736f4192a93d65c491888",
+        "validation": "814e22da9ea949ab416adecfc2ae5d4da3875365d10f2168a51d28c1d5660edb"
+      },
+      "label": "Ankh3 Large",
+      "license": "CC-BY-NC-SA-4.0",
+      "model_id": "ankh3_large",
+      "model_name": "ElnaggarLab/ankh3-large",
+      "model_sha256": {
+        "head1": "726e54ba5afc7db52a72035173ad99950fd32f0dc64d528a6185a9b79138509c",
+        "head2": "b510d9e1427d40319bdf0d4ddd27a683f2d6ef48f0715e6496c2d9597fd6cee1",
+        "head3_phylum": "cc02bb9f842720ff1ee7b35103be390c6248faceaed4a96c5e13b2d0f937bed9"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.007968719196525684,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.10488440866777882,
+        0.11011670547571917,
+        0.13658191562048738,
+        0.09286234306030772,
+        0.12873482290166072
+      ],
+      "parameter_count": 1151879680,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 3838497280,
+      "permissive_license": false,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 13,
+      "record_count": 11060,
+      "resolved_model_revision": "2be091622e8a393f0ef21735070084123c874b6e",
+      "result_dir": "results/model_benchmark_v0/ankh3_large",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence multi-objective",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9772989725412099,
+      "val_head1_fpr_at_95pct_recall": 0.002,
+      "val_head1_mcc": 0.9661642450995501,
+      "val_head2_balanced_accuracy": 0.9910714285714286,
+      "val_head2_macro_f1": 0.9905450004459906,
+      "val_head3_balanced_accuracy": 0.8591867469879518,
+      "val_head3_brier": 0.17573004256587813,
+      "val_head3_ece": 0.05351639772747465,
+      "val_head3_macro_f1": 0.8449443638122884,
+      "val_head3_ood_auroc": 0.6242990654205607,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.0,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.022065465582049693,
+        "head2": -0.009454999554009413,
+        "head3": -0.10569339128975241
+      },
+      "validation_gate_failures": [
+        "head1",
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.8286479616640046,
+        0.800128145057705,
+        0.7946601950562565,
+        0.7831217904952219,
+        0.7734025122537362
+      ],
+      "composite_score": 0.7959921209053847,
+      "composite_se": 0.009384083550911838,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.6797950902157514,
+      "cv_head1_se": 0.0187896812956214,
+      "cv_head2_average_precision": 0.9985500513358057,
+      "cv_head2_se": 0.0005996249298074172,
+      "cv_head3_macro_f1": 0.8855005137519238,
+      "cv_head3_se": 0.022034450129279348,
+      "difference_from_best_selectable_cv": 0.1137770582581823,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "2621fe04c49d4e7522a81f205c867523abfa88b64e0c83963c91c84674b112d8",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "f7d21ea4027ec96e8c3e968cddd79de3e7e9b4b244b86ecd2526f2caa5675de0"
+      },
+      "embedding_dimension": 960,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_amplify_350m",
+      "embedding_seconds": 85.05638043768704,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.007690450310821613,
+      "input_sha256": {
+        "calibration": "b99e2ff204411e312da8ea7590cf8321b8f03a976204981c3775456bab97f95f",
+        "cross_validation": "05cc06764ceaeb2752dfce33d2f916f55f0023d0f571298b9efb11d252ce5ec4",
+        "embedding_checksums": "871ed9fd272c141046cda9c2349f1359c47a3aa4ed1513c88a2d7e79bf6b49d9",
+        "embedding_metadata": "f7d21ea4027ec96e8c3e968cddd79de3e7e9b4b244b86ecd2526f2caa5675de0",
+        "validation": "2c6c06fe3f92f344e8a73ca49b61a12c5b4b0e315af79fe8d8fde50565ef83a0"
+      },
+      "label": "AMPLIFY 350M",
+      "license": "MIT",
+      "model_id": "amplify_350m",
+      "model_name": "multimolecule/amplify-350m",
+      "model_sha256": {
+        "head1": "5689f8c1e5997ad3ec68f6ad33663d50958f93813d260859a1b64acfc370cc45",
+        "head2": "ae3d8a110b2c073023e01142c6804a09c2147579c7a98b7b8551925f1b629509",
+        "head3_phylum": "7ed76c794d836004cbd8bfffed858cecd39b7e1511d1b964e04e21cdea254958"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.013341041898589007,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.09960599236699041,
+        0.10927176875397349,
+        0.11530486061775447,
+        0.08241901314857425,
+        0.16228365640361797
+      ],
+      "parameter_count": 354914880,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 2857330176,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "not_flagged",
+      "raw_cv_rank": 12,
+      "record_count": 11060,
+      "resolved_model_revision": "3abbb10b26ec94d9602aa60c0fca3a9642447d58",
+      "result_dir": "results/model_benchmark_v0/amplify_350m",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence MLM",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9800362757235772,
+      "val_head1_fpr_at_95pct_recall": 0.006,
+      "val_head1_mcc": 0.9476222631174713,
+      "val_head2_balanced_accuracy": 0.9905357142857143,
+      "val_head2_macro_f1": 0.9905357142857143,
+      "val_head3_balanced_accuracy": 0.927710843373494,
+      "val_head3_brier": 0.14451647463948758,
+      "val_head3_ece": 0.06073484233514045,
+      "val_head3_macro_f1": 0.8974025974025974,
+      "val_head3_ood_auroc": 0.8411214953271028,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.2,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.01932816239968238,
+        "head2": -0.009464285714285703,
+        "head3": -0.053235157699443425
+      },
+      "validation_gate_failures": [
+        "head1",
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.9357819915682968,
+        0.9108823586466412,
+        0.8977777777777778,
+        0.8871511761232307,
+        0.8817842862844798
+      ],
+      "composite_score": 0.9026755180800852,
+      "composite_se": 0.009656157201781772,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8512639443232175,
+      "cv_head1_se": 0.016636254485213827,
+      "cv_head2_average_precision": 0.9999350649350649,
+      "cv_head2_se": 6.493506493505663e-05,
+      "cv_head3_macro_f1": 0.9193663200563537,
+      "cv_head3_se": 0.023989206588946547,
+      "difference_from_best_selectable_cv": 0.007093661083481861,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "747809751790bb143379de05c4e51a511fbcb1717adcd1ee646ba16b24e008e7",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "192ecdb39cf2384edc1ae3f4aaeacd7528f9d8cba05828dd2167775b5da0c233"
+      },
+      "embedding_dimension": 640,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_protsent_150m",
+      "embedding_seconds": 56.15491141285747,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.005077297596099229,
+      "input_sha256": {
+        "calibration": "def3add2a9f4b993c820152c8d89015ed53ff69d38f5f5f891a690b92419963e",
+        "cross_validation": "aeca56b360b34c02a7d8a4fdd2a64120207ac733b16d142496332e3d2c773cf0",
+        "embedding_checksums": "5907136bd22312256d7a0266928cc05d42e2363017a9228e5a1be0cbd28f743b",
+        "embedding_metadata": "192ecdb39cf2384edc1ae3f4aaeacd7528f9d8cba05828dd2167775b5da0c233",
+        "validation": "c38517b2070e286bc22ff3a75bf9e2c66eb3089dc733ecb8db28bb91c53c7da5"
+      },
+      "label": "ProtSent 150M",
+      "license": "MIT",
+      "model_id": "protsent_150m",
+      "model_name": "oriel9p/protsent-esm2-150M",
+      "model_sha256": {
+        "head1": "2d8a2f446d73f0ec4a34159651c988d271028a8c60eb5c0dd9cf0346cf7b29dd",
+        "head2": "9711a1dc454c98088f0407f0164497c278cafc9fe93bbc981a89436c8b5b7d17",
+        "head3_phylum": "979eb12ed67721a4e5662489b750d2f50bbb55c8454e4522a9c5b427ab612b95"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.012900038214234723,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        -0.007528037537301802,
+        -0.0014824448349627373,
+        0.012187277896233195,
+        -0.021610372479434536,
+        0.05390188237287441
+      ],
+      "parameter_count": 148138841,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 770949120,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "high",
+      "raw_cv_rank": 5,
+      "record_count": 11060,
+      "resolved_model_revision": "30df216065be8bb7ca71254bab60784945f94e53",
+      "result_dir": "results/model_benchmark_v0/protsent_150m",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "contrastive sequence embedding",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9883044548067162,
+      "val_head1_fpr_at_95pct_recall": 0.004,
+      "val_head1_mcc": 0.9586645214972198,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.8832831325301205,
+      "val_head3_brier": 0.13355134881248595,
+      "val_head3_ece": 0.06683471251941775,
+      "val_head3_macro_f1": 0.8854088050314466,
+      "val_head3_ood_auroc": 0.8186915887850468,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.2,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.011059983316543343,
+        "head2": 0.0,
+        "head3": -0.06522895007059426
+      },
+      "validation_gate_failures": [
+        "head1",
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.8228432209386916,
+        0.8254926489213577,
+        0.800489735901105,
+        0.7948881679650911,
+        0.7738315303716534
+      ],
+      "composite_score": 0.8035090608195798,
+      "composite_se": 0.009542745473393847,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.6880551583719341,
+      "cv_head1_se": 0.016489814934137804,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9067596579641926,
+      "cv_head3_se": 0.02826114178771065,
+      "difference_from_best_selectable_cv": 0.10626011834398719,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "c6d0b1c03d73d68fb82588613ac5a326b962b08f94114d5f5af77aeac4c1409b",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "fb0fbb1791ebcf2949b8348402e7e07d90a6c89cf24418805802858e22b37fec"
+      },
+      "embedding_dimension": 1024,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_protrek_650m",
+      "embedding_seconds": 89.621188480407,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.008103181598590145,
+      "input_sha256": {
+        "calibration": "c177f53df414bb290c12f4bef0319e9abfd8cc981f89ba97c099fdf4c76bd681",
+        "cross_validation": "29ec95f18c04aeb7c6c6ccdbc28562827660f53b398b6c3147460f6c37d516a1",
+        "embedding_checksums": "877a9f046808cbd4e07d73b46e7ce0bc182b577feade116d540a88f8b328d396",
+        "embedding_metadata": "fb0fbb1791ebcf2949b8348402e7e07d90a6c89cf24418805802858e22b37fec",
+        "validation": "4aae1516d35bb2135582d3ebde988101c88981c9e0f92e9747b8423d8445aa67"
+      },
+      "label": "ProTrek 650M",
+      "license": "MIT",
+      "model_id": "protrek_650m",
+      "model_name": "yosshstd/ProTrek_650M_UniRef50_protein_encoder",
+      "model_sha256": {
+        "head1": "8e452fe984f81e37cc489c8b65b6847885f497d01caa77f31682f35b5fd6dad2",
+        "head2": "3ef44e931f6d23ee6a2060588a1ee1a41f83f7cc6cfb7806d61fc90a96da36b0",
+        "head3_phylum": "89c6239973eb543fd0a1857bcddef09ead49e1191aa096b181e5130931b2f7a8"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.015603449141717577,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.10541073309230342,
+        0.08390726489032085,
+        0.10947531977290603,
+        0.07065263567870506,
+        0.1618546382857008
+      ],
+      "parameter_count": 652352405,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 2177662464,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "high",
+      "raw_cv_rank": 11,
+      "record_count": 11060,
+      "resolved_model_revision": "309644142efa3ff0b1607a4684bc2b831bc3ae7f",
+      "result_dir": "results/model_benchmark_v0/protrek_650m",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "sequence-structure-text contrastive",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9827520676629883,
+      "val_head1_fpr_at_95pct_recall": 0.001,
+      "val_head1_mcc": 0.9790087822525179,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.8832831325301205,
+      "val_head3_brier": 0.13910184209133888,
+      "val_head3_ece": 0.03689552197699,
+      "val_head3_macro_f1": 0.8854088050314466,
+      "val_head3_ood_auroc": 0.5551401869158878,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.0,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.01661237046027131,
+        "head2": 0.0,
+        "head3": -0.06522895007059426
+      },
+      "validation_gate_failures": [
+        "head1",
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.9169754612603146,
+        0.9010839763635069,
+        0.8855720530077014,
+        0.9142936462554591,
+        0.8998131527843384
+      ],
+      "composite_score": 0.9035476579342641,
+      "composite_se": 0.00565208278086551,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8464450174852418,
+      "cv_head1_se": 0.00869932284683468,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9568064744311903,
+      "cv_head3_se": 0.00916626146388652,
+      "difference_from_best_selectable_cv": 0.006221521229302973,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "6761051978f4ce28dbb42a37792867c989bb79f2c77c7e94e5fe762f397ed2d8",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "60c0e95de54c1881748ba9fddeedbda388e1c37548bdc42443aa62b76842de29"
+      },
+      "embedding_dimension": 1024,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_prostt5",
+      "embedding_seconds": 200.9977969871834,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.018173399365929783,
+      "input_sha256": {
+        "calibration": "8be052d3e41b90f03a91b2511a142301500fe54d760df5cfabf51f1d536c270d",
+        "cross_validation": "42d236e2e03c101e8a55ee1ebd2574250d2a36284e9091e15cc8708afbbbe6a8",
+        "embedding_checksums": "124a9a7f037b783230fe8e2a77b8b8e4df9b6a5f6f73fcf346811bff6a7dfbb3",
+        "embedding_metadata": "60c0e95de54c1881748ba9fddeedbda388e1c37548bdc42443aa62b76842de29",
+        "validation": "1e278b905b872d7956f33faa4fdff83622383a707dbe7b3405b2d74b93ab6d5b"
+      },
+      "label": "ProstT5",
+      "license": "MIT",
+      "model_id": "prostt5",
+      "model_name": "Rostlab/ProstT5",
+      "model_sha256": {
+        "head1": "ba416f87c01fc1849a62efc4a0ab34d924eabb21a43f186f03fcdaebaa61cb74",
+        "head2": "0d6aa4105fa15253d588676984add4207a46294d8d535fb59fbad51f8d28ec38",
+        "head3_phylum": "48036f4e3ab6bd9afab9fa403ccba4e29c23e3d3649de9f36e100d6a12a1e0a1"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.014597181393009863,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.011278492770680382,
+        0.008315937448171606,
+        0.024393002666309616,
+        -0.048752842611662905,
+        0.035873015873015834
+      ],
+      "parameter_count": 1208164352,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 5000085504,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "high",
+      "raw_cv_rank": 4,
+      "record_count": 11060,
+      "resolved_model_revision": "d7d097d5bf9a993ab8f68488b4681d6ca70db9e5",
+      "result_dir": "results/model_benchmark_v0/prostt5",
+      "selectable": true,
+      "selected": false,
+      "source_kind": "sequence-structure translation",
+      "speed_tie_break_eligible": true,
+      "speed_tie_break_status": "used_comparable_same_fpr_group",
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "tie_break_rank": 2,
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.9958565005618368,
+      "val_head1_fpr_at_95pct_recall": 0.0,
+      "val_head1_mcc": 0.9895354320089432,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9578313253012047,
+      "val_head3_brier": 0.06274683693845173,
+      "val_head3_ece": 0.031042573377112866,
+      "val_head3_macro_f1": 0.9579874213836478,
+      "val_head3_ood_auroc": 0.9065420560747663,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.2,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.003507937561422758,
+        "head2": 0.0,
+        "head3": 0.007349666281606937
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": true
+    },
+    {
+      "composite_fold_scores": [
+        0.9193080348207541,
+        0.865611211504814,
+        0.8759948580371116,
+        0.8982037959594974,
+        0.8963259913661579
+      ],
+      "composite_score": 0.8910887783376671,
+      "composite_se": 0.009357647018040942,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.8300875010059526,
+      "cv_head1_se": 0.01722010273993293,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9303627773409545,
+      "cv_head3_se": 0.015531719409496754,
+      "difference_from_best_selectable_cv": 0.018680400825899945,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "6b5224e63c0c454133a9037e3134c9c4ada72425f7fa4a1bc3c1ce5489d4130c",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "dd2617e0088134276c7f614fcfb22617953c690fb627ee830296909343549484"
+      },
+      "embedding_dimension": 9216,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_mimic_1b",
+      "embedding_seconds": 139.30724185984582,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.012595591488231991,
+      "input_sha256": {
+        "calibration": "5884f11c1c7bcf329067853438c4f4f50b3d6ad315d2ff267af292a9d0ca6e08",
+        "cross_validation": "90c7b6ea547e4e68c69879d85b80e1216b0a02611a3c1ef36c28e0c815b98510",
+        "embedding_checksums": "fb895163ca4e27ef307c5c2f28ce09c5a434465ba84de879ad79a76fa6e885f8",
+        "embedding_metadata": "dd2617e0088134276c7f614fcfb22617953c690fb627ee830296909343549484",
+        "validation": "36878bf3b8fd97d6d67928f6586befffb078b34af600b7e4bc2415d8b0b46e9c"
+      },
+      "label": "MIMIC 1.0",
+      "license": "MIT",
+      "model_id": "mimic_1b",
+      "model_name": "polymathic-ai/MIMIC",
+      "model_sha256": {
+        "head1": "4f608f28ce63c0cdcf2801c970a8c55e0285c3f628532ed6a58ab6062758f87d",
+        "head2": "c75207bd6fdd4e4d20eef4c634ce37de314afdad13aeadc864665b403ebfbde2",
+        "head3_phylum": "4343b4b411ead2a2e62f250b7c1d758bd0f26097fdfe0ee3b216dc8b5ba31113"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.014182316446994659,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.008945919210240905,
+        0.04378870230686449,
+        0.033970197636899346,
+        -0.032662992315701245,
+        0.03936017729119634
+      ],
+      "parameter_count": 1247796480,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 8194136576,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "high",
+      "raw_cv_rank": 7,
+      "record_count": 11060,
+      "resolved_model_revision": "checkpoint:40bb974c1b66598168117f2b561e158e769a4a8b|code:15f5ef3050ea471b4c00e3f7d2be05165ff3dce8",
+      "result_dir": "results/model_benchmark_v0/mimic_1b",
+      "selectable": false,
+      "selected": false,
+      "source_kind": "multimodal central-dogma encoder",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "5.14.1"
+      },
+      "val_head1_average_precision": 0.8833333333333333,
+      "val_head1_fpr_at_95pct_recall": 0.014,
+      "val_head1_mcc": 0.9332559491729301,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9309738955823293,
+      "val_head3_brier": 0.08755872578427831,
+      "val_head3_ece": 0.0229675528695229,
+      "val_head3_macro_f1": 0.9256639364606603,
+      "val_head3_ood_auroc": 0.7644859813084112,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 0.4,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.11603110478992629,
+        "head2": 0.0,
+        "head3": -0.024973818641380596
+      },
+      "validation_gate_failures": [
+        "head1",
+        "head3"
+      ],
+      "within_one_paired_se": false
+    },
+    {
+      "composite_fold_scores": [
+        0.8538984593647257,
+        0.8098918637222331,
+        0.8105714681057148,
+        0.8207221626226241,
+        0.8146360656365673
+      ],
+      "composite_score": 0.821944003890373,
+      "composite_se": 0.008217587039615783,
+      "composite_se_method": "sd_of_five_shared_fold_composites_div_sqrt5",
+      "cv_fold_map_sha256": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+      "cv_fold_metadata_sha256": "b9797109d4089da3e5da09bb004ab3eeeb89d658efde27f0280c0e36dc5d8252",
+      "cv_head1_average_precision": 0.7112284097192574,
+      "cv_head1_se": 0.013687274208575285,
+      "cv_head2_average_precision": 1.0,
+      "cv_head2_se": 0.0,
+      "cv_head3_macro_f1": 0.9520695805881848,
+      "cv_head3_se": 0.008454769345579342,
+      "difference_from_best_selectable_cv": 0.087825175273194,
+      "embedding_artifact_sha256": {
+        "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+        "embeddings.float16.npy": "de2bb5adec1bc14f14f536cdce83ad70df0e690ff3d34172b226e37224100661",
+        "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+        "metadata.json": "ab3c42b41ec3d22d2efdc586798a5f6138f71438f822c69c0c24e0e2dff420e0"
+      },
+      "embedding_dimension": 1536,
+      "embedding_dir": "data/processed/embeddings/v0_benchmark_esm3_open_1_4b",
+      "embedding_seconds": 410.96898995898664,
+      "embedding_timing_source": "accumulated_inference_seconds_excluding_model_load",
+      "gpu_seconds_per_sequence": 0.03715813652432067,
+      "input_sha256": {
+        "calibration": "1ffc09ed35133454818eea6a2d490d5466b892e50acde14d04a9ccb4f07acb0d",
+        "cross_validation": "93171ba0e51961f07d4f48cfeb231d11e00142998a283cf06044aa5d1587d64e",
+        "embedding_checksums": "ca533794cbdde062aa17877cc7f8004b9133e00f43dd420ef94bb2e0b9245d03",
+        "embedding_metadata": "ab3c42b41ec3d22d2efdc586798a5f6138f71438f822c69c0c24e0e2dff420e0",
+        "validation": "09d3e1fd9f812d7a194e15c80cf97501908d1d69bbae88f0940fb0ac9c4b43db"
+      },
+      "label": "ESM3-open 1.4B",
+      "license": "MIT",
+      "model_id": "esm3_open_1_4b",
+      "model_name": "biohub/esm3-sm-open-v1",
+      "model_sha256": {
+        "head1": "b3466e30376789441bfac30bc384dca5c593292c8a79cde9a572c8064c68f049",
+        "head2": "7132fddd70575d8d97041268501cb097f01d0ce2584bb7072db1d2bc2dff4530",
+        "head3_phylum": "d686cdb5372ceff4efed86a449703602cd678727b31f6d8143aa5bb225ac31cb"
+      },
+      "one_se_reference_model_id": "prott5_xl",
+      "paired_delta_se_vs_best_selectable_cv": 0.013048386557075443,
+      "paired_fold_deltas_vs_best_selectable_cv": [
+        0.07435549466626923,
+        0.09950805008944541,
+        0.0993935875682962,
+        0.044818641021172057,
+        0.12105010302078689
+      ],
+      "parameter_count": 1401735748,
+      "parameter_count_source": "embedding_metadata",
+      "peak_gpu_memory_bytes": 7747774976,
+      "permissive_license": true,
+      "pretraining_overlap_risk": "low_for_viruses_training_set_excluded_viruses",
+      "raw_cv_rank": 10,
+      "record_count": 11060,
+      "resolved_model_revision": "47f0545b2b6daf26a93439a3cd610f4f7f3d5478",
+      "result_dir": "results/model_benchmark_v0/esm3_open_1_4b",
+      "selectable": true,
+      "selected": false,
+      "source_kind": "multimodal sequence-structure-function model",
+      "speed_tie_break_eligible": true,
+      "status": "complete",
+      "test_status": "not_evaluated",
+      "timing_comparability_key": {
+        "cuda_runtime": "13.0",
+        "definition": "accumulated_inference_seconds_excluding_model_load",
+        "device": "cuda",
+        "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition",
+        "host": "rx1000",
+        "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+        "python": "3.12.3",
+        "torch": "2.13.0+cu130",
+        "transformers": "4.57.6"
+      },
+      "val_head1_average_precision": 0.994106153418792,
+      "val_head1_fpr_at_95pct_recall": 0.0005,
+      "val_head1_mcc": 0.9869051268034236,
+      "val_head2_balanced_accuracy": 1.0,
+      "val_head2_macro_f1": 1.0,
+      "val_head3_balanced_accuracy": 0.9430220883534137,
+      "val_head3_brier": 0.0494110851789524,
+      "val_head3_ece": 0.02498810773857004,
+      "val_head3_macro_f1": 0.9506377551020408,
+      "val_head3_ood_auroc": 0.994392523364486,
+      "val_head3_unknown_diagnostic_n": 5,
+      "val_head3_unknown_recall": 1.0,
+      "validation_delta_vs_esm2_650m": {
+        "head1": -0.005258284704467542,
+        "head2": 0.0,
+        "head3": 0.0
+      },
+      "validation_gate_failures": [],
+      "within_one_paired_se": false
+    }
+  ],
+  "pending_models": [],
+  "raw_cv_best_model_id": "esm2_3b",
+  "schema_version": 3,
+  "score_definition": "S = 0.60 * CV Head1 AP + 0.30 * CV Head2 AP + 0.10 * CV Head3 two-known-class macro-F1",
+  "selected_model_id": "esm2_650m",
+  "selected_model_label": "ESM-2 650M",
+  "selection_boundary": "Train component-aware CV plus Validation only",
+  "speed_tie_break_policy": "Speed is evaluated only after an exact tie on the preceding Validation H1 FPR criterion. Every model in that FPR group must have a positive accumulated inference duration excluding model load and the same host, GPU, device, Python, platform, PyTorch, Transformers and CUDA-runtime values. Otherwise speed is skipped for the whole group and license is the next preregistered criterion. Timestamp-derived wall time is descriptive only and is never selection evidence.",
+  "test_policy": "No candidate Test results were read or generated. The selected model may be evaluated once only after this comparison is frozen.",
+  "tie_break_order": [
+    "lower Validation Head1 FPR@95% recall",
+    "lower seconds per sequence only within a same-FPR group with an identical GPU/host/software/timing-definition comparability key",
+    "permissive license",
+    "higher composite S, then stable model ID"
+  ],
+  "tie_rule": "within one paired standard error of the highest-selectable CV model; SE is computed from the five same-fold deltas S_best_fold - S_candidate_fold",
+  "timing_note": "Per-sequence timing is accumulated embedding inference time excluding model load divided by record count. Timestamp wall time is never substituted. Comparability and whether speed was invoked are recorded per candidate.",
+  "uncertainty": "Per-head SE is the sample SD of five selected-hyperparameter fold scores divided by sqrt(5). Each fold composite is first computed as 0.60*H1 + 0.30*H2 + 0.10*H3 on the one shared global-component fold map; displayed composite SE is the SE of those five composite scores. The one-SE candidate set uses the SE of paired same-fold deltas versus the highest-selectable CV model, without independence propagation across heads or models.",
+  "validation_regression_tolerance": 0.01,
+  "weights": {
+    "head1": 0.6,
+    "head2": 0.3,
+    "head3_phylum": 0.1
+  }
+}
