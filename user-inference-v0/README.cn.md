@@ -37,7 +37,7 @@ cd /path/to/DJR-MCP-Finder/user-inference-v0
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
-pytest -q
+python -m pytest -q
 ```
 
 真实推理需要固定的 Biohub Transformers revision 与 PyTorch：

@@ -1,45 +1,42 @@
 **English** | [简体中文](README.cn.md)
 
-# DJR-MCP Finder — project V0
+# DJR-MCP Finder
 
-DJR-MCP Finder is a three-stage protein classification tool. The current formal release remains
-**all ESM-C 6B**. The subsequent schema 5, PLM-versus-classical, and ultra-remote analyses are
-post-freeze development evidence from Train/Validation; none opens the protected Test split or
-changes V0 or its user inference package.
+[![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
 
-```text
-data-curation V3 -> 11,060 representatives -> component-safe split
- -> 14-model Train-CV + Validation gates -> frozen all ESM-C 6B (V0)
-                                            |
-                                            +-> schema 5 family robustness
-                                            +-> internal homology benchmarks
-                                            +-> unreleased V0.1 candidate
+**Detect double-jelly-roll major capsid proteins from protein FASTA files with a frozen,
+three-stage protein-language-model classifier.** DJR-MCP Finder is intended for virologists and
+bioinformaticians who need an auditable first-pass screen for DJR proteins, viral
+morphogenesis-associated DJRs, and two supported viral phyla.
+
+> **Recommended release:** the frozen **model V0** in [`user-inference-v0/`](user-inference-v0/).
+> It accepts protein FASTA and writes tabular predictions, run metadata, and checksums. It does not
+> train or retune the model.
+
+## From FASTA to an auditable result
+
+```mermaid
+flowchart LR
+    A["Protein FASTA"] --> B["Pinned ESM-C 6B embeddings"]
+    B --> H1{"H1: DJR?"}
+    H1 -- "No" --> N["non_djr"]
+    H1 -- "Yes" --> H2{"H2: VMA-associated?"}
+    H2 -- "No" --> D["djr_non_vma"]
+    H2 -- "Yes" --> H3{"H3: supported phylum?"}
+    H3 --> P1["vma::Nucleocytoviricota"]
+    H3 --> P2["vma::Preplasmiviricota"]
+    H3 --> U["vma::unknown/other"]
 ```
 
-## Installation and deployment
+`vma::unknown/other` is a reject option after a sequence passes H1 and H2; it is not a general
+unknown-virus or out-of-distribution detector.
 
-The recommended entry point for users is the frozen
-[`user-inference-v0/`](user-inference-v0/) package. A normal laptop or desktop can install the
-package, run its contract tests, validate FASTA files, and inspect the frozen model bundle without
-downloading either the ESM-C checkpoint or PyTorch. Full prediction is a workstation workload.
+## Quick start: CPU-only checks
 
-| Goal | Minimum practical environment | Support status |
-| --- | --- | --- |
-| Install, unit-test, validate FASTA, inspect model metadata | Python 3.10+ and a CPU | No GPU or model download required |
-| Run formal V0 predictions | Linux x86_64, Docker, NVIDIA Container Toolkit, compatible NVIDIA driver, CUDA GPU | Validated path; at least 24 GB GPU memory is recommended |
-| Run V0.1 candidate predictions | Same, with native BF16 support and a separate model cache | Python package requires 3.12+; engineering reproduction validated; not a formal release |
-| Reproduce the complete research workflow | Site-local archives, databases, software stack, and HPC-scale resources | Not available from the compact GitHub checkout alone |
-
-The documented shell commands assume Linux or macOS. Native Windows has not been validated. The
-full Docker inference path has been validated only on Linux x86_64; typical CPU-only computers and
-Apple-silicon Macs cannot run that CUDA path. Unless the pinned cache is already populated, the
-first real inference also needs network access and enough free disk for model images and caches
-(plan for tens of gigabytes).
-
-### CPU-only installation and checks
-
-Clone the repository and install the formal V0 package. If the repository is private, the clone
-command requires a GitHub account with access.
+A laptop can install the formal V0 package, run its contract tests, validate FASTA, and inspect the
+frozen bundle without downloading ESM-C or PyTorch:
 
 ```bash
 git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
@@ -50,18 +47,18 @@ source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e '.[dev]'
 
-pytest -q
+python -m pytest -q
 djrmcp-predict validate-fasta examples/synthetic_example.faa
 djrmcp-predict model-info
 ```
 
-These commands exercise the install and frozen prediction contract, but they do not run the 6B
-encoder. For a non-editable local install, replace `-e '.[dev]'` with `'.[dev]'`.
+The commands assume a Linux or macOS shell; native Windows has not been validated. For a
+non-editable install, replace `-e '.[dev]'` with `'.[dev]'`.
 
-### Full V0 inference on an NVIDIA workstation
+## Full V0 prediction: NVIDIA workstation
 
-The recommended reproducible path uses Docker. Confirm that Docker can expose the selected NVIDIA
-GPU, then build and run from the V0 package directory:
+The validated full-inference path uses Linux x86_64, Docker, the NVIDIA Container Toolkit, and a
+CUDA GPU with at least 24 GB memory recommended. Build and run from the formal V0 package:
 
 ```bash
 cd /path/to/DJR-MCP-Finder/user-inference-v0
@@ -74,18 +71,56 @@ bash workstation/run_user_fasta.sh \
 ```
 
 `0` is the physical GPU index. The first prediction downloads the pinned ESM-C 6B checkpoint;
-later runs reuse the Docker cache and can run with `DJRMCP_OFFLINE=1`. The measured V0 peak was
-about 13.05 GB of allocated GPU memory, but 24 GB or more is recommended for runtime headroom. CPU
-inference can be selected explicitly, but it loads roughly 25 GB of float32 weights, is slow, and
-has not been validated as a routine deployment path. See the
-[`user-inference-v0` guide](user-inference-v0/README.md) and
-[`Docker deployment guide`](user-inference-v0/workstation/README.md) for custom input paths,
-cache locations, offline runs, and device settings.
+later runs reuse the cache and support `DJRMCP_OFFLINE=1`. The measured V0 peak was about 13.05 GB
+allocated, while CPU mode loads roughly 25 GB of float32 weights and is not a routine deployment
+path.
 
-V0.1 is an optional mixed-encoder development candidate, not the default installation. Its Python
-package requires Python 3.12+ because it pins NumPy 2.5.1. It must be kept separate from formal V0
-and uses two isolated runtime environments; follow the
-[`V0.1 candidate guide`](user-inference-v0.1/README.md) only when that distinction is intentional.
+## Output example
+
+Each run creates `predictions.tsv`, `run_metadata.json`, and `CHECKSUMS.sha256`. This shortened,
+illustrative view shows the decision path; the real TSV also records sequence metadata, raw scores,
+all probabilities, warnings, and gate states.
+
+| protein_id | H1 DJR probability | H2 VMA probability | H3 prediction | final_prediction |
+| --- | ---: | ---: | --- | --- |
+| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `vma::Nucleocytoviricota` |
+| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_vma` |
+| background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
+
+The numbers above demonstrate the output schema and are not benchmark results. See the
+[`user-inference-v0` guide](user-inference-v0/README.md) for the complete input/output contract and
+the [`Docker deployment guide`](user-inference-v0/workstation/README.md) for caches, offline runs,
+devices, and host paths.
+
+## Choose the right path
+
+| Goal | Start here | Environment |
+| --- | --- | --- |
+| Validate FASTA or inspect the frozen model | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+, CPU |
+| Run formal model V0 predictions | [V0 workstation guide](user-inference-v0/workstation/README.md) | Linux x86_64, Docker, NVIDIA GPU |
+| Evaluate the unreleased mixed-encoder candidate | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+, two isolated model runtimes |
+| Audit or reproduce the research workflow | [`WORKFLOW_V0.md`](WORKFLOW_V0.md) | Site archives, databases, software stack, and HPC resources |
+
+V0.1 is post-freeze development evidence and does not replace formal model V0. The complete
+research workflow cannot be reproduced from the compact checkout alone.
+
+## Documentation
+
+- [Formal V0 user guide](user-inference-v0/README.md)
+- [Docker/NVIDIA deployment](user-inference-v0/workstation/README.md)
+- [Frozen V0 model card](user-inference-v0/src/djrmcp_predict/assets/project-v0-esmc6b-r1/MODEL_CARD.md)
+- [Complete workflow and evidence boundary](WORKFLOW_V0.md)
+- [Concise scientific report](PROJECT_V0_FINAL_REPORT.md)
+- [V0.1 development candidate](user-inference-v0.1/README.md)
+- [Citation metadata](CITATION.cff)
+
+## Scientific status and limitations
+
+The formal release remains **all ESM-C 6B**. Schema 5, PLM-versus-classical, and ultra-remote
+analyses are post-freeze Train/Validation evidence: none opens the protected Test split or changes
+model V0. Current scores are calibrated under the development-data distribution, not
+prevalence-adjusted probabilities for natural proteomes. Large-scale discovery still requires
+independent false-positive assessment and structural/manual validation.
 
 ## Frozen V0
 

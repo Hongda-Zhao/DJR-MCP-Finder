@@ -1,40 +1,39 @@
 [English](README.md) | **简体中文**
 
-# DJR-MCP Finder — project V0
+# DJR-MCP Finder
 
-DJR-MCP Finder 是三段式蛋白分类工具。当前正式发布仍是 **all ESM-C 6B**；后续 schema 5、
-PLM-vs-classical 和 ultra-remote 分析都是冻结后的 Train/Validation 开发证据，均未打开 protected Test，
-也没有改变 V0 或用户推理包。
+[![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
 
-```text
-data-curation V3 -> 11,060 representatives -> component-safe split
- -> 14-model Train-CV + Validation gates -> frozen all ESM-C 6B (V0)
-                                            |
-                                            +-> schema 5 family robustness
-                                            +-> internal homology benchmarks
-                                            +-> unreleased V0.1 candidate
+**使用冻结的三阶段蛋白语言模型分类器，从蛋白 FASTA 中检测 double-jelly-roll major capsid
+protein（DJR-MCP）。** DJR-MCP Finder 面向病毒学与生物信息学用户，用于对 DJR 蛋白、病毒形态发生
+相关 DJR，以及两个已支持病毒门进行可审计的初筛。
+
+> **推荐正式版本：** [`user-inference-v0/`](user-inference-v0/README.cn.md) 中冻结的
+> **model V0**。输入蛋白 FASTA，输出表格化预测、运行 metadata 和 checksum；不会训练或重新调参。
+
+## 从 FASTA 到可审计结果
+
+```mermaid
+flowchart LR
+    A["蛋白 FASTA"] --> B["固定版本的 ESM-C 6B embedding"]
+    B --> H1{"H1：是否为 DJR？"}
+    H1 -- "否" --> N["non_djr"]
+    H1 -- "是" --> H2{"H2：是否与 VMA 相关？"}
+    H2 -- "否" --> D["djr_non_vma"]
+    H2 -- "是" --> H3{"H3：是否属于已支持病毒门？"}
+    H3 --> P1["vma::Nucleocytoviricota"]
+    H3 --> P2["vma::Preplasmiviricota"]
+    H3 --> U["vma::unknown/other"]
 ```
 
-## 安装与部署
+`vma::unknown/other` 是样本通过 H1/H2 后的拒绝选项，不是通用未知病毒或 OOD 检测器。
 
-建议普通用户从冻结的 [`user-inference-v0/`](user-inference-v0/README.cn.md) 正式包开始。普通笔记本或
-台式机可以安装该包、运行合同测试、校验 FASTA、查看冻结模型信息；这些操作不下载 ESM-C checkpoint，
-也不需要安装 PyTorch。完整 prediction 属于工作站级负载。
+## 快速开始：仅 CPU 检查
 
-| 目标 | 实际最低环境 | 支持状态 |
-| --- | --- | --- |
-| 安装、单元测试、FASTA 校验、模型 metadata 检查 | Python 3.10+ 与 CPU | 不需要 GPU，也不下载大模型 |
-| 运行正式 V0 prediction | Linux x86_64、Docker、NVIDIA Container Toolkit、兼容驱动、CUDA GPU | 已验证路径；建议至少 24 GB 显存 |
-| 运行 V0.1 candidate prediction | 同上，并原生支持 BF16、使用独立模型 cache | Python package 需要 3.12+；工程复现已验证；不是正式 release |
-| 完整复现研究工作流 | 本地 archive、database、软件栈和 HPC 级资源 | 仅靠 compact GitHub checkout 无法完成 |
-
-以下命令使用 Linux/macOS shell；native Windows 尚未验证。完整 Docker inference 只在 Linux x86_64
-上验证过；普通纯 CPU 电脑和 Apple-silicon Mac 不能运行该 CUDA 路径。除非固定 cache 已经填充，
-第一次真实 inference 还需要网络，并需要足够磁盘保存 image 和模型 cache（应预留数十 GB）。
-
-### 仅 CPU 的安装与检查
-
-先 clone 仓库并安装正式 V0 包。若仓库为 private，clone 时需要使用有访问权限的 GitHub 账户。
+普通笔记本即可安装正式 V0 包、运行合同测试、校验 FASTA 和检查冻结模型；这些操作不会下载
+ESM-C，也不需要 PyTorch：
 
 ```bash
 git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
@@ -45,18 +44,18 @@ source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e '.[dev]'
 
-pytest -q
+python -m pytest -q
 djrmcp-predict validate-fasta examples/synthetic_example.faa
 djrmcp-predict model-info
 ```
 
-以上命令会检查安装和冻结 prediction 合同，但不会运行 6B encoder。若不需要 editable install，可将
+命令使用 Linux/macOS shell；native Windows 尚未验证。若不需要 editable install，可将
 `-e '.[dev]'` 替换为 `'.[dev]'`。
 
-### 在 NVIDIA 工作站上运行完整 V0 inference
+## 完整 V0 prediction：NVIDIA 工作站
 
-建议使用可复现的 Docker 路径。先确认 Docker 可以暴露所选 NVIDIA GPU，然后在 V0 包目录中构建并
-运行：
+已验证的完整 inference 路径需要 Linux x86_64、Docker、NVIDIA Container Toolkit 和 CUDA GPU，
+建议至少 24 GB 显存。在正式 V0 包目录中构建并运行：
 
 ```bash
 cd /path/to/DJR-MCP-Finder/user-inference-v0
@@ -68,16 +67,52 @@ bash workstation/run_user_fasta.sh \
   0
 ```
 
-`0` 是物理 GPU index。第一次 prediction 会下载固定的 ESM-C 6B checkpoint；后续会复用 Docker
-cache，并可设置 `DJRMCP_OFFLINE=1` 完全断网运行。V0 实测 peak allocated GPU memory 约为
-13.05 GB，但为运行余量建议使用 24 GB 或更多显存。虽然可以显式选择 CPU inference，但它会加载约
-25 GB float32 权重、速度很慢，也没有作为常规部署路径验证。自定义输入路径、cache、offline 运行和
-device 设置见 [`user-inference-v0` 指南](user-inference-v0/README.cn.md) 与
+`0` 是物理 GPU index。第一次 prediction 会下载固定的 ESM-C 6B checkpoint；之后复用 cache，并可
+设置 `DJRMCP_OFFLINE=1`。V0 实测 peak allocated GPU memory 约 13.05 GB；CPU 模式则会加载约
+25 GB float32 权重，不属于常规部署路径。
+
+## 输出示例
+
+每次运行生成 `predictions.tsv`、`run_metadata.json` 和 `CHECKSUMS.sha256`。下面是缩短后的示意视图；
+真实 TSV 还会记录序列 metadata、raw score、全部概率、warning 和 gate 状态。
+
+| protein_id | H1 DJR probability | H2 VMA probability | H3 prediction | final_prediction |
+| --- | ---: | ---: | --- | --- |
+| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `vma::Nucleocytoviricota` |
+| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_vma` |
+| background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
+
+以上数值只用于说明输出 schema，并非 benchmark 结果。完整输入/输出合同见
+[`user-inference-v0` 指南](user-inference-v0/README.cn.md)；cache、offline、device 和 host path 见
 [`Docker 部署指南`](user-inference-v0/workstation/README.cn.md)。
 
-V0.1 是可选的 mixed-encoder 开发候选，不是默认安装。由于固定 NumPy 2.5.1，其 Python package
-需要 Python 3.12+。它必须与正式 V0 隔离，并使用两个独立 runtime 环境；只有在明确理解该区别时，
-再按照 [`V0.1 candidate 指南`](user-inference-v0.1/README.cn.md) 部署。
+## 选择正确入口
+
+| 目标 | 从这里开始 | 环境 |
+| --- | --- | --- |
+| 校验 FASTA 或检查冻结模型 | [`user-inference-v0/`](user-inference-v0/README.cn.md) | Python 3.10+、CPU |
+| 运行正式 model V0 prediction | [V0 工作站指南](user-inference-v0/workstation/README.cn.md) | Linux x86_64、Docker、NVIDIA GPU |
+| 评估尚未发布的 mixed-encoder candidate | [`user-inference-v0.1/`](user-inference-v0.1/README.cn.md) | Python 3.12+、两个隔离模型 runtime |
+| 审计或复现研究工作流 | [`WORKFLOW_V0.md`](WORKFLOW_V0.md) | 本地 archive、database、软件栈与 HPC 资源 |
+
+V0.1 是冻结后的开发证据，不替代正式 model V0。仅靠 compact checkout 无法完整复现研究工作流。
+
+## 文档导航
+
+- [正式 V0 用户指南](user-inference-v0/README.cn.md)
+- [Docker/NVIDIA 部署](user-inference-v0/workstation/README.cn.md)
+- [冻结 V0 model card](user-inference-v0/src/djrmcp_predict/assets/project-v0-esmc6b-r1/MODEL_CARD.md)
+- [完整工作流与证据边界](WORKFLOW_V0.md)
+- [精简科研报告](PROJECT_V0_FINAL_REPORT.md)
+- [V0.1 开发候选](user-inference-v0.1/README.cn.md)
+- [引用信息](CITATION.cff)
+
+## 科学状态与限制
+
+正式版本仍是 **all ESM-C 6B**。schema 5、PLM-vs-classical 和 ultra-remote 分析都是冻结后的
+Train/Validation 证据，均未打开 protected Test，也没有改变 model V0。当前 score 是开发数据分布下的
+calibrated score，不是自然蛋白组中的 prevalence-adjusted probability。大规模发现仍需独立的
+false-positive 评估，以及结构和人工验证。
 
 ## 冻结的 V0
 

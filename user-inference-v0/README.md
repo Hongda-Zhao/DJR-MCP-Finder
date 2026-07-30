@@ -39,7 +39,7 @@ cd /path/to/DJR-MCP-Finder/user-inference-v0
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
-pytest -q
+python -m pytest -q
 ```
 
 Real inference requires the pinned Biohub Transformers revision and PyTorch:

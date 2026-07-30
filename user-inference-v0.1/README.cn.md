@@ -126,7 +126,7 @@ V0.1 Python package 需要 Python 3.12 或更高版本，因为它固定使用 N
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
-pytest -q
+python -m pytest -q
 ```
 
 冻结环境与发布边界见 `environment/REFERENCE_ENVIRONMENT.md`。该目录当前不附带项目级

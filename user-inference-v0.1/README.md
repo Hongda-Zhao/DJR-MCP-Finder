@@ -138,7 +138,7 @@ contract tests do not download the large models:
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
-pytest -q
+python -m pytest -q
 ```
 
 See `environment/REFERENCE_ENVIRONMENT.md` for the frozen environments and release boundary. This
