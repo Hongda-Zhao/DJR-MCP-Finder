@@ -1,3 +1,5 @@
+**English** | [简体中文](README.cn.md)
+
 # Portable Docker deployment
 
 The Docker wrappers locate the `user-inference-v0` checkout from the script
