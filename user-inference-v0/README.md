@@ -1,10 +1,20 @@
 **English** | [简体中文](README.cn.md)
 
-# DJR-MCP Finder — User Inference V0
+# DJR-MCP Finder — User Inference for Model V0
 
 This standalone directory packages the frozen DJR-MCP Finder project V0 as an inference tool for
 user-supplied protein FASTA files. It does not train models, change temperatures or thresholds,
 read the historical Test split, or alter the main project release identity.
+
+| Layer | Identifier |
+| --- | --- |
+| Scientific model | `model-v0` (released) |
+| Frozen bundle revision | `model-v0-esmc6b-r1` |
+| Python distribution | `djrmcp-user-inference==0.1.0` |
+| CLI | `djrmcp-predict` |
+
+These identifiers follow the repository [versioning contract](../docs/VERSIONING.md); the Python
+package version is an engineering version and does not rename the scientific model.
 
 ```text
 protein FASTA

@@ -1,0 +1,69 @@
+name: Bug report
+description: Report a reproducible software, packaging, or inference failure.
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Do not include private sequences, credentials, or security vulnerabilities. Security reports follow SECURITY.md.
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - Research pipeline (djrmcp-finder)
+        - Formal Model V0 inference (djrmcp-user-inference)
+        - Model V0.1 candidate inference (djrmcp-user-inference-v01)
+        - Docker/workstation wrapper
+        - Documentation or packaging
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Include the Git tag, package version, or commit SHA.
+      placeholder: v0.1.0 / djrmcp-user-inference==0.1.0 / 5509274
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Python, operating system, architecture, and GPU/runtime if relevant.
+      placeholder: Python 3.12.3, Ubuntu 24.04, x86_64, NVIDIA A100
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Provide commands and a synthetic or non-sensitive FASTA when possible.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Remove secrets, private paths, and private biological data.
+      render: text
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues for the same failure.
+          required: true
+        - label: I removed credentials and sensitive sequence data.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

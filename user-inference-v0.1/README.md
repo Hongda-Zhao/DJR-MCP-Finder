@@ -1,6 +1,6 @@
 **English** | [简体中文](README.cn.md)
 
-# DJR-MCP Finder — User Inference V0.1 Candidate
+# DJR-MCP Finder — User Inference for Model V0.1 Candidate
 
 This directory accepts user-supplied protein FASTA files and returns predictions from the frozen
 V0.1 mixed-encoder candidate:
@@ -17,6 +17,16 @@ The workstation package completed online and fully network-disabled reruns on 12
 probability delta. Original host, image, and GPU details are retained as historical validation
 evidence in `workstation/VALIDATION.json`; they are not runtime requirements. V0.1 is the scientific
 candidate version, while Python wheel version `0.2.1` identifies its engineering package revision.
+
+| Layer | Identifier |
+| --- | --- |
+| Scientific model | `model-v0.1-candidate` (not released as a formal model) |
+| Frozen bundle revision | `model-v0.1-mixed-r1` |
+| Python distribution | `djrmcp-user-inference-v01==0.2.1` |
+| CLI | `djrmcp-predict-v01` |
+
+The full `candidate` qualifier is required. See the repository
+[versioning contract](../docs/VERSIONING.md) for why the scientific and package versions differ.
 
 ## Workstation usage
 

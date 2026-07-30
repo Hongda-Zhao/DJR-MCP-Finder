@@ -1,6 +1,6 @@
 [English](README.md) | **简体中文**
 
-# DJR-MCP Finder — User Inference V0.1 Candidate
+# DJR-MCP Finder — Model V0.1 Candidate 用户推理
 
 该目录接受用户自己的蛋白 FASTA，并输出冻结 V0.1 mixed-encoder 候选模型的预测：
 
@@ -15,6 +15,16 @@ FASTA -> ESM-2 3B -> H1 -> H2 -> [仅通过者] ESM-C 6B -> H3
 均为 0 mismatch / 0 probability delta。原始主机、镜像和 GPU 信息作为历史验证证据保存在
 `workstation/VALIDATION.json`，不是运行时要求。这里的 V0.1 是科学候选版本，Python wheel
 的 `0.2.1` 是其工程封装修订号。
+
+| 层次 | 标识 |
+| --- | --- |
+| 科学模型 | `model-v0.1-candidate`（尚未作为正式模型发布） |
+| 冻结 bundle revision | `model-v0.1-mixed-r1` |
+| Python distribution | `djrmcp-user-inference-v01==0.2.1` |
+| CLI | `djrmcp-predict-v01` |
+
+必须保留完整的 `candidate` 限定词。科学模型版本与包版本的区别见仓库
+[版本命名合同](../docs/VERSIONING.md)。
 
 ## 工作站使用
 

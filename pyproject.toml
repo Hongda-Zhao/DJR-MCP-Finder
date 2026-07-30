@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -11,23 +11,33 @@ requires-python = ">=3.10"
 authors = [
   { name = "Hongda Zhao" },
 ]
-license = { file = "LICENSE" }
+maintainers = [
+  { name = "Hongda Zhao" },
+]
+license = "MIT"
+license-files = ["LICENSE"]
 keywords = [
   "bioinformatics",
+  "capsid-protein",
+  "double-jelly-roll",
+  "fasta",
+  "machine-learning",
   "protein-language-model",
   "protein-classification",
+  "viral-genomics",
   "virus-discovery",
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console",
   "Intended Audience :: Science/Research",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Typing :: Typed",
 ]
 dependencies = [
   "biopython>=1.81",
@@ -59,8 +69,11 @@ figure = [
   "pillow>=10",
 ]
 dev = [
+  "build>=1.2,<2",
   "pytest>=7.4",
   "ruff>=0.4",
+  "tomli>=2; python_version < '3.11'",
+  "twine>=5,<7",
 ]
 
 [project.scripts]
@@ -68,12 +81,16 @@ djrmcp = "djrmcp_finder.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/Hongda-Zhao/DJR-MCP-Finder"
-Documentation = "https://github.com/Hongda-Zhao/DJR-MCP-Finder#readme"
-Issues = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/issues"
+Documentation = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/tree/main/docs"
 Repository = "https://github.com/Hongda-Zhao/DJR-MCP-Finder.git"
+"Bug Tracker" = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/issues"
+Changelog = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+djrmcp_finder = ["py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -81,3 +98,4 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+src = ["src", "tests"]
