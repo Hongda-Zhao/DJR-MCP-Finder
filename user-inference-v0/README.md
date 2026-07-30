@@ -39,7 +39,7 @@ cd /path/to/DJR-MCP-Finder/user-inference-v0
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
-pytest -q
+python -m pytest -q
 ```
 
 Real inference requires the pinned Biohub Transformers revision and PyTorch:
@@ -150,6 +150,10 @@ calibrated model scores under the development-data distribution, not prevalence-
 probabilities in natural proteomes. Large-scale discovery requires independent false-positive
 assessment, same-source challenge sets, and structural/manual validation.
 
-This directory currently has no project-level `LICENSE`, so it grants no permission to copy,
-modify, or redistribute the package. Before any formal public release, code and data/classifier-head
-licensing must be determined and citation information added.
+## License
+
+This standalone package and its original bundled linear classifier heads are released under the
+[MIT License](LICENSE). The ESM-C checkpoint is downloaded separately and is not redistributed by
+this package. It and the pinned runtime dependencies retain their upstream terms; see the
+[release-specific third-party notice](src/djrmcp_predict/assets/project-v0-esmc6b-r1/THIRD_PARTY_NOTICES.md)
+and the repository-level [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md).
