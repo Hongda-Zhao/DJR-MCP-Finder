@@ -1,22 +1,27 @@
+**English** | [简体中文](README.cn.md)
+
 # DJR-MCP Finder — User Inference V0.1 Candidate
 
-该目录接受用户自己的蛋白 FASTA，并输出冻结 V0.1 mixed-encoder 候选模型的预测：
+This directory accepts user-supplied protein FASTA files and returns predictions from the frozen
+V0.1 mixed-encoder candidate:
 
 ```text
-FASTA -> ESM-2 3B -> H1 -> H2 -> [仅通过者] ESM-C 6B -> H3
+FASTA -> ESM-2 3B -> H1 -> H2 -> [passing sequences only] ESM-C 6B -> H3
 ```
 
-这是 `recommended_for_external_confirmation` 的工程候选版，不是经独立外部 Test
-确认的正式 V0.1，也不替换已发布 V0。
+This is an engineering candidate with status `recommended_for_external_confirmation`. It is not a
+formal V0.1 confirmed by an independent external Test and does not replace the released V0.
 
-工作站封装已于 2026-07-29 完成 12 条蛋白的在线与完全断网复跑；两次预测与冻结金标准
-均为 0 mismatch / 0 probability delta。原始主机、镜像和 GPU 信息作为历史验证证据保存在
-`workstation/VALIDATION.json`，不是运行时要求。这里的 V0.1 是科学候选版本，Python wheel
-的 `0.2.1` 是其工程封装修订号。
+The workstation package completed online and fully network-disabled reruns on 12 proteins on
+2026-07-29. Both runs matched the frozen golden standard with zero label mismatches and zero
+probability delta. Original host, image, and GPU details are retained as historical validation
+evidence in `workstation/VALIDATION.json`; they are not runtime requirements. V0.1 is the scientific
+candidate version, while Python wheel version `0.2.1` identifies its engineering package revision.
 
-## 工作站使用
+## Workstation usage
 
-推荐使用 Docker；镜像内将两个不兼容的 Transformers 环境隔离，并顺序释放显存：
+Docker is recommended. The image isolates the two incompatible Transformers environments and
+releases GPU memory between them:
 
 ```bash
 cd /path/to/DJR-MCP-Finder/user-inference-v0.1
@@ -28,7 +33,7 @@ bash workstation/run_user_fasta.sh \
   0
 ```
 
-默认使用独立资源：
+The defaults use independent resources:
 
 ```text
 base image       djrmcp-user-inference:v0
@@ -37,8 +42,9 @@ cache            djrmcp-v01-hf-cache
 GPU              device=0
 ```
 
-脚本从自身位置解析检出目录；可从任意当前目录调用，输入和输出既可使用相对路径也可使用
-绝对路径。常用 Docker 参数均可通过环境变量覆盖：
+The scripts resolve the checkout from their own location, so they can be invoked from any working
+directory. Input and output paths may be relative or absolute. Common Docker settings can be
+overridden with environment variables:
 
 ```bash
 export DJRMCP_BASE_IMAGE=local/djrmcp-user-inference:v0
@@ -48,25 +54,28 @@ export DJRMCP_DOCKER_GPUS=all
 export DJRMCP_DOCKER=docker
 ```
 
-`DJRMCP_CACHE_SOURCE` 可以是 Docker volume 名称或绝对宿主机目录；默认仍使用独立的 named
-volume。默认构建会验证历史确认过的 V0 base image ID。若 V0 是在本机由相同冻结环境兼容
-重建、因此 image ID 不同，可在核对来源后显式使用
-`DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh`；版本、CUDA、Transformers 与
-候选 bundle 校验仍会执行。其他选项见 `workstation/README.md`。
+`DJRMCP_CACHE_SOURCE` may name either a Docker volume or an absolute host directory; the default
+remains a separate named volume. By default, the build verifies the historically validated V0 base
+image ID. If V0 was rebuilt locally from the same compatible frozen environment and therefore has
+a different image ID, you may explicitly use
+`DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh` after verifying its provenance.
+Version, CUDA, Transformers, and candidate-bundle checks still run. See
+[`workstation/README.md`](workstation/README.md) for other options.
 
-建议至少 24 GB CUDA 显存且原生支持 BF16。历史峰值约为 ESM-2 3B 5.95 GB、ESM-C 6B 15.0 GB；
-两者不会同时驻留。若没有序列通过 H1/H2，H3 worker 不会启动。
+A CUDA GPU with at least 24 GB and native BF16 support is recommended. Historical peaks were about
+5.95 GB for ESM-2 3B and 15.0 GB for ESM-C 6B; the two models are never resident simultaneously.
+If no sequence passes H1/H2, the H3 worker is not started.
 
 ## CLI
 
-只检查输入或 bundle 不需要 GPU：
+Input and bundle checks do not require a GPU:
 
 ```bash
 djrmcp-predict-v01 validate-fasta proteins.faa
 djrmcp-predict-v01 model-info
 ```
 
-在已经配置两套 frozen Python 环境时：
+When both frozen Python environments have already been configured:
 
 ```bash
 export DJRMCP_ESM2_PYTHON=/path/to/esm2-venv/bin/python
@@ -77,9 +86,10 @@ djrmcp-predict-v01 predict proteins.faa \
   --device cuda
 ```
 
-也可直接使用检出目录中的封装脚本；它优先使用 `DJRMCP_PYTHON`，其次使用检出目录的
-`.venv/bin/python`，最后回退到 `python3`，并保持验证过的 CUDA 默认值。需要自动选择或
-CPU 时，显式传入 `auto`/`cpu` 或设置 `DJRMCP_DEVICE`：
+You can also use the wrapper in the checkout directly. It prefers `DJRMCP_PYTHON`, then
+`.venv/bin/python` inside the checkout, and finally `python3`, while retaining the validated CUDA
+default. To request automatic device selection or CPU, pass `auto`/`cpu` explicitly or set
+`DJRMCP_DEVICE`:
 
 ```bash
 DJRMCP_PYTHON=/path/to/controller-python \
@@ -89,7 +99,8 @@ DJRMCP_CACHE_DIR=/path/to/huggingface-cache \
 bash scripts/run_user_fasta.sh proteins.faa run_output/sample auto
 ```
 
-缓存完成后可加 CLI `--offline`，或给封装脚本设置 `DJRMCP_OFFLINE=1`。输出目录包含：
+After the cache has been populated, add the CLI option `--offline` or set
+`DJRMCP_OFFLINE=1` for the wrapper. The output directory contains:
 
 ```text
 predictions.tsv
@@ -97,27 +108,30 @@ run_metadata.json
 CHECKSUMS.sha256
 ```
 
-最终标签为 `non_djr`、`djr_non_vma`、`vma::Nucleocytoviricota`、
-`vma::Preplasmiviricota` 或 `vma::unknown/other`。最后一类仅表示通过 H1/H2 后，
-未可靠归入两个已知 H3 phylum；它不是通用未知病毒或 OOD 检测器。
+Final labels are `non_djr`, `djr_non_vma`, `vma::Nucleocytoviricota`,
+`vma::Preplasmiviricota`, or `vma::unknown/other`. The final category means only that a sequence
+passed H1/H2 but could not be assigned reliably to either of the two known H3 phyla. It is not a
+general unknown-virus or out-of-distribution detector.
 
-## 输入与冻结合同
+## Input and frozen contracts
 
-- FASTA ID 必须非空且唯一；接受 20 种标准氨基酸和 `X`。
-- 相同序列只计算一次 embedding，输出仍恢复原始 ID 与顺序。
-- 130–2906 aa 之外仍可运行，但结果带训练域外 warning。
-- 长序列按 1022 aa window / 511 aa stride 完整覆盖，不截断。
-- H1/H2 使用 `facebook/esm2_t36_3B_UR50D@476b639...`、FP16。
-- H3 使用 `Biohub/ESMC-6B@45b0fa5...`、BF16，且仅对 gate-through 序列运行。
-- 分类头是 checksum-verified、pickle-free NPZ；wheel 不包含 sklearn joblib。
-- 两套 11,060 条冻结 embedding 的 raw score、概率和阈值判定 parity 均为精确相等。
+- FASTA IDs must be non-empty and unique; the 20 standard amino acids and `X` are accepted.
+- Identical sequences are embedded once; the output restores the original IDs and order.
+- Sequences outside 130–2906 aa can still be evaluated but receive an out-of-training-domain warning.
+- Long sequences are covered completely with a 1022-aa window / 511-aa stride and are not truncated.
+- H1/H2 use `facebook/esm2_t36_3B_UR50D@476b639...` in FP16.
+- H3 uses `Biohub/ESMC-6B@45b0fa5...` in BF16 and runs only on gate-through sequences.
+- Classifier heads are checksum-verified, pickle-free NPZ files; the wheel contains no sklearn joblib.
+- Raw scores, probabilities, and threshold decisions have exact parity across both frozen sets of
+  11,060 embeddings.
 
-每次运行记录输入、模型、分类头、路由子集、运行环境和输出的 SHA256。概率是开发数据
-分布下的 calibrated model score，不是自然样本中的 prevalence-adjusted posterior。
+Every run records SHA256 hashes for the input, models, classifier heads, routed subset, runtime
+environment, and outputs. Probabilities are calibrated model scores under the development-data
+distribution, not prevalence-adjusted posteriors for natural samples.
 
-## 开发检查
+## Development checks
 
-纯 CPU 合同测试不会下载大模型：
+CPU-only contract tests do not download the large models:
 
 ```bash
 python -m venv .venv
@@ -126,5 +140,6 @@ python -m pip install -e '.[dev]'
 pytest -q
 ```
 
-冻结环境与发布边界见 `environment/REFERENCE_ENVIRONMENT.md`。该目录当前不附带项目级
-`LICENSE`；prospective external confirmation 仍未完成。
+See `environment/REFERENCE_ENVIRONMENT.md` for the frozen environments and release boundary. This
+directory currently has no project-level `LICENSE`; prospective external confirmation also remains
+outstanding.

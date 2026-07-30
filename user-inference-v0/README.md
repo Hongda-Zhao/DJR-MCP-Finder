@@ -1,7 +1,10 @@
+**English** | [简体中文](README.cn.md)
+
 # DJR-MCP Finder — User Inference V0
 
-这个独立目录把冻结的 DJR-MCP Finder project V0 封装成面向用户蛋白 FASTA 的推理工具。
-它不会训练模型、修改 temperature/threshold、读取历史 Test，或改变主工程 release identity。
+This standalone directory packages the frozen DJR-MCP Finder project V0 as an inference tool for
+user-supplied protein FASTA files. It does not train models, change temperatures or thresholds,
+read the historical Test split, or alter the main project release identity.
 
 ```text
 protein FASTA
@@ -11,9 +14,9 @@ protein FASTA
   -> predictions.tsv + run_metadata.json + CHECKSUMS.sha256
 ```
 
-## 输出语义
+## Output semantics
 
-最终输出只有五种：
+There are exactly five final output labels:
 
 ```text
 non_djr
@@ -23,12 +26,13 @@ vma::Preplasmiviricota
 vma::unknown/other
 ```
 
-`vma::unknown/other` 仅表示样本通过 H1/H2 后，不能可靠归入 H3 的两个已知 phylum；
-它不是任意未知病毒或全局 OOD 检测器。
+`vma::unknown/other` means only that a sample passed H1/H2 but could not be assigned reliably to
+either of the two known H3 phyla. It is not a detector for arbitrary unknown viruses or global
+out-of-distribution data.
 
-## 安装
+## Installation
 
-基础检查和单元测试不下载 ESM-C：
+Basic checks and unit tests do not download ESM-C:
 
 ```bash
 cd /path/to/DJR-MCP-Finder/user-inference-v0
@@ -38,25 +42,26 @@ python -m pip install -e '.[dev]'
 pytest -q
 ```
 
-真实推理需要固定的 Biohub Transformers revision 与 PyTorch：
+Real inference requires the pinned Biohub Transformers revision and PyTorch:
 
 ```bash
 python -m pip install -e '.[inference]'
 ```
 
-推荐使用至少 24 GB 显存的 CUDA GPU。冻结 benchmark 中 ESM-C 6B 的实测峰值约为
-15.0 GB；CPU 模式会以 float32 加载约 25 GB 权重，速度未作为常规路径验证。
+A CUDA GPU with at least 24 GB of memory is recommended. In the frozen benchmark, measured peak
+memory for ESM-C 6B was about 15.0 GB. CPU mode loads about 25 GB of float32 weights and has not
+been validated as a routine path.
 
-## 使用
+## Usage
 
-先在 CPU 上完成输入与模型包检查：
+First validate the input and model package on CPU:
 
 ```bash
 djrmcp-predict validate-fasta proteins.faa
 djrmcp-predict model-info
 ```
 
-然后运行推理：
+Then run inference:
 
 ```bash
 djrmcp-predict predict proteins.faa \
@@ -64,15 +69,17 @@ djrmcp-predict predict proteins.faa \
   --device cuda
 ```
 
-也可以使用完整包装脚本（依次执行 FASTA、模型、推理和结果 checksum 检查）：
+You can also use the complete wrapper, which checks the FASTA and model, runs inference, and
+verifies the result checksums in sequence:
 
 ```bash
 checkout=/path/to/DJR-MCP-Finder/user-inference-v0
 bash "${checkout}/scripts/run_user_fasta.sh" proteins.faa run_output/my_sample cuda
 ```
 
-包装脚本根据自身位置定位 checkout，不要求从仓库根目录启动。默认优先使用 checkout 内的
-`.venv/bin/python`，否则使用 `python3`；运行环境与路径均可显式覆盖：
+The wrapper locates the checkout from its own path, so it need not be launched from the repository
+root. It prefers `.venv/bin/python` inside the checkout and otherwise uses `python3`. The runtime
+and paths can be overridden explicitly:
 
 ```bash
 checkout=/path/to/DJR-MCP-Finder/user-inference-v0
@@ -82,11 +89,13 @@ DJRMCP_DEVICE=cuda \
 bash "${checkout}/scripts/run_user_fasta.sh" proteins.faa run_output/my_sample
 ```
 
-`DJRMCP_DEVICE` 默认是 `cuda`，也可显式设为 `auto` 或 `cpu`；第三个位置参数优先级更高。
-`DJRMCP_OFFLINE=1` 会把包装脚本切换为离线模式。Docker/NVIDIA 部署及可配置的 image、
-cache volume、GPU、UID/GID 见 [`workstation/README.md`](workstation/README.md)。
+`DJRMCP_DEVICE` defaults to `cuda` and can be set explicitly to `auto` or `cpu`; the third
+positional argument takes precedence. `DJRMCP_OFFLINE=1` switches the wrapper to offline mode.
+See [`workstation/README.md`](workstation/README.md) for Docker/NVIDIA deployment and configurable
+image, cache volume, GPU, and UID/GID settings.
 
-首次运行会从 Hugging Face 下载固定 revision 的 `Biohub/ESMC-6B`。已有缓存时可禁止联网：
+The first run downloads the pinned `Biohub/ESMC-6B` revision from Hugging Face. Once the cache is
+populated, network access can be disabled:
 
 ```bash
 djrmcp-predict predict proteins.faa \
@@ -95,44 +104,52 @@ djrmcp-predict predict proteins.faa \
   --offline
 ```
 
-输出目录包含：
+The output directory contains:
 
 ```text
-predictions.tsv    每条输入蛋白的 H1/H2/H3 分数、门控状态与最终标签
-run_metadata.json  输入/模型 SHA256、环境、硬件、阈值、运行时间与解释边界
-CHECKSUMS.sha256   两个结果文件的完整性校验
+predictions.tsv    H1/H2/H3 scores, gate states, and final label for each input protein
+run_metadata.json  input/model SHA256, environment, hardware, thresholds, runtime, and interpretation boundary
+CHECKSUMS.sha256   integrity checks for the two result files
 ```
 
-默认拒绝覆盖已有结果。若明确需要替换标准输出文件，可使用 `--overwrite`；写入仍采用临时文件
-加 atomic rename。
+Existing results are not overwritten by default. Use `--overwrite` only when you explicitly want
+to replace the standard output files; writes still use temporary files followed by an atomic
+rename.
 
-## 输入合同
+## Input contract
 
-- FASTA ID 必须非空且唯一；保留完整 header。
-- 序列统一转大写，允许训练中出现的 20 种标准氨基酸和 `X`。
-- 空序列、gap、终止符、其他模糊残基和疑似纯核酸 FASTA 均 fail closed。
-- 相同序列、不同 ID 只计算一次 embedding，再恢复原始顺序。
-- 长度不在训练范围 130–2906 aa 时仍可计算，但写入域外 warning。
-- 长序列始终使用冻结的 1022-aa window / 511-aa stride；不静默截断。
+- FASTA IDs must be non-empty and unique; the complete header is retained.
+- Sequences are converted to uppercase. The 20 standard amino acids seen during training and `X`
+  are accepted.
+- Empty sequences, gaps, stop symbols, other ambiguous residues, and apparently nucleotide-only
+  FASTA files fail closed.
+- Identical sequences with different IDs are embedded once, then restored to their original order.
+- Sequences outside the 130–2906 aa training range are still evaluated but receive an
+  out-of-domain warning.
+- Long sequences always use the frozen 1022-aa window / 511-aa stride and are never silently
+  truncated.
 
-## 冻结合同
+## Frozen contract
 
-- ESM-C 6B：`Biohub/ESMC-6B@45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a`
-- Transformers：`Biohub/transformers@ef32577f55da19a4989cd7b22e004dc43a4998cb`
-- embedding：residue mean，再对重叠 window mean，2560 维
-- classifier input：与训练一致的 float16 存储精度 round-trip
-- H1/H2 gate：概率 `>=` 冻结 threshold
-- H3 reject：最大概率 `<` 冻结 threshold 时输出 `unknown/other`
+- ESM-C 6B: `Biohub/ESMC-6B@45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a`
+- Transformers: `Biohub/transformers@ef32577f55da19a4989cd7b22e004dc43a4998cb`
+- Embedding: residue mean followed by overlapping-window mean, 2560 dimensions
+- Classifier input: a float16 storage-precision round trip matching training
+- H1/H2 gate: probability `>=` the frozen threshold
+- H3 reject: output `unknown/other` when the maximum probability is `<` the frozen threshold
 
-三个 sklearn joblib 已导出为 checksum-verified NumPy 权重；公共推理不反序列化 pickle。
-`PARITY_REPORT.json` 记录全部 11,060 条冻结 ESM-C embedding 上与原 joblib 的一致性验证。
-原始 embedding 的参考软件/硬件环境见 `environment/REFERENCE_ENVIRONMENT.md`。
+The three sklearn joblib files were exported as checksum-verified NumPy weights; public inference
+does not deserialize pickle. `PARITY_REPORT.json` records parity against the original joblib files
+over all 11,060 frozen ESM-C embeddings. See `environment/REFERENCE_ENVIRONMENT.md` for the
+reference software and hardware environment used for the original embeddings.
 
-## 科学边界
+## Scientific boundary
 
-当前 ESM-C 6B 没有新的 prospective external Test。输出概率是开发数据分布下的冻结 calibrated
-model score，不是自然蛋白组中经过 prevalence 调整的后验概率。用于大规模发现时，应进行独立的
-false-positive、同来源挑战集和结构/人工验证。
+The current ESM-C 6B model has no new prospective external Test. Output probabilities are frozen,
+calibrated model scores under the development-data distribution, not prevalence-adjusted posterior
+probabilities in natural proteomes. Large-scale discovery requires independent false-positive
+assessment, same-source challenge sets, and structural/manual validation.
 
-该目录目前不包含项目级 `LICENSE`，因此不授予复制、修改或再分发权。任何正式公开发布前仍需
-确定代码和数据/分类头许可，并补充引用信息。
+This directory currently has no project-level `LICENSE`, so it grants no permission to copy,
+modify, or redistribute the package. Before any formal public release, code and data/classifier-head
+licensing must be determined and citation information added.

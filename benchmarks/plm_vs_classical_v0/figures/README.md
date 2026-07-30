@@ -1,3 +1,5 @@
+**English** | [简体中文](README.cn.md)
+
 # Benchmark figures
 
 These figures visualize the validated internal cross-fitted benchmark without changing its frozen endpoints or claim boundary.

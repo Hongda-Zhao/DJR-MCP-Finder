@@ -1,3 +1,5 @@
+**English** | [简体中文](README.cn.md)
+
 # Portable V0.1 development-candidate deployment
 
 This directory deploys the mixed-encoder V0.1 candidate without changing the

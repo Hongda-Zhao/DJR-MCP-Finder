@@ -1,8 +1,11 @@
+**English** | [简体中文](README.cn.md)
+
 # DJR-MCP Finder — project V0
 
-DJR-MCP Finder 是三段式蛋白分类工具。当前正式发布仍是 **all ESM-C 6B**；后续 schema 5、
-PLM-vs-classical 和 ultra-remote 分析都是冻结后的 Train/Validation 开发证据，均未打开 protected Test，
-也没有改变 V0 或用户推理包。
+DJR-MCP Finder is a three-stage protein classification tool. The current formal release remains
+**all ESM-C 6B**. The subsequent schema 5, PLM-versus-classical, and ultra-remote analyses are
+post-freeze development evidence from Train/Validation; none opens the protected Test split or
+changes V0 or its user inference package.
 
 ```text
 data-curation V3 -> 11,060 representatives -> component-safe split
@@ -13,54 +16,59 @@ data-curation V3 -> 11,060 representatives -> component-safe split
                                             +-> unreleased V0.1 candidate
 ```
 
-## 冻结的 V0
+## Frozen V0
 
-- 数据：560 VMA-DJR、500 cellular DJR、5,000 HardNeg、5,000 background。
-- split：Train/Validation/Test = **6,634 / 2,212 / 2,214**；exact/source/component/MMseqs2 关系先
-  合并再切分，residual qualifying cross-split edge = **0**。
-- 模型选择：14 个表示模型共享 Train-only 5-fold component map；综合分
-  `S = 0.60·H1 AP + 0.30·H2 AP + 0.10·H3 macro-F1`，再经 Validation 三 Head gate 和 paired
-  one-SE，选择 ESM-C 6B（`S=0.997145`）。
+- Data: 560 VMA-DJRs, 500 cellular DJRs, 5,000 HardNeg proteins, and 5,000 background proteins.
+- Split: Train/Validation/Test = **6,634 / 2,212 / 2,214**. Exact-sequence, source,
+  component, and MMseqs2 relationships were merged before splitting; residual qualifying
+  cross-split edges = **0**.
+- Model selection: 14 representation models shared a Train-only five-fold component map. The
+  composite score was `S = 0.60·H1 AP + 0.30·H2 AP + 0.10·H3 macro-F1`; after the three-head
+  Validation gates and paired one-SE rule, ESM-C 6B was selected (`S=0.997145`).
 
-| Head | 任务 | classifier | temperature | threshold |
+| Head | Task | Classifier | Temperature | Threshold |
 | --- | --- | ---: | ---: | ---: |
 | H1 | DJR / non-DJR | alpha=`1e-5` | 1168.1537298613255 | 0.9687754839244975 |
 | H2 | VMA-DJR / cellular DJR | C=`0.01` | 0.8241381150130028 | 0.9639353725025007 |
 | H3 | two known phyla + reject | C=`10` | 4.2474179687096845 | 0.7126488980564439 |
 
-H2 仅在 H1 判为 DJR 后运行；H3 仅在 H2 判为 VMA-DJR 后运行。H3 的 `unknown/other` 是拒绝硬分到
-Nucleocytoviricota 或 Preplasmiviricota，不是通用未知病毒检测。
+H2 runs only after H1 classifies a protein as DJR; H3 runs only after H2 classifies it as
+VMA-DJR. H3 `unknown/other` rejects a forced assignment to Nucleocytoviricota or
+Preplasmiviricota; it is not a general unknown-virus detector.
 
-## 最新证据分层
+## Current evidence hierarchy
 
-| evidence | status | 可以回答 | 不能回答 |
+| Evidence | Status | What it can answer | What it cannot answer |
 | --- | --- | --- | --- |
-| 14-model benchmark | frozen development selection | 哪个 all-one-encoder system 被选为 V0 | 外部泛化 |
-| schema 5 Amendment D | 20/20 gates PASS | 同一四来源 family members 上的 8-model/9-cascade 稳健性 | 独立 Test、回调选模 |
-| PLM vs classical V0 | internal cross-fit PASS | Train components 上 PLM retrieval 与经典检索的差异 | 外部 superiority |
-| ultra-remote V0/V0.1 | PASS；formal claim blocked | V0.1 在内部 holdout/低覆盖压力层的表现 | 正式 `<20% identity` 结论 |
-| prospective/external Test | **not run** | — | V0/V0.1 的发布级泛化结论 |
+| 14-model benchmark | frozen development selection | which all-one-encoder system was selected as V0 | external generalization |
+| schema 5 Amendment D | 20/20 gates PASS | robustness of eight models/nine cascades on family members from the same four sources | independent Test performance or feedback into model selection |
+| PLM vs classical V0 | internal cross-fit PASS | differences between PLM retrieval and classical search on Train components | external superiority |
+| ultra-remote V0/V0.1 | PASS; formal claim blocked | V0.1 behavior on internal holdouts and low-coverage stress strata | a formal `<20% identity` conclusion |
+| prospective/external Test | **not run** | — | release-grade generalization of V0/V0.1 |
 
-### schema 5：值得外部确认的 mixed candidate
+### Schema 5: a mixed candidate worth external confirmation
 
-预注册的 9 个 mixed candidates 只按既有 Train-CV 排序；四来源 robustness 不参与重排。当前 nominee 是
-**H1/H2 ESM-2 3B + H3 ESM-C 6B**（`S=0.997645`），相对 all-6B 为 `0/4` Holm-corrected
-source warnings；这不等同于四来源 non-inferiority 或 equivalence 证明：
+The nine mixed candidates were preregistered and ranked only by existing Train-CV results; the
+four-source robustness analysis did not rerank them. The current nominee is **H1/H2 ESM-2 3B +
+H3 ESM-C 6B** (`S=0.997645`), with `0/4` Holm-corrected source warnings relative to all-6B. This
+does not establish four-source non-inferiority or equivalence:
 
-| system | viral | cellular | background | matched HardNeg | always-on / worst-case s·seq⁻¹ |
+| System | Viral | Cellular | Background | Matched HardNeg | Always-on / worst-case s·seq⁻¹ |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | frozen all ESM-C 6B | 0.9536 | 0.8791 | 0.9948 | 0.9978 | 0.059531 / 0.059531 |
 | mixed nominee | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
 
-nominee 的 viral strict clusters 为 52/69，低于 all-6B 的 55/69；走到 H3 时还需第二个 encoder。
-正式状态只是 `recommended_for_external_confirmation`，`released_v0_change_permitted=0`。
+The nominee recovers 52/69 viral strict clusters, fewer than the 55/69 recovered by all-6B; it
+also requires a second encoder for sequences that reach H3. Its formal status is only
+`recommended_for_external_confirmation`, with `released_v0_change_permitted=0`.
 
-### PLM vs classical：内部结果不支持 ESM-C cosine 更灵敏
+### PLM versus classical: internal results do not support higher ESM-C cosine sensitivity
 
-在 6,634 条 Train records 上采用 cyclic 3-fit/1-calibration/1-evaluation component cross-fit。以下为
-fold-macro component AP / sensitivity at a threshold calibrated to a 99.5% specificity target：
+The benchmark uses cyclic 3-fit/1-calibration/1-evaluation component cross-fitting on the 6,634
+Train records. The values below are fold-macro component AP / sensitivity at a threshold
+calibrated to a 99.5% specificity target:
 
-| method | H1 | H2 |
+| Method | H1 | H2 |
 | --- | ---: | ---: |
 | ESM-C 6B cosine | 0.8719 / 0.7340 | 0.9861 / 0.9306 |
 | BLASTP | 0.9392 / 0.8692 | 0.9829 / 0.9443 |
@@ -69,44 +77,56 @@ fold-macro component AP / sensitivity at a threshold calibrated to a 99.5% speci
 | component-HMMER | 0.9542 / 0.9016 | 0.9911 / 0.9569 |
 | ESM-2 650M cosine, contextual | 0.9515 / 0.8954 | 0.9965 / 0.9977 |
 
-ESM-C cosine 的 H1 paired delta CI 对四个 classical anchors 均为负；H2 与 end-to-end 的 CI 跨 0，且
-受 singleton component 的低-FPR 分辨率限制。这是 representation retrieval 比较，不等于冻结 supervised
-V0 工具的外部性能。Validator 独立重算点估计，但未独立重跑全部 10,000 bootstrap。
+For H1, the paired delta confidence intervals for ESM-C cosine versus all four classical anchors
+are negative. For H2 and the end-to-end endpoint, the intervals cross zero and are limited by
+low-FPR resolution for singleton components. This is a representation-retrieval comparison, not
+evidence about the external performance of the frozen supervised V0 tool. The validator
+independently recomputes point estimates but did not independently rerun all 10,000 bootstrap
+replicates.
 
-### ultra-remote：V0.1 有信号，但正式结论被阻断
+### Ultra-remote: V0.1 shows a signal, but the formal conclusion is blocked
 
-V0.1 只把 H1/H2 encoder 改为 ESM-2 3B，H3 仍为 ESM-C 6B。Train-only component holdout 中 H1
-encoder sensitivity 相对 V0 为 `+0.197`；BLAST-defined `qcov<80%` 压力层为 `+0.260`
-（95% CI 0.206–0.317）。但 H1 supervised detector 只提高 `+0.017`，H2/end-to-end detector 为 0；
-所有 paired systems 至少一个 fold 未守住实际 99.5% specificity。严格 `qcov≥80%, identity<20%` 只有
-1 个独立 positive component，因此状态是 `PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE`。
+V0.1 changes only the H1/H2 encoder to ESM-2 3B; H3 remains ESM-C 6B. On the Train-only component
+holdout, H1 encoder sensitivity improves by `+0.197` relative to V0; the BLAST-defined `qcov<80%`
+stress stratum improves by `+0.260` (95% CI 0.206–0.317). However, the H1 supervised detector
+improves by only `+0.017`, while the H2 and end-to-end detector changes are zero. Every paired
+system misses the actual 99.5% specificity target in at least one fold. The strict
+`qcov≥80%, identity<20%` stratum contains only one independent positive component, so the status
+is `PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE`.
 
-## 当前发布边界
+## Current release boundary
 
-历史 Test 数字只属于 ESM-2 650M。all ESM-C 6B、schema 5 nominee 和 V0.1 均为 `not_evaluated`。
-因此当前可以发布 component-safe 数据构筑、开发 benchmark、冻结 V0 工具和明确标注的内部 stress tests；
-不能声称 V0.1 已替代 V0、PLM 已在外部数据胜过经典方法、或工具能普适识别未知病毒。
+Historical Test results apply only to ESM-2 650M. All ESM-C 6B, the schema 5 nominee, and V0.1
+remain `not_evaluated`. The current release can therefore support claims about component-safe
+dataset construction, development benchmarks, the frozen V0 tool, and clearly labelled internal
+stress tests. It cannot support claims that V0.1 has replaced V0, that PLMs outperform classical
+methods on external data, or that the tool can generally detect unknown viruses.
 
-## 权威入口
+## Authoritative entry points
 
-- `WORKFLOW_V0.md`：唯一完整工作流与证据边界。
-- `PROJECT_V0_FINAL_REPORT.md`：当前精简科学报告。
-- `results/validation_family_robustness_v0_schema5_mixed_heads/`：schema 5 正式 compact results。
-- `results/figures/project_v0/validation_family_robustness_v0_schema5_head_focus/`：只读出版图 companion。
-- `benchmarks/plm_vs_classical_v0/`：内部 PLM/classical compact benchmark。
-- `benchmarks/ultra_remote_v0_v01/`：V0/V0.1 compact development audit。
-- [`user-inference-v0/`](user-inference-v0/)：冻结 all ESM-C 6B 的正式用户 FASTA 推理包。
-- [`user-inference-v0.1/`](user-inference-v0.1/)：mixed-encoder V0.1 候选推理包；不替换 V0。
+- `WORKFLOW_V0.md`: the single complete workflow and evidence-boundary document.
+- `PROJECT_V0_FINAL_REPORT.md`: the current concise scientific report.
+- `results/validation_family_robustness_v0_schema5_mixed_heads/`: formal compact schema 5 results.
+- `results/figures/project_v0/validation_family_robustness_v0_schema5_head_focus/`: read-only
+  publication-figure companion.
+- `benchmarks/plm_vs_classical_v0/`: compact internal PLM/classical benchmark.
+- `benchmarks/ultra_remote_v0_v01/`: compact V0/V0.1 development audit.
+- [`user-inference-v0/`](user-inference-v0/): formal frozen all-ESM-C-6B user FASTA inference package.
+- [`user-inference-v0.1/`](user-inference-v0.1/): mixed-encoder V0.1 candidate inference package;
+  it does not replace V0.
 
-## 在其他路径运行研究工作流
+## Running the research workflow from another location
 
-GitHub 检出目录可以位于任意位置。未被独立 scientific checksum 冻结的活动 shell/PBS 入口优先读取
-`DJRMCP_PROJECT_ROOT`，否则根据脚本位置（PBS 下也可使用 `PBS_O_WORKDIR`）定位仓库；本地 Python
-环境可用 `DJRMCP_VENV_ROOT` 指定。示例变量见 [`.env.example`](.env.example)。
+The GitHub checkout may live at any path. Active shell/PBS entry points that are not independently
+frozen by a scientific checksum first read `DJRMCP_PROJECT_ROOT`; otherwise they locate the
+repository from the script location (and may also use `PBS_O_WORKDIR` under PBS). A local Python
+environment can be selected with `DJRMCP_VENV_ROOT`. Example variables are provided in
+[`.env.example`](.env.example).
 
-仓库中的 `configs/`、benchmark `config/`、`FULL_ARTIFACT_POINTER.json`、验证记录和报告仍保留当时
-gds2 的绝对路径。这些字符串是冻结 provenance 或 archive locator，不能直接批量替换。需要复跑时，先为
-本机生成一个不纳入科学 checksum 的运行副本：
+The historical absolute paths retained in `configs/`, benchmark `config/`,
+`FULL_ARTIFACT_POINTER.json`, validation records, and reports are frozen provenance or archive
+locators from the original gds2 system. They must not be batch-replaced. To rerun the workflow,
+first generate a site-local copy outside the scientific-checksum scope:
 
 ```bash
 export DJRMCP_PROJECT_ROOT="$(pwd -P)"
@@ -123,19 +143,26 @@ DJRMCP_DATASET_CONFIG="$PWD/build/local-configs/v0_dataset.json" \
   bash scripts/build_v0_dataset.sh
 ```
 
-同一工具也可处理 YAML 和两个 compact benchmark 的 JSON 配置；`--map OLD=NEW` 可增加更细的
-前缀映射。它默认 fail closed：只要生成配置仍含未映射的历史 operational root 就不写出文件，并且
-永不覆盖输入配置。复跑仍应按各自 README 恢复完整 archive，生成的站点配置放在 checksum scope
-之外，不原地改写冻结 config。schema-5 Amendment D 的
-`legacy_schema4_numerical_operator.venv_root` 是 exact
-numeric replay 合同的一部分，会被刻意保留；完整 Amendment-D 重放仍须挂载原始已验证环境，不能把这个
-provenance 字段伪装成本机路径。production Test ledger 同样固定在原管理员 registry，公开检出没有覆盖入口。
+The same tool supports YAML and the two compact benchmark JSON configurations; `--map OLD=NEW`
+adds finer prefix mappings. It fails closed by default: if the generated configuration still
+contains an unmapped historical operational root, no output is written, and the input is never
+overwritten. Each rerun should still restore the complete archive described by its README and
+place generated site configuration outside checksum scope rather than editing the frozen config
+in place. Schema 5 Amendment D deliberately preserves
+`legacy_schema4_numerical_operator.venv_root` because it is part of the exact numerical replay
+contract. A full Amendment-D replay still requires the original validated environment to be
+mounted; that provenance field must not be disguised as a local path. The production Test ledger
+is likewise fixed in the original administrator registry, and a public checkout has no override
+entry point.
 
-本 GitHub 可移植打包参数化了文档和运行入口，并补强模型反序列化前的 checksum 校验；因此相应刷新
-顶层、schema-5 source 与两个 compact benchmark 的 source-bundle checksum manifests。模型 heads、
-release 参数、冻结 config、数值结果和它们的内部 artifact checksums 均未改变；原始 gds2 版本仍由
-日期化 archive 及其 provenance 记录保存。
+This portable GitHub package parameterizes documentation and active entry points and strengthens
+checksum verification before model deserialization. The top-level, schema 5 source, and two
+compact benchmark source-bundle checksum manifests were refreshed accordingly. Model heads,
+release parameters, frozen configurations, numerical results, and their internal artifact
+checksums are unchanged; the original gds2 version remains preserved in dated archives and their
+provenance records.
 
-完整运行产物、日志、数据库、TIFF、旧图和开发候选代码的历史位置仍记录为
-`/aptmp/hongda/DJRMCP_Develope/` 下的日期化 checksum-bound archives；这是来源记录，不是 GitHub
-检出的运行要求。活动工程只保留解释与复核所需的 compact core。
+Full run outputs, logs, databases, TIFF files, old figures, and development-candidate code remain
+in dated checksum-bound archives under the historical `/aptmp/hongda/DJRMCP_Develope/` location.
+That path is a provenance record, not a requirement for a GitHub checkout. The active repository
+contains only the compact core needed for interpretation and audit.

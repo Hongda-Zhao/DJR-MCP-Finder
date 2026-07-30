@@ -44,6 +44,7 @@ data/processed/v0/*
 # Generated results
 results/*
 !results/README.md
+!results/README.cn.md
 !results/.gitkeep
 
 # Compact, checksum-bound evidence published with the repository

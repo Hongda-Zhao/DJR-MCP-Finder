@@ -1,3 +1,5 @@
+**English** | [简体中文](README.cn.md)
+
 # Ultra-remote benchmark: v0 versus v0.1
 
 This is a separate, fail-closed development audit. It does not modify the released
