@@ -16,6 +16,77 @@ data-curation V3 -> 11,060 representatives -> component-safe split
                                             +-> unreleased V0.1 candidate
 ```
 
+## Installation and deployment
+
+The recommended entry point for users is the frozen
+[`user-inference-v0/`](user-inference-v0/) package. A normal laptop or desktop can install the
+package, run its contract tests, validate FASTA files, and inspect the frozen model bundle without
+downloading either the ESM-C checkpoint or PyTorch. Full prediction is a workstation workload.
+
+| Goal | Minimum practical environment | Support status |
+| --- | --- | --- |
+| Install, unit-test, validate FASTA, inspect model metadata | Python 3.10+ and a CPU | No GPU or model download required |
+| Run formal V0 predictions | Linux x86_64, Docker, NVIDIA Container Toolkit, compatible NVIDIA driver, CUDA GPU | Validated path; at least 24 GB GPU memory is recommended |
+| Run V0.1 candidate predictions | Same, with native BF16 support and a separate model cache | Python package requires 3.12+; engineering reproduction validated; not a formal release |
+| Reproduce the complete research workflow | Site-local archives, databases, software stack, and HPC-scale resources | Not available from the compact GitHub checkout alone |
+
+The documented shell commands assume Linux or macOS. Native Windows has not been validated. The
+full Docker inference path has been validated only on Linux x86_64; typical CPU-only computers and
+Apple-silicon Macs cannot run that CUDA path. Unless the pinned cache is already populated, the
+first real inference also needs network access and enough free disk for model images and caches
+(plan for tens of gigabytes).
+
+### CPU-only installation and checks
+
+Clone the repository and install the formal V0 package. If the repository is private, the clone
+command requires a GitHub account with access.
+
+```bash
+git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
+cd DJR-MCP-Finder/user-inference-v0
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e '.[dev]'
+
+pytest -q
+djrmcp-predict validate-fasta examples/synthetic_example.faa
+djrmcp-predict model-info
+```
+
+These commands exercise the install and frozen prediction contract, but they do not run the 6B
+encoder. For a non-editable local install, replace `-e '.[dev]'` with `'.[dev]'`.
+
+### Full V0 inference on an NVIDIA workstation
+
+The recommended reproducible path uses Docker. Confirm that Docker can expose the selected NVIDIA
+GPU, then build and run from the V0 package directory:
+
+```bash
+cd /path/to/DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
+
+bash workstation/run_user_fasta.sh \
+  examples/synthetic_example.faa \
+  run_output/sample \
+  0
+```
+
+`0` is the physical GPU index. The first prediction downloads the pinned ESM-C 6B checkpoint;
+later runs reuse the Docker cache and can run with `DJRMCP_OFFLINE=1`. The measured V0 peak was
+about 13.05 GB of allocated GPU memory, but 24 GB or more is recommended for runtime headroom. CPU
+inference can be selected explicitly, but it loads roughly 25 GB of float32 weights, is slow, and
+has not been validated as a routine deployment path. See the
+[`user-inference-v0` guide](user-inference-v0/README.md) and
+[`Docker deployment guide`](user-inference-v0/workstation/README.md) for custom input paths,
+cache locations, offline runs, and device settings.
+
+V0.1 is an optional mixed-encoder development candidate, not the default installation. Its Python
+package requires Python 3.12+ because it pins NumPy 2.5.1. It must be kept separate from formal V0
+and uses two isolated runtime environments; follow the
+[`V0.1 candidate guide`](user-inference-v0.1/README.md) only when that distinction is intentional.
+
 ## Frozen V0
 
 - Data: 560 VMA-DJRs, 500 cellular DJRs, 5,000 HardNeg proteins, and 5,000 background proteins.

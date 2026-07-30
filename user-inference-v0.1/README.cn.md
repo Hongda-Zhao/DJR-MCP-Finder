@@ -119,10 +119,11 @@ CHECKSUMS.sha256
 
 ## 开发检查
 
-纯 CPU 合同测试不会下载大模型：
+V0.1 Python package 需要 Python 3.12 或更高版本，因为它固定使用 NumPy 2.5.1。纯 CPU 合同测试
+不会下载大模型：
 
 ```bash
-python -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
 pytest -q
