@@ -131,10 +131,11 @@ distribution, not prevalence-adjusted posteriors for natural samples.
 
 ## Development checks
 
-CPU-only contract tests do not download the large models:
+The V0.1 Python package requires Python 3.12 or newer because it pins NumPy 2.5.1. CPU-only
+contract tests do not download the large models:
 
 ```bash
-python -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
 pytest -q

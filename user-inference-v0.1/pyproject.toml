@@ -7,7 +7,7 @@ name = "djrmcp-user-inference-v01"
 version = "0.2.1"
 description = "Mixed-encoder DJR-MCP V0.1 candidate inference for user protein FASTA"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
   "numpy==2.5.1",
 ]

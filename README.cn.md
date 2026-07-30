@@ -15,6 +15,70 @@ data-curation V3 -> 11,060 representatives -> component-safe split
                                             +-> unreleased V0.1 candidate
 ```
 
+## 安装与部署
+
+建议普通用户从冻结的 [`user-inference-v0/`](user-inference-v0/README.cn.md) 正式包开始。普通笔记本或
+台式机可以安装该包、运行合同测试、校验 FASTA、查看冻结模型信息；这些操作不下载 ESM-C checkpoint，
+也不需要安装 PyTorch。完整 prediction 属于工作站级负载。
+
+| 目标 | 实际最低环境 | 支持状态 |
+| --- | --- | --- |
+| 安装、单元测试、FASTA 校验、模型 metadata 检查 | Python 3.10+ 与 CPU | 不需要 GPU，也不下载大模型 |
+| 运行正式 V0 prediction | Linux x86_64、Docker、NVIDIA Container Toolkit、兼容驱动、CUDA GPU | 已验证路径；建议至少 24 GB 显存 |
+| 运行 V0.1 candidate prediction | 同上，并原生支持 BF16、使用独立模型 cache | Python package 需要 3.12+；工程复现已验证；不是正式 release |
+| 完整复现研究工作流 | 本地 archive、database、软件栈和 HPC 级资源 | 仅靠 compact GitHub checkout 无法完成 |
+
+以下命令使用 Linux/macOS shell；native Windows 尚未验证。完整 Docker inference 只在 Linux x86_64
+上验证过；普通纯 CPU 电脑和 Apple-silicon Mac 不能运行该 CUDA 路径。除非固定 cache 已经填充，
+第一次真实 inference 还需要网络，并需要足够磁盘保存 image 和模型 cache（应预留数十 GB）。
+
+### 仅 CPU 的安装与检查
+
+先 clone 仓库并安装正式 V0 包。若仓库为 private，clone 时需要使用有访问权限的 GitHub 账户。
+
+```bash
+git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
+cd DJR-MCP-Finder/user-inference-v0
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e '.[dev]'
+
+pytest -q
+djrmcp-predict validate-fasta examples/synthetic_example.faa
+djrmcp-predict model-info
+```
+
+以上命令会检查安装和冻结 prediction 合同，但不会运行 6B encoder。若不需要 editable install，可将
+`-e '.[dev]'` 替换为 `'.[dev]'`。
+
+### 在 NVIDIA 工作站上运行完整 V0 inference
+
+建议使用可复现的 Docker 路径。先确认 Docker 可以暴露所选 NVIDIA GPU，然后在 V0 包目录中构建并
+运行：
+
+```bash
+cd /path/to/DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
+
+bash workstation/run_user_fasta.sh \
+  examples/synthetic_example.faa \
+  run_output/sample \
+  0
+```
+
+`0` 是物理 GPU index。第一次 prediction 会下载固定的 ESM-C 6B checkpoint；后续会复用 Docker
+cache，并可设置 `DJRMCP_OFFLINE=1` 完全断网运行。V0 实测 peak allocated GPU memory 约为
+13.05 GB，但为运行余量建议使用 24 GB 或更多显存。虽然可以显式选择 CPU inference，但它会加载约
+25 GB float32 权重、速度很慢，也没有作为常规部署路径验证。自定义输入路径、cache、offline 运行和
+device 设置见 [`user-inference-v0` 指南](user-inference-v0/README.cn.md) 与
+[`Docker 部署指南`](user-inference-v0/workstation/README.cn.md)。
+
+V0.1 是可选的 mixed-encoder 开发候选，不是默认安装。由于固定 NumPy 2.5.1，其 Python package
+需要 Python 3.12+。它必须与正式 V0 隔离，并使用两个独立 runtime 环境；只有在明确理解该区别时，
+再按照 [`V0.1 candidate 指南`](user-inference-v0.1/README.cn.md) 部署。
+
 ## 冻结的 V0
 
 - 数据：560 VMA-DJR、500 cellular DJR、5,000 HardNeg、5,000 background。
