@@ -1,0 +1,89 @@
+name: Package release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing repository tag to validate and package
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build validated distributions
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+    steps:
+      - name: Validate release tag format
+        shell: bash
+        run: |
+          if [[ ! "${RELEASE_TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(a[0-9]+|b[0-9]+|rc[0-9]+|\.post[0-9]+)?$ ]]; then
+            echo "::error::Invalid release tag: ${RELEASE_TAG}"
+            exit 1
+          fi
+      - name: Validate releaser
+        shell: bash
+        run: |
+          if [[ "${GITHUB_ACTOR}" != "Hongda-Zhao" ]]; then
+            echo "::error::${GITHUB_ACTOR} is not an authorised releaser."
+            exit 1
+          fi
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+      - name: Require tag commit on main
+        shell: bash
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor HEAD origin/main
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install build tooling
+        run: python -m pip install 'build>=1.2,<2' 'twine>=5,<7'
+      - name: Validate release manifest against tag
+        run: python scripts/check_project_metadata.py --tag "${RELEASE_TAG}"
+      - name: Build and inspect packages
+        run: make package-check PYTHON=python BUILD_DIR=build/tag-release
+      - uses: actions/upload-artifact@v7
+        with:
+          name: release-${{ env.RELEASE_TAG }}
+          path: build/tag-release/*/*
+          if-no-files-found: error
+
+  github-release:
+    name: Attach packages to GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    environment: github-release
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-${{ env.RELEASE_TAG }}
+          path: artifacts
+      - name: Create release if needed
+        shell: bash
+        run: |
+          if ! gh release view "${RELEASE_TAG}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            gh release create "${RELEASE_TAG}" \
+              --repo "${GITHUB_REPOSITORY}" \
+              --verify-tag \
+              --generate-notes \
+              --latest
+          fi
+      - name: Upload validated distributions
+        run: gh release upload "${RELEASE_TAG}" artifacts/*/* --repo "${GITHUB_REPOSITORY}" --clobber

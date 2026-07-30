@@ -21,6 +21,7 @@ EXPECTED_HEAD_ENCODERS = {
 }
 CANONICAL_ARTIFACT_SHA256 = {
     "PARITY_REPORT.json": "22b3f8d49e31365f1c9fbbf722a434bda1bbd393bd4dad71a873ec2a9b81dc3b",
+    "THIRD_PARTY_NOTICES.md": "1fef3e62e8043e7b0ce34ccf9ae6d1775fc60480f6706f9156844a14450708f4",
     "heads/head1.npz": "4cadabc814b044d07dece3ab7e03f3df051cca2256d5393e95500d17cc282587",
     "heads/head2.npz": "32f840e196fbdec5d507bab3191b76aebef25ebcdf92fcb483932a8654d9ce32",
     "heads/head3_phylum.npz": "8c0597145a4790c23a4235884e5eb54a4f9d2d324853be78e791dcafd51c3dea",

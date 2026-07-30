@@ -1,0 +1,39 @@
+name: Scientific interpretation question
+description: Ask about evidence, model scope, or result interpretation without reporting a software bug.
+title: "[Science]: "
+labels: []
+body:
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence surface
+      options:
+        - Released Model V0
+        - Model V0.1 candidate
+        - Schema 5 robustness
+        - PLM versus classical benchmark
+        - Ultra-remote development audit
+        - Dataset construction or split
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: State the interpretation or claim you want to evaluate.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Relevant files or results
+      description: Link the model card, report section, result table, or command output you consulted.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I read docs/SCIENTIFIC_EVIDENCE.md and the relevant model card.
+          required: true
+        - label: I am not using a public issue to disclose private sequence data.
+          required: true

@@ -1,0 +1,51 @@
+name: Feature request
+description: Propose a user-facing or engineering improvement.
+title: "[Feature]: "
+labels: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or contributor problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the smallest useful change and its expected interface.
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Primary scope
+      options:
+        - User inference
+        - Research pipeline
+        - Packaging and release
+        - Documentation
+        - Scientific model or evaluation
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Scientific and compatibility impact
+      description: State whether this changes model identity, thresholds, output schema, evidence claims, or backward compatibility.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked the documentation and existing issues.
+          required: true
+        - label: I understand that candidate evidence cannot silently modify released Model V0.
+          required: true

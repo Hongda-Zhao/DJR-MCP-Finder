@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation map
+    url: https://github.com/Hongda-Zhao/DJR-MCP-Finder/tree/main/docs
+    about: Find user, scientific, reproducibility, versioning, and contributor documentation.
+  - name: Security policy
+    url: https://github.com/Hongda-Zhao/DJR-MCP-Finder/security/policy
+    about: Do not report vulnerabilities through a public issue.

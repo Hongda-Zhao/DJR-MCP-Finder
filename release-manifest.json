@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "repository_release": {
+    "version": "0.1.0",
+    "tag": "v0.1.0",
+    "versioning": "SemVer"
+  },
+  "packages": [
+    {
+      "distribution": "djrmcp-finder",
+      "version": "0.1.0",
+      "path": ".",
+      "module": "src/djrmcp_finder",
+      "artifact_directory": "root",
+      "model_id": null
+    },
+    {
+      "distribution": "djrmcp-user-inference",
+      "version": "0.1.0",
+      "path": "user-inference-v0",
+      "module": "user-inference-v0/src/djrmcp_predict",
+      "artifact_directory": "formal-v0",
+      "model_id": "model-v0"
+    },
+    {
+      "distribution": "djrmcp-user-inference-v01",
+      "version": "0.2.1",
+      "path": "user-inference-v0.1",
+      "module": "user-inference-v0.1/src/djrmcp_predict_v01",
+      "artifact_directory": "candidate-v01",
+      "model_id": "model-v0.1-candidate"
+    }
+  ],
+  "models": [
+    {
+      "model_id": "model-v0",
+      "display_name": "Model V0",
+      "status": "released",
+      "bundle_revision": "model-v0-esmc6b-r1",
+      "bundle_release_id": "project-v0-esmc6b-r1-user-inference",
+      "bundle_metadata": "user-inference-v0/src/djrmcp_predict/assets/project-v0-esmc6b-r1/release.json"
+    },
+    {
+      "model_id": "model-v0.1-candidate",
+      "display_name": "Model V0.1 Candidate",
+      "status": "development_candidate_external_confirmation_required",
+      "bundle_revision": "model-v0.1-mixed-r1",
+      "bundle_release_id": "project-v0.1-candidate-esm2-3b-esmc-6b-user-inference",
+      "bundle_metadata": "user-inference-v0.1/src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/release.json"
+    }
+  ]
+}
