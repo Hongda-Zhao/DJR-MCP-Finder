@@ -12,15 +12,24 @@ three-stage protein-language-model classifier.** DJR-MCP Finder gives virologist
 bioinformaticians an auditable first-pass screen for DJR proteins, viral
 morphogenesis-associated DJRs, and two supported viral phyla.
 
-> **Recommended model:** [`model-v0`](user-inference-v0/) — the released all-ESM-C-6B bundle.
-> It accepts protein FASTA and writes predictions, run metadata, and checksums without training or
-> retuning the model.
+## Two current result tracks
+
+V0 and V0.1 are both primary results of the project. They share the same three-head task but expose
+different frozen encoder systems and separate command-line packages.
+
+| Result | Frozen system | Status | User entry point |
+| --- | --- | --- | --- |
+| **Model V0** | ESM-C 6B for H1/H2/H3 | Released reproducible baseline | [`djrmcp-predict`](user-inference-v0/) |
+| **Model V0.1** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Current mixed-encoder result; external confirmation required | [`djrmcp-predict-v01`](user-inference-v0.1/) |
+
+Neither track trains or retunes the model during inference. V0.1 is presented alongside V0 without
+rewriting the identity or evidence record of the released V0 bundle.
 
 ## From FASTA to an auditable result
 
 ```mermaid
 flowchart LR
-    A["Protein FASTA"] --> B["Pinned ESM-C 6B embeddings"]
+    A["Protein FASTA"] --> B["Selected frozen V0 or V0.1 bundle"]
     B --> H1{"H1: DJR?"}
     H1 -- "No" --> N["non_djr"]
     H1 -- "Yes" --> H2{"H2: VMA-associated?"}
@@ -34,33 +43,38 @@ flowchart LR
 `vma::unknown/other` is a reject option after H1 and H2; it is not a general unknown-virus or
 out-of-distribution detector.
 
-## Quick start: CPU-only checks
+## Core benchmark snapshot
 
-These commands install the formal V0 inference package, run its contract tests, validate a FASTA,
-and inspect the frozen bundle without downloading ESM-C or PyTorch:
+![V0 versus V0.1 remote-component development benchmark](benchmarks/ultra_remote_v0_v01/figures/ultra_remote_v0_v01.svg)
+
+On the Train-only component holdout, V0.1 raises H1 encoder sensitivity from `0.734` to `0.924`
+and normalized partial AUROC at FPR ≤0.005 from `0.655` to `0.889`. The task-adapted H1 detector
+moves from `0.975` to `0.994`; H2 and end-to-end detector sensitivity remain tied in this audit.
+These are internal, fixed-threshold development results: every paired system misses the actual
+99.5% specificity target in at least one fold, and the strict `<20% identity` stratum contains only
+one independent positive component. See the [benchmark package](benchmarks/ultra_remote_v0_v01/README.md)
+and [scientific interpretation boundary](docs/SCIENTIFIC_EVIDENCE.md).
+
+## Quick start: CPU-only contract checks
+
+Python 3.12+ can validate both result tracks without downloading either encoder or PyTorch:
 
 ```bash
 git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
-cd DJR-MCP-Finder/user-inference-v0
+cd DJR-MCP-Finder
 
-python3 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
 
-python -m pytest -q
-djrmcp-predict validate-fasta examples/synthetic_example.faa
-djrmcp-predict model-info
+make setup-v0 setup-v01
+make test-v0 smoke-v0
+make test-v01 smoke-v01
 ```
 
-Native Windows has not been validated. Full inference uses the
-[Docker/NVIDIA workstation path](user-inference-v0/workstation/README.md), with a CUDA GPU of at
-least 24 GB recommended:
-
-```bash
-cd /path/to/DJR-MCP-Finder/user-inference-v0
-bash workstation/build.sh
-bash workstation/run_user_fasta.sh examples/synthetic_example.faa run_output/sample 0
-```
+Native Windows has not been validated. Full inference uses Linux, Docker, and NVIDIA GPUs; follow
+the [V0 workstation guide](user-inference-v0/workstation/README.md) or the
+[V0.1 workstation guide](user-inference-v0.1/workstation/README.md). V0 recommends at least 24 GB
+GPU memory; V0.1 uses two isolated, pinned encoder runtimes.
 
 ## Output example
 
@@ -73,7 +87,8 @@ illustrative schema examples, not benchmark results.
 | cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_vma` |
 | background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
 
-See the [formal V0 user guide](user-inference-v0/README.md) for the complete input/output contract.
+See the [V0](user-inference-v0/README.md) and [V0.1](user-inference-v0.1/README.md) user guides for
+their complete input/output contracts.
 
 ## Releases, models, and packages
 
@@ -82,8 +97,8 @@ These identifiers describe different things and are intentionally not interchang
 | Layer | Current identifier | Meaning |
 | --- | --- | --- |
 | Repository release | [`v0.1.0`](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1.0) | SemVer for the GitHub software release |
-| Released scientific model | `model-v0` | Frozen all-ESM-C-6B model in [`user-inference-v0/`](user-inference-v0/) |
-| Development candidate | `model-v0.1-candidate` | Mixed-encoder candidate in [`user-inference-v0.1/`](user-inference-v0.1/); does not replace V0 |
+| Scientific result | `model-v0` | Released all-ESM-C-6B result in [`user-inference-v0/`](user-inference-v0/) |
+| Scientific result | `model-v0.1-candidate` | Current mixed-encoder result in [`user-inference-v0.1/`](user-inference-v0.1/); external confirmation required |
 | Bundle revision | `model-v0-esmc6b-r1` | Immutable model contents plus export revision |
 | Python distribution | for example `djrmcp-user-inference==0.1.0` | PEP 440 version of one installable package |
 
@@ -94,9 +109,8 @@ The complete naming contract and machine-readable mapping are in
 
 | Goal | Start here | Environment |
 | --- | --- | --- |
-| Validate FASTA or inspect the released model | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+, CPU |
-| Run formal `model-v0` predictions | [V0 workstation guide](user-inference-v0/workstation/README.md) | Linux x86_64, Docker, NVIDIA GPU |
-| Evaluate the unreleased candidate | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+, two isolated model runtimes |
+| Use the released V0 result | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+ checks; Linux/Docker/NVIDIA for inference |
+| Use the current V0.1 result | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+; two isolated model runtimes |
 | Audit the research workflow | [Scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) | Evidence map, metrics, and claim boundary |
 | Reproduce from site archives | [Reproducibility guide](docs/REPRODUCIBILITY.md) | Frozen inputs, software, and HPC resources |
 | Contribute code or documentation | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Python 3.12+ contributor environment |
@@ -127,7 +141,7 @@ targets. CI calls the same target-level contracts.
 
 ## Scientific and licensing boundary
 
-The released ESM-C 6B model has no new prospective external Test. Scores are calibrated under the
+Neither V0 nor V0.1 has a new prospective external Test. Scores are calibrated under the
 development-data distribution, not as prevalence-adjusted probabilities for natural proteomes.
 Large-scale discovery requires independent false-positive assessment and structural/manual
 validation. See [Scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) before interpreting results.

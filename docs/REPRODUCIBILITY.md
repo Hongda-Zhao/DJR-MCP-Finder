@@ -3,7 +3,7 @@
 The GitHub repository is a compact, portable audit and inference checkout. It does not redistribute
 all original databases, model checkpoints, large embeddings, logs, TIFF files, or historical run
 outputs. Complete replay therefore requires the checksum-bound archives and environments described
-by [`WORKFLOW_V0.md`](../WORKFLOW_V0.md).
+by [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md).
 
 ## Portable checkout
 
@@ -74,7 +74,7 @@ portable environment variables and rendered configuration above.
 
 ## Reproducibility entry points
 
-- [Complete scientific workflow](../WORKFLOW_V0.md)
+- [Complete scientific workflow](research/WORKFLOW_V0.md)
 - [Formal V0 reference environment](../user-inference-v0/environment/REFERENCE_ENVIRONMENT.md)
 - [Candidate reference environment](../user-inference-v0.1/environment/REFERENCE_ENVIRONMENT.md)
 - [Formal V0 workstation validation](../user-inference-v0/workstation/VALIDATION.json)

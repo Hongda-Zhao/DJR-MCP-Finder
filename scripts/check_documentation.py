@@ -10,7 +10,7 @@ from urllib.parse import unquote
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LINK = re.compile(r"(?<!!)\[[^]]+\]\(([^)]+)\)")
+LINK = re.compile(r"!?\[[^]]+\]\(([^)]+)\)")
 DOCUMENTS = [
     "README.md",
     "README.cn.md",
@@ -22,6 +22,9 @@ DOCUMENTS = [
     "docs/REPRODUCIBILITY.md",
     "docs/SCIENTIFIC_EVIDENCE.md",
     "docs/VERSIONING.md",
+    "docs/research/WORKFLOW_V0.md",
+    "docs/research/PROJECT_V0_FINAL_REPORT.md",
+    "docs/research/VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md",
     "user-inference-v0/README.md",
     "user-inference-v0/README.cn.md",
     "user-inference-v0.1/README.md",
@@ -34,6 +37,14 @@ REQUIRED_COMMUNITY_FILES = [
     ".github/ISSUE_TEMPLATE/config.yml",
     ".github/pull_request_template.md",
 ]
+ALLOWED_ROOT_MARKDOWN = {
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "README.cn.md",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md",
+}
 
 
 def _require(condition: bool, message: str) -> None:
@@ -63,6 +74,11 @@ def main() -> None:
 
     readme_lines = (ROOT / "README.md").read_text(encoding="utf-8").splitlines()
     _require(len(readme_lines) <= 180, f"README.md grew to {len(readme_lines)} lines")
+    root_markdown = {path.name for path in ROOT.glob("*.md")}
+    _require(
+        root_markdown == ALLOWED_ROOT_MARKDOWN,
+        f"root Markdown surface changed: {sorted(root_markdown ^ ALLOWED_ROOT_MARKDOWN)}",
+    )
     forbidden = {"## Frozen V0", "## Current evidence hierarchy", "## Running the research workflow from another location"}
     _require(not forbidden.intersection(readme_lines), "research detail returned to README.md")
 

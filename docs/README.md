@@ -10,9 +10,9 @@ with that first-use path.
 
 | Reader | Start here | Then read |
 | --- | --- | --- |
-| FASTA-screening user | [Formal V0 user guide](../user-inference-v0/README.md) | [Docker/NVIDIA deployment](../user-inference-v0/workstation/README.md) |
-| Scientist interpreting results | [Scientific evidence and limitations](SCIENTIFIC_EVIDENCE.md) | [Frozen V0 model card](../user-inference-v0/src/djrmcp_predict/assets/project-v0-esmc6b-r1/MODEL_CARD.md) |
-| Researcher reproducing the study | [Reproducibility guide](REPRODUCIBILITY.md) | [Complete workflow](../WORKFLOW_V0.md) |
+| FASTA-screening user | [V0 user guide](../user-inference-v0/README.md) or [V0.1 user guide](../user-inference-v0.1/README.md) | [V0](../user-inference-v0/workstation/README.md) or [V0.1](../user-inference-v0.1/workstation/README.md) deployment |
+| Scientist interpreting results | [Scientific evidence and limitations](SCIENTIFIC_EVIDENCE.md) | [V0/V0.1 benchmark](../benchmarks/ultra_remote_v0_v01/README.md) |
+| Researcher reproducing the study | [Reproducibility guide](REPRODUCIBILITY.md) | [Complete workflow](research/WORKFLOW_V0.md) |
 | Software contributor | [Contributing guide](../CONTRIBUTING.md) | [Architecture](ARCHITECTURE.md) |
 | Maintainer preparing a release | [Versioning and naming](VERSIONING.md) | [Changelog](../CHANGELOG.md) |
 | Security reporter | [Security policy](../SECURITY.md) | [Third-party notices](../THIRD_PARTY_NOTICES.md) |
@@ -21,8 +21,8 @@ with that first-use path.
 
 - [`release-manifest.json`](../release-manifest.json) is the machine-readable mapping among the
   repository release, Python distribution versions, scientific model IDs, and bundle revisions.
-- [`WORKFLOW_V0.md`](../WORKFLOW_V0.md) is the complete scientific workflow and evidence boundary.
-- [`PROJECT_V0_FINAL_REPORT.md`](../PROJECT_V0_FINAL_REPORT.md) is the concise scientific report.
+- [`research/WORKFLOW_V0.md`](research/WORKFLOW_V0.md) is the complete scientific workflow and evidence boundary.
+- [`research/PROJECT_V0_FINAL_REPORT.md`](research/PROJECT_V0_FINAL_REPORT.md) is the concise scientific report.
 - [`Makefile`](../Makefile) defines canonical contributor commands.
 - [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and
   [`.github/workflows/release.yml`](../.github/workflows/release.yml) define automated gates.
