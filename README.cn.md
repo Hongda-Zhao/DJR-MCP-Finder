@@ -5,6 +5,7 @@
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **使用冻结的三阶段蛋白语言模型分类器，从蛋白 FASTA 中检测 double-jelly-roll major capsid
 protein（DJR-MCP）。** DJR-MCP Finder 面向病毒学与生物信息学用户，用于对 DJR 蛋白、病毒形态发生
@@ -106,6 +107,13 @@ V0.1 是冻结后的开发证据，不替代正式 model V0。仅靠 compact che
 - [精简科研报告](PROJECT_V0_FINAL_REPORT.md)
 - [V0.1 开发候选](user-inference-v0.1/README.cn.md)
 - [引用信息](CITATION.cff)
+
+## 许可证与第三方组件
+
+除非文件另有说明，项目原创的 source code、文档、配置、图件和随包提供的原创线性分类头采用
+[MIT License](LICENSE)。外部模型 checkpoint、软件、dataset、蛋白序列、结构、数据库内容和商标仍
+遵循各自条款，本仓库不会将它们重新授权为 MIT。ESM-C 和 ESM-2 checkpoint 均在运行时另行下载，
+不包含在本 release 中。准确范围和上游链接见[第三方声明](THIRD_PARTY_NOTICES.md)。
 
 ## 科学状态与限制
 

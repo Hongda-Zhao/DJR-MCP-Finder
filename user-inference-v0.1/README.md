@@ -141,6 +141,13 @@ python -m pip install -e '.[dev]'
 python -m pytest -q
 ```
 
-See `environment/REFERENCE_ENVIRONMENT.md` for the frozen environments and release boundary. This
-directory currently has no project-level `LICENSE`; prospective external confirmation also remains
-outstanding.
+See `environment/REFERENCE_ENVIRONMENT.md` for the frozen environments and release boundary.
+
+## License
+
+This development-candidate package and its original bundled linear classifier heads are released
+under the [MIT License](LICENSE). ESM-2 and ESM-C checkpoints are downloaded separately and retain
+their upstream terms; see the
+[release-specific third-party notice](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
+and repository-level [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md). Prospective external
+confirmation remains outstanding.

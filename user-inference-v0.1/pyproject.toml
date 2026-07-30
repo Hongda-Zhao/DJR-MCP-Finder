@@ -7,6 +7,10 @@ name = "djrmcp-user-inference-v01"
 version = "0.2.1"
 description = "Mixed-encoder DJR-MCP V0.1 candidate inference for user protein FASTA"
 readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Hongda Zhao" },
+]
 requires-python = ">=3.12"
 dependencies = [
   "numpy==2.5.1",
@@ -22,12 +26,17 @@ dev = [
 [project.scripts]
 djrmcp-predict-v01 = "djrmcp_predict_v01.cli:main"
 
+[project.urls]
+Repository = "https://github.com/Hongda-Zhao/DJR-MCP-Finder"
+Documentation = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/tree/main/user-inference-v0.1"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
 djrmcp_predict_v01 = [
   "assets/project-v0.1-mixed-r1/*.json",
+  "assets/project-v0.1-mixed-r1/*.md",
   "assets/project-v0.1-mixed-r1/*.sha256",
   "assets/project-v0.1-mixed-r1/heads/*.npz",
 ]

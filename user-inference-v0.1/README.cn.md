@@ -129,5 +129,12 @@ python -m pip install -e '.[dev]'
 python -m pytest -q
 ```
 
-冻结环境与发布边界见 `environment/REFERENCE_ENVIRONMENT.md`。该目录当前不附带项目级
-`LICENSE`；prospective external confirmation 仍未完成。
+冻结环境与发布边界见 `environment/REFERENCE_ENVIRONMENT.md`。
+
+## 许可证
+
+该开发候选 package 及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-2 与 ESM-C
+checkpoint 均另行下载，并保留其上游条款；详见
+[release-specific 第三方声明](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
+和仓库级 [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md)。prospective external
+confirmation 仍未完成。

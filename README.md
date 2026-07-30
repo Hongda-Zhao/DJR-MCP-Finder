@@ -5,6 +5,7 @@
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Detect double-jelly-roll major capsid proteins from protein FASTA files with a frozen,
 three-stage protein-language-model classifier.** DJR-MCP Finder is intended for virologists and
@@ -113,6 +114,16 @@ research workflow cannot be reproduced from the compact checkout alone.
 - [Concise scientific report](PROJECT_V0_FINAL_REPORT.md)
 - [V0.1 development candidate](user-inference-v0.1/README.md)
 - [Citation metadata](CITATION.cff)
+
+## License and third-party components
+
+Unless a file states otherwise, project-authored source code, documentation, configuration,
+figures, and original bundled linear classifier-head artifacts are released under the
+[MIT License](LICENSE). External model checkpoints, software, datasets, protein sequences,
+structures, database content, and trademarks retain their own terms and are not relicensed by
+this repository. The ESM-C and ESM-2 checkpoints are downloaded separately and are not included
+in the release. See [third-party notices](THIRD_PARTY_NOTICES.md) for the exact scope and upstream
+links.
 
 ## Scientific status and limitations
 

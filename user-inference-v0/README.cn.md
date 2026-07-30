@@ -136,5 +136,9 @@ CHECKSUMS.sha256   两个结果文件的完整性校验
 model score，不是自然蛋白组中经过 prevalence 调整的后验概率。用于大规模发现时，应进行独立的
 false-positive、同来源挑战集和结构/人工验证。
 
-该目录目前不包含项目级 `LICENSE`，因此不授予复制、修改或再分发权。任何正式公开发布前仍需
-确定代码和数据/分类头许可，并补充引用信息。
+## 许可证
+
+该独立 package 及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-C checkpoint 在运行时
+另行下载，本包不重新分发；模型和固定 runtime dependency 仍遵循上游条款。详见
+[release-specific 第三方声明](src/djrmcp_predict/assets/project-v0-esmc6b-r1/THIRD_PARTY_NOTICES.md)
+和仓库级 [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md)。
