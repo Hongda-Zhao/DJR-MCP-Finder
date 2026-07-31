@@ -2,10 +2,16 @@
 
 This document contains the scientific detail intentionally removed from the repository landing
 page. It summarizes the current evidence without changing the authoritative frozen protocols or
-results. For the complete workflow, read [`WORKFLOW_V0.md`](../WORKFLOW_V0.md); for a concise report,
-read [`PROJECT_V0_FINAL_REPORT.md`](../PROJECT_V0_FINAL_REPORT.md).
+results. For the complete workflow, read [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md); for a concise
+report, read [`PROJECT_V0_FINAL_REPORT.md`](research/PROJECT_V0_FINAL_REPORT.md).
 
-## Released Model V0
+## Current primary results: V0 and V0.1
+
+The project currently exposes two primary scientific results: the released, all-ESM-C-6B Model V0
+and the mixed-encoder Model V0.1 candidate. They are peers in the public project navigation, while
+retaining different evidence and release statuses. The sections below preserve those distinctions.
+
+### Released Model V0
 
 - Data: 560 VMA-DJRs, 500 cellular DJRs, 5,000 HardNeg proteins, and 5,000 background proteins.
 - Split: Train/Validation/Test = **6,634 / 2,212 / 2,214**. Exact-sequence, source, component, and
@@ -34,7 +40,7 @@ not a general unknown-virus detector.
 | Ultra-remote V0/V0.1 | PASS; formal claim blocked | Candidate behavior on internal holdouts and low-coverage stress strata | A formal `<20% identity` conclusion |
 | Prospective/external Test | **Not run** | — | Release-grade generalization of Model V0 or the candidate |
 
-## Schema 5 mixed candidate
+### Model V0.1 mixed-encoder result
 
 Nine mixed candidates were preregistered and ranked only by existing Train-CV results; the
 four-source robustness analysis did not rerank them. The current nominee uses ESM-2 3B for H1/H2
@@ -92,8 +98,8 @@ viruses.
 
 ## Authoritative evidence entry points
 
-- [`WORKFLOW_V0.md`](../WORKFLOW_V0.md): complete workflow and evidence boundary.
-- [`PROJECT_V0_FINAL_REPORT.md`](../PROJECT_V0_FINAL_REPORT.md): concise scientific report.
+- [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md): complete workflow and evidence boundary.
+- [`PROJECT_V0_FINAL_REPORT.md`](research/PROJECT_V0_FINAL_REPORT.md): concise scientific report.
 - [`results/validation_family_robustness_v0_schema5_mixed_heads/`](../results/validation_family_robustness_v0_schema5_mixed_heads/): compact Schema 5 results.
 - [`benchmarks/plm_vs_classical_v0/`](../benchmarks/plm_vs_classical_v0/): internal PLM/classical benchmark.
 - [`benchmarks/ultra_remote_v0_v01/`](../benchmarks/ultra_remote_v0_v01/): compact development audit.

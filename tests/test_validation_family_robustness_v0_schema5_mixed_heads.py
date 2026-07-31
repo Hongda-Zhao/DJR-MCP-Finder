@@ -455,7 +455,9 @@ def test_schema4_cache_fails_closed_on_semantic_blank_threshold_and_reject_chang
 
 def test_amendment_d_preserves_c_replay_and_adds_h3_display_contract() -> None:
     config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
-    protocol = (ROOT / "VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md").read_text(
+    protocol = (
+        ROOT / "docs/research/VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md"
+    ).read_text(
         encoding="utf-8"
     )
     assert config["protocol_amendment"] == "D_h3_rare_subgroup_transparency_no_model_change"
@@ -640,7 +642,7 @@ def _runtime_fixture(
     operator["venv_root"] = str(venv)
     copied["legacy_schema4_numerical_operator"] = operator
     copied["protocol"] = str(
-        ROOT / "VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md"
+        ROOT / "docs/research/VALIDATION_FAMILY_ROBUSTNESS_V0_SCHEMA5_MIXED_HEADS_PROTOCOL.md"
     )
     environ = {
         "OMP_NUM_THREADS": "4",

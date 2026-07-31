@@ -64,7 +64,7 @@ candidates. Never infer scientific evidence status from a package version.
 ### Scientific model
 
 A new model ID requires a frozen model card, complete bundle metadata and checksums, declared
-evidence status, and the scientific release gates in `WORKFLOW_V0.md`. Engineering refactors that
+evidence status, and the scientific release gates in `docs/research/WORKFLOW_V0.md`. Engineering refactors that
 preserve all frozen parameters do not create a new model ID.
 
 ### Bundle revision

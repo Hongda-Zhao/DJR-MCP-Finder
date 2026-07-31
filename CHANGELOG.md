@@ -21,6 +21,10 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   markers, and metadata-backed runtime versions.
 - The landing README now focuses on adoption; detailed scientific and reproducibility material
   lives under `docs/`.
+- V0 and V0.1 now appear as coequal current result tracks, with their distinct release statuses
+  and the V0/V0.1 remote-component benchmark visible on the landing page.
+- Root-level scientific workflow, report, and robustness protocol documents moved to
+  `docs/research/`; a documentation check prevents root Markdown sprawl from returning.
 
 ## [0.1.0] - 2026-07-30
 

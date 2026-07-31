@@ -3,7 +3,7 @@
 This document describes the checkout on branch `codex/community-and-packaging`, based on
 `origin/main` commit `5509274` and the engineering changes carried with this document. The remote is
 `https://github.com/Hongda-Zhao/DJR-MCP-Finder.git`. It is an onboarding map, not a replacement for
-the scientific protocol in [`WORKFLOW_V0.md`](../WORKFLOW_V0.md).
+the scientific protocol in [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md).
 
 ## Part 1 — Whole-repository technical deep dive
 
@@ -339,5 +339,5 @@ scientific, not just technical: exact parity and clean routing do not constitute
 - [`pyproject.toml`](../pyproject.toml) and the two inference manifests establish package/runtime surfaces.
 - [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and
   [`.github/workflows/release.yml`](../.github/workflows/release.yml) establish automation.
-- [`WORKFLOW_V0.md`](../WORKFLOW_V0.md) establishes the scientific protocol and Test boundary.
+- [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md) establishes the scientific protocol and Test boundary.
 - The formal and candidate `release.json` files establish frozen bundle contracts and status.
