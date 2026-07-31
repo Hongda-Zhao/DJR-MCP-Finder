@@ -13,6 +13,8 @@ from .release import ReleaseBundle
 
 H3_UNKNOWN = "unknown/other"
 NOT_REACHED = "not_reached"
+MCP_POSITIVE = "mcp"
+MCP_NEGATIVE = "none"
 
 
 class Predictor:
@@ -57,14 +59,14 @@ class Predictor:
         rows: list[dict[str, Any]] = []
         for index, record in enumerate(records):
             head1_label = h1.classes[1] if h1_positive[index] else h1.classes[0]
-            head2_raw_label = h2.classes[1] if h2_positive[index] else h2.classes[0]
+            head2_raw_label = MCP_POSITIVE if h2_positive[index] else MCP_NEGATIVE
             head2_operational = head2_raw_label if h1_positive[index] else NOT_REACHED
             if not h1_positive[index]:
                 final_prediction = "non_djr"
             elif not h2_positive[index]:
-                final_prediction = "djr_non_vma"
+                final_prediction = "djr_non_mcp"
             else:
-                final_prediction = f"vma::{h3_prediction[index]}"
+                final_prediction = f"mcp::{h3_prediction[index]}"
             rows.append(
                 {
                     "input_row": record.input_row,
@@ -77,7 +79,7 @@ class Predictor:
                     "head1_djr_probability": float(h1_probability[index]),
                     "head1_prediction": head1_label,
                     "head2_raw_score": float(h2_score[index]),
-                    "head2_vma_probability": float(h2_probability[index]),
+                    "head2_mcp_probability": float(h2_probability[index]),
                     "head2_raw_prediction": head2_raw_label,
                     "head2_operational_prediction": head2_operational,
                     "head3_reached": bool(h3_reached[index]),
@@ -112,4 +114,3 @@ class Predictor:
         }
         aligned = np.stack([by_hash[record.sequence_sha256] for record in records])
         return self.predict_embeddings(records, aligned)
-

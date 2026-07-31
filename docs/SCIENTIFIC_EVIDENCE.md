@@ -7,13 +7,13 @@ report, read [`PROJECT_V0_FINAL_REPORT.md`](research/PROJECT_V0_FINAL_REPORT.md)
 
 ## Current primary results: V0 and V0.1
 
-The project currently exposes two primary scientific results: the released, all-ESM-C-6B Model V0
-and the mixed-encoder Model V0.1 candidate. They are peers in the public project navigation, while
-retaining different evidence and release statuses. The sections below preserve those distinctions.
+The project currently exposes two primary scientific results: the preferred mixed-encoder Model
+V0.1 candidate and the released, all-ESM-C-6B Model V0 baseline and fallback. Both remain prominent
+in public navigation while retaining different evidence and release statuses.
 
 ### Released Model V0
 
-- Data: 560 VMA-DJRs, 500 cellular DJRs, 5,000 HardNeg proteins, and 5,000 background proteins.
+- Data: 560 viral MCP-DJRs, 500 cellular DJRs, 5,000 HardNeg proteins, and 5,000 background proteins.
 - Split: Train/Validation/Test = **6,634 / 2,212 / 2,214**. Exact-sequence, source, component, and
   MMseqs2 relationships were merged before splitting; residual qualifying cross-split edges = 0.
 - Model selection: 14 representation models shared a Train-only five-fold component map. The
@@ -23,10 +23,10 @@ retaining different evidence and release statuses. The sections below preserve t
 | Head | Task | Classifier | Temperature | Threshold |
 | --- | --- | ---: | ---: | ---: |
 | H1 | DJR / non-DJR | alpha=`1e-5` | 1168.1537298613255 | 0.9687754839244975 |
-| H2 | VMA-DJR / cellular DJR | C=`0.01` | 0.8241381150130028 | 0.9639353725025007 |
+| H2 | viral MCP-DJR / cellular DJR | C=`0.01` | 0.8241381150130028 | 0.9639353725025007 |
 | H3 | two known phyla + reject | C=`10` | 4.2474179687096845 | 0.7126488980564439 |
 
-H2 runs only after H1 classifies a protein as DJR; H3 runs only after H2 classifies it as VMA-DJR.
+H2 runs only after H1 classifies a protein as DJR; H3 runs only after H2 classifies it as a viral MCP.
 H3 `unknown/other` rejects a forced assignment to Nucleocytoviricota or Preplasmiviricota; it is
 not a general unknown-virus detector.
 

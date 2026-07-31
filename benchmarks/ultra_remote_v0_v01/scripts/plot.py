@@ -34,8 +34,10 @@ METHOD_LABEL = {
 }
 TASK_LABEL = {
     "h1_djr": "H1 DJR",
-    "h2_vma_conditional": "H2 VMA | DJR",
-    "vma_end_to_end": "VMA end-to-end",
+    # Frozen result tables retain the historical task IDs below; only the
+    # public-facing terminology is translated to MCP at the rendering boundary.
+    "h2_vma_conditional": "H2 MCP | DJR",
+    "vma_end_to_end": "MCP end-to-end",
 }
 COLORS = {
     "esmc6b_cosine": "#6F87A6",

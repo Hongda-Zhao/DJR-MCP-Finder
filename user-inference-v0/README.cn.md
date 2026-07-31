@@ -28,14 +28,16 @@ protein FASTA
 
 ```text
 non_djr
-djr_non_vma
-vma::Nucleocytoviricota
-vma::Preplasmiviricota
-vma::unknown/other
+djr_non_mcp
+mcp::Nucleocytoviricota
+mcp::Preplasmiviricota
+mcp::unknown/other
 ```
 
-`vma::unknown/other` 仅表示样本通过 H1/H2 后，不能可靠归入 H3 的两个已知 phylum；
+`mcp::unknown/other` 仅表示样本通过 H1/H2 后，不能可靠归入 H3 的两个已知 phylum；
 它不是任意未知病毒或全局 OOD 检测器。
+
+Head-2 分数字段为 `head2_mcp_probability`；新生成的运行元数据使用输出 schema version 2。
 
 ## 安装
 

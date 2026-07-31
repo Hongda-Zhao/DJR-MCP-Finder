@@ -30,15 +30,17 @@ There are exactly five final output labels:
 
 ```text
 non_djr
-djr_non_vma
-vma::Nucleocytoviricota
-vma::Preplasmiviricota
-vma::unknown/other
+djr_non_mcp
+mcp::Nucleocytoviricota
+mcp::Preplasmiviricota
+mcp::unknown/other
 ```
 
-`vma::unknown/other` means only that a sample passed H1/H2 but could not be assigned reliably to
+`mcp::unknown/other` means only that a sample passed H1/H2 but could not be assigned reliably to
 either of the two known H3 phyla. It is not a detector for arbitrary unknown viruses or global
 out-of-distribution data.
+
+The Head-2 score column is `head2_mcp_probability`; new run metadata uses output schema version 2.
 
 ## Installation
 

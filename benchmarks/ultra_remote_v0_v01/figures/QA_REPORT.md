@@ -7,7 +7,8 @@
 - Visual inspection: final-size PNG inspected after two layout revisions; no title,
   legend, axis-label, panel-label, or footer overlap remains; no marks are cropped.
 - Final width: 180.1 mm; minimum declared text size: 5.1 pt.
-- Exports: editable-text SVG, TrueType-text PDF, 300-dpi PNG preview, 600-dpi TIFF.
+- Compact exports: editable-text SVG, TrueType-text PDF, and 300-dpi PNG preview;
+  the 600-dpi TIFF remains checksum-bound in the full archive.
 - Data integrity: no observations were sampled or removed. Method subsets in panels
   b/c are predeclared for legibility; complete method tables remain under `results/`.
 - Statistics: paired intervals resample independent evaluation components with

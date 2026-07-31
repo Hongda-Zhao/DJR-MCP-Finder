@@ -8,8 +8,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **使用冻结的三级蛋白语言模型分类器，从蛋白 FASTA 中检测 double-jelly-roll major capsid
-protein。** DJR-MCP Finder 面向病毒学与生物信息学使用者，提供可审计的 DJR、病毒形态发生相关
-DJR 及两个受支持病毒门的第一轮筛查。
+protein。** DJR-MCP Finder 面向病毒学与生物信息学使用者，提供可审计的 DJR、病毒 MCP 候选蛋白
+及两个受支持病毒门的第一轮筛查。
 
 ## 两条当前主要结果线
 
@@ -18,8 +18,8 @@ V0 与 V0.1 都是项目当前的主要结果。两者处理相同的三级任�
 
 | 结果 | 冻结系统 | 状态 | 用户入口 |
 | --- | --- | --- | --- |
-| **Model V0** | H1/H2/H3 均使用 ESM-C 6B | 已发布、可复现的基线 | [`djrmcp-predict`](user-inference-v0/README.cn.md) |
-| **Model V0.1** | H1/H2 使用 ESM-2 3B；H3 使用 ESM-C 6B | 当前 mixed-encoder 结果；需要外部确认 | [`djrmcp-predict-v01`](user-inference-v0.1/README.cn.md) |
+| **Model V0.1** | H1/H2 使用 ESM-2 3B；H3 使用 ESM-C 6B | 当前优先结果；需要外部确认 | [`djrmcp-predict-v01`](user-inference-v0.1/README.cn.md) |
+| **Model V0** | H1/H2/H3 均使用 ESM-C 6B | 已发布、可复现的基线与回退版本 | [`djrmcp-predict`](user-inference-v0/README.cn.md) |
 
 两个版本在推理时都不会训练或重新调参。V0.1 与 V0 并列展示，但不会改写已发布 V0 bundle 的
 身份和证据记录。
@@ -31,17 +31,29 @@ flowchart LR
     A["蛋白 FASTA"] --> B["选择冻结的 V0 或 V0.1 bundle"]
     B --> H1{"H1：是否为 DJR？"}
     H1 -- "否" --> N["non_djr"]
-    H1 -- "是" --> H2{"H2：是否与 VMA 相关？"}
-    H2 -- "否" --> D["djr_non_vma"]
+    H1 -- "是" --> H2{"H2：是否承担病毒 MCP 角色？"}
+    H2 -- "否" --> D["djr_non_mcp"]
     H2 -- "是" --> H3{"H3：是否属于受支持的门？"}
-    H3 --> P1["vma::Nucleocytoviricota"]
-    H3 --> P2["vma::Preplasmiviricota"]
-    H3 --> U["vma::unknown/other"]
+    H3 --> P1["mcp::Nucleocytoviricota"]
+    H3 --> P2["mcp::Preplasmiviricota"]
+    H3 --> U["mcp::unknown/other"]
 ```
 
-`vma::unknown/other` 只是通过 H1/H2 后的 reject option，不是普适未知病毒或 OOD detector。
+`mcp::unknown/other` 只是通过 H1/H2 后的 reject option，不是普适未知病毒或 OOD detector。
 
 ## 核心 benchmark 概览
+
+### V0 冻结模型选择
+
+![V0 仅开发阶段的模型选择 benchmark](results/figures/project_v0/model_benchmark_metric_revision_1/figure_1_model_selection_project_v0_metric_revision_1.svg)
+
+冻结的仅 Train 五折 global-component 交叉验证选择 ESM-C 6B 作为 Model V0：综合分数
+`S = 0.997 ± 0.001`、H1 AP `0.998 ± 0.000`、H2 AP `1.000 ± 0.000`、H3 known-class macro-F1
+`0.981 ± 0.010`。该选择同时通过冻结的 Validation gate 和 paired one-standard-error 审计。
+这些属于开发与验证结果，不是 prospective Test 表现。图件来源与 QA 见
+[V0 模型选择图目录](results/figures/project_v0/model_benchmark_metric_revision_1/)。
+
+### V0 与 V0.1 remote-component 审计
 
 ![V0 与 V0.1 remote-component 开发 benchmark](benchmarks/ultra_remote_v0_v01/figures/ultra_remote_v0_v01.svg)
 
@@ -79,10 +91,10 @@ V0.1 使用两个相互隔离、固定版本的 encoder runtime。
 每次运行生成 `predictions.tsv`、`run_metadata.json` 和 `CHECKSUMS.sha256`。下表仅展示 schema，
 不是 benchmark 结果。
 
-| protein_id | H1 DJR 概率 | H2 VMA 概率 | H3 prediction | final_prediction |
+| protein_id | H1 DJR 概率 | H2 MCP 概率 | H3 prediction | final_prediction |
 | --- | ---: | ---: | --- | --- |
-| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `vma::Nucleocytoviricota` |
-| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_vma` |
+| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `mcp::Nucleocytoviricota` |
+| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_mcp` |
 | background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
 
 完整输入输出合同见 [V0](user-inference-v0/README.cn.md) 与
@@ -107,8 +119,8 @@ V0.1 使用两个相互隔离、固定版本的 encoder runtime。
 
 | 目标 | 入口 | 环境 |
 | --- | --- | --- |
-| 使用已发布的 V0 结果 | [`user-inference-v0/`](user-inference-v0/README.cn.md) | Python 3.10+ 检查；Linux/Docker/NVIDIA 推理 |
-| 使用当前 V0.1 结果 | [`user-inference-v0.1/`](user-inference-v0.1/README.cn.md) | Python 3.12+、两个隔离模型环境 |
+| 使用当前优先的 V0.1 结果 | [`user-inference-v0.1/`](user-inference-v0.1/README.cn.md) | Python 3.12+、两个隔离模型环境 |
+| 使用已发布的 V0 基线 | [`user-inference-v0/`](user-inference-v0/README.cn.md) | Python 3.10+ 检查；Linux/Docker/NVIDIA 推理 |
 | 审计研究证据 | [科研证据与限制](docs/SCIENTIFIC_EVIDENCE.md) | 证据层次、指标和 claim boundary |
 | 从本地 archive 复现 | [复现指南](docs/REPRODUCIBILITY.md) | 冻结输入、软件和 HPC 资源 |
 | 贡献代码或文档 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Python 3.12+ contributor 环境 |

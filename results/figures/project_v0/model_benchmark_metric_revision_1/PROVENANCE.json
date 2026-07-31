@@ -19,15 +19,15 @@
     "mimic_1b",
     "esm3_open_1_4b"
   ],
-  "caption_sha256": "df887c46a320a6d29d92af7b66412001aae9acfdd1d5f42d8dc74a5ee572c054",
+  "caption_sha256": "cc9d5ddb07f3369acc813d36fc5c6c1c87735a7b80013be7bdc77d018a0e186c",
   "comparison_checksum_manifest_verified": true,
   "excluded_candidate_count": 0,
   "export_qa_sha256": "35dbc7510cf273e803da31ea1ac8e2476637cba30545c85e8050c5449e233132",
   "export_sha256": {
-    "figure_1_model_selection_project_v0_metric_revision_1.pdf": "366db144af21feaa67d314cc877517330a6c9e652439d6dc91d2b117d18ebc1d",
-    "figure_1_model_selection_project_v0_metric_revision_1.png": "b3f476343707de11541c8914b1d40eb1ae93e25ddd8da4b3b3c804f9a9e1b0d9",
-    "figure_1_model_selection_project_v0_metric_revision_1.svg": "cc5ca23a2fe0456496a53eeba3652adc39a075e61f52867ae17c6c69709cfe00",
-    "figure_1_model_selection_project_v0_metric_revision_1.tiff": "069fdd4c6b4a05c13b39379301cbeaf1f4bdc2bd902ea94dd52fa1d885def8d7"
+    "figure_1_model_selection_project_v0_metric_revision_1.pdf": "161f8662dd35e28b4da2643f36d8740418f2fc74bc16d5d5b93e5d041528fd63",
+    "figure_1_model_selection_project_v0_metric_revision_1.png": "9f1614c9cb29fab73c9838a131dfd522c6773a5545d35e48f8d7ac923c5f57f8",
+    "figure_1_model_selection_project_v0_metric_revision_1.svg": "5d2610875a3954778f4fa308c54cd62e6b82454e59d37b967d8c0da3e368eef7",
+    "figure_1_model_selection_project_v0_metric_revision_1.tiff": "a5cabab6dae6e11abc1ba1bf71ce5c37416cc528bb93a70c1f5ad103e62559ed"
   },
   "figure_contract": "Figure 1 \u2014 development-only 14-model selection",
   "final_size_mm": [
@@ -44,19 +44,19 @@
   "metric_revision_id": "raw-score-stable-calibration-v1",
   "pareto_status": "not_inferred",
   "peak_memory_status": "NA: frozen comparison has no per-model peak_gpu_memory_source attestation",
-  "project_mapping": "data-curation V3 (560 VMA-DJR) -> project V0",
-  "qa_notes_sha256": "f67c2d6336161b7bbdcafbf50382c0ef2877fad2b3906352818ba58d33fb7407",
+  "project_mapping": "data-curation V3 (560 viral DJR-MCPs) -> project V0",
+  "qa_notes_sha256": "3d3b80dba06f37310cbaf73206e13e92bc827163f63c6f6444f3bc73ab6cdd29",
   "render_environment": {
-    "backend": "agg",
-    "matplotlib": "3.8.3",
-    "numpy": "1.26.4",
-    "pillow": "9.2.0",
-    "platform": "macOS-26.5.1-x86_64-i386-64bit",
-    "python": "3.9.18"
+    "backend": "Agg",
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.1",
+    "pillow": "12.3.0",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.12.13"
   },
-  "render_environment_sha256": "19cbf7f7a4d4d2e615637c70f334ca9ee6723a9d35f8b576da18c28478eb8acf",
+  "render_environment_sha256": "16ae8d09070391b769757d773a5a4a92be68d77e876191a0fc4a288de310870b",
   "schema_version": 1,
-  "script_sha256": "04994b7ecb9585cffcd644bda87abd4b106eac38160dba882dd141764ef8155d",
+  "script_sha256": "c1bf9d7081e1f424b8ac3c58639101f0168311cb65d008ad78921b3628dcce80",
   "selected_model_id": "esmc_6b",
   "source_data_sha256": {
     "panel_a_cv_metrics.tsv": "add291379126792b4b1afcab2c906edcd32dbdbbfeb8d520aca9c0a3fe73ae49",

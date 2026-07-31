@@ -101,7 +101,7 @@ def _release_summary(release: ReleaseBundle) -> dict[str, Any]:
         "heads": {
             name: {
                 "encoder_id": head.encoder_id,
-                "classes": list(head.classes),
+                "classes": ["none", "mcp"] if name == "head2" else list(head.classes),
                 "temperature": head.temperature,
                 "threshold": head.threshold,
                 "artifact_sha256": head.artifact_sha256,
@@ -109,7 +109,10 @@ def _release_summary(release: ReleaseBundle) -> dict[str, Any]:
             }
             for name, head in release.heads.items()
         },
-        "routing": release.metadata["routing"],
+        "routing": {
+            **release.metadata["routing"],
+            "head2_positive_class": "mcp",
+        },
         "limitations": release.metadata.get("limitations", []),
     }
 
@@ -325,7 +328,7 @@ def _predict_command(args: argparse.Namespace) -> int:
     final_counts = Counter(row["final_prediction"] for row in predictions)
     h3_reached_count = sum(bool(row["head3_reached"]) for row in predictions)
     metadata = {
-        "schema_version": 2,
+        "schema_version": 3,
         "status": "complete",
         "candidate_status": release.release_status,
         "released_v0_unchanged": True,
@@ -375,7 +378,7 @@ def _predict_command(args: argparse.Namespace) -> int:
                 "distribution, not prevalence-adjusted posterior probabilities."
             ),
             "unknown_note": (
-                "vma::unknown/other rejects from the two known H3 phyla after H1/H2; "
+                "mcp::unknown/other rejects from the two known H3 phyla after H1/H2; "
                 "it is not a general unknown-virus detector."
             ),
         },

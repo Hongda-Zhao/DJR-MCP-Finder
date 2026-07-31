@@ -11,12 +11,13 @@ from pathlib import Path
 from typing import Any
 
 
-NUMERIC_FIELDS = (
-    "head1_djr_probability",
-    "head2_vma_probability",
-    "head3_nucleocytoviricota_probability",
-    "head3_preplasmiviricota_probability",
-    "head3_confidence",
+NUMERIC_FIELD_PAIRS = (
+    ("head1_djr_probability", "head1_djr_probability"),
+    # The archived golden file predates the public MCP terminology.
+    ("head2_vma_probability", "head2_mcp_probability"),
+    ("head3_nucleocytoviricota_probability", "head3_nucleocytoviricota_probability"),
+    ("head3_preplasmiviricota_probability", "head3_preplasmiviricota_probability"),
+    ("head3_confidence", "head3_confidence"),
 )
 LABEL_FIELDS = (
     "head1_prediction",
@@ -38,6 +39,22 @@ def _optional_float(value: str) -> float | None:
     return None if value in {"", "NA"} else float(value)
 
 
+def _current_final_label(value: str) -> str:
+    if value == "djr_non_vma":
+        return "djr_non_mcp"
+    if value.startswith("vma::"):
+        return f"mcp::{value.removeprefix('vma::')}"
+    return value
+
+
+def _current_head2_label(value: str) -> str:
+    """Translate the frozen V0/V0.1 H2 class vocabulary at the comparison boundary."""
+
+    if value == "viral_morphogenesis_associated":
+        return "mcp"
+    return value
+
+
 def compare(
     reference_path: Path,
     observed_path: Path,
@@ -53,25 +70,25 @@ def compare(
         raise RuntimeError("Reference and observed sequence identities/order differ")
 
     mismatches: list[dict[str, Any]] = []
-    maximum_delta = {field: 0.0 for field in NUMERIC_FIELDS}
+    maximum_delta = {current: 0.0 for _, current in NUMERIC_FIELD_PAIRS}
     for expected, actual in zip(reference, observed, strict=True):
         identity = expected["sequence_sha256"]
-        for field in NUMERIC_FIELDS:
-            left = _optional_float(expected[field])
-            right = _optional_float(actual[field])
+        for archived_field, current_field in NUMERIC_FIELD_PAIRS:
+            left = _optional_float(expected[archived_field])
+            right = _optional_float(actual[current_field])
             if left is None or right is None:
                 if left != right:
                     mismatches.append(
                         {
                             "sequence_sha256": identity,
-                            "field": field,
+                            "field": current_field,
                             "expected": left,
                             "observed": right,
                         }
                     )
                 continue
             delta = abs(left - right)
-            maximum_delta[field] = max(maximum_delta[field], delta)
+            maximum_delta[current_field] = max(maximum_delta[current_field], delta)
             if not math.isclose(
                 left,
                 right,
@@ -81,14 +98,17 @@ def compare(
                 mismatches.append(
                     {
                         "sequence_sha256": identity,
-                        "field": field,
+                        "field": current_field,
                         "expected": left,
                         "observed": right,
                         "absolute_delta": delta,
                     }
                 )
         expected_labels = dict(expected)
-        expected_labels["head2_operational_prediction"] = expected["head2_prediction"]
+        expected_labels["head2_operational_prediction"] = _current_head2_label(
+            expected["head2_prediction"]
+        )
+        expected_labels["final_prediction"] = _current_final_label(expected["final_prediction"])
         for field in (*LABEL_FIELDS, "head2_operational_prediction"):
             if expected_labels[field] != actual[field]:
                 mismatches.append(

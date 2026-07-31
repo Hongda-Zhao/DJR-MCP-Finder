@@ -25,7 +25,7 @@ PREDICTION_FIELDS = [
     "head1_prediction",
     "head2_encoder",
     "head2_raw_score",
-    "head2_vma_probability",
+    "head2_mcp_probability",
     "head2_raw_prediction",
     "head2_operational_prediction",
     "head3_reached",

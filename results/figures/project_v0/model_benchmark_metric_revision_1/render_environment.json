@@ -1,8 +1,8 @@
 {
-  "backend": "agg",
-  "matplotlib": "3.8.3",
-  "numpy": "1.26.4",
-  "pillow": "9.2.0",
-  "platform": "macOS-26.5.1-x86_64-i386-64bit",
-  "python": "3.9.18"
+  "backend": "Agg",
+  "matplotlib": "3.11.1",
+  "numpy": "2.5.1",
+  "pillow": "12.3.0",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "python": "3.12.13"
 }

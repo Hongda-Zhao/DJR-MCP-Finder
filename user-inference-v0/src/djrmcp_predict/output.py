@@ -23,7 +23,7 @@ PREDICTION_FIELDS = [
     "head1_djr_probability",
     "head1_prediction",
     "head2_raw_score",
-    "head2_vma_probability",
+    "head2_mcp_probability",
     "head2_raw_prediction",
     "head2_operational_prediction",
     "head3_reached",
@@ -108,4 +108,3 @@ def write_run(
         for temporary in (prediction_tmp, metadata_tmp, checksums_tmp):
             temporary.unlink(missing_ok=True)
     return targets
-

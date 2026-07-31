@@ -19,7 +19,7 @@ def _prediction() -> dict[str, object]:
         "head1_djr_probability": 0.9,
         "head1_prediction": "djr",
         "head2_raw_score": -1.0,
-        "head2_vma_probability": 0.1,
+        "head2_mcp_probability": 0.1,
         "head2_raw_prediction": "none",
         "head2_operational_prediction": "none",
         "head3_reached": False,
@@ -27,16 +27,19 @@ def _prediction() -> dict[str, object]:
         "head3_preplasmiviricota_probability": None,
         "head3_confidence": None,
         "head3_prediction": "not_reached",
-        "final_prediction": "djr_non_vma",
+        "final_prediction": "djr_non_mcp",
         "warnings": "",
     }
 
 
 def test_atomic_output_and_checksums(tmp_path: Path) -> None:
-    paths = write_run(tmp_path / "run", [_prediction()], {"schema_version": 1})
+    paths = write_run(tmp_path / "run", [_prediction()], {"schema_version": 2})
     metadata = json.loads(paths["metadata"].read_text(encoding="utf-8"))
     assert metadata["predictions_sha256"] == sha256_file(paths["predictions"])
-    assert "NA" in paths["predictions"].read_text(encoding="utf-8")
+    prediction_text = paths["predictions"].read_text(encoding="utf-8")
+    assert "head2_mcp_probability" in prediction_text.splitlines()[0]
+    assert "vma" not in prediction_text.lower()
+    assert "NA" in prediction_text
     checksums = paths["checksums"].read_text(encoding="utf-8")
     assert sha256_file(paths["predictions"]) in checksums
     assert sha256_file(paths["metadata"]) in checksums
@@ -44,14 +47,13 @@ def test_atomic_output_and_checksums(tmp_path: Path) -> None:
 
 def test_output_refuses_overwrite_by_default(tmp_path: Path) -> None:
     output = tmp_path / "run"
-    write_run(output, [_prediction()], {"schema_version": 1})
+    write_run(output, [_prediction()], {"schema_version": 2})
     with pytest.raises(FileExistsError, match="Refusing to overwrite"):
-        write_run(output, [_prediction()], {"schema_version": 1})
+        write_run(output, [_prediction()], {"schema_version": 2})
 
 
 def test_explicit_overwrite_replaces_standard_files(tmp_path: Path) -> None:
     output = tmp_path / "run"
-    write_run(output, [_prediction()], {"schema_version": 1})
-    write_run(output, [_prediction()], {"schema_version": 2}, overwrite=True)
-    assert json.loads((output / "run_metadata.json").read_text())["schema_version"] == 2
-
+    write_run(output, [_prediction()], {"schema_version": 2})
+    write_run(output, [_prediction()], {"schema_version": 3}, overwrite=True)
+    assert json.loads((output / "run_metadata.json").read_text())["schema_version"] == 3
