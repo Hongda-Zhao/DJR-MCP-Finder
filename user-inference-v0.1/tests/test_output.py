@@ -26,14 +26,14 @@ def _prediction() -> dict[str, object]:
             "head1_prediction": "djr",
             "head1_encoder": "esm2_3b",
             "head2_raw_score": -1.0,
-            "head2_vma_probability": 0.1,
+            "head2_mcp_probability": 0.1,
             "head2_raw_prediction": "none",
             "head2_operational_prediction": "none",
             "head2_encoder": "esm2_3b",
             "head3_reached": False,
             "head3_prediction": "not_reached",
             "head3_encoder": "not_reached",
-            "final_prediction": "djr_non_vma",
+            "final_prediction": "djr_non_mcp",
             "warnings": "",
         }
     )
@@ -44,7 +44,7 @@ def test_atomic_output_metadata_and_checksums(tmp_path: Path) -> None:
     paths = write_run(
         tmp_path / "run",
         [_prediction()],
-        {"schema_version": 2, "release_id": "tiny-v0.1-mixed-release"},
+        {"schema_version": 3, "release_id": "tiny-v0.1-mixed-release"},
     )
 
     metadata = json.loads(paths["metadata"].read_text(encoding="utf-8"))
@@ -53,6 +53,8 @@ def test_atomic_output_metadata_and_checksums(tmp_path: Path) -> None:
         row = next(csv.DictReader(handle, delimiter="\t"))
     assert row["head1_encoder"] == "esm2_3b"
     assert row["head2_encoder"] == "esm2_3b"
+    assert row["head2_mcp_probability"] == "0.10000000000000001"
+    assert not any("vma" in field.lower() for field in row)
     assert row["head3_encoder"] == "not_reached"
     assert row["head3_nucleocytoviricota_probability"] == "NA"
 
@@ -66,19 +68,19 @@ def test_atomic_output_metadata_and_checksums(tmp_path: Path) -> None:
 
 def test_output_refuses_overwrite_by_default(tmp_path: Path) -> None:
     output = tmp_path / "run"
-    write_run(output, [_prediction()], {"schema_version": 2})
+    write_run(output, [_prediction()], {"schema_version": 3})
 
     with pytest.raises(FileExistsError, match="Refusing to overwrite"):
-        write_run(output, [_prediction()], {"schema_version": 2})
+        write_run(output, [_prediction()], {"schema_version": 3})
 
 
 def test_explicit_overwrite_replaces_standard_files(tmp_path: Path) -> None:
     output = tmp_path / "run"
-    write_run(output, [_prediction()], {"schema_version": 2, "marker": "first"})
+    write_run(output, [_prediction()], {"schema_version": 3, "marker": "first"})
     write_run(
         output,
         [_prediction()],
-        {"schema_version": 2, "marker": "second"},
+        {"schema_version": 3, "marker": "second"},
         overwrite=True,
     )
 
@@ -87,4 +89,4 @@ def test_explicit_overwrite_replaces_standard_files(tmp_path: Path) -> None:
 
 def test_empty_prediction_set_is_rejected(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="No predictions"):
-        write_run(tmp_path / "run", [], {"schema_version": 2})
+        write_run(tmp_path / "run", [], {"schema_version": 3})

@@ -109,9 +109,11 @@ run_metadata.json
 CHECKSUMS.sha256
 ```
 
-最终标签为 `non_djr`、`djr_non_vma`、`vma::Nucleocytoviricota`、
-`vma::Preplasmiviricota` 或 `vma::unknown/other`。最后一类仅表示通过 H1/H2 后，
+最终标签为 `non_djr`、`djr_non_mcp`、`mcp::Nucleocytoviricota`、
+`mcp::Preplasmiviricota` 或 `mcp::unknown/other`。最后一类仅表示通过 H1/H2 后，
 未可靠归入两个已知 H3 phylum；它不是通用未知病毒或 OOD 检测器。
+
+Head-2 分数字段为 `head2_mcp_probability`；新生成的运行元数据使用输出 schema version 3。
 
 ## 输入与冻结合同
 

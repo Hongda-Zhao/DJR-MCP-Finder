@@ -64,13 +64,13 @@ def test_h12_is_sequential_and_only_routes_joint_positives(tiny_release: Path) -
 
     assert rows[0]["head1_prediction"] == "non_djr"
     assert rows[0]["head2_raw_score"] is None
-    assert rows[0]["head2_vma_probability"] is None
+    assert rows[0]["head2_mcp_probability"] is None
     assert rows[0]["head2_operational_prediction"] == "not_reached"
     assert rows[0]["head3_reached"] is False
     assert rows[1]["head1_prediction"] == "djr"
     assert rows[1]["head2_operational_prediction"] == "none"
     assert rows[1]["head3_reached"] is False
-    assert rows[2]["head2_operational_prediction"] == "viral_morphogenesis_associated"
+    assert rows[2]["head2_operational_prediction"] == "mcp"
     assert rows[2]["head3_reached"] is True
 
 
@@ -79,7 +79,7 @@ def test_threshold_equality_is_inclusive_for_h1_and_h2(tiny_release: Path) -> No
     row = predictor.predict_h12(_records(1), np.zeros((1, 3), dtype=np.float32))[0]
 
     assert row["head1_djr_probability"] == 0.5
-    assert row["head2_vma_probability"] == 0.5
+    assert row["head2_mcp_probability"] == 0.5
     assert row["head3_reached"] is True
 
 
@@ -96,8 +96,8 @@ def test_merge_h3_restores_order_and_encoder_provenance(tiny_release: Path) -> N
     assert [row["protein_id"] for row in merged] == ["p1", "p2", "p3"]
     assert [row["final_prediction"] for row in merged] == [
         "non_djr",
-        "djr_non_vma",
-        "vma::Preplasmiviricota",
+        "djr_non_mcp",
+        "mcp::Preplasmiviricota",
     ]
     assert {row["head1_encoder"] for row in merged} == {"esm2_3b"}
     assert {row["head2_encoder"] for row in merged} == {"esm2_3b"}
@@ -118,7 +118,7 @@ def test_merge_accepts_empty_h3_only_when_nothing_is_routed(tiny_release: Path) 
 
     merged = predictor.merge_h3(h12, [])
 
-    assert [row["final_prediction"] for row in merged] == ["non_djr", "djr_non_vma"]
+    assert [row["final_prediction"] for row in merged] == ["non_djr", "djr_non_mcp"]
     assert all(row["head3_encoder"] == "not_reached" for row in merged)
 
 
@@ -201,7 +201,7 @@ def test_merge_accepts_threshold_rejected_unknown_h3(tiny_release: Path) -> None
 
     merged = predictor.merge_h3(h12, [_h3_row(h12[0], "unknown/other")])
 
-    assert merged[0]["final_prediction"] == "vma::unknown/other"
+    assert merged[0]["final_prediction"] == "mcp::unknown/other"
 
 
 def test_predict_h12_rejects_record_embedding_misalignment(tiny_release: Path) -> None:

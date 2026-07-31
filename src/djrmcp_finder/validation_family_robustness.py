@@ -46,6 +46,10 @@ EMBEDDING_ARTIFACT_NAMES = {
     "metadata.json",
 }
 
+# Frozen manifests use this historical serialized value. Current program APIs
+# expose MCP terminology while preserving the archived evidence contract.
+LEGACY_VIRAL_MCP_SOURCE_DATASET = "viral_vma_djr"
+
 
 @dataclass(frozen=True)
 class ModelSpec:
@@ -294,7 +298,7 @@ def load_frozen_model_predictions(
             "viral_source_family",
             viral_manifest_path,
             spec.member_embedding,
-            {"viral_vma_djr"},
+            {LEGACY_VIRAL_MCP_SOURCE_DATASET},
         ),
         (
             "validation_graph_family",
@@ -342,7 +346,7 @@ def load_frozen_model_predictions(
     for row in family_rows:
         expected_shard = (
             "viral_source_family"
-            if row["source_dataset"] == "viral_vma_djr"
+            if row["source_dataset"] == LEGACY_VIRAL_MCP_SOURCE_DATASET
             else "validation_graph_family"
         )
         if member_location[row["protein_id"]][2] != expected_shard:

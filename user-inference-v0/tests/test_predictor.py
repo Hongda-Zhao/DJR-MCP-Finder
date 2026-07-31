@@ -37,10 +37,10 @@ def test_frozen_cascade_covers_all_five_outputs(tiny_release: Path) -> None:
     rows = Predictor(release).predict_embeddings(_records(5), embeddings)
     assert [row["final_prediction"] for row in rows] == [
         "non_djr",
-        "djr_non_vma",
-        "vma::Nucleocytoviricota",
-        "vma::Preplasmiviricota",
-        "vma::unknown/other",
+        "djr_non_mcp",
+        "mcp::Nucleocytoviricota",
+        "mcp::Preplasmiviricota",
+        "mcp::unknown/other",
     ]
     assert rows[0]["head2_operational_prediction"] == "not_reached"
     assert rows[0]["head3_prediction"] == "not_reached"
@@ -54,8 +54,8 @@ def test_binary_threshold_equality_is_accepted(tiny_release: Path) -> None:
         _records(1), np.zeros((1, 3), dtype=np.float32)
     )[0]
     assert row["head1_djr_probability"] == 0.5
-    assert row["head2_vma_probability"] == 0.5
-    assert row["final_prediction"] == "vma::unknown/other"
+    assert row["head2_mcp_probability"] == 0.5
+    assert row["final_prediction"] == "mcp::unknown/other"
 
 
 def test_exact_sequences_are_embedded_once(tiny_release: Path) -> None:
@@ -85,4 +85,3 @@ def test_exact_sequences_are_embedded_once(tiny_release: Path) -> None:
     rows = Predictor(release).predict_records(same, embedder)
     assert len(embedder.calls[0]) == 1
     assert [row["final_prediction"] for row in rows] == ["non_djr", "non_djr"]
-

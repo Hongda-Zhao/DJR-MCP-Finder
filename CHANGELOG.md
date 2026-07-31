@@ -21,8 +21,12 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   markers, and metadata-backed runtime versions.
 - The landing README now focuses on adoption; detailed scientific and reproducibility material
   lives under `docs/`.
-- V0 and V0.1 now appear as coequal current result tracks, with their distinct release statuses
-  and the V0/V0.1 remote-component benchmark visible on the landing page.
+- V0.1 is now the preferred current result, while released V0 remains a first-class reproducible
+  baseline and fallback; both stay visible with their distinct release statuses.
+- Current inference outputs use MCP terminology (`head2_mcp_probability`, `djr_non_mcp`, and
+  `mcp::...`); archived benchmark identifiers remain unchanged for reproducibility.
+- The landing page now presents the frozen V0 model-selection benchmark before the V0/V0.1
+  remote-component development audit and identifies V0.1 as the preferred current result.
 - Root-level scientific workflow, report, and robustness protocol documents moved to
   `docs/research/`; a documentation check prevents root Markdown sprawl from returning.
 

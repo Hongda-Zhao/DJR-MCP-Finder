@@ -18,7 +18,7 @@ ultra-remote question.
 ## Method layers
 
 1. **Controlled encoder/readout:** maximum cosine to the exact same fit-fold DJR or
-   VMA positive reference IDs.
+   viral MCP positive reference IDs.
 2. **Task-adapted detector:** identical H1/H2 classifier family, hyperparameters,
    training labels, folds, seeds, and thresholding rule; only the embedding changes.
 3. **Classical context:** BLASTP, DIAMOND ultra-sensitive, MMseqs2, component HMM,

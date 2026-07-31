@@ -118,10 +118,12 @@ run_metadata.json
 CHECKSUMS.sha256
 ```
 
-Final labels are `non_djr`, `djr_non_vma`, `vma::Nucleocytoviricota`,
-`vma::Preplasmiviricota`, or `vma::unknown/other`. The final category means only that a sequence
+Final labels are `non_djr`, `djr_non_mcp`, `mcp::Nucleocytoviricota`,
+`mcp::Preplasmiviricota`, or `mcp::unknown/other`. The final category means only that a sequence
 passed H1/H2 but could not be assigned reliably to either of the two known H3 phyla. It is not a
 general unknown-virus or out-of-distribution detector.
+
+The Head-2 score column is `head2_mcp_probability`; new run metadata uses output schema version 3.
 
 ## Input and frozen contracts
 

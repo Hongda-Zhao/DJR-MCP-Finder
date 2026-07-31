@@ -14,6 +14,8 @@ from .release import ReleaseBundle
 H3_UNKNOWN = "unknown/other"
 NOT_REACHED = "not_reached"
 PENDING = "pending"
+MCP_POSITIVE = "mcp"
+MCP_NEGATIVE = "none"
 
 
 class Predictor:
@@ -63,9 +65,9 @@ class Predictor:
                 head2_operational = NOT_REACHED
                 final_prediction = "non_djr"
             else:
-                head2_raw_label = h2.classes[1] if h2_positive[index] else h2.classes[0]
+                head2_raw_label = MCP_POSITIVE if h2_positive[index] else MCP_NEGATIVE
                 head2_operational = head2_raw_label
-                final_prediction = PENDING if h2_positive[index] else "djr_non_vma"
+                final_prediction = PENDING if h2_positive[index] else "djr_non_mcp"
             h3_reached = bool(h1_positive[index] and h2_positive[index])
             rows.append(
                 {
@@ -83,7 +85,7 @@ class Predictor:
                     "head2_raw_score": (
                         float(h2_score[index]) if h1_positive[index] else None
                     ),
-                    "head2_vma_probability": (
+                    "head2_mcp_probability": (
                         float(h2_probability[index]) if h1_positive[index] else None
                     ),
                     "head2_raw_prediction": head2_raw_label,
@@ -220,7 +222,7 @@ class Predictor:
                 for field in (*probability_fields, "head3_confidence", "head3_prediction"):
                     row[field] = result[field]
                 row["head3_encoder"] = "esmc_6b"
-                row["final_prediction"] = f"vma::{row['head3_prediction']}"
+                row["final_prediction"] = f"mcp::{row['head3_prediction']}"
             elif row["final_prediction"] == PENDING:
                 raise RuntimeError("Non-routed row unexpectedly remained pending")
             final_rows.append(row)

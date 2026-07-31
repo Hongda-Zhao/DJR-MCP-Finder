@@ -1680,7 +1680,7 @@ def _estimate_head3_open_set(
         "validation_unknown_by_reason": unknown_strata["head3_unknown_reason"],
         "interpretation": (
             "Development-only diagnostic. Produgelaviricota and literature-only "
-            "unclassified VMA proteins are excluded from known-class fitting and are "
+            "unclassified MCP proteins are excluded from known-class fitting and are "
             "not used to choose the confidence threshold."
         ),
     }

@@ -555,7 +555,7 @@ def _render(
     outer = GridSpec(4, 1, figure=fig, height_ratios=[1.25, 1.15, 1.0, 0.82], left=0.115, right=0.985, bottom=0.035, top=0.925, hspace=0.50)
     fig.text(0.115, 0.978, "Development-only selection of protein representations", fontsize=10.0, fontweight="bold", ha="left", va="top")
     revision_text = summary.get("metric_revision_id") or "legacy metric protocol"
-    fig.text(0.115, 0.954, f"data-curation V3 (560 VMA-DJR) → project V0 · {revision_text} · Train CV + Validation only · no Test metrics", fontsize=6.3, color=TEXT_GREY, ha="left", va="top")
+    fig.text(0.115, 0.954, f"data-curation V3 (560 viral DJR-MCPs) → project V0 · {revision_text} · Train CV + Validation only · no Test metrics", fontsize=6.3, color=TEXT_GREY, ha="left", va="top")
 
     # a — 14 models × S + three heads, with uncertainty from the five shared folds.
     ax_a = fig.add_subplot(outer[0])
@@ -797,7 +797,7 @@ def _build_bundle(args: argparse.Namespace, output_dir: Path) -> dict[str, Any]:
     provenance = {
         "schema_version": 1,
         "figure_contract": "Figure 1 — development-only 14-model selection",
-        "project_mapping": "data-curation V3 (560 VMA-DJR) -> project V0",
+        "project_mapping": "data-curation V3 (560 viral DJR-MCPs) -> project V0",
         "script_sha256": _sha256(Path(__file__).resolve()),
         "input_sha256": {
             "benchmark_config": _sha256(args.config), "comparison_checksums": _sha256(checksum_manifest),

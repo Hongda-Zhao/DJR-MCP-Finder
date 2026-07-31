@@ -9,8 +9,8 @@
 
 **Detect double-jelly-roll major capsid proteins from protein FASTA files with a frozen,
 three-stage protein-language-model classifier.** DJR-MCP Finder gives virologists and
-bioinformaticians an auditable first-pass screen for DJR proteins, viral
-morphogenesis-associated DJRs, and two supported viral phyla.
+bioinformaticians an auditable first-pass screen for DJR proteins, viral MCP candidates,
+and two supported viral phyla.
 
 ## Two current result tracks
 
@@ -19,8 +19,8 @@ different frozen encoder systems and separate command-line packages.
 
 | Result | Frozen system | Status | User entry point |
 | --- | --- | --- | --- |
-| **Model V0** | ESM-C 6B for H1/H2/H3 | Released reproducible baseline | [`djrmcp-predict`](user-inference-v0/) |
-| **Model V0.1** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Current mixed-encoder result; external confirmation required | [`djrmcp-predict-v01`](user-inference-v0.1/) |
+| **Model V0.1** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Preferred current result; external confirmation required | [`djrmcp-predict-v01`](user-inference-v0.1/) |
+| **Model V0** | ESM-C 6B for H1/H2/H3 | Released reproducible baseline and fallback | [`djrmcp-predict`](user-inference-v0/) |
 
 Neither track trains or retunes the model during inference. V0.1 is presented alongside V0 without
 rewriting the identity or evidence record of the released V0 bundle.
@@ -32,18 +32,30 @@ flowchart LR
     A["Protein FASTA"] --> B["Selected frozen V0 or V0.1 bundle"]
     B --> H1{"H1: DJR?"}
     H1 -- "No" --> N["non_djr"]
-    H1 -- "Yes" --> H2{"H2: VMA-associated?"}
-    H2 -- "No" --> D["djr_non_vma"]
+    H1 -- "Yes" --> H2{"H2: viral MCP role?"}
+    H2 -- "No" --> D["djr_non_mcp"]
     H2 -- "Yes" --> H3{"H3: supported phylum?"}
-    H3 --> P1["vma::Nucleocytoviricota"]
-    H3 --> P2["vma::Preplasmiviricota"]
-    H3 --> U["vma::unknown/other"]
+    H3 --> P1["mcp::Nucleocytoviricota"]
+    H3 --> P2["mcp::Preplasmiviricota"]
+    H3 --> U["mcp::unknown/other"]
 ```
 
-`vma::unknown/other` is a reject option after H1 and H2; it is not a general unknown-virus or
+`mcp::unknown/other` is a reject option after H1 and H2; it is not a general unknown-virus or
 out-of-distribution detector.
 
-## Core benchmark snapshot
+## Core benchmark snapshots
+
+### V0 frozen model selection
+
+![V0 development-only model-selection benchmark](results/figures/project_v0/model_benchmark_metric_revision_1/figure_1_model_selection_project_v0_metric_revision_1.svg)
+
+Frozen Train-only five-fold global-component cross-validation selected ESM-C 6B for Model V0 with
+composite score `S = 0.997 ± 0.001`, H1 AP `0.998 ± 0.000`, H2 AP `1.000 ± 0.000`, and H3 known-class
+macro-F1 `0.981 ± 0.010`. The selection also passed the frozen validation gates and paired
+one-standard-error audit. These are development and validation results—not prospective Test
+performance. See the [figure provenance and QA record](results/figures/project_v0/model_benchmark_metric_revision_1/).
+
+### V0 versus V0.1 remote-component audit
 
 ![V0 versus V0.1 remote-component development benchmark](benchmarks/ultra_remote_v0_v01/figures/ultra_remote_v0_v01.svg)
 
@@ -81,10 +93,10 @@ GPU memory; V0.1 uses two isolated, pinned encoder runtimes.
 Each run creates `predictions.tsv`, `run_metadata.json`, and `CHECKSUMS.sha256`. The rows below are
 illustrative schema examples, not benchmark results.
 
-| protein_id | H1 DJR probability | H2 VMA probability | H3 prediction | final_prediction |
+| protein_id | H1 DJR probability | H2 MCP probability | H3 prediction | final_prediction |
 | --- | ---: | ---: | --- | --- |
-| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `vma::Nucleocytoviricota` |
-| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_vma` |
+| candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `mcp::Nucleocytoviricota` |
+| cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_mcp` |
 | background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
 
 See the [V0](user-inference-v0/README.md) and [V0.1](user-inference-v0.1/README.md) user guides for
@@ -109,8 +121,8 @@ The complete naming contract and machine-readable mapping are in
 
 | Goal | Start here | Environment |
 | --- | --- | --- |
-| Use the released V0 result | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+ checks; Linux/Docker/NVIDIA for inference |
-| Use the current V0.1 result | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+; two isolated model runtimes |
+| Use the preferred current V0.1 result | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+; two isolated model runtimes |
+| Use the released V0 baseline | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+ checks; Linux/Docker/NVIDIA for inference |
 | Audit the research workflow | [Scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) | Evidence map, metrics, and claim boundary |
 | Reproduce from site archives | [Reproducibility guide](docs/REPRODUCIBILITY.md) | Frozen inputs, software, and HPC resources |
 | Contribute code or documentation | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Python 3.12+ contributor environment |

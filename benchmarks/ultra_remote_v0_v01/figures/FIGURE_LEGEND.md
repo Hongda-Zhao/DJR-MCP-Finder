@@ -8,8 +8,8 @@ low-coverage stress layer. Thresholds were locked separately for each method, ta
 and evaluation cycle on its calibration fold at nominal 99.5% specificity. Error
 bars are 95% paired evaluation-component bootstrap intervals with fixed thresholds;
 they exclude calibration uncertainty. **b,** Absolute component-balanced sensitivity
-in the low-coverage stress layer. Marker shape denotes H1 DJR, conditional H2 VMA,
-or VMA end-to-end. **c,** Source- and component-balanced normalized partial AUROC at
+in the low-coverage stress layer. Marker shape denotes H1 DJR, conditional H2 MCP,
+or MCP end-to-end. **c,** Source- and component-balanced normalized partial AUROC at
 FPR <=0.005 on all H1 component holdouts. H2 and end-to-end endpoints are omitted
 because one or more negative sources lack independent-component resolution at 0.5%
 FPR. **d,** Positive independent-component counts for strict identity <20%, identity

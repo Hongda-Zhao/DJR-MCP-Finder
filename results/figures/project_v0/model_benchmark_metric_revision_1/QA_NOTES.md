@@ -13,4 +13,5 @@
 - Automated export QA: PASS (dimensions and editable SVG text checked before publication).
 - Visual QA status: passed.
 - Manual native-resolution inspection: all five panels are legible, with no clipping, overlap, or missing labels.
-- The plotted numeric source is unchanged; this refresh binds provenance to the corrected frozen Test policy.
+- The plotted numeric source is unchanged; this refresh preserves the corrected frozen Test policy.
+- Terminology-only MCP refresh; native-resolution PNG inspected for clipping, overlap, and label completeness.

@@ -80,7 +80,7 @@ def _release_summary(release: object) -> dict[str, object]:
         "embedding": bundle.embedding,
         "heads": {
             name: {
-                "classes": list(head.classes),
+                "classes": ["none", "mcp"] if name == "head2" else list(head.classes),
                 "temperature": head.temperature,
                 "threshold": head.threshold,
                 "artifact_sha256": head.artifact_sha256,
@@ -131,7 +131,7 @@ def _predict_command(args: argparse.Namespace) -> int:
     final_counts = Counter(row["final_prediction"] for row in predictions)
     runtime = embedder.runtime_metadata()
     metadata = {
-        "schema_version": 1,
+        "schema_version": 2,
         "status": "complete",
         "started_utc": started_utc,
         "completed_utc": completed_utc,
@@ -163,7 +163,7 @@ def _predict_command(args: argparse.Namespace) -> int:
                 "distribution, not prevalence-adjusted posterior probabilities."
             ),
             "unknown_note": (
-                "vma::unknown/other means rejection from the two known H3 phyla after "
+                "mcp::unknown/other means rejection from the two known H3 phyla after "
                 "passing H1 and H2; it is not a general unknown-virus detector."
             ),
         },
