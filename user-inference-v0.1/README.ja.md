@@ -9,8 +9,8 @@ V0.1 mixed-encoder candidate の予測を返します。
 FASTA -> ESM-2 3B -> H1 -> H2 -> [passing sequences only] ESM-C 6B -> H3
 ```
 
-これはステータス `recommended_for_external_confirmation` の engineering candidate です。
-独立した external Test で確認された正式な V0.1 ではなく、リリース済み V0 を置き換えません。
+これは探索的スクリーニングで現在優先する実験的候補パッケージです。独立した外部検証は
+まだ行われておらず、リリース済み V0 を置き換えたり非推奨にしたりするものではありません。
 
 workstation package は、2026-07-29 に 12 個の protein を使った online run と、network を完全に
 無効化した rerun を完了しました。両方の実行は、label mismatch ゼロ、probability delta ゼロで
@@ -162,9 +162,9 @@ python -m pytest -q
 
 ## ライセンス
 
-この development-candidate package と、同梱された独自の linear classifier head は
+この実験的候補パッケージと、同梱された独自の線形分類ヘッドは
 [MIT License](LICENSE) で公開されています。ESM-2 と ESM-C checkpoint は別途ダウンロードされ、
-各 upstream の条件が適用されます。
+各上流配布元の条件が適用されます。
 [release-specific third-party notice](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
 およびリポジトリレベルの [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md) を参照してください。
-prospective external confirmation は未完了です。
+独立した外部検証は未実施です。

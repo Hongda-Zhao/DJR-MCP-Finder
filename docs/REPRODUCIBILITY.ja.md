@@ -47,7 +47,7 @@ PBS、`qsub`、HPC scheduler も不要です。PBS は、どちらの公開予�
 
 検証済みかつ推奨されるワークステーション経路は、Linux + Docker + CUDA GPU です。両パッケージとも自動／CPU デバイスモードを明示的に提供しますが、大容量メモリを要する CPU fallback は正式なワークステーション検証の対象外であり、基準となる再現経路として扱うべきではありません。
 
-- **現在の優先結果：** [Model V0.1 Candidate ユーザーガイド](../user-inference-v0.1/README.md)と[新規 clone からのワークステーション設定](../user-inference-v0.1/workstation/README.md#fresh-clone-setup)に従ってください。最初の予測で ESM-2 がダウンロードされ、少なくとも一つの配列が H3 に到達した時点で ESM-C がダウンロードされます。
+- **優先する実験的候補：** [Model V0.1 Candidate ユーザーガイド](../user-inference-v0.1/README.md)と[初回クローン後のワークステーション設定](../user-inference-v0.1/workstation/README.md#fresh-clone-setup)に従ってください。最初の予測で ESM-2 がダウンロードされ、少なくとも一つの配列が H3 に到達した時点で ESM-C がダウンロードされます。
 - **リリース済みベースライン：** [Model V0 ユーザーガイド](../user-inference-v0/README.md)と [V0 ワークステーション設定](../user-inference-v0/workstation/README.md)に従ってください。最初の予測で固定された ESM-C checkpoint がダウンロードされます。
 
 どちらの経路も `predictions.tsv`、`run_metadata.json`、`CHECKSUMS.sha256` を生成します。その入力経路で必要なすべての checkpoint がキャッシュされた後に限り、ネットワークを無効にした実行が可能です。ユーザー推論の反復は、固定モデル／ランタイム経路を検証しますが、学習データ、モデル選択、Benchmark は再実行しません。

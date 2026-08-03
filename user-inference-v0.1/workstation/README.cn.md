@@ -2,8 +2,8 @@
 
 # 可移植 V0.1 开发候选版部署
 
-本目录部署 mixed-encoder V0.1 candidate，不改变正式 V0 目录、image 或 cache。V0.1 仍是由
-Train-CV nomination 得到、需要 prospective external confirmation 的开发候选版。
+本目录部署混合编码器 V0.1 候选模型，不改变正式 V0 的目录、镜像或缓存。V0.1 仍是由
+Train-CV 选定、尚待独立外部验证的实验候选版。
 
 ## 隔离合同
 

@@ -106,8 +106,8 @@ CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发�
 | --- | --- |
 | 仓库 | `Hongda-Zhao/DJR-MCP-Finder` |
 | 主要功能 | 从 protein FASTA 中筛选 DJR-MCP candidate，并判断支持的病毒门类 |
-| 推荐筛选模型 | Model V0.1 Candidate |
-| 正式基线 | 已发布且冻结的 Model V0 |
+| 优先实验候选模型 | Model V0.1 Candidate；仍待独立外部验证 |
+| 可复现基线 | 已发布且冻结的 Model V0 |
 | 仓库 Release | `v0.1` |
 | 许可证 | 有范围限定的 MIT；外部资产保留其上游条款 |
 

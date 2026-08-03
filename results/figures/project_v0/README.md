@@ -17,10 +17,9 @@ unclassified categories remain separate and must not be combined into a general 
 detector. See `FIGURE_GUIDE.md` in that directory for the full interpretation guide.
 
 Each completed directory retains editable SVG/PDF files, PNG exports, panel source data,
-QA/provenance records, and a checksum manifest; available TIFF files are also included in the
-current compact release. `FIGURE_RELEASE_CHECKSUMS.sha256` is only a convenient index of the two
-current figures. The frozen primary-workflow manifest binds Figure 1, while the head-focus release
-manifest binds Supplementary Fig. S1.
+QA/provenance records, and its own checksum manifest; available TIFF files are also included in the
+current compact release. The primary-workflow manifest binds Figure 1, while the head-focus figure
+manifest binds Supplementary Fig. S1. No additional manifest-of-manifests index is required.
 
 Historical Test data were opened only for ESM-2 650M. The current active figures do not include an
 ESM-C 6B Test panel, preventing evidence from the older model from being incorrectly attributed to

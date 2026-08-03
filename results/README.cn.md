@@ -6,11 +6,10 @@
 
 - `figures/project_v0/`
 - `validation_family_robustness_v0_schema5_mixed_heads/`
-- public-checkout validator 和 `PROJECT_V0_RELEASE_CHECKSUMS.sha256` 所需的小型 checksum、fold
-  与 comparison 文件
+- 公开仓库验证程序所需的小型校验和、数据折和比较文件
 
-大型生成输出、embedding、原始 intermediate 文件和模型 cache 继续由根目录 `.gitignore` 排除。
-在适用情况下，它们的 identity 保留在 release checksum 与 provenance 记录中。
+大型生成输出、嵌入、原始中间文件和模型缓存继续由根目录 `.gitignore` 排除。在适用情况下，
+它们的身份信息保留在专用的数据集、模型、基准测试或结果清单中。
 
 特别需要注意，`data/processed/v0/CHECKSUMS.sha256` 和
 `postsplit_integrity_v0/CHECKSUMS.sha256` 是 archive identity inventory。干净的 Git checkout

@@ -14,8 +14,8 @@ Supplementary Fig. S1 分三层展示逐 Head 表现、expected-path 表现和 3
 Train-CV→nomination→四来源检查顺序。H3 rare/unclassified 仍分别报告，不能合并成普适 unknown-virus
 检测。完整阅读说明见该目录的 `FIGURE_GUIDE.md`。
 
-每个完成目录保留 editable SVG/PDF、PNG、panel source data、QA/provenance 与 checksum manifest；可用的
-TIFF 也随当前 compact release 提供。`FIGURE_RELEASE_CHECKSUMS.sha256` 只是两张当前图的便捷索引；
-冻结主流程 manifest 绑定 Figure 1，head-focus release manifest 绑定 Supplementary Fig. S1。
+每个完成目录均保留可编辑的 SVG/PDF、PNG、面板源数据、质量检查与来源记录，以及各自的校验和
+清单；可用的 TIFF 也随当前精简发布包提供。主流程清单绑定 Figure 1，head-focus 图表清单绑定
+Supplementary Fig. S1，因此不再额外保留“清单的清单”。
 
 历史 Test 只为 ESM-2 650M 打开；当前活动图不提供 ESM-C 6B Test panel，避免把旧模型证据错误归给新模型。

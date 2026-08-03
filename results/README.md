@@ -8,11 +8,11 @@ audit the published V0 analyses:
 - `figures/project_v0/`
 - `validation_family_robustness_v0_schema5_mixed_heads/`
 - the small checksum, fold, and comparison files needed by the public-checkout
-  validators and `PROJECT_V0_RELEASE_CHECKSUMS.sha256`
+  validators
 
 Large generated outputs, embeddings, raw intermediate files, and model caches
-remain excluded by the root `.gitignore`. Their identities are retained in the
-release checksum and provenance records where applicable.
+remain excluded by the root `.gitignore`. Their identities are retained in
+dedicated dataset, model, benchmark, or result manifests where applicable.
 
 In particular, `data/processed/v0/CHECKSUMS.sha256` and
 `postsplit_integrity_v0/CHECKSUMS.sha256` are archive-identity inventories. A

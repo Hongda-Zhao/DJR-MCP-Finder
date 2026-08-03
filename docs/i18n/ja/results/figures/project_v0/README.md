@@ -15,6 +15,6 @@
 
 Supplementary Fig. S1 は三つの layer、すなわち per-head performance、expected-path performance、3×3 mixed recipe に対する Train-CV → nomination → four-source checking の sequence を示します。H3 の rare category と unclassified category は分離したまま維持し、一般的な unknown-virus detector として統合してはいけません。解釈の完全な guide は、その directory の `FIGURE_GUIDE.md` を参照してください。
 
-完成した各 directory には、編集可能な SVG/PDF file、PNG export、panel source data、QA/provenance record、checksum manifest が含まれます。利用可能な TIFF file も、現在の compact release に含まれます。`FIGURE_RELEASE_CHECKSUMS.sha256` は、現在の二つの figure に対する便利な index にすぎません。固定された primary-workflow manifest は Figure 1 に、head-focus release manifest は Supplementary Fig. S1 に結び付けられています。
+完成した各ディレクトリには、編集可能な SVG/PDF、PNG、パネルの元データ、品質確認・出典記録、および個別のチェックサムマニフェストが含まれます。利用可能な TIFF も現在のコンパクトな公開セットに含まれます。主ワークフローのマニフェストは Figure 1 に、head-focus 図のマニフェストは Supplementary Fig. S1 に結び付けられるため、マニフェストを束ねる追加の索引は保持しません。
 
 過去の Test data が開かれたのは ESM-2 650M だけです。現在有効な figure には ESM-C 6B Test panel が含まれていないため、旧 model の evidence が新 model に誤って帰属されることを防ぎます。

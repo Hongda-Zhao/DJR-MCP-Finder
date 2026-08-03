@@ -12,12 +12,12 @@
 
 | 科学结果 | 编码器系统 | 当前状态 | 推荐用途 |
 | --- | --- | --- | --- |
-| **Model V0.1 Candidate** | ESM-2 3B 用于 H1/H2；ESM-C 6B 用于 H3 | 建议开展外部确认 | **新筛选任务的当前首选结果** |
-| **Model V0** | ESM-C 6B 用于 H1/H2/H3 | 已发布并冻结 | 正式的可复现基线和受支持的备选方案 |
+| **Model V0.1 Candidate** | ESM-2 3B 用于 H1/H2；ESM-C 6B 用于 H3 | 实验候选；仍待独立外部验证 | **当前优先用于探索性筛查的实验候选模型** |
+| **Model V0** | ESM-C 6B 用于 H1/H2/H3 | 已发布并冻结 | 可复现基线和受支持的备选方案 |
 
-“首选”描述的是当前筛选路径和 Train-CV 结果。这并不表示 Model V0.1 Candidate 已经
-通过前瞻性外部 Test，也不表示其已取代 Model V0。Model V0 仍是主要科学结果，而不是
-已弃用版本。
+“优先实验候选”描述的是当前探索性筛查路径和 Train-CV 结果。这并不表示 Model V0.1
+Candidate 已通过独立外部验证，也不表示其已取代 Model V0。Model V0 仍是主要科学结果，
+并非已弃用版本。
 
 ## 核心开发数值
 
@@ -58,12 +58,12 @@ component 内，先对记录检测结果取平均；随后表格在全部五个�
 | 14-model V0 selection | 冻结的开发阶段选择 | 哪个单一编码器系统被选为 Model V0 | 外部泛化能力 |
 | 四来源家族稳健性分析 | 20 项预设检查全部通过 | 来自相同四个来源的家族成员上，八个模型和九个 cascades 的选择后一致性 | 独立 Test 表现、等效性，或反馈至模型选择 |
 | PLM versus classical V0 | 内部交叉拟合检查通过 | 在已声明信息预算下，Train components 上的检索差异 | 外部优越性 |
-| V0/V0.1 低相似性审计 | 内部检查通过；正式声明受阻 | 内部留出和低覆盖 stress strata 上的描述性行为 | 正式的 `<20% identity` 结论 |
-| Prospective external Test | **未运行** | — | Model V0 或 Model V0.1 Candidate 的发布级泛化能力 |
+| V0/V0.1 低相似性审计 | 内部检查通过；仅作描述性解释 | 内部留出集和低覆盖压力分层上的描述性行为 | 正式的 `<20% identity` 结论 |
+| 独立外部验证 | **未运行** | — | Model V0 或 Model V0.1 Candidate 的发布级泛化能力 |
 
 ## 这些结果尚不能证明什么
 
-- Model V0 和 Model V0.1 Candidate 均没有新的前瞻性外部 Test。
+- Model V0 和 Model V0.1 Candidate 均未进行独立外部验证。
 - 每个配对的按折校准系统都在至少一个评估折中未达到预期的 99.5% specificity；因此，
   sensitivity 差异是描述性的，而不是 specificity 匹配条件下的改进。
 - BLAST 定义的严格 `qcov≥80%, identity<20%` stratum 只包含一个独立阳性 component——数量
@@ -169,7 +169,8 @@ catalog 指定的 primary taxon。
 | H2 | viral MCP-DJR / cellular DJR | C=`0.01` | 0.8241381150130028 | 0.9639353725025007 |
 | H3 | two known phyla + reject | C=`10` | 4.2474179687096845 | 0.7126488980564439 |
 
-H2 仅在 H1 将蛋白分类为 DJR 后运行；H3 仅在 H2 将其分类为 viral MCP 后运行。
+Model V0 利用一次共享的 ESM-C 6B 表征为每条序列计算 H1 和 H2 原始分数。只有 H1 阳性时，
+H2 结果才参与实际级联；H3 只对 H1/H2 双阳性序列计算。
 
 ### Model V0.1 Candidate：选择与权衡
 
@@ -184,8 +185,9 @@ H2 仅在 H1 将蛋白分类为 DJR 后运行；H3 仅在 H2 将其分类为 vir
 | Model V0.1 Candidate | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
 
 四个来源列给出的是 full-expected-path member accuracies，而不是一个合并得分。Model V0.1
-Candidate 找回 52/69 个 viral strict clusters，少于 Model V0 的 55/69，并且需要第二个编码器
-处理到达 H3 的序列。它仍建议开展外部确认，并不取代已发布的 Model V0。
+Candidate 找回 52/69 个严格病毒序列簇，少于 Model V0 的 55/69，并且需要第二个编码器
+处理到达 H3 的序列。它仍是探索性筛查的优先实验候选，尚待独立外部验证，也不取代已发布的
+Model V0。
 
 ### Ultra-remote 开发审计
 

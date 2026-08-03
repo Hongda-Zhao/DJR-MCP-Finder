@@ -9,8 +9,8 @@ V0.1 mixed-encoder candidate:
 FASTA -> ESM-2 3B -> H1 -> H2 -> [passing sequences only] ESM-C 6B -> H3
 ```
 
-This is an engineering candidate with status `recommended_for_external_confirmation`. It is not a
-formal V0.1 confirmed by an independent external Test and does not replace the released V0.
+This package is the preferred current experimental candidate for exploratory screening. It has not
+undergone independent external validation and does not replace or deprecate the released V0.
 
 The workstation package completed online and fully network-disabled reruns on 12 proteins on
 2026-07-29. Both runs matched the frozen golden standard with zero label mismatches and zero
@@ -157,9 +157,9 @@ See `environment/REFERENCE_ENVIRONMENT.md` for the frozen environments and relea
 
 ## License
 
-This development-candidate package and its original bundled linear classifier heads are released
+This experimental-candidate package and its original bundled linear classifier heads are released
 under the [MIT License](LICENSE). ESM-2 and ESM-C checkpoints are downloaded separately and retain
 their upstream terms; see the
 [release-specific third-party notice](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
-and repository-level [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md). Prospective external
-confirmation remains outstanding.
+and repository-level [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md). Independent
+external validation remains outstanding.
