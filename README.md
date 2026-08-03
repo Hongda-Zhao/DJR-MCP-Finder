@@ -2,8 +2,7 @@
 
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1)
-[![Model V0](https://img.shields.io/badge/Model_V0-Python_3.10%E2%80%933.13-3776AB?logo=python&logoColor=white)](user-inference-v0/)
-[![Model V0.1](https://img.shields.io/badge/Model_V0.1-Python_3.12%E2%80%933.13-FFD43B?logo=python&logoColor=black)](user-inference-v0.1/)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # DJR-MCP Finder
