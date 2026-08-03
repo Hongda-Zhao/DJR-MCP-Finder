@@ -198,10 +198,10 @@ MetaVR および RefSeq/GenBank Silver candidates について、PPT は高い�
 
 </details>
 
-[split summary](../data/processed/v0/split_summary.json)、
-[dataset contract](../data/processed/v0/v0_dataset.json)、および
-[source-file checksums](../data/processed/v0/source_files.tsv) は、同じ凍結済みデータセットの簡潔な
-機械可読 provenance を提供します。
+公開されている [dataset contract](../configs/v0_dataset.json)、
+[dataset checksum manifest](../data/processed/v0/CHECKSUMS.sha256)、および
+[post-split audit checksums](../results/postsplit_integrity_v0/CHECKSUMS.sha256) は、同じ凍結済み
+データセットと監査の簡潔な機械可読 provenance を提供します。
 
 - 分割：Train/Validation/Test = **6,634 / 2,212 / 2,214**。分割前に exact-sequence、source、component、
   MMseqs2 の関係を統合しました。条件を満たす残存 cross-split edge = 0 です。

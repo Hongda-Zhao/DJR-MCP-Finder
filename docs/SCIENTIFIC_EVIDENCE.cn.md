@@ -189,10 +189,10 @@ catalog 指定的 primary taxon。
 
 </details>
 
-[split summary](../data/processed/v0/split_summary.json)、
-[dataset contract](../data/processed/v0/v0_dataset.json) 和
-[source-file checksums](../data/processed/v0/source_files.tsv) 为同一冻结数据集提供精简的机器可读
-provenance。
+公开的 [dataset contract](../configs/v0_dataset.json)、
+[dataset checksum manifest](../data/processed/v0/CHECKSUMS.sha256) 和
+[post-split audit checksums](../results/postsplit_integrity_v0/CHECKSUMS.sha256) 为同一冻结数据集及其
+审计提供精简的机器可读 provenance。
 
 - 划分：Train/Validation/Test = **6,634 / 2,212 / 2,214**。划分前合并了 exact-sequence、source、
   component 和 MMseqs2 relationships；剩余符合条件的跨划分边数 = 0。

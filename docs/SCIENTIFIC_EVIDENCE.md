@@ -202,10 +202,10 @@ assigns four cross-order aliases to their catalog-designated primary taxon for t
 
 </details>
 
-The [split summary](../data/processed/v0/split_summary.json),
-[dataset contract](../data/processed/v0/v0_dataset.json), and
-[source-file checksums](../data/processed/v0/source_files.tsv) provide the compact machine-readable
-provenance for the same frozen dataset.
+The public [dataset contract](../configs/v0_dataset.json),
+[dataset checksum manifest](../data/processed/v0/CHECKSUMS.sha256), and
+[post-split audit checksums](../results/postsplit_integrity_v0/CHECKSUMS.sha256) provide compact,
+machine-readable provenance for the same frozen dataset and audit.
 
 - Split: Train/Validation/Test = **6,634 / 2,212 / 2,214**. Exact-sequence, source, component, and
   MMseqs2 relationships were merged before splitting; residual qualifying cross-split edges = 0.
