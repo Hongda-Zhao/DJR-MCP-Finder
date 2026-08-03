@@ -309,6 +309,7 @@ external Test 和 formal ultra-remote claims 全部不成立。V0.1 development 
 | frozen model identity | `results/model_benchmark_v0_metric_revision_1/esmc_6b/FROZEN_MODEL_CHECKSUMS.sha256` |
 | released user inference V0 | `user-inference-v0/` |
 | unreleased user inference V0.1 candidate | `user-inference-v0.1/` |
+| portable root research entrypoints | `scripts/run_v0_dataset.py`; `scripts/run_postsplit_integrity_audit.py` |
 
 以下完整 schema 5 和 schema 4 路径是原 gds2 generation 的冻结 provenance：
 
@@ -334,14 +335,21 @@ V0.1 仍是 `recommended_for_external_confirmation` 的候选包，不替代 V0�
 只记录历史验证/部署位置，不是当前检出的运行依赖。新分析没有修改 V0 的模型、三 Head、temperature、
 threshold、窗口或 pooling。
 
+普通用户预测不依赖 PBS、`qsub` 或 HPC 调度器。
+
 ### 11.1 可移植路径与冻结 provenance
 
 仓库可检出到任意绝对路径。非冻结的 launcher 使用 `DJRMCP_PROJECT_ROOT`、
 `DJRMCP_ARCHIVE_ROOT`、`DJRMCP_DATABASE_ROOT`、`DJRMCP_SOFTWARE_ROOT` 与
-`DJRMCP_VENV_ROOT`；缺省工程根由脚本位置或 PBS 的 `PBS_O_WORKDIR` 推导。冻结 config 保留原始
+`DJRMCP_VENV_ROOT`；缺省工程根由脚本位置推导。冻结 config 保留原始
 `/aptmp/...` 值以维持来源与 checksum 语义，不应原地编辑。使用
 `scripts/render_portable_config.py` 生成本地 JSON/YAML 副本，再通过 launcher 的 `*_CONFIG` 环境变量传入；
 完整示例见 `README.md` 和 `.env.example`。
+
+根目录的数据集构建与 split 后完整性审计分别由 `scripts/run_v0_dataset.py` 和
+`scripts/run_postsplit_integrity_audit.py` 启动，无需 scheduler。`benchmarks/*/pbs/` 内与 checksum
+绑定的 launcher 不属于普通运行入口；它们只作为可选的历史 HPC 重放证据保留，不应从 Benchmark
+证据包中删除或改写。
 
 GitHub 打包时，source-level manifests 已为上述可移植 launcher、文档与发布 allowlist 重新生成。
 这不是重新计算科学结果：冻结模型、阈值、config、compact 数值证据及其内部 artifact checksums 保持不变；

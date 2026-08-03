@@ -1,9 +1,10 @@
-# DJR-MCP Finder architecture and contributor map
+# DJR-MCP Finder architecture and repository map
 
-This document describes the checkout on branch `codex/community-and-packaging`, based on
-`origin/main` commit `5509274` and the engineering changes carried with this document. The remote is
-`https://github.com/Hongda-Zhao/DJR-MCP-Finder.git`. It is an onboarding map, not a replacement for
-the scientific protocol in [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md).
+**English** | [简体中文](ARCHITECTURE.cn.md) | [日本語](ARCHITECTURE.ja.md)
+
+This document maps the repository's code areas, runtime entry points, verification commands, and
+scientific boundaries. It supports onboarding and maintenance, but does not replace the scientific
+protocol in [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md).
 
 ## Part 1 — Whole-repository technical deep dive
 
@@ -32,9 +33,15 @@ package replaces the H1/H2 encoder but explicitly remains outside the released s
 | Entrypoint | Purpose | Evidence |
 | --- | --- | --- |
 | `djrmcp` | Research workflow plan and benchmark embedding CLI | [script registration](../pyproject.toml#L79-L80), [CLI parser](../src/djrmcp_finder/cli.py#L67) |
+| `python scripts/run_v0_dataset.py` | Portable root entrypoint for V0 dataset construction | [Python runner](../scripts/run_v0_dataset.py) |
+| `python scripts/run_postsplit_integrity_audit.py` | Portable root entrypoint for post-split integrity auditing | [Python runner](../scripts/run_postsplit_integrity_audit.py) |
 | `djrmcp-predict` | Released Model V0 FASTA validation, model inspection, and prediction | [script registration](../user-inference-v0/pyproject.toml#L55-L56), [CLI main](../user-inference-v0/src/djrmcp_predict/cli.py#L189) |
 | `djrmcp-predict-v01` | Candidate controller CLI using isolated workers | [script registration](../user-inference-v0.1/pyproject.toml#L49-L50), [CLI main](../user-inference-v0.1/src/djrmcp_predict_v01/cli.py#L403) |
 | Workstation wrappers | Docker build, cache, GPU selection, and offline execution | [formal guide](../user-inference-v0/workstation/README.md), [candidate guide](../user-inference-v0.1/workstation/README.md) |
+
+The prediction CLIs and workstation wrappers do not require PBS or `qsub`. The two root research
+runners above also work without a scheduler; resource-intensive stages still require their declared
+data, software, memory, and GPU resources where applicable.
 
 ### Commands and verification inventory
 
@@ -49,7 +56,7 @@ test semantics.
 | `make docs-check` | Check required docs, README size, and local links | [Makefile](../Makefile#L36-L37) |
 | `make lint` | Run critical Ruff correctness rules | [Makefile](../Makefile#L39-L40) |
 | `make test` | Run core, formal, and candidate suites | [Makefile](../Makefile#L42-L51) |
-| `python -m pytest -q path::test` | Run one test | [contributor guide](../CONTRIBUTING.md#L32-L36) |
+| `python -m pytest -q tests/test_cli.py` | Run one focused test module | [core test target](../Makefile#L42-L43), [example module](../tests/test_cli.py) |
 | `make smoke` | Validate both FASTA parsers and frozen bundles without model downloads | [Makefile](../Makefile#L53-L61) |
 | `make build` | Build three wheels and three sdists | [Makefile](../Makefile#L63-L67) |
 | `make package-check` | Run Twine and inspect licenses, typed markers, notices, and metadata | [Makefile](../Makefile#L69-L71) |
@@ -60,10 +67,9 @@ CI runs on pushes to `main`, pull requests, and manual dispatch
 root and formal packages, both candidate versions, metadata/docs, lint, smoke checks, and built
 distributions ([CI jobs](../.github/workflows/ci.yml#L16-L129)).
 
-**CI enforcement:** `[REMOTE-VERIFIED 2026-07-30]` the GitHub branch-protection API returned HTTP
-403 stating that protection requires GitHub Pro or a public repository for the current private
-repository. CI therefore runs but does not itself block merges. Enforcing required checks remains a
-maintainer action after the plan or visibility changes.
+The workflow defines the repository's automated verification surface. Whether those jobs are
+configured as merge-blocking required checks is controlled in GitHub repository settings and is not
+asserted by the files in this checkout.
 
 ### Directory layout
 
@@ -71,11 +77,11 @@ maintainer action after the plan or visibility changes.
 | --- | --- |
 | `src/djrmcp_finder/` | Research configuration, embeddings, classifier selection/calibration, validation, and Test ledger |
 | `tests/` | Core research-pipeline tests |
-| `scripts/` | Reproducible pipeline stages, validators, figures, and engineering contract checks |
+| `scripts/` | Portable Python research runners, pipeline stages, validators, figures, and engineering contract checks |
 | `configs/` | Frozen or portable-rendered workflow configuration |
 | `user-inference-v0/` | Released `model-v0` package and workstation deployment |
 | `user-inference-v0.1/` | `model-v0.1-candidate` controller, workers, and workstation deployment |
-| `benchmarks/` | Compact checksum-bound benchmark evidence |
+| `benchmarks/` | Compact checksum-bound benchmark evidence, including optional historical HPC replay launchers |
 | `results/` | Small published result identities and figures; large generated results remain excluded |
 | `docs/` | Engineering, versioning, scientific interpretation, and reproducibility documentation |
 | `.github/` | CI/release automation and contribution templates |
@@ -96,8 +102,8 @@ Large external model/data dependencies are filesystem/cache inputs rather than b
 
 ### Lifecycle and dependency scan
 
-- The repository now uses the current official action majors observed on 2026-07-30; action versions
-  remain explicit in workflow files and should be reviewed during each release.
+- GitHub Actions versions remain explicit in workflow files and should be reviewed during each
+  release.
 - Python 3.10 lifecycle status is `[UNVERIFIED]` from the checkout. Because it is the minimum public
   version, maintainers should review its upstream security-support date before the next minor release.
 - The formal runtime intentionally pins a Biohub Transformers Git commit. That is a reproducibility
@@ -110,8 +116,10 @@ Large external model/data dependencies are filesystem/cache inputs rather than b
 
 There is no network API owned by the project. External model and database access happens during
 explicit user or research commands. Data contracts are FASTA input, frozen JSON/NPZ/checksum bundle
-files, TSV/JSON prediction output, and checksum-bound benchmark records. Long-running work is driven
-by shell/PBS scripts, not an internal background-job service.
+files, TSV/JSON prediction output, and checksum-bound benchmark records. Root research workflows are
+started through portable Python entrypoints rather than an internal background-job service or a
+required scheduler. Checksum-bound `benchmarks/*/pbs/` files remain only as optional historical HPC
+replay evidence; they are not dependencies of ordinary FASTA prediction.
 
 The test strategy has three independent suites and CPU-only smoke checks. GPU inference and full
 archive replay remain workstation/HPC validations because their checkpoints and frozen databases
@@ -119,23 +127,27 @@ are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#wh
 
 ## Part 2 — Context and ecosystem
 
-### Checkout identity
+### Repository scope
 
 | Field | Value |
 | --- | --- |
-| Remote | `https://github.com/Hongda-Zhao/DJR-MCP-Finder.git` |
-| Base snapshot | `origin/main@5509274` (`Prepare first public release (#4)`) |
-| Working branch | `codex/community-and-packaging` |
+| Repository | `Hongda-Zhao/DJR-MCP-Finder` |
+| Primary function | Screen protein FASTA files for DJR-MCP candidates and supported viral phyla |
+| Recommended screening model | Model V0.1 Candidate |
+| Formal baseline | Released, frozen Model V0 |
 | Repository release | `v0.1` |
 | License | Scoped MIT; external assets retain upstream terms |
 
-### Repository rules
+### Repository controls
 
-- [`CONTRIBUTING.md`](../CONTRIBUTING.md#L38-L59) protects frozen evidence, version mapping,
-  checksums, and PR gates.
-- [`SECURITY.md`](../SECURITY.md#L12-L40) defines private reporting and untrusted-input boundaries.
-- The pull-request template asks reviewers to check model identity, checksums, claims, and sensitive
-  data before merge.
+- The [`Makefile`](../Makefile#L33-L73) centralizes metadata, documentation, lint, test, smoke, and
+  package gates.
+- [CI](../.github/workflows/ci.yml#L16-L128) runs those gates across the supported package and Python
+  surfaces.
+- The [pull-request template](../.github/pull_request_template.md) asks reviewers to check model
+  identity, checksums, claims, input safety, and sensitive data.
+- The [issue templates](../.github/ISSUE_TEMPLATE/) separate reproducible bugs, feature requests,
+  and scientific interpretation questions.
 - The machine-readable release manifest prevents prose-only version changes
   ([manifest](../release-manifest.json#L1-L51)).
 
@@ -238,7 +250,7 @@ by a separate architectural-lint tool.
 | Integrity | SHA-256 manifests before model load and after result write | [formal loader](../user-inference-v0/src/djrmcp_predict/release.py#L35) |
 | Error handling | Fail-closed validation via exceptions and non-zero CLI exit | [formal CLI](../user-inference-v0/src/djrmcp_predict/cli.py#L117) |
 | Logging/metadata | Structured run metadata and explicit command output | [output contract](../README.md#L65-L76) |
-| Secrets | No embedded credentials; external caches/archives supplied by path | [security policy](../SECURITY.md#L31-L40) |
+| Secrets | No embedded credentials; external caches/archives supplied by path | [environment template](../.env.example#L1-L15), [review checklist](../.github/pull_request_template.md#L30-L33) |
 | Feature flags | Environment variables for device, cache, offline mode, and portable roots | [formal guide](../user-inference-v0/README.md) |
 | Observability | Runtime metadata, checksums, validation JSON; no telemetry service | [formal Docker environment](../user-inference-v0/workstation/Dockerfile#L7-L15) |
 
@@ -267,21 +279,23 @@ by a separate architectural-lint tool.
 
 ### Governance and release enforcement
 
-PRs run CI, but required checks are not currently enforceable on the private repository plan. The
-tag release workflow validates tag syntax, releaser identity, ancestry on `main`, manifest agreement,
-Twine metadata, wheel/sdist contents, and then attaches artifacts with only `contents: write`
-permission in the release job ([release gates](../.github/workflows/release.yml#L17-L89)). PyPI is
-deliberately outside the active workflow until OIDC Trusted Publishing and a protected environment
-are configured.
+CI executes the documented verification jobs on pushes and pull requests. Merge-blocking enforcement
+belongs to repository settings rather than the version-controlled workflow. The tag release workflow
+validates tag syntax, releaser identity, ancestry on `main`, manifest agreement, Twine metadata,
+wheel/sdist contents, and then attaches artifacts with only `contents: write` permission in the
+release job ([release gates](../.github/workflows/release.yml#L17-L89)). PyPI is deliberately outside
+the active workflow until OIDC Trusted Publishing and a protected environment are configured.
 
 ### How to add a feature
 
 1. Identify whether the change belongs to the research package, formal inference, or candidate.
 2. Preserve model/evidence identity unless the scientific release gates explicitly authorize a new one.
 3. Add tests in the corresponding suite and a CPU-only smoke path when possible.
-4. Update user docs, `CHANGELOG.md`, and `release-manifest.json` if any identifier changes.
+4. Update user docs, the [changelog](repository/CHANGELOG.md), and `release-manifest.json` if any
+   identifier changes.
 5. Run the focused `make` target, then `make check`.
-6. Open a PR and complete the scientific, checksum, security, and data checklist.
+6. Use the [pull-request template](../.github/pull_request_template.md) to record scientific,
+   checksum, input-safety, and data impacts, then require the relevant CI jobs to pass.
 
 ## Subsystem deep dives
 
@@ -327,7 +341,7 @@ scientific, not just technical: exact parity and clean routing do not constitute
 | Container/runtime pins | High | Local Dockerfiles and validation records |
 | Scientific evidence status | High | Frozen bundle metadata and workflow documents |
 | CI job coverage | High | Local workflow files |
-| CI enforcement | Remote-verified | GitHub API response on 2026-07-30; unavailable on current private plan |
+| Merge-blocking policy | Not asserted | Required checks and branch protection are repository settings outside the checkout |
 | External dependency lifecycle | Unverified | Must be reviewed against upstream release/support policies |
 | Full archive replay | Inferred/conditional | Requires external checksum-bound archives not present locally |
 

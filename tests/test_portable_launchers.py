@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -27,9 +26,14 @@ def test_operational_launchers_do_not_embed_legacy_user_paths() -> None:
 
 def test_primary_launchers_expose_portable_roots_and_config_overrides() -> None:
     expected = {
-        "scripts/build_v0_dataset.sh": (
+        "scripts/run_v0_dataset.py": (
             "DJRMCP_PROJECT_ROOT",
             "DJRMCP_DATASET_CONFIG",
+        ),
+        "scripts/run_postsplit_integrity_audit.py": (
+            "DJRMCP_PROJECT_ROOT",
+            "MASTER_MANIFEST",
+            "AUDIT_DIR",
         ),
         "scripts/run_benchmark_metric_revision_1_gds2.pbs": (
             "DJRMCP_PROJECT_ROOT",
@@ -61,6 +65,19 @@ def test_primary_launchers_expose_portable_roots_and_config_overrides() -> None:
         source = (ROOT / relative).read_text(encoding="utf-8")
         for variable in variables:
             assert variable in source, (relative, variable)
+
+
+def test_root_data_launchers_are_python_and_scheduler_independent() -> None:
+    assert not (ROOT / "pbs" / "02_build_dataset_v0.pbs").exists()
+    assert not (ROOT / "pbs" / "05_postsplit_integrity_audit.pbs").exists()
+    for relative in (
+        "scripts/run_v0_dataset.py",
+        "scripts/run_postsplit_integrity_audit.py",
+    ):
+        source = (ROOT / relative).read_text(encoding="utf-8")
+        assert "module load" not in source
+        assert "PBS_O_WORKDIR" not in source
+        assert "PBS_JOBID" not in source
 
 
 def test_schema4_launcher_binds_config_write_paths_before_execution() -> None:

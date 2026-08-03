@@ -1,4 +1,4 @@
-**English** | [简体中文](README.cn.md)
+**English** | [简体中文](README.cn.md) | [日本語](README.ja.md)
 
 # Portable V0.1 development-candidate deployment
 
@@ -37,6 +37,27 @@ single-GPU run does not keep both checkpoints resident at once.
 The frozen benchmark peaks were approximately 5.95 GB for ESM-2 3B and 15.0 GB
 for ESM-C 6B. A CUDA GPU with at least 24 GB and native BF16 support is
 recommended. CPU inference is not the validated workstation path.
+
+## Fresh-clone setup
+
+The V0.1 image extends the V0 workstation image, so a fresh clone must build V0
+first. The locally rebuilt V0 image will have a different Docker image ID from
+the historically validated image. After reviewing that it was built from the
+intended checkout and pinned V0 environment, explicitly disable only the
+historical image-ID gate when building V0.1:
+
+```bash
+cd /path/to/DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
+
+cd ../user-inference-v0.1
+DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh
+```
+
+If the exact historically validated `djrmcp-user-inference:v0` image is already
+available, keep the default identity gate and run `bash workstation/build.sh`
+without the environment-variable override. The override above does not disable
+the pinned package, CUDA, model-bundle, or release checksum checks.
 
 ## Build
 

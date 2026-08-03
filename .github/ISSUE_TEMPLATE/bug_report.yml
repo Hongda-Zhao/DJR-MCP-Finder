@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for reporting a problem. Do not include private sequences, credentials, or security vulnerabilities. Security reports follow SECURITY.md.
+        Thank you for reporting a problem. Do not include private sequences, credentials, or unpublished vulnerabilities in a public issue.
   - type: dropdown
     id: surface
     attributes:

@@ -1,3 +1,5 @@
+**English** | [简体中文](REFERENCE_ENVIRONMENT.cn.md) | [日本語](REFERENCE_ENVIRONMENT.ja.md)
+
 # Frozen embedding reference environment
 
 The selected ESM-C 6B development embedding was generated with:

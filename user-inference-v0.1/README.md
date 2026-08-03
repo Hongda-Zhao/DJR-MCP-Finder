@@ -1,4 +1,4 @@
-**English** | [简体中文](README.cn.md)
+**English** | [简体中文](README.cn.md) | [日本語](README.ja.md)
 
 # DJR-MCP Finder — User Inference for Model V0.1 Candidate
 
@@ -161,5 +161,5 @@ This development-candidate package and its original bundled linear classifier he
 under the [MIT License](LICENSE). ESM-2 and ESM-C checkpoints are downloaded separately and retain
 their upstream terms; see the
 [release-specific third-party notice](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
-and repository-level [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md). Prospective external
+and repository-level [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md). Prospective external
 confirmation remains outstanding.

@@ -10,8 +10,8 @@ The audit has two deliberately separate phases:
   MMseqs2 searches.  It fails closed on any qualifying similarity edge, exact
   SHA duplicate, component overlap, self-ID collision, or direction mismatch.
 
-MMseqs2 itself is run by ``pbs/05_postsplit_integrity_audit.pbs`` so this module
-remains unit-testable without an MMseqs2 installation.
+MMseqs2 itself is run by ``scripts/run_postsplit_integrity_audit.py`` so this
+module remains unit-testable without an MMseqs2 installation.
 """
 
 from __future__ import annotations

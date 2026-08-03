@@ -1,4 +1,4 @@
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](README.ja.md)
 
 # 可移植 V0.1 开发候选版部署
 
@@ -32,6 +32,24 @@ PyTorch 2.13.0 安装。Controller 先用 ESM-2 3B 对所有 exact-unique 输入
 
 冻结 benchmark 的峰值约为 ESM-2 3B 5.95 GB、ESM-C 6B 15.0 GB。建议至少 24 GB 且原生支持
 BF16 的 CUDA GPU。CPU inference 不是经过验证的 workstation 路径。
+
+## Fresh-clone 配置
+
+V0.1 image 基于 V0 workstation image，因此 fresh clone 必须先构建 V0。本地重建的 V0 image
+会具有不同于历史验证 image 的 Docker ID。确认它来自预期 checkout 和固定 V0 环境后，在构建
+V0.1 时只显式关闭历史 image-ID gate：
+
+```bash
+cd /path/to/DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
+
+cd ../user-inference-v0.1
+DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh
+```
+
+如果本地已经存在历史验证的精确 `djrmcp-user-inference:v0` image，应保留默认 identity gate，
+直接运行 `bash workstation/build.sh`，不要设置上述环境变量。该 override 不会关闭固定 package、
+CUDA、model-bundle 或 release checksum 检查。
 
 ## 构建
 

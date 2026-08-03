@@ -1,4 +1,4 @@
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](README.ja.md)
 
 # DJR-MCP Finder — Model V0.1 Candidate 用户推理
 
@@ -148,5 +148,5 @@ python -m pytest -q
 该开发候选 package 及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-2 与 ESM-C
 checkpoint 均另行下载，并保留其上游条款；详见
 [release-specific 第三方声明](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
-和仓库级 [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md)。prospective external
+和仓库级 [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md)。prospective external
 confirmation 仍未完成。
