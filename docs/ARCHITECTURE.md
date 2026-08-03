@@ -126,7 +126,7 @@ are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#wh
 | Remote | `https://github.com/Hongda-Zhao/DJR-MCP-Finder.git` |
 | Base snapshot | `origin/main@5509274` (`Prepare first public release (#4)`) |
 | Working branch | `codex/community-and-packaging` |
-| Repository release | `v0.1.0` |
+| Repository release | `v0.1` |
 | License | Scoped MIT; external assets retain upstream terms |
 
 ### Repository rules

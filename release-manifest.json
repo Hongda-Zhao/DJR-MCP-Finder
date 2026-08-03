@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "repository_release": {
-    "version": "0.1.0",
-    "tag": "v0.1.0",
-    "versioning": "SemVer"
+    "version": "0.1",
+    "tag": "v0.1",
+    "versioning": "major.minor"
   },
   "packages": [
     {

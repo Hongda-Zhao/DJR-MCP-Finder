@@ -1,31 +1,10 @@
-# DJR-MCP Finder documentation
+# Documentation
 
-[Repository README](../README.md) | [中文 README](../README.cn.md)
+[English README](../README.md) | [中文 README](../README.cn.md) | [日本語 README](../README.ja.md)
 
-The repository landing page explains what the tool does and gets a new user to a validated result.
-This directory holds engineering, scientific, and reproducibility detail that should not compete
-with that first-use path.
-
-## Start by role
-
-| Reader | Start here | Then read |
-| --- | --- | --- |
-| FASTA-screening user | [V0 user guide](../user-inference-v0/README.md) or [V0.1 user guide](../user-inference-v0.1/README.md) | [V0](../user-inference-v0/workstation/README.md) or [V0.1](../user-inference-v0.1/workstation/README.md) deployment |
-| Scientist interpreting results | [Scientific evidence and limitations](SCIENTIFIC_EVIDENCE.md) | [V0/V0.1 benchmark](../benchmarks/ultra_remote_v0_v01/README.md) |
-| Researcher reproducing the study | [Reproducibility guide](REPRODUCIBILITY.md) | [Complete workflow](research/WORKFLOW_V0.md) |
-| Software contributor | [Contributing guide](../CONTRIBUTING.md) | [Architecture](ARCHITECTURE.md) |
-| Maintainer preparing a release | [Versioning and naming](VERSIONING.md) | [Changelog](../CHANGELOG.md) |
-| Security reporter | [Security policy](../SECURITY.md) | [Third-party notices](../THIRD_PARTY_NOTICES.md) |
-
-## Source-of-truth map
-
-- [`release-manifest.json`](../release-manifest.json) is the machine-readable mapping among the
-  repository release, Python distribution versions, scientific model IDs, and bundle revisions.
-- [`research/WORKFLOW_V0.md`](research/WORKFLOW_V0.md) is the complete scientific workflow and evidence boundary.
-- [`research/PROJECT_V0_FINAL_REPORT.md`](research/PROJECT_V0_FINAL_REPORT.md) is the concise scientific report.
-- [`Makefile`](../Makefile) defines canonical contributor commands.
-- [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and
-  [`.github/workflows/release.yml`](../.github/workflows/release.yml) define automated gates.
-
-The compact GitHub checkout does not contain every original database, checkpoint, log, or HPC
-output. Missing archived inputs are documented as prerequisites rather than silently reconstructed.
+| Need | Document |
+| --- | --- |
+| Run the recommended Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) |
+| Run the released, frozen Model V0 baseline | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) |
+| Understand benchmarks and limitations | [Scientific evidence](SCIENTIFIC_EVIDENCE.md) |
+| See what is publicly reproducible and what requires research archives | [Reproducibility](REPRODUCIBILITY.md) |

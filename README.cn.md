@@ -1,159 +1,129 @@
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](README.ja.md)
 
 # DJR-MCP Finder
 
-[![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**从蛋白 FASTA 中筛选 double-jelly-roll major capsid protein（DJR-MCP）候选，并判断其是否属于项目支持的病毒门。**
 
-**使用冻结的三级蛋白语言模型分类器，从蛋白 FASTA 中检测 double-jelly-roll major capsid
-protein。** DJR-MCP Finder 面向病毒学与生物信息学使用者，提供可审计的 DJR、病毒 MCP 候选蛋白
-及两个受支持病毒门的第一轮筛查。
+DJR-MCP 是 *Varidnaviria* 的特征性衣壳蛋白。即使明显的序列相似性已经减弱，其 double-jelly-roll 结构信号仍可能保留，因此可作为发现和分类多样 DNA 病毒的重要标志。
 
-## 两条当前主要结果线
+| 输入 | 输出 | 适用人群 |
+| --- | --- | --- |
+| 氨基酸 FASTA | 每条蛋白的 DJR/MCP 分数与最终标签 | 希望筛查病毒蛋白或 contig 预测蛋白的病毒学和生物信息学用户 |
 
-V0 与 V0.1 都是项目当前的主要结果。两者处理相同的三级任务，但使用不同的冻结 encoder 系统，
-并提供相互独立的命令行包。
+> **推荐使用 Model V0.1 Candidate 进行新的筛查；Model V0 保留为已发布、冻结的正式基线。** V0.1 仍需独立外部确认，V0 也仍是项目的主要科研结果。
 
-| 结果 | 冻结系统 | 状态 | 用户入口 |
-| --- | --- | --- | --- |
-| **Model V0.1** | H1/H2 使用 ESM-2 3B；H3 使用 ESM-C 6B | 当前优先结果；需要外部确认 | [`djrmcp-predict-v01`](user-inference-v0.1/README.cn.md) |
-| **Model V0** | H1/H2/H3 均使用 ESM-C 6B | 已发布、可复现的基线与回退版本 | [`djrmcp-predict`](user-inference-v0/README.cn.md) |
+## 预测流程
 
-两个版本在推理时都不会训练或重新调参。V0.1 与 V0 并列展示，但不会改写已发布 V0 bundle 的
-身份和证据记录。
+![DJR-MCP Finder prediction workflow](docs/assets/readme/readme_workflow.svg)
 
-## 从 FASTA 到可审计结果
+H2 只对通过 H1 的序列运行，H3 只对继续通过 H2 的序列运行。所有分数、gate 状态和最终标签均写入 `predictions.tsv`；这些标签用于筛查，不代表结构确认。
 
-```mermaid
-flowchart LR
-    A["蛋白 FASTA"] --> B["选择冻结的 V0 或 V0.1 bundle"]
-    B --> H1{"H1：是否为 DJR？"}
-    H1 -- "否" --> N["non_djr"]
-    H1 -- "是" --> H2{"H2：是否承担病毒 MCP 角色？"}
-    H2 -- "否" --> D["djr_non_mcp"]
-    H2 -- "是" --> H3{"H3：是否属于受支持的门？"}
-    H3 --> P1["mcp::Nucleocytoviricota"]
-    H3 --> P2["mcp::Preplasmiviricota"]
-    H3 --> U["mcp::unknown/other"]
-```
+## 快速开始
 
-`mcp::unknown/other` 只是通过 H1/H2 后的 reject option，不是普适未知病毒或 OOD detector。
-
-## 核心 benchmark 概览
-
-### V0 冻结模型选择
-
-![V0 仅开发阶段的模型选择 benchmark](results/figures/project_v0/model_benchmark_metric_revision_1/figure_1_model_selection_project_v0_metric_revision_1.svg)
-
-冻结的仅 Train 五折 global-component 交叉验证选择 ESM-C 6B 作为 Model V0：综合分数
-`S = 0.997 ± 0.001`、H1 AP `0.998 ± 0.000`、H2 AP `1.000 ± 0.000`、H3 known-class macro-F1
-`0.981 ± 0.010`。该选择同时通过冻结的 Validation gate 和 paired one-standard-error 审计。
-这些属于开发与验证结果，不是 prospective Test 表现。图件来源与 QA 见
-[V0 模型选择图目录](results/figures/project_v0/model_benchmark_metric_revision_1/)。
-
-### V0 与 V0.1 remote-component 审计
-
-![V0 与 V0.1 remote-component 开发 benchmark](benchmarks/ultra_remote_v0_v01/figures/ultra_remote_v0_v01.svg)
-
-在仅使用 Train 的 component holdout 中，V0.1 将 H1 encoder sensitivity 从 `0.734` 提升到
-`0.924`，FPR ≤0.005 下的 normalized partial AUROC 从 `0.655` 提升到 `0.889`；task-adapted
-H1 detector 从 `0.975` 变为 `0.994`，而本次审计中的 H2 与端到端 detector sensitivity 持平。
-这些是内部、固定阈值的开发结果：每组配对系统都至少在一个 fold 未达到实际 99.5% specificity，
-严格 `<20% identity` 分层也只有 1 个独立阳性 component。完整解释见
-[benchmark 报告](benchmarks/ultra_remote_v0_v01/results/REPORT.md)和
-[科研证据边界](docs/SCIENTIFIC_EVIDENCE.md)。
-
-## 快速开始：两个版本的仅 CPU 合同检查
-
-Python 3.12+ 可以在不下载 encoder 或 PyTorch 的情况下校验两个结果版本：
+推荐环境：Linux、Docker、NVIDIA Container Toolkit 和 CUDA GPU；建议至少 24 GB 显存并支持 BF16。
 
 ```bash
 git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
-cd DJR-MCP-Finder
+cd DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
 
-python3.12 -m venv .venv
-source .venv/bin/activate
+cd ../user-inference-v0.1
+DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh
 
-make setup-v0 setup-v01
-make test-v0 smoke-v0
-make test-v01 smoke-v01
+bash workstation/run_user_fasta.sh \
+  /absolute/path/to/proteins.faa \
+  run_output/my_sample \
+  0
 ```
 
-尚未验证原生 Windows。完整推理使用 Linux、Docker 与 NVIDIA GPU；请分别阅读
-[V0 工作站指南](user-inference-v0/workstation/README.cn.md)或
-[V0.1 工作站指南](user-inference-v0.1/workstation/README.cn.md)。V0 建议至少 24 GB GPU 显存；
-V0.1 使用两个相互隔离、固定版本的 encoder runtime。
+V0.1 使用 V0 的冻结镜像作为基础，因此 fresh clone 需要先完成 V0 构建。上面的空值只跳过本地重建后必然变化的历史 Docker image ID 检查；版本、环境和校验和检查仍会执行。预测主体由 Python 实现，Docker 用于隔离 H1/H2 与 H3 所需的两个固定运行环境。
+
+第一次预测会下载固定版本的模型 checkpoint。结果位于：
+
+```text
+run_output/my_sample/
+├── predictions.tsv
+├── run_metadata.json
+└── CHECKSUMS.sha256
+```
+
+最终标签为 `non_djr`、`djr_non_mcp`、`mcp::Nucleocytoviricota`、`mcp::Preplasmiviricota` 或 `mcp::unknown/other`。其中 `mcp::unknown/other` 仅表示序列通过 H1/H2，但 H3 未将其可靠分入两个受支持的病毒门；它不是通用的未知病毒检测器。
+
+## 核心开发性能与 Benchmark
+
+开发证据按“数据组成 → 评估设计 → V0 模型选择 → V0/V0.1 对比”展开。
+
+### 开发数据
+
+![Development data composition and component-safe frozen split](docs/assets/readme/readme_development_data.svg)
+
+四个证据组共包含 11,060 条 exact-sequence-unique representatives，冻结拆分为 Train 6,634、Validation 2,212 和 Test 2,214。Validation/Test 是开发数据内的冻结分区；下面的模型选择只使用 Train，并不构成新的 prospective external Test。
+
+### 共享五折设计
+
+![Shared component-safe five-fold Train CV](docs/assets/readme/readme_shared_train_cv.svg)
+
+所有 14 个 encoder 与后续 V0.1 混合候选使用同一份 component-safe 折映射；每个 component 恰好被留出评估一次，最终报告五折均值 ± SE。
+
+### V0 的 14-model Benchmark
+
+![V0 model-selection benchmark across 14 candidate encoders](docs/assets/readme/readme_v0_model_selection.svg)
+
+ESM-C 6B 在全 encoder 对比中被选为 Model V0。排名第二的 ESM-2 3B 后续用于 V0.1 的 H1/H2，而 H3 仍沿用 V0 的 ESM-C 6B；因此 V0.1 是混合 encoder candidate，不是图中的第 15 个单 encoder 模型。
+
+### V0 与 V0.1：改变了什么
+
+Model V0 使用一次 ESM-C 6B embedding 驱动 H1、H2 和 H3。Model V0.1 Candidate 则是混合 encoder 级联：ESM-2 3B 及其自身冻结的 H1/H2 heads、temperatures 和 thresholds 负责 DJR/MCP 筛选；只有通过两级 gate 的序列才会运行 ESM-C 6B，并沿用与 V0 完全相同的 H3 phylum/reject head。
+
+![Model V0 and Model V0.1 architecture and frozen-component comparison](docs/assets/readme/readme_v0_v01_architecture.svg)
+
+| 对比项 | Model V0 | Model V0.1 Candidate |
+| --- | --- | --- |
+| 项目定位 | 已发布、冻结的正式基线 | 推荐用于新筛查的开发候选，仍需外部确认 |
+| H1/H2 | ESM-C 6B representation、heads 与校准 | ESM-2 3B representation，以及对应的新冻结 heads 与校准 |
+| H3 | ESM-C 6B phylum/reject head | 与 V0 逐字节相同的 H3 artifact 与校准 |
+| 执行方式 | 单 encoder；最终标签仍按 H1→H2→H3 决策 | H2 只对 H1-positive 运行；H3 以第二个 encoder 条件运行 |
+| 输出溯源 | `predictions.tsv` 20 个字段 | 23 个字段，新增三个 head encoder 字段 |
+
+图中的 gate 数值是各版本独立冻结的校准阈值，不是性能分数；不能根据阈值更高或更低直接判断模型更强或更严格。两版保留相同的最终三段决策语义和五种最终标签，但 V0.1 的执行与 provenance 更明确。
+
+#### 平均性能
+
+![Model V0 and Model V0.1 Candidate Train-only development benchmark](docs/assets/readme/readme_train_cv_performance.svg)
+
+图中为五折均值 ± SE；横轴明确截取为 0.968–1.000。V0.1 更换的是完整 H1/H2 stack；H2 AP 恰好相同，H3 则因复用同一 artifact 而完全相同。
+
+| Train-only 五折 CV ↑ | Model V0 | Model V0.1 Candidate |
+| --- | ---: | ---: |
+| H1 AP | `0.9985 ± 0.0003` | **`0.9993 ± 0.0004`** |
+| H2 AP | `1.0000 ± 0.0000` | `1.0000 ± 0.0000` |
+| H3 known-phylum macro-F1 | `0.9806 ± 0.0095` | `0.9806 ± 0.0095` |
+| 综合分数 `S` | `0.9971 ± 0.0009` | **`0.9976 ± 0.0010`** |
+
+`S = 0.60 × H1 AP + 0.30 × H2 AP + 0.10 × H3 macro-F1`。V0.1 的 H1 AP 平均提高 `0.000833`；由于 H2/H3 不变，综合分数的平均差 `+0.000500` 正好来自 `0.60 × ΔH1`。粗体表示 candidate nomination，不表示统计显著性。
+
+#### 五折逐折变化
+
+![Paired fold-level H1 AP and Composite S comparison for Model V0 and Model V0.1 Candidate](docs/assets/readme/readme_v0_v01_fold_detail.svg)
+
+V0.1 在五折中的四折提高、一折降低；`S` 的 paired-fold 平均差为 `+0.000500`，paired SE 为 `0.000349`。这张图只是共享 Train-CV 上的描述性候选选择证据，不是显著性检验，也不是新的 prospective external Test。
 
 ## 输出示例
 
-每次运行生成 `predictions.tsv`、`run_metadata.json` 和 `CHECKSUMS.sha256`。下表仅展示 schema，
-不是 benchmark 结果。
+`predictions.tsv` 为每条输入蛋白保留分数、级联状态和最终标签。以下为字段格式示例：
 
-| protein_id | H1 DJR 概率 | H2 MCP 概率 | H3 prediction | final_prediction |
+| protein_id | head1_djr_probability | head2_mcp_probability | head3_prediction | final_prediction |
 | --- | ---: | ---: | --- | --- |
 | candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `mcp::Nucleocytoviricota` |
 | cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_mcp` |
-| background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
+| background_003 | 0.006 | NA | not_reached | `non_djr` |
 
-完整输入输出合同见 [V0](user-inference-v0/README.cn.md) 与
-[V0.1](user-inference-v0.1/README.cn.md) 用户指南。
+## 结果边界
 
-## Release、模型与包版本
+- 输出是用于后续验证的筛查候选，不是结构确认。
+- V0.1 的推荐来自 Train-only 开发期 CV，尚未通过独立外部测试。
+- 分数不是自然样本中的 prevalence-adjusted probability；大规模筛查仍需要独立假阳性评估以及结构或人工复核。
 
-以下标识描述不同层次，不应互换：
+详细使用方法见 [Model V0.1 Candidate](user-inference-v0.1/README.cn.md) 与 [Model V0](user-inference-v0/README.cn.md) 用户指南；数据、方法和证据边界见 [科研证据说明](docs/SCIENTIFIC_EVIDENCE.md)。
 
-| 层次 | 当前标识 | 含义 |
-| --- | --- | --- |
-| 仓库 release | [`v0.1.0`](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1.0) | GitHub 软件发布的 SemVer |
-| 科学结果 | `model-v0` | [`user-inference-v0/`](user-inference-v0/README.cn.md) 中已发布的全 ESM-C-6B 结果 |
-| 科学结果 | `model-v0.1-candidate` | [`user-inference-v0.1/`](user-inference-v0.1/README.cn.md) 中当前的 mixed-encoder 结果；需要外部确认 |
-| Bundle revision | `model-v0-esmc6b-r1` | 不可变模型内容与 export revision |
-| Python distribution | 例如 `djrmcp-user-inference==0.1.0` | 单个可安装包的 PEP 440 版本 |
-
-完整规则与机器可读映射见 [`docs/VERSIONING.md`](docs/VERSIONING.md) 和
-[`release-manifest.json`](release-manifest.json)。
-
-## 选择正确入口
-
-| 目标 | 入口 | 环境 |
-| --- | --- | --- |
-| 使用当前优先的 V0.1 结果 | [`user-inference-v0.1/`](user-inference-v0.1/README.cn.md) | Python 3.12+、两个隔离模型环境 |
-| 使用已发布的 V0 基线 | [`user-inference-v0/`](user-inference-v0/README.cn.md) | Python 3.10+ 检查；Linux/Docker/NVIDIA 推理 |
-| 审计研究证据 | [科研证据与限制](docs/SCIENTIFIC_EVIDENCE.md) | 证据层次、指标和 claim boundary |
-| 从本地 archive 复现 | [复现指南](docs/REPRODUCIBILITY.md) | 冻结输入、软件和 HPC 资源 |
-| 贡献代码或文档 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Python 3.12+ contributor 环境 |
-
-## 贡献者统一命令
-
-根目录 `Makefile` 是本地开发的统一入口：
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-make setup
-make check
-```
-
-运行 `make help` 可查看 `setup`、`test`、`lint`、`smoke`、`build` 与包验证等独立 target。
-CI 使用相同的 target-level contract。
-
-## 文档导航
-
-- [文档地图](docs/README.md)
-- [架构与命令清单](docs/ARCHITECTURE.md)
-- [科研证据与限制](docs/SCIENTIFIC_EVIDENCE.md)
-- [研究复现](docs/REPRODUCIBILITY.md)
-- [版本与发布命名](docs/VERSIONING.md)
-- [引用信息](CITATION.cff)
-- [变更记录](CHANGELOG.md)
-
-## 科学与许可边界
-
-V0 与 V0.1 都没有新的 prospective external Test。当前分数是在开发数据分布下校准的 model
-score，不是自然蛋白组中的 prevalence-adjusted probability。大规模发现仍需独立假阳性评估及结构/人工
-验证。解释结果前请阅读[科研证据与限制](docs/SCIENTIFIC_EVIDENCE.md)。
-
-项目原创材料采用 [MIT License](LICENSE)。外部 checkpoint、软件、数据集、数据库内容和商标保留各自
-条款，不因本仓库而重新授权。参见[第三方声明](THIRD_PARTY_NOTICES.md)和[安全策略](SECURITY.md)。
+项目原创代码和文档采用 [MIT License](LICENSE)。

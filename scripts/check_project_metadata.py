@@ -17,6 +17,7 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.10 compatibility
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "release-manifest.json"
+REPOSITORY_RELEASE = re.compile(r"^[0-9]+\.[0-9]+$")
 PEP440_RELEASE = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+(?:a[0-9]+|b[0-9]+|rc[0-9]+|\.post[0-9]+)?$")
 REQUIRED_URLS = {"Homepage", "Documentation", "Repository", "Bug Tracker", "Changelog"}
 
@@ -55,7 +56,7 @@ def validate(tag: str | None = None) -> dict[str, Any]:
     repository_release = manifest["repository_release"]
     repository_version = str(repository_release["version"])
     repository_tag = str(repository_release["tag"])
-    _require(PEP440_RELEASE.fullmatch(repository_version) is not None, "invalid repository version")
+    _require(REPOSITORY_RELEASE.fullmatch(repository_version) is not None, "invalid repository version")
     _require(repository_tag == f"v{repository_version}", "repository tag/version mismatch")
     _require(_read_cff_scalar("version") == repository_version, "CITATION.cff version mismatch")
     _require(_read_cff_scalar("license") == "MIT", "CITATION.cff license mismatch")
