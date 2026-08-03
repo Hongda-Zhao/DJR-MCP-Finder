@@ -58,7 +58,7 @@ The validated and recommended workstation path is Linux + Docker + a CUDA GPU. B
 expose explicit automatic/CPU device modes, but the high-memory CPU fallback is not covered by the
 formal workstation validation and should not be treated as the reference reproducibility path.
 
-- **Preferred current result:** follow the [Model V0.1 Candidate user guide](../user-inference-v0.1/README.md)
+- **Preferred experimental candidate:** follow the [Model V0.1 Candidate user guide](../user-inference-v0.1/README.md)
   and [fresh-clone workstation setup](../user-inference-v0.1/workstation/README.md#fresh-clone-setup).
   The first prediction downloads ESM-2; ESM-C is downloaded when at least one sequence reaches H3.
 - **Released baseline:** follow the [Model V0 user guide](../user-inference-v0/README.md) and

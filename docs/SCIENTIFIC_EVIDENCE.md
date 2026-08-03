@@ -13,12 +13,12 @@ the frozen protocols and result files.
 
 | Scientific result | Encoder system | Current status | Recommended use |
 | --- | --- | --- | --- |
-| **Model V0.1 Candidate** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Recommended for external confirmation | **Preferred current result for new screening** |
-| **Model V0** | ESM-C 6B for H1/H2/H3 | Released and frozen | Formal reproducible baseline and supported fallback |
+| **Model V0.1 Candidate** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Experimental; independent external validation pending | **Preferred current experimental candidate for exploratory screening** |
+| **Model V0** | ESM-C 6B for H1/H2/H3 | Released and frozen | Reproducible baseline and supported fallback |
 
-“Preferred” describes the current screening path and Train-CV result. It does not mean that
-Model V0.1 Candidate has passed a prospective external Test or replaced Model V0. Model V0 remains
-a primary scientific result, not a deprecated version.
+“Preferred experimental candidate” describes the current exploratory screening path and Train-CV
+result. It does not mean that Model V0.1 Candidate has passed independent external validation or
+replaced Model V0. Model V0 remains a primary scientific result, not a deprecated version.
 
 ## Core development numbers
 
@@ -63,12 +63,12 @@ audit.
 | 14-model V0 selection | Frozen development selection | Which all-one-encoder system was selected as Model V0 | External generalization |
 | Four-source family-robustness analysis | All 20 predefined checks passed | Post-selection consistency of eight models and nine cascades on family members from the same four sources | Independent Test performance, equivalence, or feedback into model selection |
 | PLM versus classical V0 | Internal cross-fit checks passed | Retrieval differences on Train components under the declared information budgets | External superiority |
-| Low-similarity V0/V0.1 audit | Internal checks passed; formal claim blocked | Descriptive behavior on internal holdouts and low-coverage stress strata | A formal `<20% identity` conclusion |
-| Prospective external Test | **Not run** | — | Release-grade generalization of Model V0 or Model V0.1 Candidate |
+| Low-similarity V0/V0.1 audit | Internal checks passed; descriptive only | Descriptive behavior on internal holdouts and low-coverage stress strata | A formal `<20% identity` conclusion |
+| Independent external validation | **Not run** | — | Release-grade generalization of Model V0 or Model V0.1 Candidate |
 
 ## What these results do not establish
 
-- Neither Model V0 nor Model V0.1 Candidate has a new prospective external Test.
+- Neither Model V0 nor Model V0.1 Candidate has undergone independent external validation.
 - Every paired fold-calibrated system misses the intended 99.5% specificity in at least one
   evaluation fold; the sensitivity differences are therefore descriptive, not matched-specificity
   improvements.
@@ -177,8 +177,9 @@ machine-readable provenance for the same frozen dataset and audit.
 | H2 | viral MCP-DJR / cellular DJR | C=`0.01` | 0.8241381150130028 | 0.9639353725025007 |
 | H3 | two known phyla + reject | C=`10` | 4.2474179687096845 | 0.7126488980564439 |
 
-H2 runs only after H1 classifies a protein as DJR; H3 runs only after H2 classifies it as a viral
-MCP.
+Model V0 computes H1 and H2 raw scores for every sequence from one shared ESM-C 6B embedding. H2
+affects the operational cascade only when H1 is positive, and H3 is computed only for sequences
+positive at both H1 and H2.
 
 ### Model V0.1 Candidate: selection and trade-offs
 
@@ -194,8 +195,9 @@ relative to Model V0. This does not establish four-source non-inferiority or equ
 
 The four source columns are full-expected-path member accuracies, not one pooled score. Model V0.1
 Candidate recovers 52/69 viral strict clusters, fewer than the 55/69 recovered by Model V0, and
-requires a second encoder for sequences reaching H3. It remains recommended for external
-confirmation and does not replace the released Model V0.
+requires a second encoder for sequences reaching H3. It remains the preferred experimental
+candidate for exploratory screening, still awaits independent external validation, and does not
+replace the released Model V0.
 
 ### Ultra-remote development audit
 

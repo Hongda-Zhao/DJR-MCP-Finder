@@ -11,7 +11,7 @@
 
 | ユーザーに表示される名称 | マシン識別子 | 意味 |
 | --- | --- | --- |
-| **Model V0.1 Candidate** | `model-v0.1-candidate` | 現在優先されるスクリーニング結果。今後の外部検証が引き続き必要 |
+| **Model V0.1 Candidate** | `model-v0.1-candidate` | 探索的スクリーニングで優先する実験的候補。独立した外部検証は未実施 |
 | **Model V0** | `model-v0` | リリース済みで固定された科学的ベースライン、およびサポート対象のフォールバック |
 | リポジトリリリース `v0.1` | `repository_release.tag` | GitHub ソフトウェアリリースのバージョンであり、科学モデルに関する主張ではない |
 | Candidate パッケージ `0.2.1` | `djrmcp-user-inference-v01==0.2.1` | Candidate 推論 distribution のエンジニアリング改訂であり、「Model V0.2」ではない |
@@ -82,4 +82,4 @@ python scripts/check_project_metadata.py
 
 ## 日本語要約
 
-リポジトリリリース、Python パッケージ、科学モデル、bundle revision は別々のレイヤーです。現在の正式表示名は **Model V0.1 Candidate**、マシン ID は `model-v0.1-candidate` です。これは新規スクリーニングで現在優先される結果ですが、今後の外部検証が引き続き必要です。**Model V0**（`model-v0`）は、リリース済みで固定された正式なベースラインとして維持されます。リポジトリタグ `v0.1` と Candidate パッケージ `0.2.1` は、いずれも科学モデルのエビデンス状態を表しません。すべての対応関係は `release-manifest.json` で一元管理され、CI によって検証されます。
+リポジトリリリース、Python パッケージ、科学モデル、bundle revision は別々のレイヤーです。現在の正式表示名は **Model V0.1 Candidate**、マシン ID は `model-v0.1-candidate` です。これは探索的スクリーニングで優先する実験的候補ですが、独立した外部検証は未実施です。**Model V0**（`model-v0`）は、リリース済みで固定された正式なベースラインとして維持されます。リポジトリタグ `v0.1` と Candidate パッケージ `0.2.1` は、いずれも科学モデルのエビデンス状態を表しません。すべての対応関係は `release-manifest.json` で一元管理され、CI によって検証されます。

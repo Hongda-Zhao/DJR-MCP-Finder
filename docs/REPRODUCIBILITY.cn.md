@@ -47,7 +47,7 @@ make check
 
 经过验证并推荐的工作站路径为 Linux + Docker + CUDA GPU。两个包也明确提供自动/CPU 设备模式，但高内存 CPU fallback 未包含在正式工作站验证中，因此不应被视为参考可复现路径。
 
-- **当前优先结果：** 请遵循 [Model V0.1 Candidate 用户指南](../user-inference-v0.1/README.md)和[全新 clone 工作站配置](../user-inference-v0.1/workstation/README.md#fresh-clone-setup)。首次预测会下载 ESM-2；当至少一条序列进入 H3 时才会下载 ESM-C。
+- **优先实验候选：** 请遵循 [Model V0.1 Candidate 用户指南](../user-inference-v0.1/README.md)和[首次克隆后的工作站配置](../user-inference-v0.1/workstation/README.md#fresh-clone-setup)。首次预测会下载 ESM-2；当至少一条序列进入 H3 时才会下载 ESM-C。
 - **已发布基线：** 请遵循 [Model V0 用户指南](../user-inference-v0/README.md)和 [V0 工作站配置](../user-inference-v0/workstation/README.md)。首次预测会下载固定的 ESM-C checkpoint。
 
 两条路径都会生成 `predictions.tsv`、`run_metadata.json` 和 `CHECKSUMS.sha256`。只有在该输入路径需要的所有 checkpoint 都已缓存后，后续才可在禁用网络的条件下运行。重复用户推理可以验证冻结的模型/运行时路径；它不会重放训练数据、模型选择或 Benchmark。

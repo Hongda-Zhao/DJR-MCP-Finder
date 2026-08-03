@@ -8,8 +8,8 @@
 FASTA -> ESM-2 3B -> H1 -> H2 -> [仅通过者] ESM-C 6B -> H3
 ```
 
-这是 `recommended_for_external_confirmation` 的工程候选版，不是经独立外部 Test
-确认的正式 V0.1，也不替换已发布 V0。
+这是当前优先用于探索性筛查的实验候选包。它尚未经过独立外部验证，也不取代或弃用
+已发布的 V0。
 
 工作站封装已于 2026-07-29 完成 12 条蛋白的在线与完全断网复跑；两次预测与冻结金标准
 均为 0 mismatch / 0 probability delta。原始主机、镜像和 GPU 信息作为历史验证证据保存在
@@ -145,8 +145,7 @@ python -m pytest -q
 
 ## 许可证
 
-该开发候选 package 及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-2 与 ESM-C
-checkpoint 均另行下载，并保留其上游条款；详见
+该实验候选包及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-2 与 ESM-C
+模型权重均另行下载，并保留其上游条款；详见
 [release-specific 第三方声明](src/djrmcp_predict_v01/assets/project-v0.1-mixed-r1/THIRD_PARTY_NOTICES.md)
-和仓库级 [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md)。prospective external
-confirmation 仍未完成。
+和仓库级 [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md)。独立外部验证仍未完成。

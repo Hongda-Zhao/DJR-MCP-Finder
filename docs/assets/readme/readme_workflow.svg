@@ -230,7 +230,7 @@ z
     <text style="fill: #17324d; font: 700 14px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="18.36" y="32.744138" transform="rotate(-0 18.36 32.744138)">Prediction workflow</text>
    </g>
    <g id="text_2">
-    <text style="fill: #526371; font: 9px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="18.36" y="48.124519" transform="rotate(-0 18.36 48.124519)">Each head runs only after the preceding gate is passed.</text>
+    <text style="fill: #526371; font: 9px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="18.36" y="48.124519" transform="rotate(-0 18.36 48.124519)">H1→H2→H3 decisions are shared; V0 and V0.1 compute them differently.</text>
    </g>
    <g id="text_3">
     <text style="fill: #17324d; font: 700 10.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="60.21" y="110.268197" transform="rotate(-0 60.21 110.268197)">Protein FASTA</text>

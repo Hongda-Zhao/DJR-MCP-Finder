@@ -198,7 +198,7 @@ z
     <text style="fill: #087e8b; font: 700 10.5px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="17.244" y="193.195877" transform="rotate(-0 17.244 193.195877)">Model V0.1</text>
    </g>
    <g id="text_9">
-    <text style="fill: #526371; font: 8px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="17.244" y="208.857405" transform="rotate(-0 17.244 208.857405)">development candidate</text>
+    <text style="fill: #526371; font: 8px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start" x="17.244" y="208.857405" transform="rotate(-0 17.244 208.857405)">experimental candidate</text>
    </g>
    <g id="text_10">
     <text style="fill: #17324d; font: 700 9.4px 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle" x="150.885" y="108.615536" transform="rotate(-0 150.885 108.615536)">ESM-C 6B</text>

@@ -12,7 +12,7 @@
 
 | 用户可见名称 | 机器标识 | 含义 |
 | --- | --- | --- |
-| **Model V0.1 Candidate** | `model-v0.1-candidate` | 当前优先的筛查结果；仍需前瞻性外部确认 |
+| **Model V0.1 Candidate** | `model-v0.1-candidate` | 探索性筛查的优先实验候选；仍待独立外部验证 |
 | **Model V0** | `model-v0` | 已发布并冻结的科学基线，同时作为受支持的备用方案 |
 | 仓库 Release `v0.1` | `repository_release.tag` | GitHub 软件 Release 的版本，并非科学模型结论 |
 | Candidate 包 `0.2.1` | `djrmcp-user-inference-v01==0.2.1` | Candidate 推理 distribution 的工程修订版本，并不表示“Model V0.2” |
@@ -83,4 +83,4 @@ Release workflow 只接受与清单中仓库 tag 匹配的 tag。它会构建并
 
 ## 中文摘要
 
-仓库 Release、Python 包、科学模型和 bundle revision 是不同层次。当前正式显示名为 **Model V0.1 Candidate**，机器 ID 必须写作 `model-v0.1-candidate`；它是新筛查的当前优先结果，但仍需 prospective external confirmation。**Model V0**（`model-v0`）仍是已发布、冻结的正式基线。仓库 tag `v0.1` 与 candidate package `0.2.1` 都不是科学模型证据状态。所有映射由 `release-manifest.json` 集中维护并由 CI 校验。
+仓库 Release、Python 包、科学模型和 bundle revision 是不同层次。当前正式显示名为 **Model V0.1 Candidate**，机器 ID 必须写作 `model-v0.1-candidate`；它是探索性筛查的优先实验候选，但仍待独立外部验证。**Model V0**（`model-v0`）仍是已发布、冻结的正式基线。仓库 tag `v0.1` 与 candidate package `0.2.1` 都不是科学模型证据状态。所有映射由 `release-manifest.json` 集中维护并由 CI 校验。

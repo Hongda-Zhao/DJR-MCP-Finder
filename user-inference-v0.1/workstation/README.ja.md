@@ -2,9 +2,9 @@
 
 # ポータブル V0.1 development-candidate deployment
 
-このディレクトリは、正式な V0 のディレクトリ、image、cache を変更せずに、mixed-encoder
-V0.1 candidate を deploy します。V0.1 は、prospective external confirmation が必要な
-Train-CV-nominated development candidate のままです。
+このディレクトリは、正式な V0 のディレクトリ、イメージ、キャッシュを変更せずに、混合
+エンコーダー V0.1 候補モデルを展開します。V0.1 は Train-CV で選定された、独立した外部検証
+が未実施の実験的候補です。
 
 ## 分離 contract
 

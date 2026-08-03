@@ -133,8 +133,8 @@ are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#wh
 | --- | --- |
 | Repository | `Hongda-Zhao/DJR-MCP-Finder` |
 | Primary function | Screen protein FASTA files for DJR-MCP candidates and supported viral phyla |
-| Recommended screening model | Model V0.1 Candidate |
-| Formal baseline | Released, frozen Model V0 |
+| Preferred experimental screening candidate | Model V0.1 Candidate; independent external validation pending |
+| Reproducible baseline | Released, frozen Model V0 |
 | Repository release | `v0.1` |
 | License | Scoped MIT; external assets retain upstream terms |
 

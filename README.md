@@ -15,13 +15,13 @@ DJR-MCPs are characteristic capsid proteins of *Varidnaviria*. Because their dou
 | --- | --- | --- |
 | Amino-acid FASTA | Per-protein DJR/MCP scores and final labels | Virologists and bioinformaticians screening viral proteins or proteins predicted from contigs |
 
-> **Model V0.1 Candidate is recommended for new screening; Model V0 remains the released, frozen formal baseline.** V0.1 still requires independent external confirmation, while V0 remains a primary scientific result of the project.
+> **Model V0.1 Candidate is the preferred current experimental candidate for exploratory screening; Model V0 is the released, frozen, reproducible baseline.** V0.1 still awaits independent external validation and does not replace or deprecate V0.
 
 ## Prediction workflow
 
 ![DJR-MCP Finder prediction workflow](docs/assets/readme/readme_workflow.svg)
 
-H2 runs only for sequences that pass H1, and H3 runs only for sequences that also pass H2. All scores, gate states, and final labels are written to `predictions.tsv`; these labels are intended for screening and do not constitute structural confirmation.
+Both models retain H1→H2→H3 decision semantics, but their computation differs. Model V0 computes H1 and H2 raw scores for every sequence from one shared ESM-C 6B embedding; H2 affects the operational cascade only when H1 is positive. Model V0.1 computes H1 for every sequence and H2 only for H1-positive sequences. In both models, H3 is computed only for H1/H2-positive sequences. All scores, gate states, and final labels are written to `predictions.tsv`; these labels are intended for screening and do not constitute structural confirmation.
 
 ## Quick start
 
@@ -64,7 +64,7 @@ The development evidence is presented in the following order: data composition �
 
 ![Development data composition and component-safe frozen split](docs/assets/readme/readme_development_data.svg)
 
-The four evidence groups contain 11,060 exact-sequence-unique representatives, frozen into Train 6,634, Validation 2,212, and Test 2,214. Validation and Test are frozen partitions of the development dataset; the model-selection results below use Train only and do not constitute a new prospective external Test.
+The four evidence groups contain 11,060 representative proteins after exact duplicate sequences were removed, frozen into Train 6,634, Validation 2,212, and Test 2,214. Validation and Test are frozen partitions of the development dataset; the model-selection results below use Train only and do not constitute a new independent external test.
 
 ### Shared five-fold design
 
@@ -80,16 +80,16 @@ ESM-C 6B was selected as Model V0 in the all-encoder comparison. The second-rank
 
 ### V0 versus V0.1: what changed
 
-Model V0 uses one ESM-C 6B embedding to drive H1, H2, and H3. Model V0.1 Candidate uses a mixed-encoder cascade: ESM-2 3B and its own frozen H1/H2 heads, temperatures, and thresholds perform DJR/MCP screening. ESM-C 6B is run only for sequences that pass both gates, using the exact same frozen H3 phylum/reject head as V0.
+Model V0 uses one ESM-C 6B embedding to compute H1 and H2 for every sequence, then evaluates H3 only for H1/H2-positive sequences. Model V0.1 Candidate uses a mixed-encoder cascade: ESM-2 3B and its own frozen H1/H2 heads, temperatures, and thresholds perform DJR/MCP screening. ESM-C 6B is run only for sequences that pass both gates, using the exact same frozen H3 phylum/reject head as V0.
 
 ![Model V0 and Model V0.1 architecture and frozen-component comparison](docs/assets/readme/readme_v0_v01_architecture.svg)
 
 | Comparison | Model V0 | Model V0.1 Candidate |
 | --- | --- | --- |
-| Project status | Released, frozen formal baseline | Development candidate recommended for new screening; awaiting external confirmation |
+| Project status | Released, frozen, reproducible baseline | Preferred experimental candidate for exploratory screening; awaiting independent external validation |
 | H1/H2 | ESM-C 6B representation, heads, and calibration | ESM-2 3B representation with corresponding newly frozen heads and calibration |
 | H3 | ESM-C 6B phylum/reject head | Byte-identical V0 H3 artifact and calibration |
-| Execution | One encoder; final labels still follow H1→H2→H3 decisions | H2 runs only for H1-positive sequences; H3 conditionally invokes the second encoder |
+| Execution | H1/H2 raw scores for all sequences; H2 is gated operationally; H3 only for H1/H2-positive sequences | H1 for all sequences; H2 only for H1-positive sequences; second encoder and H3 only for H1/H2-positive sequences |
 | Output provenance | 20 fields in `predictions.tsv` | 23 fields, adding three head-encoder provenance fields |
 
 The gate values in the figure are independently frozen calibration thresholds, not performance scores. A higher or lower threshold does not by itself indicate that one model is stronger or stricter. Both versions retain the same three-stage decision semantics and five final labels, while V0.1 makes execution and provenance more explicit.
@@ -107,7 +107,7 @@ The figure reports the mean ± SE across five folds; its horizontal axis is expl
 | H3 known-phylum macro-F1 | `0.9806 ± 0.0095` | `0.9806 ± 0.0095` |
 | Composite score `S` | `0.9971 ± 0.0009` | **`0.9976 ± 0.0010`** |
 
-`S = 0.60 × H1 AP + 0.30 × H2 AP + 0.10 × H3 macro-F1`. V0.1 increases mean H1 AP by `0.000833`. Because H2 and H3 are unchanged, the mean composite difference of `+0.000500` follows exactly from `0.60 × ΔH1`. Bold indicates candidate nomination, not statistical significance.
+`S = 0.60 × H1 AP + 0.30 × H2 AP + 0.10 × H3 macro-F1`. V0.1 increases mean H1 AP by `0.000833`. Because H2 and H3 are unchanged, the mean composite difference of `+0.000500` follows exactly from `0.60 × ΔH1`. Bold indicates candidate selection, not statistical significance.
 
 #### Fold-by-fold changes
 
@@ -128,7 +128,7 @@ V0.1 improves four of the five folds and decreases one. The paired-fold mean dif
 ## Result boundaries
 
 - Outputs are screening candidates for subsequent validation, not structural confirmation.
-- The V0.1 recommendation is based on Train-only development CV and has not undergone independent external testing.
+- V0.1's preferred experimental status is based on Train-only development CV; independent external validation has not yet been performed.
 - Scores are not prevalence-adjusted probabilities for natural samples. Large-scale screens still require independent false-positive assessment and structural or manual review.
 
 ## Repository map
@@ -145,8 +145,12 @@ V0.1 improves four of the five folds and decreases one. The paired-fold mean dif
 | [`src/`](src/) | Core `djrmcp-finder` Python research package |
 | [`tests/`](tests/) | Automated tests and engineering-contract checks |
 | [`user-inference-v0/`](user-inference-v0/) | Released and frozen Model V0 baseline package |
-| [`user-inference-v0.1/`](user-inference-v0.1/) | Recommended Model V0.1 Candidate inference package |
+| [`user-inference-v0.1/`](user-inference-v0.1/) | Preferred experimental Model V0.1 Candidate inference package |
 
 For detailed use, see the [Model V0.1 Candidate](user-inference-v0.1/README.md) and [Model V0](user-inference-v0/README.md) user guides. For data, methods, and evidence boundaries, see the [scientific evidence statement](docs/SCIENTIFIC_EVIDENCE.md).
+
+## Citation
+
+If you use DJR-MCP Finder in research, please cite the software using [`CITATION.cff`](CITATION.cff) and report whether Model V0 or Model V0.1 Candidate was used.
 
 Project-authored code and documentation are available under the [MIT License](LICENSE).

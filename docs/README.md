@@ -6,7 +6,7 @@
 
 | Need | Document |
 | --- | --- |
-| Run the recommended Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
+| Run the preferred experimental Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | Run the released, frozen Model V0 baseline | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | Understand benchmarks and limitations | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |
 | See what is publicly reproducible and what requires research archives | [English](REPRODUCIBILITY.md) · [中文](REPRODUCIBILITY.cn.md) · [日本語](REPRODUCIBILITY.ja.md) |

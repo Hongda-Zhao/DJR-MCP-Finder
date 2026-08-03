@@ -6,7 +6,7 @@
 
 | 目的 | ドキュメント |
 | --- | --- |
-| 推奨される Model V0.1 Candidate を実行する | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
+| 探索的スクリーニングで優先する Model V0.1 Candidate を実行する | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | リリース済みで固定された Model V0 ベースラインを実行する | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | Benchmark と制約を理解する | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |
 | 公開環境で再現できる範囲と研究アーカイブを必要とする範囲を確認する | [English](REPRODUCIBILITY.md) · [中文](REPRODUCIBILITY.cn.md) · [日本語](REPRODUCIBILITY.ja.md) |

@@ -13,7 +13,7 @@ safely represent all of them.
 
 | Name visible to a user | Machine identity | Meaning |
 | --- | --- | --- |
-| **Model V0.1 Candidate** | `model-v0.1-candidate` | Preferred current screening result; prospective external confirmation still required |
+| **Model V0.1 Candidate** | `model-v0.1-candidate` | Preferred experimental candidate for exploratory screening; independent external validation pending |
 | **Model V0** | `model-v0` | Released, frozen scientific baseline and supported fallback |
 | Repository release `v0.1` | `repository_release.tag` | Version of the GitHub software release, not a scientific model claim |
 | Candidate package `0.2.1` | `djrmcp-user-inference-v01==0.2.1` | Engineering revision of the candidate inference distribution, not “Model V0.2” |
@@ -23,8 +23,8 @@ Machine metadata and evidence records must always use the complete scientific ID
 table or sentence explicitly states that it is a candidate awaiting external confirmation. The
 formal display name is **Model V0.1 Candidate**.
 
-Preferring Model V0.1 Candidate for new screening does not make it a formally confirmed model and
-does not deprecate Model V0.
+Preferring Model V0.1 Candidate for exploratory screening does not make it an externally validated
+model and does not replace or deprecate Model V0.
 
 ## Canonical layers
 
@@ -107,7 +107,7 @@ configured with a protected GitHub environment.
 ## 中文摘要
 
 仓库 release、Python 包、科学模型和 bundle revision 是不同层次。当前正式显示名为
-**Model V0.1 Candidate**，机器 ID 必须写作 `model-v0.1-candidate`；它是新筛查的当前优先结果，
-但仍需 prospective external confirmation。**Model V0**（`model-v0`）仍是已发布、冻结的正式
+**Model V0.1 Candidate**，机器 ID 必须写作 `model-v0.1-candidate`；它是探索性筛查的优先实验候选，
+但仍待独立外部验证。**Model V0**（`model-v0`）仍是已发布、冻结的正式
 基线。仓库 tag `v0.1` 与 candidate package `0.2.1` 都不是科学模型证据状态。所有映射由
 `release-manifest.json` 集中维护并由 CI 校验。

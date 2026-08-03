@@ -3,8 +3,8 @@
 # Portable V0.1 development-candidate deployment
 
 This directory deploys the mixed-encoder V0.1 candidate without changing the
-formal V0 directory, image, or cache. V0.1 remains a Train-CV-nominated
-development candidate that requires prospective external confirmation.
+formal V0 directory, image, or cache. V0.1 remains a Train-CV-selected
+experimental candidate that awaits independent external validation.
 
 ## Isolation contract
 

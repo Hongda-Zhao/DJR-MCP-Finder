@@ -106,8 +106,8 @@ CI は `main` への push、pull request、手動 dispatch で実行されます
 | --- | --- |
 | リポジトリ | `Hongda-Zhao/DJR-MCP-Finder` |
 | 主な機能 | protein FASTA から DJR-MCP candidate をスクリーニングし、対応するウイルス門を判定 |
-| 推奨スクリーニングモデル | Model V0.1 Candidate |
-| 正式ベースライン | リリース済みで固定された Model V0 |
+| 優先する実験的候補モデル | Model V0.1 Candidate。独立した外部検証は未実施 |
+| 再現可能なベースライン | リリース済みで固定された Model V0 |
 | リポジトリリリース | `v0.1` |
 | ライセンス | 適用範囲を限定した MIT。外部 asset は上流の条件を維持 |
 
