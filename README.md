@@ -1,163 +1,129 @@
-**English** | [简体中文](README.cn.md)
+**English** | [简体中文](README.cn.md) | [日本語](README.ja.md)
 
 # DJR-MCP Finder
 
-[![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**Screen protein FASTA files for double-jelly-roll major capsid protein (DJR-MCP) candidates and determine whether they belong to a supported viral phylum.**
 
-**Detect double-jelly-roll major capsid proteins from protein FASTA files with a frozen,
-three-stage protein-language-model classifier.** DJR-MCP Finder gives virologists and
-bioinformaticians an auditable first-pass screen for DJR proteins, viral MCP candidates,
-and two supported viral phyla.
+DJR-MCPs are characteristic capsid proteins of *Varidnaviria*. Because their double-jelly-roll structural signal can remain after clear sequence similarity weakens, they are useful markers for finding and classifying diverse DNA viruses.
 
-## Two current result tracks
+| Input | Output | Intended users |
+| --- | --- | --- |
+| Amino-acid FASTA | Per-protein DJR/MCP scores and final labels | Virologists and bioinformaticians screening viral proteins or proteins predicted from contigs |
 
-V0 and V0.1 are both primary results of the project. They share the same three-head task but expose
-different frozen encoder systems and separate command-line packages.
+> **Model V0.1 Candidate is recommended for new screening; Model V0 remains the released, frozen formal baseline.** V0.1 still requires independent external confirmation, while V0 remains a primary scientific result of the project.
 
-| Result | Frozen system | Status | User entry point |
-| --- | --- | --- | --- |
-| **Model V0.1** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Preferred current result; external confirmation required | [`djrmcp-predict-v01`](user-inference-v0.1/) |
-| **Model V0** | ESM-C 6B for H1/H2/H3 | Released reproducible baseline and fallback | [`djrmcp-predict`](user-inference-v0/) |
+## Prediction workflow
 
-Neither track trains or retunes the model during inference. V0.1 is presented alongside V0 without
-rewriting the identity or evidence record of the released V0 bundle.
+![DJR-MCP Finder prediction workflow](docs/assets/readme/readme_workflow.svg)
 
-## From FASTA to an auditable result
+H2 runs only for sequences that pass H1, and H3 runs only for sequences that also pass H2. All scores, gate states, and final labels are written to `predictions.tsv`; these labels are intended for screening and do not constitute structural confirmation.
 
-```mermaid
-flowchart LR
-    A["Protein FASTA"] --> B["Selected frozen V0 or V0.1 bundle"]
-    B --> H1{"H1: DJR?"}
-    H1 -- "No" --> N["non_djr"]
-    H1 -- "Yes" --> H2{"H2: viral MCP role?"}
-    H2 -- "No" --> D["djr_non_mcp"]
-    H2 -- "Yes" --> H3{"H3: supported phylum?"}
-    H3 --> P1["mcp::Nucleocytoviricota"]
-    H3 --> P2["mcp::Preplasmiviricota"]
-    H3 --> U["mcp::unknown/other"]
-```
+## Quick start
 
-`mcp::unknown/other` is a reject option after H1 and H2; it is not a general unknown-virus or
-out-of-distribution detector.
-
-## Core benchmark snapshots
-
-### V0 frozen model selection
-
-![V0 development-only model-selection benchmark](results/figures/project_v0/model_benchmark_metric_revision_1/figure_1_model_selection_project_v0_metric_revision_1.svg)
-
-Frozen Train-only five-fold global-component cross-validation selected ESM-C 6B for Model V0 with
-composite score `S = 0.997 ± 0.001`, H1 AP `0.998 ± 0.000`, H2 AP `1.000 ± 0.000`, and H3 known-class
-macro-F1 `0.981 ± 0.010`. The selection also passed the frozen validation gates and paired
-one-standard-error audit. These are development and validation results—not prospective Test
-performance. See the [figure provenance and QA record](results/figures/project_v0/model_benchmark_metric_revision_1/).
-
-### V0 versus V0.1 remote-component audit
-
-![V0 versus V0.1 remote-component development benchmark](benchmarks/ultra_remote_v0_v01/figures/ultra_remote_v0_v01.svg)
-
-On the Train-only component holdout, V0.1 raises H1 encoder sensitivity from `0.734` to `0.924`
-and normalized partial AUROC at FPR ≤0.005 from `0.655` to `0.889`. The task-adapted H1 detector
-moves from `0.975` to `0.994`; H2 and end-to-end detector sensitivity remain tied in this audit.
-These are internal, fixed-threshold development results: every paired system misses the actual
-99.5% specificity target in at least one fold, and the strict `<20% identity` stratum contains only
-one independent positive component. See the [benchmark package](benchmarks/ultra_remote_v0_v01/README.md)
-and [scientific interpretation boundary](docs/SCIENTIFIC_EVIDENCE.md).
-
-## Quick start: CPU-only contract checks
-
-Python 3.12+ can validate both result tracks without downloading either encoder or PyTorch:
+Recommended environment: Linux, Docker, NVIDIA Container Toolkit, and a CUDA GPU. At least 24 GB of GPU memory and BF16 support are recommended.
 
 ```bash
 git clone https://github.com/Hongda-Zhao/DJR-MCP-Finder.git
-cd DJR-MCP-Finder
+cd DJR-MCP-Finder/user-inference-v0
+bash workstation/build.sh
 
-python3.12 -m venv .venv
-source .venv/bin/activate
+cd ../user-inference-v0.1
+DJRMCP_EXPECTED_BASE_IMAGE_ID='' bash workstation/build.sh
 
-make setup-v0 setup-v01
-make test-v0 smoke-v0
-make test-v01 smoke-v01
+bash workstation/run_user_fasta.sh \
+  /absolute/path/to/proteins.faa \
+  run_output/my_sample \
+  0
 ```
 
-Native Windows has not been validated. Full inference uses Linux, Docker, and NVIDIA GPUs; follow
-the [V0 workstation guide](user-inference-v0/workstation/README.md) or the
-[V0.1 workstation guide](user-inference-v0.1/workstation/README.md). V0 recommends at least 24 GB
-GPU memory; V0.1 uses two isolated, pinned encoder runtimes.
+V0.1 uses the frozen V0 image as its base, so V0 must be built first after a fresh clone. The empty value above skips only the historical Docker image-ID check, which necessarily changes after a local rebuild; version, environment, and checksum validation remain active. The prediction workflow itself is implemented in Python, while Docker isolates the two frozen environments required by H1/H2 and H3.
+
+The first prediction downloads the pinned model checkpoints. Results are written to:
+
+```text
+run_output/my_sample/
+├── predictions.tsv
+├── run_metadata.json
+└── CHECKSUMS.sha256
+```
+
+Possible final labels are `non_djr`, `djr_non_mcp`, `mcp::Nucleocytoviricota`, `mcp::Preplasmiviricota`, and `mcp::unknown/other`. The last label means only that a sequence passed H1 and H2 but could not be assigned reliably to either supported viral phylum by H3; it is not a general unknown-virus detector.
+
+## Core development performance and benchmark
+
+The development evidence is presented in the following order: data composition → evaluation design → V0 model selection → V0/V0.1 comparison.
+
+### Development data
+
+![Development data composition and component-safe frozen split](docs/assets/readme/readme_development_data.svg)
+
+The four evidence groups contain 11,060 exact-sequence-unique representatives, frozen into Train 6,634, Validation 2,212, and Test 2,214. Validation and Test are frozen partitions of the development dataset; the model-selection results below use Train only and do not constitute a new prospective external Test.
+
+### Shared five-fold design
+
+![Shared component-safe five-fold Train CV](docs/assets/readme/readme_shared_train_cv.svg)
+
+All 14 encoders and the later mixed V0.1 candidate use the same component-safe fold map. Every component is held out for evaluation exactly once, and results are reported as the mean ± SE across five folds.
+
+### V0 14-model benchmark
+
+![V0 model-selection benchmark across 14 candidate encoders](docs/assets/readme/readme_v0_model_selection.svg)
+
+ESM-C 6B was selected as Model V0 in the all-encoder comparison. The second-ranked ESM-2 3B was later used for V0.1 H1/H2, while H3 continued to use the V0 ESM-C 6B artifact. V0.1 is therefore a mixed-encoder candidate, not a fifteenth single-encoder model in this figure.
+
+### V0 versus V0.1: what changed
+
+Model V0 uses one ESM-C 6B embedding to drive H1, H2, and H3. Model V0.1 Candidate uses a mixed-encoder cascade: ESM-2 3B and its own frozen H1/H2 heads, temperatures, and thresholds perform DJR/MCP screening. ESM-C 6B is run only for sequences that pass both gates, using the exact same frozen H3 phylum/reject head as V0.
+
+![Model V0 and Model V0.1 architecture and frozen-component comparison](docs/assets/readme/readme_v0_v01_architecture.svg)
+
+| Comparison | Model V0 | Model V0.1 Candidate |
+| --- | --- | --- |
+| Project status | Released, frozen formal baseline | Development candidate recommended for new screening; awaiting external confirmation |
+| H1/H2 | ESM-C 6B representation, heads, and calibration | ESM-2 3B representation with corresponding newly frozen heads and calibration |
+| H3 | ESM-C 6B phylum/reject head | Byte-identical V0 H3 artifact and calibration |
+| Execution | One encoder; final labels still follow H1→H2→H3 decisions | H2 runs only for H1-positive sequences; H3 conditionally invokes the second encoder |
+| Output provenance | 20 fields in `predictions.tsv` | 23 fields, adding three head-encoder provenance fields |
+
+The gate values in the figure are independently frozen calibration thresholds, not performance scores. A higher or lower threshold does not by itself indicate that one model is stronger or stricter. Both versions retain the same three-stage decision semantics and five final labels, while V0.1 makes execution and provenance more explicit.
+
+#### Mean performance
+
+![Model V0 and Model V0.1 Candidate Train-only development benchmark](docs/assets/readme/readme_train_cv_performance.svg)
+
+The figure reports the mean ± SE across five folds; its horizontal axis is explicitly truncated to 0.968–1.000. V0.1 replaces the complete H1/H2 stack. H2 AP is exactly equal, while H3 is identical because it reuses the same artifact.
+
+| Train-only five-fold CV ↑ | Model V0 | Model V0.1 Candidate |
+| --- | ---: | ---: |
+| H1 AP | `0.9985 ± 0.0003` | **`0.9993 ± 0.0004`** |
+| H2 AP | `1.0000 ± 0.0000` | `1.0000 ± 0.0000` |
+| H3 known-phylum macro-F1 | `0.9806 ± 0.0095` | `0.9806 ± 0.0095` |
+| Composite score `S` | `0.9971 ± 0.0009` | **`0.9976 ± 0.0010`** |
+
+`S = 0.60 × H1 AP + 0.30 × H2 AP + 0.10 × H3 macro-F1`. V0.1 increases mean H1 AP by `0.000833`. Because H2 and H3 are unchanged, the mean composite difference of `+0.000500` follows exactly from `0.60 × ΔH1`. Bold indicates candidate nomination, not statistical significance.
+
+#### Fold-by-fold changes
+
+![Paired fold-level H1 AP and Composite S comparison for Model V0 and Model V0.1 Candidate](docs/assets/readme/readme_v0_v01_fold_detail.svg)
+
+V0.1 improves four of the five folds and decreases one. The paired-fold mean difference in `S` is `+0.000500`, with a paired SE of `0.000349`. This figure is descriptive candidate-selection evidence from the shared Train-CV; it is not a significance test or a new prospective external Test.
 
 ## Output example
 
-Each run creates `predictions.tsv`, `run_metadata.json`, and `CHECKSUMS.sha256`. The rows below are
-illustrative schema examples, not benchmark results.
+`predictions.tsv` retains per-sequence scores, cascade states, and the final label. The following rows illustrate its field format:
 
-| protein_id | H1 DJR probability | H2 MCP probability | H3 prediction | final_prediction |
+| protein_id | head1_djr_probability | head2_mcp_probability | head3_prediction | final_prediction |
 | --- | ---: | ---: | --- | --- |
 | candidate_001 | 0.997 | 0.981 | Nucleocytoviricota | `mcp::Nucleocytoviricota` |
 | cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_mcp` |
-| background_003 | 0.006 | 0.021 | not_reached | `non_djr` |
+| background_003 | 0.006 | NA | not_reached | `non_djr` |
 
-See the [V0](user-inference-v0/README.md) and [V0.1](user-inference-v0.1/README.md) user guides for
-their complete input/output contracts.
+## Result boundaries
 
-## Releases, models, and packages
+- Outputs are screening candidates for subsequent validation, not structural confirmation.
+- The V0.1 recommendation is based on Train-only development CV and has not undergone independent external testing.
+- Scores are not prevalence-adjusted probabilities for natural samples. Large-scale screens still require independent false-positive assessment and structural or manual review.
 
-These identifiers describe different things and are intentionally not interchangeable:
+For detailed use, see the [Model V0.1 Candidate](user-inference-v0.1/README.md) and [Model V0](user-inference-v0/README.md) user guides. For data, methods, and evidence boundaries, see the [scientific evidence statement](docs/SCIENTIFIC_EVIDENCE.md).
 
-| Layer | Current identifier | Meaning |
-| --- | --- | --- |
-| Repository release | [`v0.1.0`](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1.0) | SemVer for the GitHub software release |
-| Scientific result | `model-v0` | Released all-ESM-C-6B result in [`user-inference-v0/`](user-inference-v0/) |
-| Scientific result | `model-v0.1-candidate` | Current mixed-encoder result in [`user-inference-v0.1/`](user-inference-v0.1/); external confirmation required |
-| Bundle revision | `model-v0-esmc6b-r1` | Immutable model contents plus export revision |
-| Python distribution | for example `djrmcp-user-inference==0.1.0` | PEP 440 version of one installable package |
-
-The complete naming contract and machine-readable mapping are in
-[`docs/VERSIONING.md`](docs/VERSIONING.md) and [`release-manifest.json`](release-manifest.json).
-
-## Choose the right path
-
-| Goal | Start here | Environment |
-| --- | --- | --- |
-| Use the preferred current V0.1 result | [`user-inference-v0.1/`](user-inference-v0.1/) | Python 3.12+; two isolated model runtimes |
-| Use the released V0 baseline | [`user-inference-v0/`](user-inference-v0/) | Python 3.10+ checks; Linux/Docker/NVIDIA for inference |
-| Audit the research workflow | [Scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) | Evidence map, metrics, and claim boundary |
-| Reproduce from site archives | [Reproducibility guide](docs/REPRODUCIBILITY.md) | Frozen inputs, software, and HPC resources |
-| Contribute code or documentation | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Python 3.12+ contributor environment |
-
-## Contributor commands
-
-The root `Makefile` is the canonical local interface:
-
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-make setup
-make check
-```
-
-Use `make help` to see focused `setup`, `test`, `lint`, `smoke`, `build`, and package-validation
-targets. CI calls the same target-level contracts.
-
-## Documentation
-
-- [Documentation map](docs/README.md)
-- [Architecture and command inventory](docs/ARCHITECTURE.md)
-- [Scientific evidence and limitations](docs/SCIENTIFIC_EVIDENCE.md)
-- [Research reproducibility](docs/REPRODUCIBILITY.md)
-- [Version and release naming](docs/VERSIONING.md)
-- [Citation metadata](CITATION.cff)
-- [Changelog](CHANGELOG.md)
-
-## Scientific and licensing boundary
-
-Neither V0 nor V0.1 has a new prospective external Test. Scores are calibrated under the
-development-data distribution, not as prevalence-adjusted probabilities for natural proteomes.
-Large-scale discovery requires independent false-positive assessment and structural/manual
-validation. See [Scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) before interpreting results.
-
-Project-authored material is released under the [MIT License](LICENSE). External checkpoints,
-software, datasets, database content, and trademarks retain their own terms and are not relicensed.
-See [third-party notices](THIRD_PARTY_NOTICES.md) and the [security policy](SECURITY.md).
+Project-authored code and documentation are available under the [MIT License](LICENSE).

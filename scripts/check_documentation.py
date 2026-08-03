@@ -14,6 +14,7 @@ LINK = re.compile(r"!?\[[^]]+\]\(([^)]+)\)")
 DOCUMENTS = [
     "README.md",
     "README.cn.md",
+    "README.ja.md",
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "SECURITY.md",
@@ -41,6 +42,7 @@ ALLOWED_ROOT_MARKDOWN = {
     "CHANGELOG.md",
     "CONTRIBUTING.md",
     "README.cn.md",
+    "README.ja.md",
     "README.md",
     "SECURITY.md",
     "THIRD_PARTY_NOTICES.md",
