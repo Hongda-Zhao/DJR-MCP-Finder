@@ -24,7 +24,7 @@ jobs:
       - name: Validate release tag format
         shell: bash
         run: |
-          if [[ ! "${RELEASE_TAG}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(a[0-9]+|b[0-9]+|rc[0-9]+|\.post[0-9]+)?$ ]]; then
+          if [[ ! "${RELEASE_TAG}" =~ ^v[0-9]+\.[0-9]+$ ]]; then
             echo "::error::Invalid release tag: ${RELEASE_TAG}"
             exit 1
           fi

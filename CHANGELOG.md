@@ -3,8 +3,9 @@
 All notable engineering changes to DJR-MCP Finder are documented here. Scientific evidence
 amendments remain governed by their frozen protocols and checksum manifests.
 
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and software releases
-follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Repository releases use
+concise `MAJOR.MINOR` labels; installable Python distributions retain their independent PEP 440
+versions.
 
 ## [Unreleased]
 
@@ -30,12 +31,12 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Root-level scientific workflow, report, and robustness protocol documents moved to
   `docs/research/`; a documentation check prevents root Markdown sprawl from returning.
 
-## [0.1.0] - 2026-07-30
+## [0.1] - 2026-07-30
 
 ### Added
 
 - First formal GitHub release with the frozen `model-v0` user-inference package.
 - Bilingual landing README, MIT license, citation metadata, third-party notices, and baseline CI.
 
-[Unreleased]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/compare/v0.1...HEAD
+[0.1]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1
