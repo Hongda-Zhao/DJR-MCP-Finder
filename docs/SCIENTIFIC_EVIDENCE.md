@@ -131,9 +131,10 @@ matched SHA-256 `6273f88a618726046162f9e83cbfb447602796c0e9bb7d68af92440faf023ab
 #### Development sample composition
 
 The frozen development dataset contains **11,060 exact-sequence-unique representative proteins**.
-The compact inventory below reproduces the construction summary shown on slide 5 of
-`Design-0728.pptx`; the complete checksum-bound, record-level sample list is the
-[master manifest](../data/processed/v0/master_manifest.tsv).
+The compact inventory and expandable taxonomy table below form the public sample list reproduced
+from slide 5 of `Design-0728.pptx`. The 11,060-row build manifest is intentionally not distributed
+in this repository because it contains local source-dataset paths; the public record instead uses
+aggregate counts and checksum-bound evidence artifacts.
 
 | Dataset group | N | Composition and construction |
 | --- | ---: | --- |

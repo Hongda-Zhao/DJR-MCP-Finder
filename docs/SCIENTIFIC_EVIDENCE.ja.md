@@ -128,9 +128,9 @@ known-class macro-F1 `0.981 ± 0.010`（いずれも平均 ± SE）でした。�
 #### 開発用サンプル構成
 
 凍結済み開発データセットには、**11,060 exact-sequence-unique representative proteins** が含まれます。
-以下の簡潔な一覧は `Design-0728.pptx` の slide 5 に示された構築概要を再現したものです。
-checksum に結び付けられた完全なレコード単位のサンプル一覧は
-[master manifest](../data/processed/v0/master_manifest.tsv) です。
+以下の簡潔な一覧と展開可能な分類表が、`Design-0728.pptx` の slide 5 を再現した公開 sample list
+です。11,060 行の構築 manifest はローカルのソースデータパスを含むため、このリポジトリでは
+配布しません。公開記録には、代わりに集計数と checksum で固定されたエビデンス成果物を使用します。
 
 | データセット群 | N | 構成と構築方法 |
 | --- | ---: | --- |

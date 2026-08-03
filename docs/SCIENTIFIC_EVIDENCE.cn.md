@@ -120,8 +120,9 @@ component 内，先对记录检测结果取平均；随后表格在全部五个�
 #### 开发样本构成
 
 冻结的开发数据集包含 **11,060 条 exact-sequence-unique representative proteins**。
-下方精简清单复现了第 5 页（`Design-0728.pptx`）展示的构建概要；经 checksum 绑定的完整逐记录
-sample list 见 [master manifest](../data/processed/v0/master_manifest.tsv)。
+下方精简清单与可展开的分类表共同构成公开 sample list，复现了 `Design-0728.pptx` 第 5 页的内容。
+包含 11,060 行的构建 manifest 因含有本地源数据路径而不随仓库发布；公开记录改由汇总数量和经
+checksum 绑定的证据产物组成。
 
 | 数据集组别 | N | 构成与构建方式 |
 | --- | ---: | --- |
