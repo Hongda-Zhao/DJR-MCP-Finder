@@ -13,10 +13,10 @@ the frozen protocols and result files.
 
 | Scientific result | Encoder system | Current status | Recommended use |
 | --- | --- | --- | --- |
-| **Model V0.1 Candidate** (`model-v0.1-candidate`) | ESM-2 3B for H1/H2; ESM-C 6B for H3 | `recommended_for_external_confirmation` | **Preferred current result for new screening** |
-| **Model V0** (`model-v0`) | ESM-C 6B for H1/H2/H3 | Released and frozen | Formal reproducible baseline and supported fallback |
+| **Model V0.1 Candidate** | ESM-2 3B for H1/H2; ESM-C 6B for H3 | Recommended for external confirmation | **Preferred current result for new screening** |
+| **Model V0** | ESM-C 6B for H1/H2/H3 | Released and frozen | Formal reproducible baseline and supported fallback |
 
-“Preferred” describes the current screening path and Train-CV nomination. It does not mean that
+“Preferred” describes the current screening path and Train-CV result. It does not mean that
 Model V0.1 Candidate has passed a prospective external Test or replaced Model V0. Model V0 remains
 a primary scientific result, not a deprecated version.
 
@@ -56,60 +56,19 @@ applying the task-adapted detector under the frozen protocol, and the audit obse
 MCP sensitivity difference. H3 is unchanged between the two systems and was excluded from this
 audit.
 
-### Why 0.800 appeared
-
-The frozen outputs contain two valid but different component-level summaries of the same
-end-to-end detections, plus a record-pooled contrast:
-
-| Aggregation | Model V0 | Model V0.1 Candidate | Meaning |
-| --- | ---: | ---: | --- |
-| Equal-fold macro | `0.800` | `0.800` | Mean of fold sensitivities `1/0/1/1/1` |
-| All held-out components | `0.913876` | `0.913876` | `191/209` components detected; all-component table above |
-| All held-out records | `0.645833` | `0.645833` | `217/336` records detected; not the component estimand |
-
-The folds contained `47/18/47/49/48` positive components. Equal-fold averaging therefore gave the
-18-component second fold 20% of the final value, whereas the all-component estimate gave each of
-the 209 components equal weight. The earlier README called `0.800` simply “sensitivity,” which hid
-this distinction.
-
-The second-fold zero was a calibration-resolution cliff; it does not mean that the 119 MCP
-positives ranked below the conditional-H2 calibration negatives. For both models, their H1 and H2
-raw scores exceeded the corresponding calibration-negative maxima. The H2-negative calibration
-subset nevertheless contained 62 records from only one independent component, so empirical-tail
-evidence saturated at `log10(63) = 1.7993405494535817`. At the cascade endpoint, 12 V0 and 15 V0.1
-calibration negatives shared that saturated score; each source- and component-balanced tied block
-had mass `0.007199` and `0.008380`, respectively—above the allowed `0.005`. The frozen conservative
-`score >= threshold` rule therefore moved the threshold to the next floating-point value,
-`1.7993405494535819`, and rejected the entire tie. Thus the `0.800` calculation is internally
-reproducible, but it is unsuitable as an unqualified public recall value.
-
-This clarification and alternative aggregation were checked against the full archived row ledgers
-recorded by the [V0 parent pointer](../benchmarks/plm_vs_classical_v0/FULL_ARTIFACT_POINTER.json) and the
-[V0/V0.1 audit pointer](../benchmarks/ultra_remote_v0_v01/FULL_ARTIFACT_POINTER.json). The V0 parent
-ledger matched SHA-256 `d21bf8534a04b98a11f7502ce275dc6ff346b43d4433ba5551c223e77d904fdb`;
-the V0.1 ledger matched
-`b27a96a9ea7c26ab2c47ae2b3a7d5156cb775a9eab935a6cd17a87caed6ed2fa`. Independent recalculation
-reproduced every displayed fold threshold, fold
-sensitivity, evaluation specificity, and the all-component values above. The archive manifests
-matched SHA-256 `6273f88a618726046162f9e83cbfb447602796c0e9bb7d68af92440faf023ab7`
-(V0 parent benchmark) and
-`dcd33fa981f4064a027e9d27a184cba947bfd16f3c2c85030e0288d509215384` (V0/V0.1 audit).
-
 ## Evidence hierarchy
 
 | Evidence | Status | What it can answer | What it cannot answer |
 | --- | --- | --- | --- |
 | 14-model V0 selection | Frozen development selection | Which all-one-encoder system was selected as Model V0 | External generalization |
-| Schema 5 Amendment D | 20/20 gates PASS | Post-selection consistency of eight models and nine cascades on family members from the same four sources | Independent Test performance, equivalence, or feedback into model selection |
-| PLM versus classical V0 | Internal cross-fit PASS | Retrieval differences on Train components under the declared information budgets | External superiority |
-| Ultra-remote V0/V0.1 audit | PASS; formal claim blocked | Descriptive behavior on internal holdouts and low-coverage stress strata | A formal `<20% identity` conclusion |
+| Four-source family-robustness analysis | All 20 predefined checks passed | Post-selection consistency of eight models and nine cascades on family members from the same four sources | Independent Test performance, equivalence, or feedback into model selection |
+| PLM versus classical V0 | Internal cross-fit checks passed | Retrieval differences on Train components under the declared information budgets | External superiority |
+| Low-similarity V0/V0.1 audit | Internal checks passed; formal claim blocked | Descriptive behavior on internal holdouts and low-coverage stress strata | A formal `<20% identity` conclusion |
 | Prospective external Test | **Not run** | — | Release-grade generalization of Model V0 or Model V0.1 Candidate |
 
 ## What these results do not establish
 
 - Neither Model V0 nor Model V0.1 Candidate has a new prospective external Test.
-- Historical Test results apply only to ESM-2 650M, not to the all-ESM-C-6B V0 system, the Schema 5
-  nominee, or Model V0.1 Candidate.
 - Every paired fold-calibrated system misses the intended 99.5% specificity in at least one
   evaluation fold; the sensitivity differences are therefore descriptive, not matched-specificity
   improvements.
@@ -138,7 +97,7 @@ aggregate counts and checksum-bound evidence artifacts.
 
 | Dataset group | N | Composition and construction |
 | --- | ---: | --- |
-| Viral DJR-MCP | 560 | Gold 65 plus Silver_R3 495; positive-source details are shown below |
+| Viral DJR-MCP | 560 | Gold 65 plus Silver 495; positive-source details are shown below |
 | Cellular DJR | 500 | GH172/DUF2961 64; PHM/PAM 290; PNGase F 85; SIDT/SID-1/ChUP 56; DeCLIC-like DJR NTD 5 |
 | Hard non-DJR | 5,000 | Structure-supported, β-sheet-rich viral and cellular non-DJR decoys expanded from the PPT's 36-seed construction set |
 | Background non-DJR | 5,000 | Swiss-Prot representatives retained after sequence-, HMM-, and structure-relatedness exclusion against the other three groups |
@@ -153,7 +112,7 @@ repository-auditable list.
 | Viral evidence tier | N | Sources |
 | --- | ---: | --- |
 | Gold | 65 | 15 experimental PDB structures; 49 RefSeq-annotated MCPs; 1 isolated-virus GenBank MCP with virion-proteomics support |
-| Silver_R3 | 495 | 436 MetaVR proteins; 18 GenBank candidates; 41 literature-derived candidates |
+| Silver | 495 | 436 MetaVR proteins; 18 GenBank candidates; 41 literature-derived candidates |
 
 For the MetaVR and RefSeq/GenBank Silver candidates, the PPT records high viral confidence, HMM
 support (`E < 0.1`, bit score `> 10`), length `> 200 aa`, separation from Gold clusters, and
@@ -172,7 +131,7 @@ The positive catalog covers the following phylum-level groups:
 <details>
 <summary>Order / terminal-taxon sample list from the PPT</summary>
 
-| Phylum | Class | Order / terminal taxon | Gold | Silver_R3 | Total |
+| Phylum | Class | Order / terminal taxon | Gold | Silver | Total |
 | --- | --- | --- | ---: | ---: | ---: |
 | Nucleocytoviricota | Megaviricetes | Algavirales | 25 | 161 | 186 |
 | Nucleocytoviricota | Megaviricetes | Imitervirales | 9 | 122 | 131 |
@@ -221,31 +180,31 @@ machine-readable provenance for the same frozen dataset and audit.
 H2 runs only after H1 classifies a protein as DJR; H3 runs only after H2 classifies it as a viral
 MCP.
 
-### Model V0.1 Candidate nomination and trade-offs
+### Model V0.1 Candidate: selection and trade-offs
 
-Nine mixed candidates were preregistered and ranked only by existing Train-CV results. The
-four-source robustness analysis did not rerank them. The nominee uses ESM-2 3B for H1/H2 and ESM-C
-6B for H3 (`S=0.997645`), with `0/4` Holm-corrected source warnings relative to all-6B. This does
-not establish four-source non-inferiority or equivalence.
+Nine encoder combinations were compared using only existing Train-CV results. The four-source
+robustness analysis served as a consistency check and did not rerank them. Model V0.1 Candidate
+uses ESM-2 3B for H1/H2 and ESM-C 6B for H3 (`S=0.997645`), with no Holm-corrected source warnings
+relative to Model V0. This does not establish four-source non-inferiority or equivalence.
 
 | System | Viral | Cellular | Background | Matched HardNeg | Always-on / worst-case GPU s·seq⁻¹ |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Frozen all ESM-C 6B | 0.9536 | 0.8791 | 0.9948 | 0.9978 | 0.059531 / 0.059531 |
-| Mixed nominee | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
+| Model V0 (all ESM-C 6B) | 0.9536 | 0.8791 | 0.9948 | 0.9978 | 0.059531 / 0.059531 |
+| Model V0.1 Candidate | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
 
-The four source columns are full-expected-path member accuracies, not one pooled score. The nominee
-recovers 52/69 viral strict clusters, fewer than the 55/69 recovered by all-6B, and requires a
-second encoder for sequences reaching H3. Its status remains `recommended_for_external_confirmation`
-with `released_v0_change_permitted=0`.
+The four source columns are full-expected-path member accuracies, not one pooled score. Model V0.1
+Candidate recovers 52/69 viral strict clusters, fewer than the 55/69 recovered by Model V0, and
+requires a second encoder for sequences reaching H3. It remains recommended for external
+confirmation and does not replace the released Model V0.
 
 ### Ultra-remote development audit
 
 On the Train-only all-component holdout, H1 encoder sensitivity differs by `+0.197` for V0.1
 relative to V0. The BLAST-defined `qcov<80%` stress stratum differs by `+0.260` (95% CI
 0.206–0.317). The H1 operational detector differs by only `+0.017`, while the H2 and end-to-end MCP
-cascade differences are zero. Because of the specificity and sample-size limitations above, the
-formal status is
-`PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE`.
+cascade differences are zero. Because at least one evaluation fold misses the target specificity
+and the strict ultra-remote stratum contains only one independent positive component, these results
+are descriptive and do not support a formal ultra-remote claim.
 
 ### PLM versus classical retrieval
 
@@ -272,14 +231,11 @@ rerun all 10,000 bootstrap replicates.
 
 1. [Model V0.1 Candidate package](../user-inference-v0.1/) and
    [released Model V0 package](../user-inference-v0/).
-2. [Candidate nomination](../results/validation_family_robustness_v0_schema5_mixed_heads/candidate_nomination.tsv)
-   and [Train-CV candidate summary](../results/validation_family_robustness_v0_schema5_mixed_heads/train_cv_candidate_summary.tsv).
-3. [V0 model-selection figure and provenance](../results/figures/project_v0/model_benchmark_metric_revision_1/).
-4. [V0/V0.1 audit report](../benchmarks/ultra_remote_v0_v01/results/REPORT.md),
+2. [Published result map](../results/README.md) and
+   [V0 figure collection](../results/figures/project_v0/README.md).
+3. [V0/V0.1 audit report](../benchmarks/ultra_remote_v0_v01/results/REPORT.md),
    [all-component sensitivities](../benchmarks/ultra_remote_v0_v01/results/stratum_sensitivity.tsv),
-   [equal-fold method summary](../benchmarks/ultra_remote_v0_v01/results/method_summary.tsv), and
    [paired comparisons](../benchmarks/ultra_remote_v0_v01/results/paired_v0_v01.tsv).
-5. [Schema 5 compact results](../results/validation_family_robustness_v0_schema5_mixed_heads/).
-6. [PLM versus classical benchmark](../benchmarks/plm_vs_classical_v0/).
-7. [Concise scientific report](research/PROJECT_V0_FINAL_REPORT.md).
-8. [Complete workflow and protocol boundary](research/WORKFLOW_V0.md).
+4. [PLM versus classical benchmark](../benchmarks/plm_vs_classical_v0/).
+5. [Concise scientific report](research/PROJECT_V0_FINAL_REPORT.md).
+6. [Complete workflow and protocol boundary](research/WORKFLOW_V0.md).

@@ -12,10 +12,10 @@
 
 | 科学结果 | 编码器系统 | 当前状态 | 推荐用途 |
 | --- | --- | --- | --- |
-| **Model V0.1 Candidate** (`model-v0.1-candidate`) | ESM-2 3B 用于 H1/H2；ESM-C 6B 用于 H3 | `recommended_for_external_confirmation` | **新筛选任务的当前首选结果** |
-| **Model V0** (`model-v0`) | ESM-C 6B 用于 H1/H2/H3 | 已发布并冻结 | 正式的可复现基线和受支持的备选方案 |
+| **Model V0.1 Candidate** | ESM-2 3B 用于 H1/H2；ESM-C 6B 用于 H3 | 建议开展外部确认 | **新筛选任务的当前首选结果** |
+| **Model V0** | ESM-C 6B 用于 H1/H2/H3 | 已发布并冻结 | 正式的可复现基线和受支持的备选方案 |
 
-“首选”描述的是当前筛选路径和 Train-CV 提名结果。这并不表示 Model V0.1 Candidate 已经
+“首选”描述的是当前筛选路径和 Train-CV 结果。这并不表示 Model V0.1 Candidate 已经
 通过前瞻性外部 Test，也不表示其已取代 Model V0。Model V0 仍是主要科学结果，而不是
 已弃用版本。
 
@@ -51,55 +51,19 @@ component 内，先对记录检测结果取平均；随后表格在全部五个�
 最大的描述性差异出现在 H1 编码器读出。按照冻结协议拟合并应用任务适配检测器后，这一差异
 减小；审计未观察到端到端 MCP sensitivity 差异。两个系统的 H3 相同，因此未纳入本次审计。
 
-### 为什么会出现 0.800
-
-冻结输出包含对同一组端到端检测结果的两种有效但不同的 component 层级汇总，另有一种
-按记录汇总的对照：
-
-| 聚合方式 | Model V0 | Model V0.1 Candidate | 含义 |
-| --- | ---: | ---: | --- |
-| 等权折宏平均 | `0.800` | `0.800` | 折 sensitivity `1/0/1/1/1` 的均值 |
-| 全部留出 components | `0.913876` | `0.913876` | 检出 `191/209` 个 components；对应上方全 component 表 |
-| 全部留出记录 | `0.645833` | `0.645833` | 检出 `217/336` 条记录；这不是 component estimand |
-
-各折分别包含 `47/18/47/49/48` 个阳性 components。因此，等权折平均让包含 18 个 component
-的第二折占最终数值的 20%，而全 component 估计则给予 209 个 components 中的每一个相同
-权重。早期 README 只把 `0.800` 称为“sensitivity”，掩盖了这一区别。
-
-第二折为零是校准分辨率悬崖所致；这并不表示 119 个 MCP 阳性的排序低于 conditional-H2
-校准阴性。对两个模型而言，其 H1 和 H2 原始得分均高于相应校准阴性的最大值。不过，H2 阴性
-校准子集包含来自仅一个独立 component 的 62 条记录，因此经验尾部证据饱和于
-`log10(63) = 1.7993405494535817`。在 cascade 端点，12 个 V0 和 15 个 V0.1 校准阴性具有
-这一饱和得分；经来源和 component 平衡后，每个并列得分块的质量分别为 `0.007199` 和
-`0.008380`，高于允许值 `0.005`。因此，冻结的保守 `score >= threshold` 规则将阈值移至下一
-浮点数值 `1.7993405494535819`，并拒绝整个并列得分块。因此，`0.800` 的计算可在内部复现，
-但不适合作为未经限定的公开 recall 数值。
-
-上述澄清和替代聚合方式已使用 [V0 parent pointer](../benchmarks/plm_vs_classical_v0/FULL_ARTIFACT_POINTER.json)
-及 [V0/V0.1 audit pointer](../benchmarks/ultra_remote_v0_v01/FULL_ARTIFACT_POINTER.json) 所记录的完整归档逐行
-账本进行核验。V0 parent 账本与 SHA-256
-`d21bf8534a04b98a11f7502ce275dc6ff346b43d4433ba5551c223e77d904fdb` 一致；V0.1 账本与
-`b27a96a9ea7c26ab2c47ae2b3a7d5156cb775a9eab935a6cd17a87caed6ed2fa` 一致。独立重算复现了
-上方展示的每一个折阈值、折 sensitivity、评估 specificity 和全 component 数值。归档 manifest
-与 SHA-256 `6273f88a618726046162f9e83cbfb447602796c0e9bb7d68af92440faf023ab7`
-（V0 parent benchmark）及
-`dcd33fa981f4064a027e9d27a184cba947bfd16f3c2c85030e0288d509215384`（V0/V0.1 audit）一致。
-
 ## 证据层级
 
 | 证据 | 状态 | 可以回答什么 | 不能回答什么 |
 | --- | --- | --- | --- |
 | 14-model V0 selection | 冻结的开发阶段选择 | 哪个单一编码器系统被选为 Model V0 | 外部泛化能力 |
-| Schema 5 Amendment D | 20/20 gates PASS | 来自相同四个来源的家族成员上，八个模型和九个 cascades 的选择后一致性 | 独立 Test 表现、等效性，或反馈至模型选择 |
-| PLM versus classical V0 | Internal cross-fit PASS | 在已声明信息预算下，Train components 上的检索差异 | 外部优越性 |
-| Ultra-remote V0/V0.1 audit | PASS；正式声明受阻 | 内部留出和低覆盖 stress strata 上的描述性行为 | 正式的 `<20% identity` 结论 |
+| 四来源家族稳健性分析 | 20 项预设检查全部通过 | 来自相同四个来源的家族成员上，八个模型和九个 cascades 的选择后一致性 | 独立 Test 表现、等效性，或反馈至模型选择 |
+| PLM versus classical V0 | 内部交叉拟合检查通过 | 在已声明信息预算下，Train components 上的检索差异 | 外部优越性 |
+| V0/V0.1 低相似性审计 | 内部检查通过；正式声明受阻 | 内部留出和低覆盖 stress strata 上的描述性行为 | 正式的 `<20% identity` 结论 |
 | Prospective external Test | **未运行** | — | Model V0 或 Model V0.1 Candidate 的发布级泛化能力 |
 
 ## 这些结果尚不能证明什么
 
 - Model V0 和 Model V0.1 Candidate 均没有新的前瞻性外部 Test。
-- 历史 Test 结果只适用于 ESM-2 650M，不适用于全 ESM-C-6B V0 系统、Schema 5 nominee 或
-  Model V0.1 Candidate。
 - 每个配对的按折校准系统都在至少一个评估折中未达到预期的 99.5% specificity；因此，
   sensitivity 差异是描述性的，而不是 specificity 匹配条件下的改进。
 - BLAST 定义的严格 `qcov≥80%, identity<20%` stratum 只包含一个独立阳性 component——数量
@@ -126,7 +90,7 @@ checksum 绑定的证据产物组成。
 
 | 数据集组别 | N | 构成与构建方式 |
 | --- | ---: | --- |
-| Viral DJR-MCP | 560 | Gold 65 加 Silver_R3 495；阳性来源详情见下方 |
+| Viral DJR-MCP | 560 | Gold 65 加 Silver 495；阳性来源详情见下方 |
 | Cellular DJR | 500 | GH172/DUF2961 64；PHM/PAM 290；PNGase F 85；SIDT/SID-1/ChUP 56；DeCLIC-like DJR NTD 5 |
 | Hard non-DJR | 5,000 | 由 PPT 中 36-seed 构建集扩展得到的、具结构支持且富含 β-sheet 的病毒及细胞非 DJR decoys |
 | Background non-DJR | 5,000 | 对其他三个组别完成 sequence、HMM 及 structure relatedness 排除后保留的 Swiss-Prot representatives |
@@ -140,7 +104,7 @@ Cellular-DJR 与 HardNeg 的构建概要使用 `qTM > 0.7` 和 `LDDT > 0.5` 进�
 | 病毒证据层级 | N | 来源 |
 | --- | ---: | --- |
 | Gold | 65 | 15 个实验 PDB 结构；49 个 RefSeq 注释 MCPs；1 个具有 virion-proteomics 支持的分离病毒 GenBank MCP |
-| Silver_R3 | 495 | 436 个 MetaVR 蛋白；18 个 GenBank candidates；41 个文献来源 candidates |
+| Silver | 495 | 436 个 MetaVR 蛋白；18 个 GenBank candidates；41 个文献来源 candidates |
 
 对于 MetaVR 和 RefSeq/GenBank Silver candidates，PPT 记录了高病毒置信度、HMM 支持
 （`E < 0.1`、bit score `> 10`）、长度 `> 200 aa`、与 Gold clusters 分离，以及与 PDB Golds
@@ -159,7 +123,7 @@ Cellular-DJR 与 HardNeg 的构建概要使用 `qTM > 0.7` 和 `LDDT > 0.5` 进�
 <details>
 <summary>PPT 中按目 / 末级分类单元整理的样本列表</summary>
 
-| 门 | 纲 | 目 / 末级分类单元 | Gold | Silver_R3 | 总计 |
+| 门 | 纲 | 目 / 末级分类单元 | Gold | Silver | 总计 |
 | --- | --- | --- | ---: | ---: | ---: |
 | Nucleocytoviricota | Megaviricetes | Algavirales | 25 | 161 | 186 |
 | Nucleocytoviricota | Megaviricetes | Imitervirales | 9 | 122 | 131 |
@@ -207,30 +171,29 @@ catalog 指定的 primary taxon。
 
 H2 仅在 H1 将蛋白分类为 DJR 后运行；H3 仅在 H2 将其分类为 viral MCP 后运行。
 
-### Model V0.1 Candidate 的提名与权衡
+### Model V0.1 Candidate：选择与权衡
 
-九个 mixed candidates 已预注册，并且仅根据现有 Train-CV 结果排序。four-source robustness
-analysis 未对它们重新排序。获提名模型使用 ESM-2 3B 处理 H1/H2、ESM-C 6B 处理 H3
-（`S=0.997645`）；其 Holm 校正后的来源警告为 `0/4`（相对于 all-6B）。这并不能证明
-four-source non-inferiority 或 equivalence。
+九种编码器组合仅依据现有 Train-CV 结果进行比较。四来源稳健性分析只用于一致性检查，
+不用于重新排序。Model V0.1 Candidate 使用 ESM-2 3B 处理 H1/H2、ESM-C 6B 处理 H3
+（`S=0.997645`）；相对于 Model V0，没有 Holm 校正后的来源警告。这并不能证明四来源条件下
+的 non-inferiority 或 equivalence。
 
 | 系统 | 病毒 | 细胞 | 背景 | 匹配 HardNeg | 常开 / 最坏情况 GPU s·seq⁻¹ |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Frozen all ESM-C 6B | 0.9536 | 0.8791 | 0.9948 | 0.9978 | 0.059531 / 0.059531 |
-| Mixed nominee | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
+| Model V0（全 ESM-C 6B） | 0.9536 | 0.8791 | 0.9948 | 0.9978 | 0.059531 / 0.059531 |
+| Model V0.1 Candidate | 0.9537 | 1.0000 | 0.9985 | 0.9998 | 0.023524 / 0.083055 |
 
-四个来源列给出的是 full-expected-path member accuracies，而不是一个合并得分。nominee 找回
-52/69 个 viral strict clusters，少于找回 55/69 个的 all-6B，并且需要第二个编码器来处理
-到达 H3 的序列。其状态仍为 `recommended_for_external_confirmation`，且
-`released_v0_change_permitted=0`。
+四个来源列给出的是 full-expected-path member accuracies，而不是一个合并得分。Model V0.1
+Candidate 找回 52/69 个 viral strict clusters，少于 Model V0 的 55/69，并且需要第二个编码器
+处理到达 H3 的序列。它仍建议开展外部确认，并不取代已发布的 Model V0。
 
 ### Ultra-remote 开发审计
 
 在仅使用 Train 的全 component holdout 上，H1 encoder sensitivity 的差异为 `+0.197`
 （V0.1 相对于 V0）。BLAST 定义的 `qcov<80%` stress stratum 差异为 `+0.260`（95% CI
 0.206–0.317）。H1 operational detector 的差异仅为 `+0.017`，而 H2 和端到端 MCP cascade
-差异为零。由于上述 specificity 和 sample-size 限制，正式状态为
-`PASS_WITH_FORMAL_ULTRA_REMOTE_BLOCKED_BY_SAMPLE_SIZE`。
+差异为零。由于至少一个评估折未达到目标 specificity，且严格 ultra-remote stratum 仅包含
+一个独立阳性 component，这些结果只能作描述性解释，不能支持正式的 ultra-remote 声明。
 
 ### PLM versus classical retrieval
 
@@ -256,14 +219,11 @@ validator 重新计算了 point estimates，但没有独立重跑全部 10,000 �
 
 1. [Model V0.1 Candidate package](../user-inference-v0.1/) 和
    [released Model V0 package](../user-inference-v0/)。
-2. [Candidate nomination](../results/validation_family_robustness_v0_schema5_mixed_heads/candidate_nomination.tsv)
-   和 [Train-CV candidate summary](../results/validation_family_robustness_v0_schema5_mixed_heads/train_cv_candidate_summary.tsv)。
-3. [V0 model-selection figure and provenance](../results/figures/project_v0/model_benchmark_metric_revision_1/)。
-4. [V0/V0.1 audit report](../benchmarks/ultra_remote_v0_v01/results/REPORT.md)、
+2. [已发布结果导航](../results/README.cn.md)和
+   [V0 图表集合](../results/figures/project_v0/README.cn.md)。
+3. [V0/V0.1 audit report](../benchmarks/ultra_remote_v0_v01/results/REPORT.md)、
    [all-component sensitivities](../benchmarks/ultra_remote_v0_v01/results/stratum_sensitivity.tsv)、
-   [equal-fold method summary](../benchmarks/ultra_remote_v0_v01/results/method_summary.tsv)，以及
    [paired comparisons](../benchmarks/ultra_remote_v0_v01/results/paired_v0_v01.tsv)。
-5. [Schema 5 compact results](../results/validation_family_robustness_v0_schema5_mixed_heads/)。
-6. [PLM versus classical benchmark](../benchmarks/plm_vs_classical_v0/)。
-7. [精简科学报告](research/PROJECT_V0_FINAL_REPORT.md)。
-8. [完整工作流程与协议边界](research/WORKFLOW_V0.md)。
+4. [PLM versus classical benchmark](../benchmarks/plm_vs_classical_v0/)。
+5. [精简科学报告](research/PROJECT_V0_FINAL_REPORT.md)。
+6. [完整工作流程与协议边界](research/WORKFLOW_V0.md)。
