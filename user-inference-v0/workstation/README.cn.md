@@ -1,4 +1,4 @@
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](README.ja.md)
 
 # 可移植 Docker 部署
 

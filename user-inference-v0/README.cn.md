@@ -1,4 +1,4 @@
-[English](README.md) | **简体中文**
+[English](README.md) | **简体中文** | [日本語](README.ja.md)
 
 # DJR-MCP Finder — Model V0 用户推理
 
@@ -152,4 +152,4 @@ false-positive、同来源挑战集和结构/人工验证。
 该独立 package 及其中的原创线性分类头采用 [MIT License](LICENSE)。ESM-C checkpoint 在运行时
 另行下载，本包不重新分发；模型和固定 runtime dependency 仍遵循上游条款。详见
 [release-specific 第三方声明](src/djrmcp_predict/assets/project-v0-esmc6b-r1/THIRD_PARTY_NOTICES.md)
-和仓库级 [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md)。
+和仓库级 [`THIRD_PARTY_NOTICES.md`](../docs/repository/THIRD_PARTY_NOTICES.md)。

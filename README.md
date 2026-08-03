@@ -1,4 +1,4 @@
-**English** | [简体中文](README.cn.md) | [日本語](README.ja.md)
+**English** | [简体中文](docs/repository/README.cn.md) | [日本語](docs/repository/README.ja.md)
 
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1)
@@ -42,6 +42,8 @@ bash workstation/run_user_fasta.sh \
 ```
 
 V0.1 uses the frozen V0 image as its base, so V0 must be built first after a fresh clone. The empty value above skips only the historical Docker image-ID check, which necessarily changes after a local rebuild; version, environment, and checksum validation remain active. The prediction workflow itself is implemented in Python, while Docker isolates the two frozen environments required by H1/H2 and H3.
+
+Ordinary FASTA prediction does not require PBS, `qsub`, or access to an HPC scheduler.
 
 The first prediction downloads the pinned model checkpoints. Results are written to:
 
@@ -128,6 +130,22 @@ V0.1 improves four of the five folds and decreases one. The paired-fold mean dif
 - Outputs are screening candidates for subsequent validation, not structural confirmation.
 - The V0.1 recommendation is based on Train-only development CV and has not undergone independent external testing.
 - Scores are not prevalence-adjusted probabilities for natural samples. Large-scale screens still require independent false-positive assessment and structural or manual review.
+
+## Repository map
+
+| Directory | Function |
+| --- | --- |
+| [`.github/`](.github/) | Continuous integration, release automation, and issue/PR templates |
+| [`benchmarks/`](benchmarks/) | Checksum-bound benchmark protocols, compact results, and figures |
+| [`configs/`](configs/) | Dataset, model-selection, and validation configuration |
+| [`data/`](data/) | Released manifests, split contracts, and data-integrity records |
+| [`docs/`](docs/) | Scientific evidence, reproducibility, architecture, versioning, and translations |
+| [`results/`](results/) | Compact published results, model identities, and figure provenance |
+| [`scripts/`](scripts/) | Portable Python research workflows, validation, model evaluation, and plotting utilities |
+| [`src/`](src/) | Core `djrmcp-finder` Python research package |
+| [`tests/`](tests/) | Automated tests and engineering-contract checks |
+| [`user-inference-v0/`](user-inference-v0/) | Released and frozen Model V0 baseline package |
+| [`user-inference-v0.1/`](user-inference-v0.1/) | Recommended Model V0.1 Candidate inference package |
 
 For detailed use, see the [Model V0.1 Candidate](user-inference-v0.1/README.md) and [Model V0](user-inference-v0/README.md) user guides. For data, methods, and evidence boundaries, see the [scientific evidence statement](docs/SCIENTIFIC_EVIDENCE.md).
 

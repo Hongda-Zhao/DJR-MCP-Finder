@@ -1,0 +1,9 @@
+<!-- i18n-mirror: non-authoritative translation; source=results/figures/project_v0/model_benchmark_metric_revision_1/CAPTION.md -->
+
+> この翻訳は閲覧用です。固定された英語の原文が正式かつ権威ある版です。
+
+# Figure 1 | Protein representation の固定された development-only selection
+
+**a,** 14 個すべての candidate に対する、四つの固定 Train-only score。H1/H2 AP は raw decision-function score から計算し、H3 は calibration していない class probability を使用します。値は mean ± SE です。SE は、一つの共有 global-component fold map 上の五つの score の sample standard deviation を √5 で割った値です。S = 0.60·H1 AP + 0.30·H2 AP + 0.10·H3 two-known-class macro-F1。**b,** Fresh ESM-2 650M baseline に対する Validation metric difference（赤い領域：0.01 より大きい regression）と、esmc_6b に対する paired one-SE evidence。ΔS = S_reference − S_candidate で、SEΔ は五つの same-fold difference から計算します。**c,** 記述的な S–embedding-time comparison。Time は model load を除く累積 inference duration です。Marker は、同一ではない 2 個の timing-comparability group を区別します。Peak GPU memory は NA です。固定比較には model ごとの peak_gpu_memory_source attestation がないため、Pareto frontier を推論しません。**d,** H3 Validation evidence は、supervised two-class metric（Nucleocytoviricota 対 Preplasmiviricota）と、operational `unknown/other` rejection recall（diagnostic n = 5）を分離します。後者は任意の unseen virus を検出できることを示しません。**e,** 完全な decision audit。修正された protocol は ESM-C 6B を選択します。固定された Validation baseline は ESM-2 650M です。Candidate は一つも省略せず、Test prediction または metric は読み取りません。
+
+Source data：`panel_a_cv_metrics.tsv` から `panel_e_decision.tsv`。Train/Validation/Test boundary：selection は Train component-aware CV と Validation だけを使用します。R1 selection では Test prediction または metric を読み取らず、生成もしません（`test_evaluation_permitted=false`）。既存 cohort は過去の ESM-2 650M lifecycle ですでに開かれており、ESM-C 6B を評価できないため、prospective cohort に置き換える必要があります。Hypothesis test または multiple-comparison correction は使用しません。a と b の interval は fold 由来の uncertainty であり、confidence interval ではありません。

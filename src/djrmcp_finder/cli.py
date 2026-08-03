@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any
 
 from .benchmark_config import expand_benchmark_model
 from .config import load_config
-
 
 PROJECT_RELEASE = "V0"
 SOURCE_DATASET_VERSION = "data-curation V3"
@@ -20,12 +20,12 @@ VERSION_MAPPING = "data-curation V3 -> project V0"
 WORKFLOW_BOUNDARIES: tuple[dict[str, str], ...] = (
     {
         "stage": "dataset_build",
-        "entrypoint": "pbs/02_build_dataset_v0.pbs",
+        "entrypoint": "scripts/run_v0_dataset.py",
         "scope": "data-curation V3 exact-sequence representatives -> project V0 dataset",
     },
     {
         "stage": "postsplit_integrity",
-        "entrypoint": "pbs/05_postsplit_integrity_audit.pbs",
+        "entrypoint": "scripts/run_postsplit_integrity_audit.py",
         "scope": "independent project V0 cross-split MMseqs2 audit",
     },
     {

@@ -7,7 +7,6 @@ import pytest
 
 from djrmcp_finder import cli
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -21,6 +20,8 @@ def test_plan_lists_only_active_data_curation_v3_project_v0_boundaries(capsys) -
     entrypoints = [row["entrypoint"] for row in payload["boundaries"]]
     assert len(entrypoints) == len(set(entrypoints))
     assert "scripts/score_validation_family_robustness_v0_schema4.py" in entrypoints
+    assert "scripts/run_v0_dataset.py" in entrypoints
+    assert "scripts/run_postsplit_integrity_audit.py" in entrypoints
     for entrypoint in entrypoints:
         if entrypoint.startswith(("pbs/", "scripts/")):
             assert (ROOT / entrypoint).is_file(), entrypoint

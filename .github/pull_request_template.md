@@ -24,7 +24,7 @@
 
 - [ ] The change does not silently alter frozen encoders, heads, thresholds, routing, or evidence status.
 - [ ] Any checksum-bound file change updates its owning checksum manifest.
-- [ ] `release-manifest.json`, `docs/VERSIONING.md`, and `CHANGELOG.md` agree when an identifier or version changes.
+- [ ] `release-manifest.json`, `docs/VERSIONING.md`, and `docs/repository/CHANGELOG.md` agree when an identifier or version changes.
 - [ ] User-facing claims remain within `docs/SCIENTIFIC_EVIDENCE.md`.
 
 ## Security and data

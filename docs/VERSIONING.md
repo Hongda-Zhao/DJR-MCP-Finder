@@ -1,5 +1,7 @@
 # Versioning and naming contract
 
+**English** | [简体中文](VERSIONING.cn.md) | [日本語](VERSIONING.ja.md)
+
 [Documentation map](README.md) | [Repository README](../README.md) |
 [Release manifest](../release-manifest.json)
 
@@ -73,7 +75,8 @@ candidate changes increment MINOR; incompatible public CLI, output-schema, or pa
 increment MAJOR. Patch-level engineering revisions remain visible in the Python distribution and
 bundle versions rather than creating a third repository-release component.
 
-Update the repository version and tag in `release-manifest.json`, update `CHANGELOG.md`, pass
+Update the repository version and tag in `release-manifest.json`, update
+`docs/repository/CHANGELOG.md`, pass
 `make check`, merge to `main`, and create an annotated matching tag.
 
 ### Python distribution

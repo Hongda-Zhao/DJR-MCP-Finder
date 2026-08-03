@@ -1,4 +1,4 @@
-**English** | [简体中文](README.cn.md)
+**English** | [简体中文](README.cn.md) | [日本語](README.ja.md)
 
 # Results included in Git
 

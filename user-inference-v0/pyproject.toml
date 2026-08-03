@@ -60,7 +60,7 @@ Homepage = "https://github.com/Hongda-Zhao/DJR-MCP-Finder"
 Repository = "https://github.com/Hongda-Zhao/DJR-MCP-Finder"
 Documentation = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/tree/main/user-inference-v0"
 "Bug Tracker" = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/issues"
-Changelog = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/blob/main/CHANGELOG.md"
+Changelog = "https://github.com/Hongda-Zhao/DJR-MCP-Finder/blob/main/docs/repository/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]
