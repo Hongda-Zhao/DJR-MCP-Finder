@@ -18,8 +18,8 @@ DJR-MCP Finder 是一条 Python 科研流程，并包含两个面向用户的推
 | 打包 | PEP 517/621、setuptools、`src/` 布局、三个 distribution | [根目录元数据](../pyproject.toml#L1-L10)、[发布清单](../release-manifest.json#L8-L32) |
 | 数值/数据 | NumPy、pandas、scikit-learn、Biopython、joblib、PyYAML | [依赖项](../pyproject.toml#L42-L49) |
 | 模型运行时 | PyTorch、Hugging Face/Biohub Transformers、隔离的 Candidate 运行时 | [extras](../pyproject.toml#L52-L67)、[Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
-| 测试/lint/构建 | pytest、Ruff、PyPA build、Twine、Make | [开发依赖](../pyproject.toml#L71-L77)、[Makefile](../Makefile#L33-L73) |
-| CI/Release | GitHub Actions；由 tag 触发的 GitHub Release artifact | [CI](../.github/workflows/ci.yml#L16-L129)、[Release workflow](../.github/workflows/release.yml#L17-L89) |
+| 测试/lint/构建 | pytest、Ruff、PyPA build、Twine、Make | [开发依赖](../pyproject.toml#L71-L77)、[Makefile](../Makefile) |
+| CI/Release | GitHub Actions；由 tag 触发的 GitHub Release artifact | [CI](../.github/workflows/ci.yml)、[Release workflow](../.github/workflows/release.yml#L17-L89) |
 | 存储 | 文件系统 artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [输出示例](../README.md#L65-L76)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### 入口点
@@ -41,19 +41,18 @@ DJR-MCP Finder 是一条 Python 科研流程，并包含两个面向用户的推
 
 | 命令 | 用途 | 依据 |
 | --- | --- | --- |
-| `make setup` | 在 Python 3.12+ 下安装全部三个开发 distribution | [Makefile](../Makefile#L18-L21) |
-| `make setup-core` / `setup-v0` / `setup-v01` | 安装其中一个使用界面 | [Makefile](../Makefile#L23-L31) |
-| `make metadata` | 检查 Release/包/模型/bundle 映射 | [Makefile](../Makefile#L33-L34) |
-| `make docs-check` | 检查必需文档、README 大小和本地链接 | [Makefile](../Makefile#L36-L37) |
-| `make lint` | 运行关键的 Ruff 正确性规则 | [Makefile](../Makefile#L39-L40) |
-| `make test` | 运行核心、正式和 Candidate 测试套件 | [Makefile](../Makefile#L42-L51) |
-| `python -m pytest -q tests/test_cli.py` | 运行一个聚焦的测试模块 | [核心测试 target](../Makefile#L42-L43)、[示例模块](../tests/test_cli.py) |
-| `make smoke` | 无需下载模型即可验证两个 FASTA parser 和冻结 bundle | [Makefile](../Makefile#L53-L61) |
-| `make build` | 构建三个 wheel 和三个 sdist | [Makefile](../Makefile#L63-L67) |
-| `make package-check` | 运行 Twine，并检查许可证、typed marker、notice 和元数据 | [Makefile](../Makefile#L69-L71) |
-| `make check` | 完整的本地 CI 等价门槛 | [Makefile](../Makefile#L73) |
+| `make setup` | 在 Python 3.12+ 下安装全部三个开发 distribution | [Makefile](../Makefile) |
+| `make setup-core` / `setup-v0` / `setup-v01` | 安装其中一个使用界面 | [Makefile](../Makefile) |
+| `make metadata` | 检查 Release/包/模型/bundle 映射 | [Makefile](../Makefile) |
+| `make docs-check` | 检查必需文档、README 大小和本地链接 | [Makefile](../Makefile) |
+| `make lint` | 运行关键的 Ruff 正确性规则 | [Makefile](../Makefile) |
+| `make test` | 运行核心、正式和 Candidate 测试套件 | [Makefile](../Makefile) |
+| `python -m pytest -q tests/test_cli.py` | 运行一个聚焦的测试模块 | [核心测试 target](../Makefile)、[示例模块](../tests/test_cli.py) |
+| `make build` | 构建三个 wheel 和三个 sdist | [Makefile](../Makefile) |
+| `make package-check` | 运行 Twine，并检查许可证、typed marker、notice 和元数据 | [Makefile](../Makefile) |
+| `make check` | 完整的本地 CI 等价门槛 | [Makefile](../Makefile) |
 
-CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发器](../.github/workflows/ci.yml#L3-L7)）。它覆盖根目录包和正式包声明的全部 Python 版本、两个 Candidate 版本、元数据/文档、lint、smoke 检查以及构建后的 distribution（[CI jobs](../.github/workflows/ci.yml#L16-L129)）。
+CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发器](../.github/workflows/ci.yml)）。它覆盖根目录包和正式包声明的全部 Python 版本、两个 Candidate 版本、元数据/文档、lint 以及构建后的安装包（[CI jobs](../.github/workflows/ci.yml)）。
 
 该 workflow 定义仓库的自动验证范围。相关 job 是否被配置为阻止合并的 required check，由 GitHub 仓库设置控制，不能仅凭 checkout 中的文件断言。
 
@@ -78,7 +77,7 @@ CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发�
 | --- | --- | --- |
 | 根目录/正式包最低版本 | Python `>=3.10` | [根目录](../pyproject.toml#L10)、[正式包](../user-inference-v0/pyproject.toml#L18) |
 | Candidate 包最低版本 | Python `>=3.12`、NumPy `==2.5.1` | [Candidate](../user-inference-v0.1/pyproject.toml#L18-L40) |
-| CI runner | Python 3.10–3.13 和当前 GitHub action major 版本 | [CI matrix](../.github/workflows/ci.yml#L46-L108) |
+| CI runner | Python 3.10–3.13 和当前 GitHub action major 版本 | [CI matrix](../.github/workflows/ci.yml) |
 | 正式容器 | `ubuntu:24.04`；固定 setuptools、wheel、NumPy、PyTorch 和 Biohub commit | [正式 Dockerfile](../user-inference-v0/workstation/Dockerfile#L1-L2)、[运行时安装](../user-inference-v0/workstation/Dockerfile#L43-L54) |
 | Candidate 容器 | 基于正式 V0；另含采用固定 Transformers 的 Python 3.12 环境 | [Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L1-L9)、[overlay](../user-inference-v0.1/workstation/Dockerfile#L24-L57) |
 | Release runner | Python 3.12；tag 必须位于 `main` | [Release workflow](../.github/workflows/release.yml#L38-L56) |
@@ -96,7 +95,7 @@ CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发�
 
 项目没有自有网络 API。外部模型与数据库访问发生在用户或研究人员明确执行命令时。数据约定包括 FASTA 输入、冻结的 JSON/NPZ/checksum bundle 文件、TSV/JSON 预测输出，以及与 checksum 绑定的 Benchmark 记录。根目录科研流程通过可移植的 Python 入口启动，不需要内部后台 job 服务或强制调度器。与 checksum 绑定的 `benchmarks/*/pbs/` 文件只保留为可选的历史 HPC 重放证据，不是普通 FASTA 预测的依赖。
 
-测试策略包含三个独立套件和仅 CPU 的 smoke 检查。GPU 推理与完整归档重放仍属于工作站/HPC 验证，因为其 checkpoint 和冻结数据库不在精简 checkout 中（[可复现性矩阵](REPRODUCIBILITY.md#what-can-be-reproduced-locally)）。
+测试策略包含三个可在 CPU 上运行的独立套件。GPU 推理与完整归档重放仍属于工作站/HPC 验证，因为其 checkpoint 和冻结数据库不在精简 checkout 中（[可复现性矩阵](REPRODUCIBILITY.md#what-can-be-reproduced-locally)）。
 
 ## 第 2 部分 — 上下文与生态系统
 
@@ -113,16 +112,16 @@ CI 会在 push 到 `main`、pull request 和手动触发时运行（[CI 触发�
 
 ### 仓库控制措施
 
-- [`Makefile`](../Makefile#L33-L73) 集中定义元数据、文档、lint、测试、smoke 和打包门槛。
-- [CI](../.github/workflows/ci.yml#L16-L128) 在支持的包与 Python 版本范围内运行这些门槛。
+- [`Makefile`](../Makefile) 集中定义元数据、文档、lint、测试和打包检查。
+- [CI](../.github/workflows/ci.yml) 在支持的包与 Python 版本范围内运行这些门槛。
 - [Pull request 模板](../.github/pull_request_template.md) 要求 reviewer 检查模型身份、checksum、结论、输入安全和敏感数据。
 - [Issue 模板](../.github/ISSUE_TEMPLATE/) 将可复现 bug、功能请求与科研解释问题分开处理。
 - 机器可读的 Release 清单可防止仅在文字中修改版本（[清单](../release-manifest.json#L1-L51)）。
 
 ### 贡献者注意事项
 
-- `make setup` 需要 Python 3.12，因为它会安装 Candidate；较小的 target 在声明支持的位置可使用 Python 3.10（[Makefile](../Makefile#L18-L31)）。
-- 完整推理会下载大型 checkpoint，并需要固定的运行时环境；普通测试和 smoke 检查则不需要。
+- `make setup` 需要 Python 3.12，因为它会安装 Candidate；较小的 target 在声明支持的位置可使用 Python 3.10（[Makefile](../Makefile)）。
+- 完整推理会下载大型 checkpoint，并需要固定的运行时环境；普通测试则不需要。
 - 历史绝对路径属于溯源信息。请渲染站点本地配置，不要原地替换这些路径（[可复现性指南](REPRODUCIBILITY.md#frozen-provenance)）。
 - 在冻结 bundle 内只修改文档，也可能使其 checksum manifest 失效。
 - `build/`、`dist/`、缓存、环境、大型 array 和 checkpoint 均被忽略；Release artifact 来自 CI，而不是已提交的构建目录。
@@ -188,7 +187,7 @@ Loader 会在构建 Release 前验证 bundle checksum manifest（[Release loader
 
 1. CLI module 负责编排，但不重新定义模型常量。
 2. Release loader 在 predictor 接收权重前验证并解析 bundle 元数据。
-3. FASTA parsing 独立于模型运行时，因此验证和 smoke 检查可以只用 CPU。
+3. FASTA 解析独立于模型运行时，因此输入验证只需 CPU。
 4. Predictor 依赖冻结 Release 对象和 embedding array，而不依赖科研训练代码。
 5. 输出 writer 负责原子文件创建和结果 checksum。
 6. Candidate worker 隔离不兼容的模型运行时；controller 只将通过 gate 的序列路由到 ESM-C worker（[Candidate worker 启动](../user-inference-v0.1/src/djrmcp_predict_v01/cli.py#L150)、[Candidate 预测](../user-inference-v0.1/src/djrmcp_predict_v01/cli.py#L212)）。
@@ -239,7 +238,7 @@ CI 会在 push 和 pull request 上运行已记录的验证 job。是否阻止�
 
 1. 确认变更属于科研包、正式推理还是 Candidate。
 2. 保持模型/证据身份不变，除非科研 Release 门槛明确授权建立新身份。
-3. 在对应测试套件中添加测试，并尽可能提供仅 CPU 的 smoke 路径。
+3. 在对应套件中添加测试，尽量使用可在 CPU 上运行的测试数据。
 4. 如果任何标识符发生变化，更新用户文档、[变更日志](repository/CHANGELOG.md) 和 `release-manifest.json`。
 5. 先运行聚焦的 `make` target，再运行 `make check`。
 6. 使用 [Pull request 模板](../.github/pull_request_template.md) 记录科研、checksum、输入安全与数据影响，并要求相关 CI job 通过。

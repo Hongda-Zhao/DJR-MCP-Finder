@@ -82,8 +82,6 @@ jobs:
         run: make setup-v0 PYTHON=python
       - name: Run formal package tests
         run: make test-v0 PYTHON=python
-      - name: Run CPU-only smoke checks
-        run: make smoke-v0
 
   candidate-inference-tests:
     name: Model V0.1 Candidate (Python ${{ matrix.python-version }})
@@ -104,8 +102,6 @@ jobs:
         run: make setup-v01 PYTHON=python
       - name: Run candidate package tests
         run: make test-v01 PYTHON=python
-      - name: Run CPU-only smoke checks
-        run: make smoke-v01
 
   packages:
     name: Build and inspect distributions

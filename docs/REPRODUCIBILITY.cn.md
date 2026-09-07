@@ -28,10 +28,10 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 
 make setup
-make metadata docs-check lint test smoke
+make metadata docs-check lint test
 ```
 
-`make smoke` 会运行 FASTA 验证和 `model-info`，但不会执行预测。如需同时进行 wheel/sdist 构建并运行所有本地 CI 等价门槛，请执行：
+如需同时构建并检查 wheel/sdist 安装包，请执行：
 
 ```bash
 make check

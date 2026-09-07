@@ -20,7 +20,6 @@
 
 - [ ] `make lint`
 - [ ] 相关测试
-- [ ] 相关冒烟检查
 - [ ] 打包元数据或捆绑文件发生变化时运行 `make package-check`
 - [ ] 所有 GitHub Actions 检查均为绿色
 

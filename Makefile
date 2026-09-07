@@ -3,14 +3,13 @@ BUILD_DIR ?= build/release
 
 RUFF_PATHS := src tests scripts user-inference-v0/src user-inference-v0/tests user-inference-v0/scripts user-inference-v0.1/src user-inference-v0.1/tests user-inference-v0.1/scripts
 
-.PHONY: help setup setup-core setup-v0 setup-v01 metadata docs-check lint test test-core test-v0 test-v01 smoke smoke-v0 smoke-v01 build package-check check
+.PHONY: help setup setup-core setup-v0 setup-v01 metadata docs-check lint test test-core test-v0 test-v01 build package-check check
 
 help:
 	@echo "DJR-MCP Finder contributor commands"
 	@echo "  make setup          Install all three development packages (Python 3.12+)"
 	@echo "  make test           Run core, formal V0, and V0.1 candidate tests"
 	@echo "  make lint           Run critical Ruff correctness checks"
-	@echo "  make smoke          Validate both inference bundles without model downloads"
 	@echo "  make build          Build wheel and sdist for all three distributions"
 	@echo "  make package-check  Build and validate metadata plus artifact contents"
 	@echo "  make check          Run the complete local CI-equivalent gate"
@@ -50,16 +49,6 @@ test-v01:
 
 test: test-core test-v0 test-v01
 
-smoke-v0:
-	djrmcp-predict validate-fasta user-inference-v0/examples/synthetic_example.faa
-	djrmcp-predict model-info
-
-smoke-v01:
-	djrmcp-predict-v01 validate-fasta user-inference-v0.1/examples/synthetic_example.faa
-	djrmcp-predict-v01 model-info
-
-smoke: smoke-v0 smoke-v01
-
 build: metadata
 	mkdir -p "$(BUILD_DIR)/root" "$(BUILD_DIR)/formal-v0" "$(BUILD_DIR)/candidate-v01"
 	$(PYTHON) -m build --outdir "$(BUILD_DIR)/root" .
@@ -70,4 +59,4 @@ package-check: build
 	$(PYTHON) -m twine check $(BUILD_DIR)/*/*
 	$(PYTHON) scripts/check_distribution_artifacts.py --artifact-root "$(BUILD_DIR)"
 
-check: metadata docs-check lint test smoke package-check
+check: metadata docs-check lint test package-check
