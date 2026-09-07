@@ -7,7 +7,7 @@
 
 # DJR-MCP Finder
 
-**Screen protein FASTA files for double-jelly-roll major capsid protein (DJR-MCP) candidates and determine whether they belong to a supported viral phylum.**
+DJR-MCP Finder screens protein FASTA files for double-jelly-roll major capsid protein (DJR-MCP) candidates and assigns them to supported viral phyla where possible.
 
 DJR-MCPs are characteristic capsid proteins of *Varidnaviria*. Because their double-jelly-roll structural signal can remain after clear sequence similarity weakens, they are useful markers for finding and classifying diverse DNA viruses.
 
@@ -15,13 +15,13 @@ DJR-MCPs are characteristic capsid proteins of *Varidnaviria*. Because their dou
 | --- | --- | --- |
 | Amino-acid FASTA | Per-protein DJR/MCP scores and final labels | Virologists and bioinformaticians screening viral proteins or proteins predicted from contigs |
 
-> **Model V0.1 Candidate is the preferred current experimental candidate for exploratory screening; Model V0 is the released, frozen, reproducible baseline.** V0.1 still awaits independent external validation and does not replace or deprecate V0.
+Model V0.1 Candidate is currently preferred for exploratory screening, but still awaits independent external validation. Model V0 remains the released, frozen, reproducible baseline; V0.1 does not replace or deprecate it.
 
 ## Prediction workflow
 
 ![DJR-MCP Finder prediction workflow](docs/assets/readme/readme_workflow.svg)
 
-Both models retain H1→H2→H3 decision semantics, but their computation differs. Model V0 computes H1 and H2 raw scores for every sequence from one shared ESM-C 6B embedding; H2 affects the operational cascade only when H1 is positive. Model V0.1 computes H1 for every sequence and H2 only for H1-positive sequences. In both models, H3 is computed only for H1/H2-positive sequences. All scores, gate states, and final labels are written to `predictions.tsv`; these labels are intended for screening and do not constitute structural confirmation.
+Both models make decisions in H1→H2→H3 order, with different computation paths. Model V0 computes H1 and H2 raw scores for every sequence from one shared ESM-C 6B embedding; H2 affects the operational cascade only when H1 is positive. Model V0.1 computes H1 for every sequence and H2 only for H1-positive sequences. In both models, H3 is computed only for H1/H2-positive sequences. All scores, gate states, and final labels are written to `predictions.tsv`; these labels are intended for screening and do not constitute structural confirmation.
 
 ## Quick start
 
@@ -56,9 +56,7 @@ run_output/my_sample/
 
 Possible final labels are `non_djr`, `djr_non_mcp`, `mcp::Nucleocytoviricota`, `mcp::Preplasmiviricota`, and `mcp::unknown/other`. The last label means only that a sequence passed H1 and H2 but could not be assigned reliably to either supported viral phylum by H3; it is not a general unknown-virus detector.
 
-## Core development performance and benchmark
-
-The development evidence is presented in the following order: data composition → evaluation design → V0 model selection → V0/V0.1 comparison.
+## Development data and model evaluation
 
 ### Development data
 
@@ -88,7 +86,7 @@ Model V0 uses one ESM-C 6B embedding to compute H1 and H2 for every sequence, th
 | --- | --- | --- |
 | Project status | Released, frozen, reproducible baseline | Preferred experimental candidate for exploratory screening; awaiting independent external validation |
 | H1/H2 | ESM-C 6B representation, heads, and calibration | ESM-2 3B representation with corresponding newly frozen heads and calibration |
-| H3 | ESM-C 6B phylum/reject head | Byte-identical V0 H3 artifact and calibration |
+| H3 | ESM-C 6B phylum/reject head | Reuses the V0 H3 artifact and calibration |
 | Execution | H1/H2 raw scores for all sequences; H2 is gated operationally; H3 only for H1/H2-positive sequences | H1 for all sequences; H2 only for H1-positive sequences; second encoder and H3 only for H1/H2-positive sequences |
 | Output provenance | 20 fields in `predictions.tsv` | 23 fields, adding three head-encoder provenance fields |
 
@@ -125,7 +123,7 @@ V0.1 improves four of the five folds and decreases one. The paired-fold mean dif
 | cellular_djr_002 | 0.994 | 0.082 | not_reached | `djr_non_mcp` |
 | background_003 | 0.006 | NA | not_reached | `non_djr` |
 
-## Result boundaries
+## Interpreting results
 
 - Outputs are screening candidates for subsequent validation, not structural confirmation.
 - V0.1's preferred experimental status is based on Train-only development CV; independent external validation has not yet been performed.
@@ -136,14 +134,14 @@ V0.1 improves four of the five folds and decreases one. The paired-fold mean dif
 | Directory | Function |
 | --- | --- |
 | [`.github/`](.github/) | Continuous integration, release automation, and issue/PR templates |
-| [`benchmarks/`](benchmarks/) | Checksum-bound benchmark protocols, compact results, and figures |
+| [`benchmarks/`](benchmarks/) | Benchmark protocols, results, and figures |
 | [`configs/`](configs/) | Dataset, model-selection, and validation configuration |
 | [`data/`](data/) | Released manifests, split contracts, and data-integrity records |
 | [`docs/`](docs/) | Scientific evidence, reproducibility, architecture, versioning, and translations |
 | [`results/`](results/) | Compact published results, model identities, and figure provenance |
 | [`scripts/`](scripts/) | Portable Python research workflows, validation, model evaluation, and plotting utilities |
 | [`src/`](src/) | Core `djrmcp-finder` Python research package |
-| [`tests/`](tests/) | Automated tests and engineering-contract checks |
+| [`tests/`](tests/) | Automated tests |
 | [`user-inference-v0/`](user-inference-v0/) | Released and frozen Model V0 baseline package |
 | [`user-inference-v0.1/`](user-inference-v0.1/) | Preferred experimental Model V0.1 Candidate inference package |
 

@@ -16,7 +16,6 @@
 
 - [ ] `make lint`
 - [ ] relevant tests
-- [ ] relevant smoke checks
 - [ ] `make package-check` when packaging metadata or bundled files changed
 - [ ] all GitHub Actions checks are green
 

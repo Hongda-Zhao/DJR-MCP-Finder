@@ -24,8 +24,8 @@ package replaces the H1/H2 encoder but explicitly remains outside the released s
 | Packaging | PEP 517/621, setuptools, `src/` layout, three distributions | [root metadata](../pyproject.toml#L1-L10), [release manifest](../release-manifest.json#L8-L32) |
 | Numerical/data | NumPy, pandas, scikit-learn, Biopython, joblib, PyYAML | [dependencies](../pyproject.toml#L42-L49) |
 | Model runtimes | PyTorch, Hugging Face/Biohub Transformers, isolated candidate runtimes | [extras](../pyproject.toml#L52-L67), [candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
-| Test/lint/build | pytest, Ruff, PyPA build, Twine, Make | [dev dependencies](../pyproject.toml#L71-L77), [Makefile](../Makefile#L33-L73) |
-| CI/release | GitHub Actions; tag-gated GitHub Release artifacts | [CI](../.github/workflows/ci.yml#L16-L129), [release workflow](../.github/workflows/release.yml#L17-L89) |
+| Test/lint/build | pytest, Ruff, PyPA build, Twine, Make | [dev dependencies](../pyproject.toml#L71-L77), [Makefile](../Makefile) |
+| CI/release | GitHub Actions; tag-gated GitHub Release artifacts | [CI](../.github/workflows/ci.yml), [release workflow](../.github/workflows/release.yml#L17-L89) |
 | Storage | Filesystem artifacts: FASTA, TSV/JSON, NPZ, checksum manifests | [output example](../README.md#L65-L76), [bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### Entrypoints
@@ -50,22 +50,21 @@ test semantics.
 
 | Command | Purpose | Evidence |
 | --- | --- | --- |
-| `make setup` | Install all three development distributions under Python 3.12+ | [Makefile](../Makefile#L18-L21) |
-| `make setup-core` / `setup-v0` / `setup-v01` | Install one surface | [Makefile](../Makefile#L23-L31) |
-| `make metadata` | Check release/package/model/bundle mapping | [Makefile](../Makefile#L33-L34) |
-| `make docs-check` | Check required docs, README size, and local links | [Makefile](../Makefile#L36-L37) |
-| `make lint` | Run critical Ruff correctness rules | [Makefile](../Makefile#L39-L40) |
-| `make test` | Run core, formal, and candidate suites | [Makefile](../Makefile#L42-L51) |
-| `python -m pytest -q tests/test_cli.py` | Run one focused test module | [core test target](../Makefile#L42-L43), [example module](../tests/test_cli.py) |
-| `make smoke` | Validate both FASTA parsers and frozen bundles without model downloads | [Makefile](../Makefile#L53-L61) |
-| `make build` | Build three wheels and three sdists | [Makefile](../Makefile#L63-L67) |
-| `make package-check` | Run Twine and inspect licenses, typed markers, notices, and metadata | [Makefile](../Makefile#L69-L71) |
-| `make check` | Complete local CI-equivalent gate | [Makefile](../Makefile#L73) |
+| `make setup` | Install all three development distributions under Python 3.12+ | [Makefile](../Makefile) |
+| `make setup-core` / `setup-v0` / `setup-v01` | Install one surface | [Makefile](../Makefile) |
+| `make metadata` | Check release/package/model/bundle mapping | [Makefile](../Makefile) |
+| `make docs-check` | Check required docs, README size, and local links | [Makefile](../Makefile) |
+| `make lint` | Run critical Ruff correctness rules | [Makefile](../Makefile) |
+| `make test` | Run core, formal, and candidate suites | [Makefile](../Makefile) |
+| `python -m pytest -q tests/test_cli.py` | Run one focused test module | [core test target](../Makefile), [example module](../tests/test_cli.py) |
+| `make build` | Build three wheels and three sdists | [Makefile](../Makefile) |
+| `make package-check` | Run Twine and inspect licenses, typed markers, notices, and metadata | [Makefile](../Makefile) |
+| `make check` | Complete local CI-equivalent gate | [Makefile](../Makefile) |
 
 CI runs on pushes to `main`, pull requests, and manual dispatch
-([CI triggers](../.github/workflows/ci.yml#L3-L7)). It covers all declared Python versions for the
-root and formal packages, both candidate versions, metadata/docs, lint, smoke checks, and built
-distributions ([CI jobs](../.github/workflows/ci.yml#L16-L129)).
+([CI triggers](../.github/workflows/ci.yml)). It covers all declared Python versions for the
+root and formal packages, both candidate versions, metadata/docs, lint, and built
+distributions ([CI jobs](../.github/workflows/ci.yml)).
 
 The workflow defines the repository's automated verification surface. Whether those jobs are
 configured as merge-blocking required checks is controlled in GitHub repository settings and is not
@@ -92,7 +91,7 @@ asserted by the files in this checkout.
 | --- | --- | --- |
 | Root/formal package minimum | Python `>=3.10` | [root](../pyproject.toml#L10), [formal](../user-inference-v0/pyproject.toml#L18) |
 | Candidate package minimum | Python `>=3.12`, NumPy `==2.5.1` | [candidate](../user-inference-v0.1/pyproject.toml#L18-L40) |
-| CI runners | Python 3.10–3.13 and current GitHub action majors | [CI matrix](../.github/workflows/ci.yml#L46-L108) |
+| CI runners | Python 3.10–3.13 and current GitHub action majors | [CI matrix](../.github/workflows/ci.yml) |
 | Formal container | `ubuntu:24.04`; pinned setuptools, wheel, NumPy, PyTorch, and Biohub commit | [formal Dockerfile](../user-inference-v0/workstation/Dockerfile#L1-L2), [runtime install](../user-inference-v0/workstation/Dockerfile#L43-L54) |
 | Candidate container | Derived from formal V0; second Python 3.12 environment with pinned Transformers | [candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L1-L9), [overlay](../user-inference-v0.1/workstation/Dockerfile#L24-L57) |
 | Release runner | Python 3.12; tag must be on `main` | [release workflow](../.github/workflows/release.yml#L38-L56) |
@@ -121,7 +120,7 @@ started through portable Python entrypoints rather than an internal background-j
 required scheduler. Checksum-bound `benchmarks/*/pbs/` files remain only as optional historical HPC
 replay evidence; they are not dependencies of ordinary FASTA prediction.
 
-The test strategy has three independent suites and CPU-only smoke checks. GPU inference and full
+The test strategy has three independent CPU-only suites. GPU inference and full
 archive replay remain workstation/HPC validations because their checkpoints and frozen databases
 are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#what-can-be-reproduced-locally)).
 
@@ -140,9 +139,9 @@ are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#wh
 
 ### Repository controls
 
-- The [`Makefile`](../Makefile#L33-L73) centralizes metadata, documentation, lint, test, smoke, and
+- The [`Makefile`](../Makefile) centralizes metadata, documentation, lint, test, and
   package gates.
-- [CI](../.github/workflows/ci.yml#L16-L128) runs those gates across the supported package and Python
+- [CI](../.github/workflows/ci.yml) runs those gates across the supported package and Python
   surfaces.
 - The [pull-request template](../.github/pull_request_template.md) asks reviewers to check model
   identity, checksums, claims, input safety, and sensitive data.
@@ -154,9 +153,9 @@ are outside the compact checkout ([reproducibility matrix](REPRODUCIBILITY.md#wh
 ### Contributor gotchas
 
 - `make setup` needs Python 3.12 because it installs the candidate; smaller targets support Python
-  3.10 where declared ([Makefile](../Makefile#L18-L31)).
+  3.10 where declared ([Makefile](../Makefile)).
 - Full inference downloads large checkpoints and requires pinned runtime environments; normal tests
-  and smoke checks do not.
+  do not.
 - Historical absolute paths are provenance. Render site-local configuration instead of replacing
   them in place ([reproducibility guide](REPRODUCIBILITY.md#frozen-provenance)).
 - A documentation-only edit inside a frozen bundle can invalidate its checksum manifest.
@@ -231,7 +230,7 @@ owns the frozen cascade ([predictor](../user-inference-v0/src/djrmcp_predict/pre
 
 1. CLI modules orchestrate but do not redefine model constants.
 2. Release loaders verify and parse bundle metadata before predictors receive weights.
-3. FASTA parsing is independent of model runtimes, which keeps validation and smoke checks CPU-only.
+3. FASTA parsing is independent of model runtimes, which keeps validation CPU-only.
 4. Predictors depend on frozen release objects and embedding arrays, not on research training code.
 5. Output writers own atomic file creation and result checksums.
 6. Candidate workers isolate incompatible model runtimes; the controller routes only gate-through
@@ -290,7 +289,7 @@ the active workflow until OIDC Trusted Publishing and a protected environment ar
 
 1. Identify whether the change belongs to the research package, formal inference, or candidate.
 2. Preserve model/evidence identity unless the scientific release gates explicitly authorize a new one.
-3. Add tests in the corresponding suite and a CPU-only smoke path when possible.
+3. Add tests in the corresponding suite, using CPU-only fixtures where possible.
 4. Update user docs, the [changelog](repository/CHANGELOG.md), and `release-manifest.json` if any
    identifier changes.
 5. Run the focused `make` target, then `make check`.

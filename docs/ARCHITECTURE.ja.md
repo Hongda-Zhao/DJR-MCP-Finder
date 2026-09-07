@@ -18,8 +18,8 @@ DJR-MCP Finder は、Python の研究 pipeline と二つのユーザー向け推
 | パッケージング | PEP 517/621、setuptools、`src/` レイアウト、三つの distribution | [ルートメタデータ](../pyproject.toml#L1-L10)、[リリースマニフェスト](../release-manifest.json#L8-L32) |
 | 数値／データ | NumPy、pandas、scikit-learn、Biopython、joblib、PyYAML | [依存関係](../pyproject.toml#L42-L49) |
 | モデルランタイム | PyTorch、Hugging Face/Biohub Transformers、分離された Candidate ランタイム | [extras](../pyproject.toml#L52-L67)、[Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
-| テスト／lint／ビルド | pytest、Ruff、PyPA build、Twine、Make | [開発依存関係](../pyproject.toml#L71-L77)、[Makefile](../Makefile#L33-L73) |
-| CI／リリース | GitHub Actions。タグで制御される GitHub Release artifact | [CI](../.github/workflows/ci.yml#L16-L129)、[リリース workflow](../.github/workflows/release.yml#L17-L89) |
+| テスト／lint／ビルド | pytest、Ruff、PyPA build、Twine、Make | [開発依存関係](../pyproject.toml#L71-L77)、[Makefile](../Makefile) |
+| CI／リリース | GitHub Actions。タグで制御される GitHub Release artifact | [CI](../.github/workflows/ci.yml)、[リリース workflow](../.github/workflows/release.yml#L17-L89) |
 | ストレージ | ファイルシステム上の artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [出力例](../README.md#L65-L76)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### エントリーポイント
@@ -41,19 +41,18 @@ DJR-MCP Finder は、Python の研究 pipeline と二つのユーザー向け推
 
 | コマンド | 用途 | 根拠 |
 | --- | --- | --- |
-| `make setup` | Python 3.12+ で三つの開発 distribution をすべてインストール | [Makefile](../Makefile#L18-L21) |
-| `make setup-core` / `setup-v0` / `setup-v01` | いずれか一つの利用面をインストール | [Makefile](../Makefile#L23-L31) |
-| `make metadata` | リリース／パッケージ／モデル／bundle の対応を確認 | [Makefile](../Makefile#L33-L34) |
-| `make docs-check` | 必須文書、README のサイズ、ローカルリンクを確認 | [Makefile](../Makefile#L36-L37) |
-| `make lint` | 重要な Ruff 正確性ルールを実行 | [Makefile](../Makefile#L39-L40) |
-| `make test` | コア、正式版、Candidate のテストスイートを実行 | [Makefile](../Makefile#L42-L51) |
-| `python -m pytest -q tests/test_cli.py` | 対象を絞ったテストモジュールを一つ実行 | [コアテスト target](../Makefile#L42-L43)、[サンプルモジュール](../tests/test_cli.py) |
-| `make smoke` | モデルをダウンロードせず、両方の FASTA parser と固定 bundle を検証 | [Makefile](../Makefile#L53-L61) |
-| `make build` | 三つの wheel と三つの sdist を構築 | [Makefile](../Makefile#L63-L67) |
-| `make package-check` | Twine を実行し、ライセンス、typed marker、notice、メタデータを確認 | [Makefile](../Makefile#L69-L71) |
-| `make check` | 完全なローカル CI 相当ゲート | [Makefile](../Makefile#L73) |
+| `make setup` | Python 3.12+ で三つの開発 distribution をすべてインストール | [Makefile](../Makefile) |
+| `make setup-core` / `setup-v0` / `setup-v01` | いずれか一つの利用面をインストール | [Makefile](../Makefile) |
+| `make metadata` | リリース／パッケージ／モデル／bundle の対応を確認 | [Makefile](../Makefile) |
+| `make docs-check` | 必須文書、README のサイズ、ローカルリンクを確認 | [Makefile](../Makefile) |
+| `make lint` | 重要な Ruff 正確性ルールを実行 | [Makefile](../Makefile) |
+| `make test` | コア、正式版、Candidate のテストスイートを実行 | [Makefile](../Makefile) |
+| `python -m pytest -q tests/test_cli.py` | 対象を絞ったテストモジュールを一つ実行 | [コアテスト target](../Makefile)、[サンプルモジュール](../tests/test_cli.py) |
+| `make build` | 三つの wheel と三つの sdist を構築 | [Makefile](../Makefile) |
+| `make package-check` | Twine を実行し、ライセンス、typed marker、notice、メタデータを確認 | [Makefile](../Makefile) |
+| `make check` | 完全なローカル CI 相当ゲート | [Makefile](../Makefile) |
 
-CI は `main` への push、pull request、手動 dispatch で実行されます（[CI trigger](../.github/workflows/ci.yml#L3-L7)）。ルートおよび正式版パッケージで宣言された全 Python バージョン、Candidate の二つのバージョン、メタデータ／文書、lint、smoke check、構築済み distribution を対象とします（[CI jobs](../.github/workflows/ci.yml#L16-L129)）。
+CI は `main` への push、pull request、手動 dispatch で実行されます（[CI trigger](../.github/workflows/ci.yml)）。ルートおよび正式版パッケージで宣言された全 Python バージョン、Candidate の二つのバージョン、メタデータ／文書、lint、構築済み distribution を対象とします（[CI jobs](../.github/workflows/ci.yml)）。
 
 この workflow は、リポジトリの自動検証範囲を定義します。各 job が merge を阻止する required check として設定されているかどうかは GitHub のリポジトリ設定で管理され、checkout 内のファイルだけからは断定しません。
 
@@ -78,7 +77,7 @@ CI は `main` への push、pull request、手動 dispatch で実行されます
 | --- | --- | --- |
 | ルート／正式版パッケージの最小要件 | Python `>=3.10` | [ルート](../pyproject.toml#L10)、[正式版](../user-inference-v0/pyproject.toml#L18) |
 | Candidate パッケージの最小要件 | Python `>=3.12`、NumPy `==2.5.1` | [Candidate](../user-inference-v0.1/pyproject.toml#L18-L40) |
-| CI runner | Python 3.10–3.13 と現在の GitHub action major | [CI matrix](../.github/workflows/ci.yml#L46-L108) |
+| CI runner | Python 3.10–3.13 と現在の GitHub action major | [CI matrix](../.github/workflows/ci.yml) |
 | 正式版コンテナ | `ubuntu:24.04`。setuptools、wheel、NumPy、PyTorch、Biohub commit を固定 | [正式版 Dockerfile](../user-inference-v0/workstation/Dockerfile#L1-L2)、[ランタイムインストール](../user-inference-v0/workstation/Dockerfile#L43-L54) |
 | Candidate コンテナ | 正式版 V0 から派生。固定 Transformers を使う二つ目の Python 3.12 環境 | [Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L1-L9)、[overlay](../user-inference-v0.1/workstation/Dockerfile#L24-L57) |
 | リリース runner | Python 3.12。tag は `main` 上に存在する必要がある | [リリース workflow](../.github/workflows/release.yml#L38-L56) |
@@ -96,7 +95,7 @@ CI は `main` への push、pull request、手動 dispatch で実行されます
 
 プロジェクト独自のネットワーク API はありません。外部モデルとデータベースへのアクセスは、ユーザーまたは研究者が明示的にコマンドを実行したときに発生します。データ規約は、FASTA 入力、固定された JSON/NPZ/checksum bundle ファイル、TSV/JSON 予測出力、checksum に結び付けられた Benchmark 記録です。root の研究 workflow は可搬な Python entrypoint から開始され、内部 background-job service や必須 scheduler を必要としません。checksum-bound の `benchmarks/*/pbs/` は、任意の歴史的 HPC replay evidence としてのみ保持され、通常の FASTA 予測には依存しません。
 
-テスト戦略は三つの独立スイートと CPU のみの smoke check で構成されます。GPU 推論と完全アーカイブの再実行は、checkpoint と固定データベースがコンパクト checkout に含まれないため、引き続きワークステーション／HPC 検証です（[再現性マトリクス](REPRODUCIBILITY.md#what-can-be-reproduced-locally)）。
+テスト戦略は三つの独立スイート で構成されます。GPU 推論と完全アーカイブの再実行は、checkpoint と固定データベースがコンパクト checkout に含まれないため、引き続きワークステーション／HPC 検証です（[再現性マトリクス](REPRODUCIBILITY.md#what-can-be-reproduced-locally)）。
 
 ## Part 2 — コンテキストとエコシステム
 
@@ -113,16 +112,16 @@ CI は `main` への push、pull request、手動 dispatch で実行されます
 
 ### リポジトリの管理手段
 
-- [`Makefile`](../Makefile#L33-L73) は、メタデータ、文書、lint、テスト、smoke、パッケージの gate を一元化します。
-- [CI](../.github/workflows/ci.yml#L16-L128) は、サポート対象のパッケージと Python バージョンに対してこれらの gate を実行します。
+- [`Makefile`](../Makefile) は、メタデータ、文書、lint、テスト、パッケージの gate を一元化します。
+- [CI](../.github/workflows/ci.yml) は、サポート対象のパッケージと Python バージョンに対してこれらの gate を実行します。
 - [Pull request テンプレート](../.github/pull_request_template.md) は、モデル識別子、checksum、主張、入力の安全性、機密データの確認を reviewer に求めます。
 - [Issue テンプレート](../.github/ISSUE_TEMPLATE/) は、再現可能な bug、機能要求、科学的解釈の質問を分けて扱います。
 - マシン可読なリリースマニフェストは、文章だけでのバージョン変更を防ぎます（[マニフェスト](../release-manifest.json#L1-L51)）。
 
 ### コントリビューターが注意すべき点
 
-- `make setup` は Candidate をインストールするため Python 3.12 が必要です。小さい target は、宣言された範囲で Python 3.10 をサポートします（[Makefile](../Makefile#L18-L31)）。
-- 完全な推論は大規模 checkpoint をダウンロードし、固定ランタイム環境を必要とします。通常のテストと smoke check には不要です。
+- `make setup` は Candidate をインストールするため Python 3.12 が必要です。小さい target は、宣言された範囲で Python 3.10 をサポートします（[Makefile](../Makefile)）。
+- 完全な推論は大規模 checkpoint をダウンロードし、固定ランタイム環境を必要とします。通常のテストには不要です。
 - 過去の絶対パスは来歴情報です。その場で置き換えず、サイトローカル設定をレンダリングしてください（[再現性ガイド](REPRODUCIBILITY.md#frozen-provenance)）。
 - 固定 bundle 内の文書だけを編集しても、checksum manifest が無効になる場合があります。
 - `build/`、`dist/`、キャッシュ、環境、大規模 array、checkpoint は無視されます。リリース artifact は commit 済みのビルドディレクトリではなく CI から生成されます。
@@ -188,7 +187,7 @@ Loader は Release を構築する前に bundle checksum manifest を検証し�
 
 1. CLI module はオーケストレーションを担当し、モデル定数を再定義しません。
 2. Release loader は、predictor が重みを受け取る前に bundle メタデータを検証・解析します。
-3. FASTA parsing はモデルランタイムから独立しているため、検証と smoke check を CPU のみで実行できます。
+3. FASTA parsing はモデルランタイムから独立しているため、検証を CPU のみで実行できます。
 4. Predictor は固定された Release object と embedding array に依存し、研究用学習コードには依存しません。
 5. 出力 writer は、ファイルのアトミックな作成と結果 checksum を担当します。
 6. Candidate worker は互換性のないモデルランタイムを分離します。Controller は gate を通過した配列だけを ESM-C worker に転送します（[Candidate worker 起動](../user-inference-v0.1/src/djrmcp_predict_v01/cli.py#L150)、[Candidate 予測](../user-inference-v0.1/src/djrmcp_predict_v01/cli.py#L212)）。
@@ -239,7 +238,7 @@ CI は push と pull request で文書化された検証 job を実行します�
 
 1. 変更が研究パッケージ、正式版推論、Candidate のどれに属するか確認します。
 2. 科学的リリースゲートが新しい識別子を明示的に認めない限り、モデル／エビデンス識別子を維持します。
-3. 対応するスイートにテストを追加し、可能であれば CPU のみの smoke 経路も追加します。
+3. 対応するスイートにテストを追加し、可能な限り CPU のみで動作するテストデータを使います。
 4. 識別子が変わる場合は、ユーザー文書、[変更履歴](repository/CHANGELOG.md)、`release-manifest.json` を更新します。
 5. 対象の `make` target を実行してから、`make check` を実行します。
 6. [Pull request テンプレート](../.github/pull_request_template.md) を使って、科学、checksum、入力の安全性、データへの影響を記録し、関連する CI job の通過を必須とします。
