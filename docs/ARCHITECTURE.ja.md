@@ -8,7 +8,7 @@
 
 ### このリポジトリについて
 
-DJR-MCP Finder は、Python の研究 pipeline と二つのユーザー向け推論パッケージで構成されます。リリース済み経路は protein FASTA を受け取り、固定バージョンの ESM-C embedding を計算し、固定された H1→H2→H3 cascade を適用して、メタデータと checksum 付きの予測を書き出します（[README](../README.md#L10-L17)）。Candidate パッケージは H1/H2 encoder を置き換えますが、リリース済みの科学的識別子には明示的に含まれません（[リリースマニフェスト](../release-manifest.json#L34-L50)）。
+DJR-MCP Finder は、Python の研究 pipeline と二つのユーザー向け推論パッケージで構成されます。リリース済み経路は protein FASTA を受け取り、固定バージョンの ESM-C embedding を計算し、固定された H1→H2→H3 cascade を適用して、メタデータと checksum 付きの予測を書き出します（[README](../README.md#prediction-workflow)）。Candidate パッケージは H1/H2 encoder を置き換えますが、リリース済みの科学的識別子には明示的に含まれません（[リリースマニフェスト](../release-manifest.json#L34-L50)）。
 
 ### 検出されたスタック
 
@@ -20,7 +20,7 @@ DJR-MCP Finder は、Python の研究 pipeline と二つのユーザー向け推
 | モデルランタイム | PyTorch、Hugging Face/Biohub Transformers、分離された Candidate ランタイム | [extras](../pyproject.toml#L52-L67)、[Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
 | テスト／lint／ビルド | pytest、Ruff、PyPA build、Twine、Make | [開発依存関係](../pyproject.toml#L71-L77)、[Makefile](../Makefile) |
 | CI／リリース | GitHub Actions。タグで制御される GitHub Release artifact | [CI](../.github/workflows/ci.yml)、[リリース workflow](../.github/workflows/release.yml#L17-L89) |
-| ストレージ | ファイルシステム上の artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [出力例](../README.md#L65-L76)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
+| ストレージ | ファイルシステム上の artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [出力例](../README.md#output)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### エントリーポイント
 
@@ -202,7 +202,7 @@ Loader は Release を構築する前に bundle checksum manifest を検証し�
 | 設定 | JSON/YAML と環境変数によるパスレンダリング | [再現性ガイド](REPRODUCIBILITY.md#portable-checkout) |
 | 完全性 | モデル読み込み前と結果書き込み後の SHA-256 manifest | [正式版 loader](../user-inference-v0/src/djrmcp_predict/release.py#L35) |
 | エラー処理 | exception とゼロ以外の CLI exit による fail-closed 検証 | [正式版 CLI](../user-inference-v0/src/djrmcp_predict/cli.py#L117) |
-| ログ／メタデータ | 構造化された実行メタデータと明示的なコマンド出力 | [出力規約](../README.md#L65-L76) |
+| ログ／メタデータ | 構造化された実行メタデータと明示的なコマンド出力 | [出力規約](../README.md#output) |
 | Secret | 認証情報を埋め込まない。外部キャッシュ／アーカイブはパスで指定 | [環境テンプレート](../.env.example#L1-L15)、[レビュー checklist](../.github/pull_request_template.md#L30-L33) |
 | Feature flag | デバイス、キャッシュ、オフラインモード、ポータブルルート用の環境変数 | [正式版ガイド](../user-inference-v0/README.md) |
 | 可観測性 | 実行時メタデータ、checksum、検証 JSON。telemetry サービスなし | [正式版 Docker 環境](../user-inference-v0/workstation/Dockerfile#L7-L15) |

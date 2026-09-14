@@ -12,7 +12,7 @@ protocol in [`WORKFLOW_V0.md`](research/WORKFLOW_V0.md).
 
 DJR-MCP Finder is a Python research pipeline plus two user-facing inference packages. The released
 path accepts protein FASTA, computes pinned ESM-C embeddings, applies a frozen H1→H2→H3 cascade,
-and writes predictions with metadata and checksums ([README](../README.md#L10-L17)). The candidate
+and writes predictions with metadata and checksums ([README](../README.md#prediction-workflow)). The candidate
 package replaces the H1/H2 encoder but explicitly remains outside the released scientific identity
 ([release manifest](../release-manifest.json#L34-L50)).
 
@@ -26,7 +26,7 @@ package replaces the H1/H2 encoder but explicitly remains outside the released s
 | Model runtimes | PyTorch, Hugging Face/Biohub Transformers, isolated candidate runtimes | [extras](../pyproject.toml#L52-L67), [candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
 | Test/lint/build | pytest, Ruff, PyPA build, Twine, Make | [dev dependencies](../pyproject.toml#L71-L77), [Makefile](../Makefile) |
 | CI/release | GitHub Actions; tag-gated GitHub Release artifacts | [CI](../.github/workflows/ci.yml), [release workflow](../.github/workflows/release.yml#L17-L89) |
-| Storage | Filesystem artifacts: FASTA, TSV/JSON, NPZ, checksum manifests | [output example](../README.md#L65-L76), [bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
+| Storage | Filesystem artifacts: FASTA, TSV/JSON, NPZ, checksum manifests | [output example](../README.md#output), [bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### Entrypoints
 
@@ -248,7 +248,7 @@ by a separate architectural-lint tool.
 | Configuration | JSON/YAML plus environment-variable path rendering | [reproducibility guide](REPRODUCIBILITY.md#portable-checkout) |
 | Integrity | SHA-256 manifests before model load and after result write | [formal loader](../user-inference-v0/src/djrmcp_predict/release.py#L35) |
 | Error handling | Fail-closed validation via exceptions and non-zero CLI exit | [formal CLI](../user-inference-v0/src/djrmcp_predict/cli.py#L117) |
-| Logging/metadata | Structured run metadata and explicit command output | [output contract](../README.md#L65-L76) |
+| Logging/metadata | Structured run metadata and explicit command output | [output contract](../README.md#output) |
 | Secrets | No embedded credentials; external caches/archives supplied by path | [environment template](../.env.example#L1-L15), [review checklist](../.github/pull_request_template.md#L30-L33) |
 | Feature flags | Environment variables for device, cache, offline mode, and portable roots | [formal guide](../user-inference-v0/README.md) |
 | Observability | Runtime metadata, checksums, validation JSON; no telemetry service | [formal Docker environment](../user-inference-v0/workstation/Dockerfile#L7-L15) |
