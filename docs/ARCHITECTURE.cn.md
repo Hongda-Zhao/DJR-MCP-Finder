@@ -8,7 +8,7 @@
 
 ### 仓库是什么
 
-DJR-MCP Finder 是一条 Python 科研流程，并包含两个面向用户的推理包。已发布路径接收 protein FASTA、计算固定版本的 ESM-C embedding、应用冻结的 H1→H2→H3 cascade，并写出带元数据和 checksum 的预测结果（[README](../README.md#L10-L17)）。Candidate 包替换了 H1/H2 encoder，但明确不属于已发布的科学模型身份（[发布清单](../release-manifest.json#L34-L50)）。
+DJR-MCP Finder 是一条 Python 科研流程，并包含两个面向用户的推理包。已发布路径接收 protein FASTA、计算固定版本的 ESM-C embedding、应用冻结的 H1→H2→H3 cascade，并写出带元数据和 checksum 的预测结果（[README](../README.md#prediction-workflow)）。Candidate 包替换了 H1/H2 encoder，但明确不属于已发布的科学模型身份（[发布清单](../release-manifest.json#L34-L50)）。
 
 ### 检测到的技术栈
 
@@ -20,7 +20,7 @@ DJR-MCP Finder 是一条 Python 科研流程，并包含两个面向用户的推
 | 模型运行时 | PyTorch、Hugging Face/Biohub Transformers、隔离的 Candidate 运行时 | [extras](../pyproject.toml#L52-L67)、[Candidate Dockerfile](../user-inference-v0.1/workstation/Dockerfile#L7-L29) |
 | 测试/lint/构建 | pytest、Ruff、PyPA build、Twine、Make | [开发依赖](../pyproject.toml#L71-L77)、[Makefile](../Makefile) |
 | CI/Release | GitHub Actions；由 tag 触发的 GitHub Release artifact | [CI](../.github/workflows/ci.yml)、[Release workflow](../.github/workflows/release.yml#L17-L89) |
-| 存储 | 文件系统 artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [输出示例](../README.md#L65-L76)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
+| 存储 | 文件系统 artifact：FASTA、TSV/JSON、NPZ、checksum manifest | [输出示例](../README.md#output)、[bundle package data](../user-inference-v0/pyproject.toml#L68-L75) |
 
 ### 入口点
 
@@ -202,7 +202,7 @@ Loader 会在构建 Release 前验证 bundle checksum manifest（[Release loader
 | 配置 | JSON/YAML 加环境变量路径渲染 | [可复现性指南](REPRODUCIBILITY.md#portable-checkout) |
 | 完整性 | 模型加载前和结果写入后使用 SHA-256 manifest | [正式 loader](../user-inference-v0/src/djrmcp_predict/release.py#L35) |
 | 错误处理 | 通过 exception 和非零 CLI exit 实现 fail-closed 验证 | [正式 CLI](../user-inference-v0/src/djrmcp_predict/cli.py#L117) |
-| 日志/元数据 | 结构化运行元数据和明确的命令输出 | [输出约定](../README.md#L65-L76) |
+| 日志/元数据 | 结构化运行元数据和明确的命令输出 | [输出约定](../README.md#output) |
 | Secret | 不嵌入凭据；外部缓存/归档通过路径提供 | [环境模板](../.env.example#L1-L15)、[审查 checklist](../.github/pull_request_template.md#L30-L33) |
 | Feature flag | 用于设备、缓存、离线模式和便携根目录的环境变量 | [正式指南](../user-inference-v0/README.md) |
 | 可观测性 | 运行时元数据、checksum、验证 JSON；无 telemetry 服务 | [正式 Docker 环境](../user-inference-v0/workstation/Dockerfile#L7-L15) |
