@@ -1,0 +1,911 @@
+method	panel	length	position	source_dataset	metric	estimate	ci_low	ci_high	parents	components	ci_status	successes	eligible_fragments
+v0	observed_length	<250	full	all	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	mcp_fpr	0.0017889087656529517	0.0	0.00556612134546282	559	489	OK	1	559
+v0	observed_length	<250	full	all	h1_recall	0.5714285714285714	0.14285714285714285	0.8571428571428571	7	7	OK	4	7
+v0	observed_length	<250	full	all	h1_fpr	0.0018115942028985507	0.0	0.005661453475859094	552	482	OK	1	552
+v0	observed_length	<250	full	all	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h2_conditional_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v0	observed_length	<250	full	all	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	all	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	533	470	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	533
+v0	observed_length	<250	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h1_fpr	0.0	0.0	0.0	533	470	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	533
+v0	observed_length	<250	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v0	observed_length	<250	full	cellular_djr_none	h1_recall	0.5714285714285714	0.14285714285714285	0.8571428571428571	7	7	OK	4	7
+v0	observed_length	<250	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v0	observed_length	<250	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	mcp_fpr	0.05263157894736842	0.0	0.25	19	12	OK	1	19
+v0	observed_length	<250	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h1_fpr	0.05263157894736842	0.0	0.25	19	12	OK	1	19
+v0	observed_length	<250	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	<250	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	mcp_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v0	observed_length	250-299	full	all	mcp_fpr	0.0	0.0	0.0	482	383	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	482
+v0	observed_length	250-299	full	all	h1_recall	1.0	1.0	1.0	24	19	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	24	24
+v0	observed_length	250-299	full	all	h1_fpr	0.004246284501061571	0.0	0.01097043364877943	471	377	OK	2	471
+v0	observed_length	250-299	full	all	h2_conditional_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v0	observed_length	250-299	full	all	h2_conditional_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v0	observed_length	250-299	full	all	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	h3_unknown_gated_reject_rate	0.38461538461538464	0.15384615384615385	0.6173076923076819	13	13	OK	5	13
+v0	observed_length	250-299	full	all	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	all	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	319	300	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	319
+v0	observed_length	250-299	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h1_fpr	0.006269592476489028	0.0	0.015772870662460567	319	300	OK	2	319
+v0	observed_length	250-299	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v0	observed_length	250-299	full	cellular_djr_none	h1_recall	1.0	1.0	1.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	11	11
+v0	observed_length	250-299	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v0	observed_length	250-299	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	152	78	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	152
+v0	observed_length	250-299	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	152	78	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	152
+v0	observed_length	250-299	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	mcp_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v0	observed_length	250-299	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v0	observed_length	250-299	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h2_conditional_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v0	observed_length	250-299	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.38461538461538464	0.15384615384615385	0.6173076923076819	13	13	OK	5	13
+v0	observed_length	250-299	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	250-299	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	all	mcp_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v0	observed_length	300-349	full	all	mcp_fpr	0.0015337423312883436	0.0	0.0053097932752764745	652	543	OK	1	652
+v0	observed_length	300-349	full	all	h1_recall	0.9696969696969697	0.879969696969697	1.0	33	16	OK	32	33
+v0	observed_length	300-349	full	all	h1_fpr	0.00473186119873817	0.0	0.011029701707181294	634	535	OK	3	634
+v0	observed_length	300-349	full	all	h2_conditional_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v0	observed_length	300-349	full	all	h2_conditional_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v0	observed_length	300-349	full	all	h3_known_end_to_end_recall	0.8461538461538461	0.3333333333333333	1.0	13	6	OK	11	13
+v0	observed_length	300-349	full	all	h3_known_gated_accuracy	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v0	observed_length	300-349	full	all	h3_known_gated_reject_rate	0.08333333333333333	0.0	0.5	12	5	OK	1	12
+v0	observed_length	300-349	full	all	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	12	5	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	12
+v0	observed_length	300-349	full	all	h3_unknown_gated_reject_rate	0.5	0.0	1.0	2	2	OK	1	2
+v0	observed_length	300-349	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v0	observed_length	300-349	full	all	h3_end_to_end_recall_Preplasmiviricota	0.0			1	1	INSUFFICIENT_COMPONENTS	0	1
+v0	observed_length	300-349	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	322	307	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	322
+v0	observed_length	300-349	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h1_fpr	0.0	0.0	0.0	322	307	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	322
+v0	observed_length	300-349	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v0	observed_length	300-349	full	cellular_djr_none	h1_recall	0.9444444444444444	0.75	1.0	18	8	OK	17	18
+v0	observed_length	300-349	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v0	observed_length	300-349	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	mcp_fpr	0.003205128205128205	0.0	0.013100436681222707	312	229	OK	1	312
+v0	observed_length	300-349	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h1_fpr	0.009615384615384616	0.0	0.026200873362445413	312	229	OK	3	312
+v0	observed_length	300-349	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	viral_vma_djr	mcp_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v0	observed_length	300-349	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	15	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	15	15
+v0	observed_length	300-349	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	viral_vma_djr	h2_conditional_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v0	observed_length	300-349	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	300-349	full	viral_vma_djr	h3_known_end_to_end_recall	0.8461538461538461	0.3333333333333333	1.0	13	6	OK	11	13
+v0	observed_length	300-349	full	viral_vma_djr	h3_known_gated_accuracy	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v0	observed_length	300-349	full	viral_vma_djr	h3_known_gated_reject_rate	0.08333333333333333	0.0	0.5	12	5	OK	1	12
+v0	observed_length	300-349	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	12	5	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	12
+v0	observed_length	300-349	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.5	0.0	1.0	2	2	OK	1	2
+v0	observed_length	300-349	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v0	observed_length	300-349	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.0			1	1	INSUFFICIENT_COMPONENTS	0	1
+v0	observed_length	350-399	full	all	mcp_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v0	observed_length	350-399	full	all	mcp_fpr	0.0	0.0	0.0	645	520	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	645
+v0	observed_length	350-399	full	all	h1_recall	1.0	1.0	1.0	62	35	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	62	62
+v0	observed_length	350-399	full	all	h1_fpr	0.0	0.0	0.0	621	507	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	621
+v0	observed_length	350-399	full	all	h2_conditional_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v0	observed_length	350-399	full	all	h2_conditional_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v0	observed_length	350-399	full	all	h3_known_end_to_end_recall	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v0	observed_length	350-399	full	all	h3_known_gated_accuracy	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v0	observed_length	350-399	full	all	h3_known_gated_reject_rate	0.05555555555555555	0.0	0.19047619047619047	36	20	OK	2	36
+v0	observed_length	350-399	full	all	h3_known_gated_wrong_phylum_rate	0.027777777777777776	0.0	0.13636363636363635	36	20	OK	1	36
+v0	observed_length	350-399	full	all	h3_unknown_gated_reject_rate	0.0	0.0	0.0	2	2	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	2
+v0	observed_length	350-399	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9333333333333333	0.7333333333333333	1.0	30	14	OK	28	30
+v0	observed_length	350-399	full	all	h3_end_to_end_recall_Preplasmiviricota	0.8333333333333334	0.5	1.0	6	6	OK	5	6
+v0	observed_length	350-399	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	234	225	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	234
+v0	observed_length	350-399	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h1_fpr	0.0	0.0	0.0	234	225	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	234
+v0	observed_length	350-399	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v0	observed_length	350-399	full	cellular_djr_none	h1_recall	1.0	1.0	1.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	24	24
+v0	observed_length	350-399	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v0	observed_length	350-399	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	387	283	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	387
+v0	observed_length	350-399	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	387	283	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	387
+v0	observed_length	350-399	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	viral_vma_djr	mcp_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v0	observed_length	350-399	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v0	observed_length	350-399	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	viral_vma_djr	h2_conditional_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v0	observed_length	350-399	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	350-399	full	viral_vma_djr	h3_known_end_to_end_recall	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v0	observed_length	350-399	full	viral_vma_djr	h3_known_gated_accuracy	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v0	observed_length	350-399	full	viral_vma_djr	h3_known_gated_reject_rate	0.05555555555555555	0.0	0.19047619047619047	36	20	OK	2	36
+v0	observed_length	350-399	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.027777777777777776	0.0	0.13636363636363635	36	20	OK	1	36
+v0	observed_length	350-399	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.0	0.0	0.0	2	2	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	2
+v0	observed_length	350-399	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9333333333333333	0.7333333333333333	1.0	30	14	OK	28	30
+v0	observed_length	350-399	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.8333333333333334	0.5	1.0	6	6	OK	5	6
+v0	observed_length	400-449	full	all	mcp_recall	0.987012987012987	0.9423076923076923	1.0	77	45	OK	76	77
+v0	observed_length	400-449	full	all	mcp_fpr	0.0	0.0	0.0	665	588	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	665
+v0	observed_length	400-449	full	all	h1_recall	0.9908256880733946	0.9634118371000223	1.0	109	68	OK	108	109
+v0	observed_length	400-449	full	all	h1_fpr	0.0	0.0	0.0	633	565	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	633
+v0	observed_length	400-449	full	all	h2_conditional_recall	0.987012987012987	0.9423076923076923	1.0	77	45	OK	76	77
+v0	observed_length	400-449	full	all	h2_conditional_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v0	observed_length	400-449	full	all	h3_known_end_to_end_recall	0.9090909090909091	0.7871610346266167	0.9711607142857143	77	45	OK	70	77
+v0	observed_length	400-449	full	all	h3_known_gated_accuracy	0.9210526315789473	0.8084901800327332	0.9772727272727273	76	45	OK	70	76
+v0	observed_length	400-449	full	all	h3_known_gated_reject_rate	0.06578947368421052	0.015381679389312978	0.1702127659574468	76	45	OK	5	76
+v0	observed_length	400-449	full	all	h3_known_gated_wrong_phylum_rate	0.013157894736842105	0.0	0.06003061224489779	76	45	OK	1	76
+v0	observed_length	400-449	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9253731343283582	0.7804878048780488	0.9848541383989144	67	36	OK	62	67
+v0	observed_length	400-449	full	all	h3_end_to_end_recall_Preplasmiviricota	0.8	0.5555555555555556	1.0	10	9	OK	8	10
+v0	observed_length	400-449	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	283	266	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	283
+v0	observed_length	400-449	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h1_fpr	0.0	0.0	0.0	283	266	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	283
+v0	observed_length	400-449	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v0	observed_length	400-449	full	cellular_djr_none	h1_recall	0.96875	0.88	1.0	32	23	OK	31	32
+v0	observed_length	400-449	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v0	observed_length	400-449	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	350	299	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	350
+v0	observed_length	400-449	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	350	299	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	350
+v0	observed_length	400-449	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	viral_vma_djr	mcp_recall	0.987012987012987	0.9423076923076923	1.0	77	45	OK	76	77
+v0	observed_length	400-449	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	77	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	77	77
+v0	observed_length	400-449	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	viral_vma_djr	h2_conditional_recall	0.987012987012987	0.9423076923076923	1.0	77	45	OK	76	77
+v0	observed_length	400-449	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	viral_vma_djr	h3_known_end_to_end_recall	0.9090909090909091	0.7871610346266167	0.9711607142857143	77	45	OK	70	77
+v0	observed_length	400-449	full	viral_vma_djr	h3_known_gated_accuracy	0.9210526315789473	0.8084901800327332	0.9772727272727273	76	45	OK	70	76
+v0	observed_length	400-449	full	viral_vma_djr	h3_known_gated_reject_rate	0.06578947368421052	0.015381679389312978	0.1702127659574468	76	45	OK	5	76
+v0	observed_length	400-449	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.013157894736842105	0.0	0.06003061224489779	76	45	OK	1	76
+v0	observed_length	400-449	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	400-449	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9253731343283582	0.7804878048780488	0.9848541383989144	67	36	OK	62	67
+v0	observed_length	400-449	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.8	0.5555555555555556	1.0	10	9	OK	8	10
+v0	observed_length	450-499	full	all	mcp_recall	0.971830985915493	0.9166666666666666	1.0	71	45	OK	69	71
+v0	observed_length	450-499	full	all	mcp_fpr	0.0	0.0	0.0	515	455	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	515
+v0	observed_length	450-499	full	all	h1_recall	1.0	1.0	1.0	94	58	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	94	94
+v0	observed_length	450-499	full	all	h1_fpr	0.0040650406504065045	0.0	0.010893246187363835	492	442	OK	2	492
+v0	observed_length	450-499	full	all	h2_conditional_recall	0.971830985915493	0.9166666666666666	1.0	71	45	OK	69	71
+v0	observed_length	450-499	full	all	h2_conditional_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v0	observed_length	450-499	full	all	h3_known_end_to_end_recall	0.9436619718309859	0.8544932935916542	1.0	71	45	OK	67	71
+v0	observed_length	450-499	full	all	h3_known_gated_accuracy	0.9710144927536232	0.8947368421052632	1.0	69	43	OK	67	69
+v0	observed_length	450-499	full	all	h3_known_gated_reject_rate	0.014492753623188406	0.0	0.05263157894736842	69	43	OK	1	69
+v0	observed_length	450-499	full	all	h3_known_gated_wrong_phylum_rate	0.014492753623188406	0.0	0.05263157894736842	69	43	OK	1	69
+v0	observed_length	450-499	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9552238805970149	0.8863564441887226	1.0	67	42	OK	64	67
+v0	observed_length	450-499	full	all	h3_end_to_end_recall_Preplasmiviricota	0.75	0.25	1.0	4	4	OK	3	4
+v0	observed_length	450-499	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	218	203	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	218
+v0	observed_length	450-499	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h1_fpr	0.009174311926605505	0.0	0.023044141491722122	218	203	OK	2	218
+v0	observed_length	450-499	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v0	observed_length	450-499	full	cellular_djr_none	h1_recall	1.0	1.0	1.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	23	23
+v0	observed_length	450-499	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v0	observed_length	450-499	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	274	239	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	274
+v0	observed_length	450-499	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	274	239	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	274
+v0	observed_length	450-499	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	viral_vma_djr	mcp_recall	0.971830985915493	0.9166666666666666	1.0	71	45	OK	69	71
+v0	observed_length	450-499	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v0	observed_length	450-499	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	viral_vma_djr	h2_conditional_recall	0.971830985915493	0.9166666666666666	1.0	71	45	OK	69	71
+v0	observed_length	450-499	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	viral_vma_djr	h3_known_end_to_end_recall	0.9436619718309859	0.8544932935916542	1.0	71	45	OK	67	71
+v0	observed_length	450-499	full	viral_vma_djr	h3_known_gated_accuracy	0.9710144927536232	0.8947368421052632	1.0	69	43	OK	67	69
+v0	observed_length	450-499	full	viral_vma_djr	h3_known_gated_reject_rate	0.014492753623188406	0.0	0.05263157894736842	69	43	OK	1	69
+v0	observed_length	450-499	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.014492753623188406	0.0	0.05263157894736842	69	43	OK	1	69
+v0	observed_length	450-499	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	450-499	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9552238805970149	0.8863564441887226	1.0	67	42	OK	64	67
+v0	observed_length	450-499	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.75	0.25	1.0	4	4	OK	3	4
+v0	observed_length	500+	full	all	mcp_recall	0.9918032786885246	0.967391304347826	1.0	122	83	OK	121	122
+v0	observed_length	500+	full	all	mcp_fpr	0.00035971223021582735	0.0	0.0011278301526663594	2780	2515	OK	1	2780
+v0	observed_length	500+	full	all	h1_recall	0.9344262295081968	0.8943610568520614	0.9635776640577965	305	216	OK	285	305
+v0	observed_length	500+	full	all	h1_fpr	0.004620716211012707	0.002204261572373255	0.007367246592067955	2597	2382	OK	12	2597
+v0	observed_length	500+	full	all	h2_conditional_recall	0.9918032786885246	0.967391304347826	1.0	122	83	OK	121	122
+v0	observed_length	500+	full	all	h2_conditional_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v0	observed_length	500+	full	all	h3_known_end_to_end_recall	0.9754098360655737	0.9340613931523023	1.0	122	83	OK	119	122
+v0	observed_length	500+	full	all	h3_known_gated_accuracy	0.9834710743801653	0.9534883720930233	1.0	121	82	OK	119	121
+v0	observed_length	500+	full	all	h3_known_gated_reject_rate	0.01652892561983471	0.0	0.046511627906976744	121	82	OK	2	121
+v0	observed_length	500+	full	all	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	121	82	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	121
+v0	observed_length	500+	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.958904109589041	0.8571428571428571	1.0	73	36	OK	70	73
+v0	observed_length	500+	full	all	h3_end_to_end_recall_Preplasmiviricota	1.0	1.0	1.0	49	47	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	49	49
+v0	observed_length	500+	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	1091	1013	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	1091
+v0	observed_length	500+	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h1_fpr	0.00458295142071494	0.0009157299699385701	0.009149340290694362	1091	1013	OK	5	1091
+v0	observed_length	500+	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v0	observed_length	500+	full	cellular_djr_none	h1_recall	0.8907103825136612	0.8199861111111111	0.9397173801589336	183	133	OK	163	183
+v0	observed_length	500+	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v0	observed_length	500+	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	mcp_fpr	0.0006640106241699867	0.0	0.002170767004341534	1506	1370	OK	1	1506
+v0	observed_length	500+	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h1_fpr	0.004648074369189907	0.0014398848092152627	0.008620689655172414	1506	1370	OK	7	1506
+v0	observed_length	500+	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	viral_vma_djr	mcp_recall	0.9918032786885246	0.967391304347826	1.0	122	83	OK	121	122
+v0	observed_length	500+	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	122	83	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	122	122
+v0	observed_length	500+	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	viral_vma_djr	h2_conditional_recall	0.9918032786885246	0.967391304347826	1.0	122	83	OK	121	122
+v0	observed_length	500+	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	viral_vma_djr	h3_known_end_to_end_recall	0.9754098360655737	0.9340613931523023	1.0	122	83	OK	119	122
+v0	observed_length	500+	full	viral_vma_djr	h3_known_gated_accuracy	0.9834710743801653	0.9534883720930233	1.0	121	82	OK	119	121
+v0	observed_length	500+	full	viral_vma_djr	h3_known_gated_reject_rate	0.01652892561983471	0.0	0.046511627906976744	121	82	OK	2	121
+v0	observed_length	500+	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	121	82	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	121
+v0	observed_length	500+	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v0	observed_length	500+	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.958904109589041	0.8571428571428571	1.0	73	36	OK	70	73
+v0	observed_length	500+	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	1.0	1.0	1.0	49	47	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	49	49
+v01_candidate	observed_length	<250	full	all	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	mcp_fpr	0.0	0.0	0.0	559	489	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	559
+v01_candidate	observed_length	<250	full	all	h1_recall	0.5714285714285714	0.14285714285714285	0.8571428571428571	7	7	OK	4	7
+v01_candidate	observed_length	<250	full	all	h1_fpr	0.0	0.0	0.0	552	482	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	552
+v01_candidate	observed_length	<250	full	all	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h2_conditional_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v01_candidate	observed_length	<250	full	all	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	all	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	533	470	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	533
+v01_candidate	observed_length	<250	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h1_fpr	0.0	0.0	0.0	533	470	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	533
+v01_candidate	observed_length	<250	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v01_candidate	observed_length	<250	full	cellular_djr_none	h1_recall	0.5714285714285714	0.14285714285714285	0.8571428571428571	7	7	OK	4	7
+v01_candidate	observed_length	<250	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	7	7	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	7
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	19	12	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	19
+v01_candidate	observed_length	<250	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	19	12	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	19
+v01_candidate	observed_length	<250	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	<250	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	mcp_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v01_candidate	observed_length	250-299	full	all	mcp_fpr	0.0	0.0	0.0	482	383	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	482
+v01_candidate	observed_length	250-299	full	all	h1_recall	0.9583333333333334	0.8421052631578947	1.0	24	19	OK	23	24
+v01_candidate	observed_length	250-299	full	all	h1_fpr	0.0021231422505307855	0.0	0.007575757575757576	471	377	OK	1	471
+v01_candidate	observed_length	250-299	full	all	h2_conditional_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v01_candidate	observed_length	250-299	full	all	h2_conditional_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v01_candidate	observed_length	250-299	full	all	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	h3_unknown_gated_reject_rate	0.38461538461538464	0.15384615384615385	0.6173076923076819	13	13	OK	5	13
+v01_candidate	observed_length	250-299	full	all	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	all	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	319	300	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	319
+v01_candidate	observed_length	250-299	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h1_fpr	0.003134796238244514	0.0	0.009554140127388535	319	300	OK	1	319
+v01_candidate	observed_length	250-299	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h1_recall	0.9090909090909091	0.625	1.0	11	6	OK	10	11
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	11	6	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	11
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	152	78	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	152
+v01_candidate	observed_length	250-299	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	152	78	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	152
+v01_candidate	observed_length	250-299	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	mcp_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v01_candidate	observed_length	250-299	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h2_conditional_recall	1.0	1.0	1.0	13	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	13	13
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.38461538461538464	0.15384615384615385	0.6173076923076819	13	13	OK	5	13
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	250-299	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	all	mcp_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v01_candidate	observed_length	300-349	full	all	mcp_fpr	0.0	0.0	0.0	652	543	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	652
+v01_candidate	observed_length	300-349	full	all	h1_recall	0.9696969696969697	0.879969696969697	1.0	33	16	OK	32	33
+v01_candidate	observed_length	300-349	full	all	h1_fpr	0.0015772870662460567	0.0	0.005504587155963303	634	535	OK	1	634
+v01_candidate	observed_length	300-349	full	all	h2_conditional_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v01_candidate	observed_length	300-349	full	all	h2_conditional_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v01_candidate	observed_length	300-349	full	all	h3_known_end_to_end_recall	0.8461538461538461	0.3333333333333333	1.0	13	6	OK	11	13
+v01_candidate	observed_length	300-349	full	all	h3_known_gated_accuracy	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v01_candidate	observed_length	300-349	full	all	h3_known_gated_reject_rate	0.08333333333333333	0.0	0.5	12	5	OK	1	12
+v01_candidate	observed_length	300-349	full	all	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	12	5	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	12
+v01_candidate	observed_length	300-349	full	all	h3_unknown_gated_reject_rate	0.5	0.0	1.0	2	2	OK	1	2
+v01_candidate	observed_length	300-349	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v01_candidate	observed_length	300-349	full	all	h3_end_to_end_recall_Preplasmiviricota	0.0			1	1	INSUFFICIENT_COMPONENTS	0	1
+v01_candidate	observed_length	300-349	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	322	307	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	322
+v01_candidate	observed_length	300-349	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h1_fpr	0.003105590062111801	0.0	0.00949367088607595	322	307	OK	1	322
+v01_candidate	observed_length	300-349	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h1_recall	0.9444444444444444	0.75	1.0	18	8	OK	17	18
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	18	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	18
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	312	229	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	312
+v01_candidate	observed_length	300-349	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	312	229	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	312
+v01_candidate	observed_length	300-349	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	viral_vma_djr	mcp_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v01_candidate	observed_length	300-349	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	15	8	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	15	15
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h2_conditional_recall	0.9333333333333333	0.6666666666666666	1.0	15	8	OK	14	15
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_known_end_to_end_recall	0.8461538461538461	0.3333333333333333	1.0	13	6	OK	11	13
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_known_gated_accuracy	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_known_gated_reject_rate	0.08333333333333333	0.0	0.5	12	5	OK	1	12
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	12	5	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	12
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.5	0.0	1.0	2	2	OK	1	2
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9166666666666666	0.5	1.0	12	5	OK	11	12
+v01_candidate	observed_length	300-349	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.0			1	1	INSUFFICIENT_COMPONENTS	0	1
+v01_candidate	observed_length	350-399	full	all	mcp_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v01_candidate	observed_length	350-399	full	all	mcp_fpr	0.0	0.0	0.0	645	520	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	645
+v01_candidate	observed_length	350-399	full	all	h1_recall	0.9838709677419355	0.9411764705882353	1.0	62	35	OK	61	62
+v01_candidate	observed_length	350-399	full	all	h1_fpr	0.004830917874396135	0.0	0.013358778625954198	621	507	OK	3	621
+v01_candidate	observed_length	350-399	full	all	h2_conditional_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v01_candidate	observed_length	350-399	full	all	h2_conditional_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v01_candidate	observed_length	350-399	full	all	h3_known_end_to_end_recall	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v01_candidate	observed_length	350-399	full	all	h3_known_gated_accuracy	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v01_candidate	observed_length	350-399	full	all	h3_known_gated_reject_rate	0.05555555555555555	0.0	0.19047619047619047	36	20	OK	2	36
+v01_candidate	observed_length	350-399	full	all	h3_known_gated_wrong_phylum_rate	0.027777777777777776	0.0	0.13636363636363635	36	20	OK	1	36
+v01_candidate	observed_length	350-399	full	all	h3_unknown_gated_reject_rate	0.0	0.0	0.0	2	2	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	2
+v01_candidate	observed_length	350-399	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9333333333333333	0.7333333333333333	1.0	30	14	OK	28	30
+v01_candidate	observed_length	350-399	full	all	h3_end_to_end_recall_Preplasmiviricota	0.8333333333333334	0.5	1.0	6	6	OK	5	6
+v01_candidate	observed_length	350-399	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	234	225	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	234
+v01_candidate	observed_length	350-399	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h1_fpr	0.01282051282051282	0.0	0.034334763948497854	234	225	OK	3	234
+v01_candidate	observed_length	350-399	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h1_recall	0.9583333333333334	0.8461538461538461	1.0	24	13	OK	23	24
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	24	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	24
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	387	283	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	387
+v01_candidate	observed_length	350-399	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	387	283	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	387
+v01_candidate	observed_length	350-399	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	viral_vma_djr	mcp_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v01_candidate	observed_length	350-399	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h2_conditional_recall	1.0	1.0	1.0	38	22	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	38	38
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_known_end_to_end_recall	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_known_gated_accuracy	0.9166666666666666	0.7272727272727273	1.0	36	20	OK	33	36
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_known_gated_reject_rate	0.05555555555555555	0.0	0.19047619047619047	36	20	OK	2	36
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.027777777777777776	0.0	0.13636363636363635	36	20	OK	1	36
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_unknown_gated_reject_rate	0.0	0.0	0.0	2	2	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	2
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9333333333333333	0.7333333333333333	1.0	30	14	OK	28	30
+v01_candidate	observed_length	350-399	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.8333333333333334	0.5	1.0	6	6	OK	5	6
+v01_candidate	observed_length	400-449	full	all	mcp_recall	0.974025974025974	0.9166666666666666	1.0	77	45	OK	75	77
+v01_candidate	observed_length	400-449	full	all	mcp_fpr	0.0	0.0	0.0	665	588	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	665
+v01_candidate	observed_length	400-449	full	all	h1_recall	0.963302752293578	0.9078825536062378	0.9925400570676032	109	68	OK	105	109
+v01_candidate	observed_length	400-449	full	all	h1_fpr	0.001579778830963665	0.0	0.005146018638043535	633	565	OK	1	633
+v01_candidate	observed_length	400-449	full	all	h2_conditional_recall	0.974025974025974	0.9166666666666666	1.0	77	45	OK	75	77
+v01_candidate	observed_length	400-449	full	all	h2_conditional_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v01_candidate	observed_length	400-449	full	all	h3_known_end_to_end_recall	0.8961038961038961	0.76	0.9624060150375939	77	45	OK	69	77
+v01_candidate	observed_length	400-449	full	all	h3_known_gated_accuracy	0.92	0.8	0.9777868852459015	75	44	OK	69	75
+v01_candidate	observed_length	400-449	full	all	h3_known_gated_reject_rate	0.06666666666666667	0.016125806451612903	0.17391304347826086	75	44	OK	5	75
+v01_candidate	observed_length	400-449	full	all	h3_known_gated_wrong_phylum_rate	0.013333333333333334	0.0	0.061224489795918366	75	44	OK	1	75
+v01_candidate	observed_length	400-449	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9104477611940298	0.75	0.9774226234340455	67	36	OK	61	67
+v01_candidate	observed_length	400-449	full	all	h3_end_to_end_recall_Preplasmiviricota	0.8	0.5555555555555556	1.0	10	9	OK	8	10
+v01_candidate	observed_length	400-449	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	283	266	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	283
+v01_candidate	observed_length	400-449	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h1_fpr	0.0035335689045936395	0.0	0.010869565217391304	283	266	OK	1	283
+v01_candidate	observed_length	400-449	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h1_recall	0.875	0.7083333333333334	0.9743589743589743	32	23	OK	28	32
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	32	23	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	32
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	350	299	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	350
+v01_candidate	observed_length	400-449	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	350	299	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	350
+v01_candidate	observed_length	400-449	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	viral_vma_djr	mcp_recall	0.974025974025974	0.9166666666666666	1.0	77	45	OK	75	77
+v01_candidate	observed_length	400-449	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	77	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	77	77
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h2_conditional_recall	0.974025974025974	0.9166666666666666	1.0	77	45	OK	75	77
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_known_end_to_end_recall	0.8961038961038961	0.76	0.9624060150375939	77	45	OK	69	77
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_known_gated_accuracy	0.92	0.8	0.9777868852459015	75	44	OK	69	75
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_known_gated_reject_rate	0.06666666666666667	0.016125806451612903	0.17391304347826086	75	44	OK	5	75
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.013333333333333334	0.0	0.061224489795918366	75	44	OK	1	75
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9104477611940298	0.75	0.9774226234340455	67	36	OK	61	67
+v01_candidate	observed_length	400-449	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.8	0.5555555555555556	1.0	10	9	OK	8	10
+v01_candidate	observed_length	450-499	full	all	mcp_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v01_candidate	observed_length	450-499	full	all	mcp_fpr	0.0	0.0	0.0	515	455	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	515
+v01_candidate	observed_length	450-499	full	all	h1_recall	0.9893617021276596	0.961038961038961	1.0	94	58	OK	93	94
+v01_candidate	observed_length	450-499	full	all	h1_fpr	0.0020325203252032522	0.0	0.006521739130434782	492	442	OK	1	492
+v01_candidate	observed_length	450-499	full	all	h2_conditional_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v01_candidate	observed_length	450-499	full	all	h2_conditional_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v01_candidate	observed_length	450-499	full	all	h3_known_end_to_end_recall	0.9577464788732394	0.8771862348178138	1.0	71	45	OK	68	71
+v01_candidate	observed_length	450-499	full	all	h3_known_gated_accuracy	0.9577464788732394	0.8771862348178138	1.0	71	45	OK	68	71
+v01_candidate	observed_length	450-499	full	all	h3_known_gated_reject_rate	0.028169014084507043	0.0	0.0784313725490196	71	45	OK	2	71
+v01_candidate	observed_length	450-499	full	all	h3_known_gated_wrong_phylum_rate	0.014084507042253521	0.0	0.05172413793103448	71	45	OK	1	71
+v01_candidate	observed_length	450-499	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9701492537313433	0.9166666666666666	1.0	67	42	OK	65	67
+v01_candidate	observed_length	450-499	full	all	h3_end_to_end_recall_Preplasmiviricota	0.75	0.25	1.0	4	4	OK	3	4
+v01_candidate	observed_length	450-499	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	218	203	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	218
+v01_candidate	observed_length	450-499	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h1_fpr	0.0	0.0	0.0	218	203	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	218
+v01_candidate	observed_length	450-499	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h1_recall	0.9565217391304348	0.8	1.0	23	13	OK	22	23
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	23	13	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	23
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	274	239	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	274
+v01_candidate	observed_length	450-499	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h1_fpr	0.0036496350364963502	0.0	0.01234695439240893	274	239	OK	1	274
+v01_candidate	observed_length	450-499	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	viral_vma_djr	mcp_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h2_conditional_recall	1.0	1.0	1.0	71	45	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	71	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_known_end_to_end_recall	0.9577464788732394	0.8771862348178138	1.0	71	45	OK	68	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_known_gated_accuracy	0.9577464788732394	0.8771862348178138	1.0	71	45	OK	68	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_known_gated_reject_rate	0.028169014084507043	0.0	0.0784313725490196	71	45	OK	2	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.014084507042253521	0.0	0.05172413793103448	71	45	OK	1	71
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9701492537313433	0.9166666666666666	1.0	67	42	OK	65	67
+v01_candidate	observed_length	450-499	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	0.75	0.25	1.0	4	4	OK	3	4
+v01_candidate	observed_length	500+	full	all	mcp_recall	0.9836065573770492	0.9515829112236738	1.0	122	83	OK	120	122
+v01_candidate	observed_length	500+	full	all	mcp_fpr	0.0	0.0	0.0	2780	2515	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	2780
+v01_candidate	observed_length	500+	full	all	h1_recall	0.9377049180327869	0.8995811331786373	0.9657335218888342	305	216	OK	286	305
+v01_candidate	observed_length	500+	full	all	h1_fpr	0.0003850596842510589	0.0	0.001218533905530665	2597	2382	OK	1	2597
+v01_candidate	observed_length	500+	full	all	h2_conditional_recall	0.9836065573770492	0.9515829112236738	1.0	122	83	OK	120	122
+v01_candidate	observed_length	500+	full	all	h2_conditional_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v01_candidate	observed_length	500+	full	all	h3_known_end_to_end_recall	0.9672131147540983	0.9204545454545454	0.9945673971169495	122	83	OK	118	122
+v01_candidate	observed_length	500+	full	all	h3_known_gated_accuracy	0.9833333333333333	0.9523809523809523	1.0	120	81	OK	118	120
+v01_candidate	observed_length	500+	full	all	h3_known_gated_reject_rate	0.016666666666666666	0.0	0.047619047619047616	120	81	OK	2	120
+v01_candidate	observed_length	500+	full	all	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	120	81	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	120
+v01_candidate	observed_length	500+	full	all	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	all	h3_end_to_end_recall_Nucleocytoviricota	0.9452054794520548	0.8291615853658536	0.990742864424057	73	36	OK	69	73
+v01_candidate	observed_length	500+	full	all	h3_end_to_end_recall_Preplasmiviricota	1.0	1.0	1.0	49	47	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	49	49
+v01_candidate	observed_length	500+	full	background_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	mcp_fpr	0.0	0.0	0.0	1091	1013	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	1091
+v01_candidate	observed_length	500+	full	background_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h1_fpr	0.0009165902841429881	0.0	0.0027829313543599257	1091	1013	OK	1	1091
+v01_candidate	observed_length	500+	full	background_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	background_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	mcp_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v01_candidate	observed_length	500+	full	cellular_djr_none	h1_recall	0.8961748633879781	0.8248139634088539	0.9438622958257713	183	133	OK	164	183
+v01_candidate	observed_length	500+	full	cellular_djr_none	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h2_conditional_fpr	0.0	0.0	0.0	183	133	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	183
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	cellular_djr_none	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	mcp_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	mcp_fpr	0.0	0.0	0.0	1506	1370	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	1506
+v01_candidate	observed_length	500+	full	hard_non_djr	h1_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h1_fpr	0.0	0.0	0.0	1506	1370	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	1506
+v01_candidate	observed_length	500+	full	hard_non_djr	h2_conditional_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_known_end_to_end_recall				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_known_gated_accuracy				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_known_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_known_gated_wrong_phylum_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_end_to_end_recall_Nucleocytoviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	hard_non_djr	h3_end_to_end_recall_Preplasmiviricota				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	viral_vma_djr	mcp_recall	0.9836065573770492	0.9515829112236738	1.0	122	83	OK	120	122
+v01_candidate	observed_length	500+	full	viral_vma_djr	mcp_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	viral_vma_djr	h1_recall	1.0	1.0	1.0	122	83	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	122	122
+v01_candidate	observed_length	500+	full	viral_vma_djr	h1_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	viral_vma_djr	h2_conditional_recall	0.9836065573770492	0.9515829112236738	1.0	122	83	OK	120	122
+v01_candidate	observed_length	500+	full	viral_vma_djr	h2_conditional_fpr				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_known_end_to_end_recall	0.9672131147540983	0.9204545454545454	0.9945673971169495	122	83	OK	118	122
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_known_gated_accuracy	0.9833333333333333	0.9523809523809523	1.0	120	81	OK	118	120
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_known_gated_reject_rate	0.016666666666666666	0.0	0.047619047619047616	120	81	OK	2	120
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_known_gated_wrong_phylum_rate	0.0	0.0	0.0	120	81	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	0	120
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_unknown_gated_reject_rate				0	0	NOT_ESTIMABLE	0	0
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_end_to_end_recall_Nucleocytoviricota	0.9452054794520548	0.8291615853658536	0.990742864424057	73	36	OK	69	73
+v01_candidate	observed_length	500+	full	viral_vma_djr	h3_end_to_end_recall_Preplasmiviricota	1.0	1.0	1.0	49	47	BOUNDARY_BOOTSTRAP_NOT_A_POPULATION_BOUND	49	49

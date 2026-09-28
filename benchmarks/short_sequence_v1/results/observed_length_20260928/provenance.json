@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-28",
+  "evaluation": "TRAIN_ONLY_INTERNAL_COMPONENT_CROSSFIT",
+  "evaluation_mode": "observed",
+  "files": {
+    "metrics.tsv": "dbc63c025edc8b7f0aeafff9604bc0b25090d5fc0e980834a7a81034762d47c7",
+    "observed_length.pdf": "08145551d1ba52518956328c5db93b48a882f1c8099b7fc9363e1dce6ce7963a",
+    "observed_length.png": "88eb774522c0d4c4fc7d4145dc77bf28bce72a209b189428c62d06b2801b61d4",
+    "observed_length.svg": "16ecbdcd84545944bf5cdd61b08b089f61f1fcdaee7747197ba3f29dd512633d"
+  },
+  "gpu_used": false,
+  "interpretation": "No MCP positives below 250 aa. This is observed-input stratification, not paired truncation or an independent external test.",
+  "mcp_positives": 336,
+  "new_embedding_forward_passes": 0,
+  "non_mcp": 6298,
+  "original_cache_checksums": {
+    "esm2_3b": {
+      "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+      "embeddings.float16.npy": "c9fcf47cf43f4f9aa978651d2b709c624185e74994dd792d53cbedbc3da2f988",
+      "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+      "metadata.json": "d40bf64e80ccfe7c1c9582abfdd5e2d5723013fc0d0b44a0004a3fa83a41ae59"
+    },
+    "esmc_6b": {
+      "completed.npy": "1036116db8ee2f36baee2c7b7eaced947ecfff2d25d2248879b854da7283e237",
+      "embeddings.float16.npy": "9b422c20091f29456068f6cbc22b6a639368f7e46b60782aae6382004e28b7b6",
+      "index.tsv": "15ad471d9848e9d9645eedcdfb87443b89eb251c767f84461ca56ce66bb957fd",
+      "metadata.json": "4fadbbbf5d7a3961c489cdeab4124c66f032e57e0f58375cadfffacae330ae41"
+    }
+  },
+  "parents": 6634,
+  "plot_script_sha256": "b6dc2808b70df522a47315bfdbd743c0864dcd75a3694c190b6523f20033073c",
+  "prepared_receipt_sha256": "e8e5e2d0d4280472de7a1cd41bfc49f67691138b4637cfd002f86620bc26b983",
+  "reused_vectors_per_encoder": 6634,
+  "scientific_script_sha256": "3d839b34a8097918230b9642721f80cb53f74546ba77ccc538adc15b0c17ece9",
+  "score_environment": {
+    "numpy": "2.4.6",
+    "platform": "Linux-6.17.0-29-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "sklearn": "1.9.0"
+  },
+  "score_receipt_sha256": "ff7a0cf0815986323a5b68fd4fe906b756e29de196e31808057949074aa418ed",
+  "status": "PASS",
+  "v02_training": false
+}

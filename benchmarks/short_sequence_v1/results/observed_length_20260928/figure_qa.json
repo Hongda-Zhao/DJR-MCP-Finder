@@ -1,0 +1,27 @@
+{
+  "accepted_warnings": "300 dpi PNG preview; editable PDF/SVG are primary exports. No TIFF requested.",
+  "archetype": "quantitative_grid",
+  "backend": "python_matplotlib",
+  "boundary_interval_warning": "All-success/all-failure bootstrap intervals do not establish a population boundary.",
+  "ci": "2000 component bootstrap replicates, conditional on fitted models",
+  "claim": "The existing Train data cannot estimate MCP recall below 250 aa; supported bins have high internal recall.",
+  "data": "metrics.tsv",
+  "empty_bins": "NA, not zero",
+  "exclusions": "None of the 6634 Train parents excluded in observed mode. Validation/Test vectors never imported.",
+  "panels": {
+    "a": "MCP detection recall",
+    "b": "MCP FPR, axis expanded automatically when needed",
+    "c": "H1 DJR recall",
+    "d": "Nucleocytoviricota end-to-end recall",
+    "e": "Preplasmiviricota end-to-end recall",
+    "f": "MCP and non-MCP counts"
+  },
+  "size_inches": [
+    7.2,
+    7.1
+  ],
+  "source_preflight": "12 PASS, 2 WARN, 0 FAIL",
+  "tests": "No significance tests or multiplicity-adjusted claims.",
+  "unit": "protein",
+  "visual_qa": "PNG inspected: no label overlap, all bins and denominators shown, FPR zoom explicit in percentage ticks."
+}

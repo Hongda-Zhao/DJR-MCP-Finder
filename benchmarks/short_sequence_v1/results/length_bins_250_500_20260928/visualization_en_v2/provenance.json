@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "change": "presentation_only",
+  "model_or_metric_changes": false,
+  "source_numeric_checksums": {
+    "metrics.tsv": "dd002c1d4d73a0ab6475c3a885f1aa300e1d88cf16fedbce569a15af9587f0af",
+    "confusion_by_length.tsv": "94c9d3abdd81e723123e8a3d390dbdf1d7e1e49e27900f2af7c8e2a6ab6bb9ea"
+  },
+  "source_analysis_receipt_sha256": "ae4222229f0ea2a14597c8f640734b2062ba3fc6614636f71386ee865cc3eee5",
+  "script_sha256": "9829bec64c1d9b23b4e63e28489f76f8e0545b3ff6859ad18ea1564d20886888",
+  "font": "Arial",
+  "backend": "matplotlib",
+  "primary_method": "v01_candidate",
+  "primary_figure": "overview.en.png",
+  "preserved_supporting_methods": [
+    "v0",
+    "v01_candidate"
+  ],
+  "interpretation": "Main bars show observed recall with integer event counts; uncertainty is retained in comparison figure and original metric table.",
+  "scope": "Train-only internal cross-fit, 336 positive and 6298 non-MCP proteins",
+  "excluded_proteins": 0,
+  "presentation_revision": "Remove per-length FP column at user request; retain overall FP in caption and full specificity supplement.",
+  "main_table_columns_before": 5,
+  "main_table_columns_after": 4,
+  "files": {
+    "overview.en.pdf": "93e29974a1f39c834292fee443366bf900b420377c28e01056124c4e2187e5f6",
+    "overview.en.png": "d0dec6e6fe3865e6b83f84b332dfdc8e9ee13b5f62d028d10e5f62fe010b7e0a",
+    "overview.en.svg": "4e90dc96c7cb36359dae54c98a3be43eb538fb32d3523257128e4b3679f068f7",
+    "comparison.en.png": "5bc74af4323511a42ff307a51dd52d959e299a4517842f5e80bc86b60b4549e9",
+    "comparison.en.pdf": "083b93efd67c170dda84aa6a7521c56a43506fff53b3e403b1a80fc33d7dd00f",
+    "phylum_detail.en.pdf": "9e572055be636316b8b5a2c9dcbb8819dc9874ae3b3dd1a21f5a1d11b993cebc",
+    "phylum_detail.en.png": "0bb315cc9ffcbc7c8efe9a306ab07d2a300ad163fbfba91d057dda1779dd52f0",
+    "phylum_detail.en.svg": "aa57f6c184f1d359e2259de05c1c869ed033617e0a540dbb84d06dac0141c73b",
+    "comparison.en.svg": "4b2ce8c558e6fdf779d2edb0c38bcbd45315bf4cc7c933e689eb7c9fcd17c6b0"
+  }
+}

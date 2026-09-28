@@ -80,11 +80,17 @@ The development dataset contains 11,060 proteins after removal of exact duplicat
 
 Data composition, the 14-encoder comparison, and further evaluation are in the [scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) documentation.
 
+A separate [short-sequence benchmark](benchmarks/short_sequence_v1/README.md) measures
+MCP recall and false-positive rate across 50–300 aa fragments under Train-only
+component-disjoint cross-fitting. Observed-length evaluation is complete using
+cached embeddings on CPU; paired truncation results are still pending.
+
 ## Documentation
 
 - [User guides](user-inference-v0.1/README.md) for Model V0.1 Candidate and [Model V0](user-inference-v0/README.md)
 - [Reproducibility](docs/REPRODUCIBILITY.md): released data, models, and research workflows
 - [Code architecture](docs/ARCHITECTURE.md) and [full documentation index](docs/README.md)
+- [V0.2 design and policy preview](docs/research/MODEL_V02_DESIGN.md): abstain below 250 aa, use frozen V0.1 otherwise; no new model trained
 
 ## Citation and license
 

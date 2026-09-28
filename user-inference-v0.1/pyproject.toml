@@ -48,6 +48,7 @@ dev = [
 
 [project.scripts]
 djrmcp-predict-v01 = "djrmcp_predict_v01.cli:main"
+djrmcp-predict-v02-preview = "djrmcp_predict_v01.v02_preview:main"
 
 [project.urls]
 Homepage = "https://github.com/Hongda-Zhao/DJR-MCP-Finder"

@@ -1,0 +1,14 @@
+{
+  "backend": "Python matplotlib",
+  "archetype": "quantitative_grid",
+  "input": "metrics.tsv",
+  "no_protein_exclusions": true,
+  "unit": "original protein, once per method",
+  "n_positive": 336,
+  "n_negative": 6298,
+  "uncertainty": "2000 component bootstrap draws, fixed fold-specific heads and thresholds",
+  "boundary_warning": "All-success/all-failure bootstrap intervals do not prove population performance is at the boundary.",
+  "visual_qa": "Inspected PNG: nonoverlapping labels, all seven bins including <250, point estimates and CIs, denominator n on each panel.",
+  "preflight": "12 PASS, 2 WARN, 0 FAIL",
+  "accepted_warnings": "300 dpi PNG preview and editable PDF/SVG; TIFF not requested."
+}

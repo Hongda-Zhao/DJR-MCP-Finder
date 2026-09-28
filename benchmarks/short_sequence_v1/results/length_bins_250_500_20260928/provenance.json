@@ -1,0 +1,43 @@
+{
+  "bin_labels": [
+    "<250",
+    "250-299",
+    "300-349",
+    "350-399",
+    "400-449",
+    "450-499",
+    "500+"
+  ],
+  "bin_upper_edges_exclusive_aa": [
+    250,
+    300,
+    350,
+    400,
+    450,
+    500
+  ],
+  "bootstrap_replicates": 2000,
+  "files": {
+    "confusion_by_length.tsv": "94c9d3abdd81e723123e8a3d390dbdf1d7e1e49e27900f2af7c8e2a6ab6bb9ea",
+    "metrics.tsv": "dd002c1d4d73a0ab6475c3a885f1aa300e1d88cf16fedbce569a15af9587f0af",
+    "REPORT.txt": "bfcd760ba0a7574fc2ef026820a6eeab980f7c78ea6251fe524654cee65875fa",
+    "observed_length.png": "12f0a7c5fc986183806a2bf072744eff8b78f19b221489ee88ba0e290863493f",
+    "observed_length.pdf": "2188c090dc86650643a5a2306ce6467c1ad9e7bae0adeb90870330be5cb04731",
+    "observed_length.svg": "ef5974e60c60ee70fc55cb7727c5f2cf9235d2d07873c377ff61a5fb09154bcc"
+  },
+  "gpu_used": false,
+  "new_model_fits": 0,
+  "numpy": "2.5.3",
+  "plot_script_sha256": "758f57250bc12f4f1e82d5551ba29cdce606abfef60428d89a2d9c6cc7003f91",
+  "scope": "TRAIN_ONLY_DESCRIPTIVE_REBINNING_OF_FROZEN_CROSSFIT",
+  "script_sha256": "d7389b26c777f1910528da4f7f5bb3ddd0f71c9db1277e79e41df7b4ce6a7b60",
+  "seed": 20260928,
+  "source_fold_contracts_sha256": "5a0071d51f8e74782546f6e688bd07c4af48ae13b4635821f3b552e3f148d5cf",
+  "source_predictions_sha256": "90a5beb1db15fe183494ca3873501c08ef1f29f6f2fc1fe03a8049b0fa7f48b8",
+  "source_score_receipt_sha256": "ff7a0cf0815986323a5b68fd4fe906b756e29de196e31808057949074aa418ed",
+  "statistics_script_sha256": "3d839b34a8097918230b9642721f80cb53f74546ba77ccc538adc15b0c17ece9",
+  "status": "PASS",
+  "test_scored": 0,
+  "validation_scored": 0,
+  "source_report_receipt_sha256": "7c2930011b8f3cf16cb982ebbcb0c38bca8847bf48ab7ae1371d22fa52832f57"
+}

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="518.4pt" height="367.2pt" viewBox="0 0 518.4 367.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-28T12:16:49.632013</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 367.2 
+L 518.4 367.2 
+L 518.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.328 139.9032 
+L 500.256 139.9032 
+L 500.256 114.9336 
+L 23.328 114.9336 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #f5f7f8"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 132.192 163.7712 
+L 334.368 163.7712 
+L 334.368 149.0832 
+L 132.192 149.0832 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 23.328 197.9208 
+L 500.256 197.9208 
+L 500.256 172.9512 
+L 23.328 172.9512 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #f5f7f8"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 132.192 192.78 
+L 320.8896 192.78 
+L 320.8896 178.092 
+L 132.192 178.092 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 320.8896 192.78 
+L 334.368 192.78 
+L 334.368 178.092 
+L 320.8896 178.092 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #de8244"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 132.192 221.7888 
+L 334.368 221.7888 
+L 334.368 207.1008 
+L 132.192 207.1008 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 23.328 255.9384 
+L 500.256 255.9384 
+L 500.256 230.9688 
+L 23.328 230.9688 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #f5f7f8"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 132.192 250.7976 
+L 329.116675 250.7976 
+L 329.116675 236.1096 
+L 132.192 236.1096 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 329.116675 250.7976 
+L 334.368 250.7976 
+L 334.368 236.1096 
+L 329.116675 236.1096 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #de8244"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 132.192 279.8064 
+L 334.368 279.8064 
+L 334.368 265.1184 
+L 132.192 265.1184 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 23.328 313.956 
+L 500.256 313.956 
+L 500.256 288.9864 
+L 23.328 288.9864 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #f5f7f8"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 132.192 308.8152 
+L 331.053639 308.8152 
+L 331.053639 294.1272 
+L 132.192 294.1272 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 331.053639 308.8152 
+L 334.368 308.8152 
+L 334.368 294.1272 
+L 331.053639 294.1272 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #de8244"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 28.512 327.9096 
+L 37.3248 327.9096 
+L 37.3248 322.7688 
+L 28.512 322.7688 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #137e89"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 81.3888 327.9096 
+L 90.2016 327.9096 
+L 90.2016 322.7688 
+L 81.3888 322.7688 
+z
+" clip-path="url(#p1aa5ae35f5)" style="fill: #de8244"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 28.512 93.2688 
+L 495.072 93.2688 
+" clip-path="url(#p1aa5ae35f5)" style="fill: none; stroke: #e5eaee; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="21.2976" transform="rotate(-0 28.512 21.2976)">MCP detection by protein length</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="35.9856" transform="rotate(-0 28.512 35.9856)">V0.1 recipe · Train-only internal cross-fit · Original protein lengths</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #137e89" x="28.512" y="63.5256" transform="rotate(-0 28.512 63.5256)">331/336</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="79.6824" transform="rotate(-0 28.512 79.6824)">MCPs detected</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #de8244" x="305.856" y="63.5256" transform="rotate(-0 305.856 63.5256)">5</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="305.856" y="79.6824" transform="rotate(-0 305.856 79.6824)">MCPs missed</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="106.488" transform="rotate(-0 28.512 106.488)">Length / aa</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="132.192" y="106.488" transform="rotate(-0 132.192 106.488)">Recall</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="396.576" y="106.488" transform="rotate(-0 396.576 106.488)">Detected / MCP</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="477.9648" y="106.488" transform="rotate(-0 477.9648 106.488)">Missed</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="130.006291" transform="rotate(-0 28.512 130.006291)">&lt;250</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="132.192" y="126.442702" transform="rotate(-0 132.192 126.442702)">Recall not estimable</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="132.192" y="134.737923" transform="rotate(-0 132.192 134.737923)">No MCP positives</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="396.576" y="129.747502" transform="rotate(-0 396.576 129.747502)">No samples</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="477.9648" y="130.006291" transform="rotate(-0 477.9648 130.006291)">—</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="159.015091" transform="rotate(-0 28.512 159.015091)">250–299</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="158.756302" transform="rotate(-0 138.4128 158.756302)">100.0%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="159.015091" transform="rotate(-0 396.576 159.015091)">13/13</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="477.9648" y="159.015091" transform="rotate(-0 477.9648 159.015091)">0</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="188.023891" transform="rotate(-0 28.512 188.023891)">300–349</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="187.765102" transform="rotate(-0 138.4128 187.765102)">93.3%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="188.023891" transform="rotate(-0 396.576 188.023891)">14/15</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #de8244" x="477.9648" y="188.023891" transform="rotate(-0 477.9648 188.023891)">1</text>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="217.032691" transform="rotate(-0 28.512 217.032691)">350–399</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="216.773902" transform="rotate(-0 138.4128 216.773902)">100.0%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="217.032691" transform="rotate(-0 396.576 217.032691)">38/38</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="477.9648" y="217.032691" transform="rotate(-0 477.9648 217.032691)">0</text>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="246.041491" transform="rotate(-0 28.512 246.041491)">400–449</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="245.782702" transform="rotate(-0 138.4128 245.782702)">97.4%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="246.041491" transform="rotate(-0 396.576 246.041491)">75/77</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #de8244" x="477.9648" y="246.041491" transform="rotate(-0 477.9648 246.041491)">2</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="275.050291" transform="rotate(-0 28.512 275.050291)">450–499</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="274.791502" transform="rotate(-0 138.4128 274.791502)">100.0%</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="275.050291" transform="rotate(-0 396.576 275.050291)">71/71</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #62717d" x="477.9648" y="275.050291" transform="rotate(-0 477.9648 275.050291)">0</text>
+   </g>
+   <g id="text_36">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="28.512" y="304.059091" transform="rotate(-0 28.512 304.059091)">≥500</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #ffffff" x="138.4128" y="303.800302" transform="rotate(-0 138.4128 303.800302)">98.4%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20303c" x="396.576" y="304.059091" transform="rotate(-0 396.576 304.059091)">120/122</text>
+   </g>
+   <g id="text_39">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #de8244" x="477.9648" y="304.059091" transform="rotate(-0 477.9648 304.059091)">2</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="41.9904" y="327.409513" transform="rotate(-0 41.9904 327.409513)">Detected</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20303c" x="94.8672" y="327.409513" transform="rotate(-0 94.8672 327.409513)">Missed</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="171.072" y="327.280118" transform="rotate(-0 171.072 327.280118)">Bars span 100%; counts show actual sample sizes.</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="352.512" transform="rotate(-0 28.512 352.512)">Only 13 positives at 250–299 aa; perfect observed recall is not a population guarantee.</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 7.5px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="362.0592" transform="rotate(-0 28.512 362.0592)">95% intervals and V0 comparisons are in the supplement. Validation/Test remain unscored.</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 8px; font-family: 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #62717d" x="28.512" y="342.2304" transform="rotate(-0 28.512 342.2304)">0 / 6,298 false positives overall. Per-length specificity is retained in the supplement.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1aa5ae35f5">
+   <rect x="0" y="0" width="518.4" height="367.2"/>
+  </clipPath>
+ </defs>
+</svg>

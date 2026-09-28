@@ -8,6 +8,8 @@
     "authority": "Translations are provided for reading. The source-language document and frozen artifacts remain authoritative."
   },
   "documents": [
+    {"source": "benchmarks/short_sequence_v1/README.md", "source_language": "en", "en": "benchmarks/short_sequence_v1/README.md", "cn": "benchmarks/short_sequence_v1/README.cn.md", "ja": "benchmarks/short_sequence_v1/README.ja.md", "mode": "sibling"},
+    {"source": "docs/research/MODEL_V02_DESIGN.md", "source_language": "en", "en": "docs/research/MODEL_V02_DESIGN.md", "cn": "docs/research/MODEL_V02_DESIGN.cn.md", "ja": "docs/research/MODEL_V02_DESIGN.ja.md", "mode": "sibling"},
     {"source": ".github/pull_request_template.md", "source_language": "en", "en": ".github/pull_request_template.md", "cn": "docs/i18n/cn/governance/pull_request_template.md", "ja": "docs/i18n/ja/governance/pull_request_template.md", "mode": "mirror"},
     {"source": "docs/repository/CHANGELOG.md", "source_language": "en", "en": "docs/repository/CHANGELOG.md", "cn": "docs/i18n/cn/governance/CHANGELOG.md", "ja": "docs/i18n/ja/governance/CHANGELOG.md", "mode": "mirror"},
     {"source": "README.md", "source_language": "en", "en": "README.md", "cn": "docs/repository/README.cn.md", "ja": "docs/repository/README.ja.md", "mode": "relocated"},

@@ -1,0 +1,35 @@
+{
+  "benchmark_script_sha256": "cccf3be71442b282e895f13f93c1f0d6860fc21ab7db91f6e5a710c7aec2afc4",
+  "config_sha256": "0d96ca98af3c028dffdb7cb6cd9c0c1be9869932d0ef35889345c9c2ba9df3b7",
+  "cpu_tests_passed": 19,
+  "cross_fold_fragment_collision_exclusions": 15,
+  "date": "2026-09-28",
+  "gds2_input_hashes_verified": true,
+  "input_sha256": {
+    "fold_map": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1",
+    "train_fasta": "fd6b091293bb056185860406a64b04a2c0c1e17daefcba7497882535c6a10602",
+    "train_manifest": "2b58aab1ee29c6c7604eaf3c8c5d9a279bb2673a22f23b0d01ae1ad8dbf435a9"
+  },
+  "neural_embedding_executed": false,
+  "paired_parents": 5565,
+  "paired_parents_by_source": {
+    "background_non_djr": 2148,
+    "cellular_djr_none": 274,
+    "hard_non_djr": 2820,
+    "viral_vma_djr": 323
+  },
+  "parent_shorter_than_300_exclusions": 1054,
+  "parents": 6634,
+  "primary_development_baseline": "model-v0.1-candidate",
+  "query_rows": 123793,
+  "real_performance_scoring_executed": false,
+  "registry_sha256": "bcd5feb7f78ff6b10dd38824bf76b91012b952780002bc77b39670e41f1e550c",
+  "scope": "TRAIN_ONLY_INTERNAL_CROSSFIT",
+  "snapshot_note": "Historical preparation-only snapshot before production scoring and the V0.2 policy preview; hashes and test counts describe that earlier revision. Current observed results are in results/observed_length_20260928/provenance.json.",
+  "status": "INPUT_PREFLIGHT_PASS_NOT_A_PERFORMANCE_RESULT",
+  "test_prediction_rows": 0,
+  "unique_sequences_to_embed_per_encoder": 123724,
+  "v02_status": "design_only_no_training",
+  "v02_training_executed": false,
+  "validation_prediction_rows": 0
+}

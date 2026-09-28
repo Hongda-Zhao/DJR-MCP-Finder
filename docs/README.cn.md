@@ -9,6 +9,8 @@
 | 运行优先用于探索性筛查的 Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | 运行已发布并冻结的 Model V0 基线 | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | 了解 Benchmark 和局限性 | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |
+| 运行短序列 benchmark | [English](../benchmarks/short_sequence_v1/README.md) · [中文](../benchmarks/short_sequence_v1/README.cn.md) · [日本語](../benchmarks/short_sequence_v1/README.ja.md) |
+| 查看 V0.2 设计（尚未训练） | [English](research/MODEL_V02_DESIGN.md) · [中文](research/MODEL_V02_DESIGN.cn.md) · [日本語](research/MODEL_V02_DESIGN.ja.md) |
 | 了解哪些内容可公开复现、哪些内容需要科研归档 | [English](REPRODUCIBILITY.md) · [中文](REPRODUCIBILITY.cn.md) · [日本語](REPRODUCIBILITY.ja.md) |
 | 运行可移植的 Python 数据集与完整性流程 | [English](REPRODUCIBILITY.md) · [中文](REPRODUCIBILITY.cn.md) · [日本語](REPRODUCIBILITY.ja.md) |
 | 了解代码结构与入口 | [English](ARCHITECTURE.md) · [中文](ARCHITECTURE.cn.md) · [日本語](ARCHITECTURE.ja.md) |

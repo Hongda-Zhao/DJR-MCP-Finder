@@ -1,0 +1,229 @@
+{
+  "scope": "labeled_mcp_positive_length_statistics_train",
+  "model_evaluation": false,
+  "split_statistics": [
+    {
+      "split": "train",
+      "n": 336,
+      "min": 262,
+      "max": 1442,
+      "mean": 477.2291666666667,
+      "sample_sd": 112.47988017985098,
+      "p05": 317.25,
+      "q1": 411.75,
+      "median": 467.0,
+      "q3": 543.5,
+      "p95": 625.75
+    }
+  ],
+  "input_parents": 6634,
+  "positive_parents": 336,
+  "unique_positive_sequences": 336,
+  "unit": "amino_acids",
+  "filter": "is_mcp=1; scope=train",
+  "source_sha256": "32bdf3b7acfd0c6d2bcc79a4b56a45c07cb037422579f5b12f493ddb5acd24d8",
+  "quantile_method": "numpy linear",
+  "sd_ddof": 1,
+  "statistics": [
+    {
+      "group": "all",
+      "n": 336,
+      "min": 262,
+      "max": 1442,
+      "mean": 477.2291666666667,
+      "sample_sd": 112.47988017985098,
+      "p05": 317.25,
+      "q1": 411.75,
+      "median": 467.0,
+      "q3": 543.5,
+      "p95": 625.75
+    },
+    {
+      "group": "Nucleocytoviricota",
+      "n": 249,
+      "min": 309,
+      "max": 1442,
+      "mean": 469.46586345381525,
+      "sample_sd": 100.32242295588432,
+      "p05": 359.8,
+      "q1": 413.0,
+      "median": 458.0,
+      "q3": 510.0,
+      "p95": 583.0
+    },
+    {
+      "group": "Preplasmiviricota",
+      "n": 70,
+      "min": 341,
+      "max": 951,
+      "mean": 550.1428571428571,
+      "sample_sd": 104.09642766487231,
+      "p05": 387.0,
+      "q1": 453.25,
+      "median": 579.5,
+      "q3": 610.0,
+      "p95": 668.75
+    },
+    {
+      "group": "unknown/other",
+      "n": 17,
+      "min": 262,
+      "max": 372,
+      "mean": 290.70588235294116,
+      "sample_sd": 31.642069910726356,
+      "p05": 262.8,
+      "q1": 271.0,
+      "median": 281.0,
+      "q3": 292.0,
+      "p95": 354.4
+    }
+  ],
+  "length_bins": [
+    {
+      "length_bin_aa": "0-249",
+      "n": 0,
+      "percent": 0.0,
+      "Nucleocytoviricota": 0,
+      "Preplasmiviricota": 0,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "250-299",
+      "n": 13,
+      "percent": 3.869047619047619,
+      "Nucleocytoviricota": 0,
+      "Preplasmiviricota": 0,
+      "unknown/other": 13
+    },
+    {
+      "length_bin_aa": "300-349",
+      "n": 15,
+      "percent": 4.464285714285714,
+      "Nucleocytoviricota": 12,
+      "Preplasmiviricota": 1,
+      "unknown/other": 2
+    },
+    {
+      "length_bin_aa": "350-399",
+      "n": 38,
+      "percent": 11.30952380952381,
+      "Nucleocytoviricota": 30,
+      "Preplasmiviricota": 6,
+      "unknown/other": 2
+    },
+    {
+      "length_bin_aa": "400-449",
+      "n": 77,
+      "percent": 22.916666666666664,
+      "Nucleocytoviricota": 67,
+      "Preplasmiviricota": 10,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "450-499",
+      "n": 71,
+      "percent": 21.13095238095238,
+      "Nucleocytoviricota": 67,
+      "Preplasmiviricota": 4,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "500-549",
+      "n": 46,
+      "percent": 13.690476190476192,
+      "Nucleocytoviricota": 39,
+      "Preplasmiviricota": 7,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "550-599",
+      "n": 44,
+      "percent": 13.095238095238097,
+      "Nucleocytoviricota": 26,
+      "Preplasmiviricota": 18,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "600-699",
+      "n": 27,
+      "percent": 8.035714285714286,
+      "Nucleocytoviricota": 5,
+      "Preplasmiviricota": 22,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": "700-999",
+      "n": 4,
+      "percent": 1.1904761904761905,
+      "Nucleocytoviricota": 2,
+      "Preplasmiviricota": 2,
+      "unknown/other": 0
+    },
+    {
+      "length_bin_aa": ">=1000",
+      "n": 1,
+      "percent": 0.2976190476190476,
+      "Nucleocytoviricota": 1,
+      "Preplasmiviricota": 0,
+      "unknown/other": 0
+    }
+  ],
+  "cumulative_counts": [
+    {
+      "length_below_aa": 130,
+      "n": 0,
+      "percent": 0.0
+    },
+    {
+      "length_below_aa": 150,
+      "n": 0,
+      "percent": 0.0
+    },
+    {
+      "length_below_aa": 200,
+      "n": 0,
+      "percent": 0.0
+    },
+    {
+      "length_below_aa": 250,
+      "n": 0,
+      "percent": 0.0
+    },
+    {
+      "length_below_aa": 300,
+      "n": 13,
+      "percent": 3.869047619047619
+    },
+    {
+      "length_below_aa": 350,
+      "n": 28,
+      "percent": 8.333333333333332
+    },
+    {
+      "length_below_aa": 400,
+      "n": 66,
+      "percent": 19.642857142857142
+    },
+    {
+      "length_below_aa": 500,
+      "n": 214,
+      "percent": 63.69047619047619
+    },
+    {
+      "length_below_aa": 600,
+      "n": 304,
+      "percent": 90.47619047619048
+    },
+    {
+      "length_below_aa": 700,
+      "n": 331,
+      "percent": 98.51190476190477
+    },
+    {
+      "length_below_aa": 1000,
+      "n": 335,
+      "percent": 99.70238095238095
+    }
+  ],
+  "note": "Original input lengths; not predictions, fragments or proof of complete proteins. unknown/other is an operational H3 label. No positive outliers excluded."
+}

@@ -1,0 +1,27 @@
+# Observed-length benchmark: 50-aa bins from 250 aa
+
+Train-only component cross-fit on 6,634 original proteins; existing predictions reused.
+Bins [250,300), [300,350), [350,400), [400,450), [450,500), [500,infinity).
+The <250-aa bin is retained as an evidence-gap and false-positive diagnostic.
+This is a descriptive re-binning requested after the initial analysis, not a new test or threshold optimization.
+Full model weights, fold membership, calibration and predictions are unchanged.
+95% intervals resample components 2,000 times; all-success/all-failure intervals are not population bounds.
+No MCP positives below 250 aa means recall is not estimable, not zero or proof all predictions are wrong.
+Different length bins have different protein/family mixtures. Precision here would depend on this curated prevalence.
+
+| Method | Length (aa) | MCP positives | Recall | Non-MCP | False positives | FPR |
+|---|---|---:|---:|---:|---:|---:|
+| v0 | <250 | 0 | NA | 559 | 1 | 0.179% |
+| v0 | 250-299 | 13 | 100.00% | 482 | 0 | 0.000% |
+| v0 | 300-349 | 15 | 93.33% | 652 | 1 | 0.153% |
+| v0 | 350-399 | 38 | 100.00% | 645 | 0 | 0.000% |
+| v0 | 400-449 | 77 | 98.70% | 665 | 0 | 0.000% |
+| v0 | 450-499 | 71 | 97.18% | 515 | 0 | 0.000% |
+| v0 | 500+ | 122 | 99.18% | 2780 | 1 | 0.036% |
+| v01_candidate | <250 | 0 | NA | 559 | 0 | 0.000% |
+| v01_candidate | 250-299 | 13 | 100.00% | 482 | 0 | 0.000% |
+| v01_candidate | 300-349 | 15 | 93.33% | 652 | 0 | 0.000% |
+| v01_candidate | 350-399 | 38 | 100.00% | 645 | 0 | 0.000% |
+| v01_candidate | 400-449 | 77 | 97.40% | 665 | 0 | 0.000% |
+| v01_candidate | 450-499 | 71 | 100.00% | 515 | 0 | 0.000% |
+| v01_candidate | 500+ | 122 | 98.36% | 2780 | 0 | 0.000% |

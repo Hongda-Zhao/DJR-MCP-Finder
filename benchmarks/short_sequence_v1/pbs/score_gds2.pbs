@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -N djrmcp-short-v1
+#PBS -q SMALL
+#PBS -l select=1:ncpus=12:mem=48gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+
+set -euo pipefail
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+REPO_FALLBACK="$(cd "$SCRIPT_DIR/../../.." && pwd -P)"
+PROJECT_ROOT="${DJRMCP_PROJECT_ROOT:-${PBS_O_WORKDIR:-$REPO_FALLBACK}}"
+if [[ ! -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+    echo "Project root is invalid; set DJRMCP_PROJECT_ROOT: $PROJECT_ROOT" >&2
+    exit 2
+fi
+RUN_DIR="${DJRMCP_SHORT_RUN:-${PROJECT_ROOT}/benchmarks/short_sequence_v1/run/production_v1}"
+VENV_ROOT="${DJRMCP_VENV_ROOT:-$PROJECT_ROOT/.venv-v0}"
+source "${DJRMCP_MODULE_INIT:-/usr/share/Modules/init/bash}"
+module purge
+module load Python/3.11.7
+test -x "$VENV_ROOT/bin/python"
+export PATH="${VENV_ROOT}/bin:${PATH}"
+export VIRTUAL_ENV="${VENV_ROOT}"
+export PYTHONPATH="${PROJECT_ROOT}/src:${PYTHONPATH:-}"
+export OMP_NUM_THREADS="${NCPUS:-12}"
+export MKL_NUM_THREADS="${NCPUS:-12}"
+export OPENBLAS_NUM_THREADS="${NCPUS:-12}"
+cd "${PROJECT_ROOT}"
+python benchmarks/short_sequence_v1/benchmark.py score --run "${RUN_DIR}"
+python benchmarks/short_sequence_v1/benchmark.py summarize --run "${RUN_DIR}"
+python benchmarks/short_sequence_v1/benchmark.py validate --run "${RUN_DIR}"
