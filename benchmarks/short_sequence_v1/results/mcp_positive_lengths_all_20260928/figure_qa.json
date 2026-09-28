@@ -1,0 +1,14 @@
+{
+  "backend": "Python matplotlib",
+  "claim": "Describe the actual length support of labeled MCP positives in the stated split scope.",
+  "histogram_bin_width_aa": 50,
+  "cumulative_curve": "Empirical distribution within each operational phylum group",
+  "unit": "One labeled protein record",
+  "excluded_positive_records": 0,
+  "all_extreme_lengths_retained": true,
+  "hypothesis_tests": "none, descriptive statistics only",
+  "visual_qa": "Inspected complete all-split figure; both panels display the full length range and sample counts.",
+  "preflight": "12 PASS, 2 WARN, 0 FAIL",
+  "accepted_warnings": "300 dpi PNG preview, PDF/SVG vector primary output, no TIFF requested",
+  "script_sha256": "fefef35705d8722347c316cf486666bada2420c66139f59c5da0c211b289f8a3"
+}

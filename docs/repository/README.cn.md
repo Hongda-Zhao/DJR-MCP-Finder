@@ -80,11 +80,15 @@ run_output/my_sample/
 
 数据组成、14 个编码器的比较及其他评估见[科研证据说明](../SCIENTIFIC_EVIDENCE.cn.md)。
 
+[短序列 benchmark](../../benchmarks/short_sequence_v1/README.cn.md) 使用 Train 内按 component 分折的评测。原始长度分层已复用 embedding 在 CPU 上完成；配对截短结果仍待完成。
+
 ## 文档
 
 - [Model V0.1 Candidate](../../user-inference-v0.1/README.cn.md) 与 [Model V0](../../user-inference-v0/README.cn.md) 用户指南
 - [复现说明](../REPRODUCIBILITY.cn.md)：已发布的数据、模型和科研流程
 - [代码架构](../ARCHITECTURE.cn.md)与[完整文档索引](../README.cn.md)
+
+- [V0.2 设计与策略预览](../research/MODEL_V02_DESIGN.cn.md)：<250 aa 不予判定，其余使用冻结 V0.1；没有训练新模型
 
 ## 引用与许可
 

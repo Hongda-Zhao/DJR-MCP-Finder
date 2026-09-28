@@ -1,7 +1,7 @@
 PYTHON ?= python3
 BUILD_DIR ?= build/release
 
-RUFF_PATHS := src tests scripts user-inference-v0/src user-inference-v0/tests user-inference-v0/scripts user-inference-v0.1/src user-inference-v0.1/tests user-inference-v0.1/scripts
+RUFF_PATHS := src tests scripts benchmarks/short_sequence_v1 user-inference-v0/src user-inference-v0/tests user-inference-v0/scripts user-inference-v0.1/src user-inference-v0.1/tests user-inference-v0.1/scripts
 
 .PHONY: help setup setup-core setup-v0 setup-v01 metadata docs-check lint test test-core test-v0 test-v01 build package-check check
 

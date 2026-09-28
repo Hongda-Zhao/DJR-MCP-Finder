@@ -26,6 +26,18 @@ FASTA -> ESM-2 3B -> H1 -> H2 -> [仅通过者] ESM-C 6B -> H3
 必须保留完整的 `candidate` 限定词。科学模型版本与包版本的区别见仓库
 [版本命名合同](../docs/VERSIONING.md)。
 
+## V0.2 长度保护预览
+
+独立预览命令对 <250 aa 的输入返回 `mcp_unreliable_short_sequence`
+（MCP 不可信：序列过短），跳过全部模型，分数为 `NA`。这是不予判定，不是非 MCP。
+≥250 aa 仍原样使用冻结 V0.1。本次没有训练 V0.2。
+详见[策略和输出约定](../docs/research/MODEL_V02_DESIGN.cn.md)。
+安装当前源码可获得新入口；原 Docker 脚本仍运行 V0.1。
+
+```bash
+djrmcp-predict-v02-preview predict proteins.faa --outdir results/v02-preview
+```
+
 ## 工作站使用
 
 推荐使用 Docker；镜像内将两个不兼容的 Transformers 环境隔离，并顺序释放显存：

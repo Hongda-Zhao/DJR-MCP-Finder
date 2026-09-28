@@ -1,0 +1,2 @@
+# Preserve checksum-bound export bytes and collapse generated results in PR review.
+results/** -text -whitespace linguist-generated=true

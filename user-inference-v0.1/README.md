@@ -28,6 +28,18 @@ candidate version, while Python wheel version `0.2.1` identifies its engineering
 The full `candidate` qualifier is required. See the repository
 [versioning contract](../docs/VERSIONING.md) for why the scientific and package versions differ.
 
+## V0.2 length-policy preview
+
+A separate preview command returns `mcp_unreliable_short_sequence` for inputs <250 aa,
+skipping all models and writing `NA` scores. This is abstention, not a non-MCP call.
+Inputs ≥250 aa use frozen V0.1 unchanged. No V0.2 model has been trained.
+See the [policy and output contract](../docs/research/MODEL_V02_DESIGN.md).
+Install this checkout to obtain the new entry point; existing Docker wrappers still run V0.1.
+
+```bash
+djrmcp-predict-v02-preview predict proteins.faa --outdir results/v02-preview
+```
+
 ## Workstation usage
 
 Docker is recommended. The image isolates the two incompatible Transformers environments and

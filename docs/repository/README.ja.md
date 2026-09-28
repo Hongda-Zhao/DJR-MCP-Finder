@@ -80,11 +80,15 @@ run_output/my_sample/
 
 データ構成、14 種のエンコーダーの比較、その他の評価は、[科学的エビデンス](../SCIENTIFIC_EVIDENCE.ja.md)にまとめています。
 
+[短配列 benchmark](../../benchmarks/short_sequence_v1/README.ja.md) は Train 内の component 分割を用います。元の配列長別評価は保存済み embedding で CPU 上で完了し、対応のある切断評価は未完了です。
+
 ## ドキュメント
 
 - [Model V0.1 Candidate](../../user-inference-v0.1/README.ja.md) と [Model V0](../../user-inference-v0/README.ja.md) のユーザーガイド
 - [再現性](../REPRODUCIBILITY.ja.md)：公開データ、モデル、研究ワークフロー
 - [コード構成](../ARCHITECTURE.ja.md)と[ドキュメント一覧](../README.ja.md)
+
+- [V0.2 設計とポリシープレビュー](../research/MODEL_V02_DESIGN.ja.md)：250 aa 未満は判定保留、それ以外は固定 V0.1。新モデルの学習は未実施です。
 
 ## 引用とライセンス
 

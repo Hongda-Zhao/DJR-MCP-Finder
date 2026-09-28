@@ -29,6 +29,18 @@ revision を識別します。
 完全な `candidate` qualifier が必要です。科学モデルと package version が異なる理由は、
 リポジトリの [versioning contract](../docs/VERSIONING.md) を参照してください。
 
+## V0.2 長さガードのプレビュー
+
+別の preview コマンドは <250 aa に `mcp_unreliable_short_sequence` を返し、
+全モデルをスキップしてスコアを `NA` にします。陰性判定ではなく判定保留です。
+≥250 aa は固定 V0.1 をそのまま使用します。V0.2 の学習は行っていません。
+[ポリシーと出力仕様](../docs/research/MODEL_V02_DESIGN.ja.md)を参照してください。
+現在のソースのインストールで新しい入口を使えます。既存 Docker wrapper は V0.1 のままです。
+
+```bash
+djrmcp-predict-v02-preview predict proteins.faa --outdir results/v02-preview
+```
+
 ## Workstation での使用
 
 Docker を推奨します。image は互換性のない二つの Transformers 環境を分離し、それらの間で

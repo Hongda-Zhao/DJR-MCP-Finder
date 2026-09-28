@@ -1,0 +1,31 @@
+{
+  "benchmark_id": "short-sequence-v1-internal-crossfit",
+  "seed": 20260928,
+  "lengths": [50, 100, 130, 150, 200, 250, 300],
+  "random_replicates": 1,
+  "folds": 5,
+  "calibration_fold_offset": 1,
+  "bootstrap_replicates": 2000,
+  "inputs": {
+    "train_manifest": "data/processed/v0/splits/train.tsv",
+    "train_fasta": "data/processed/v0/splits/train.faa",
+    "fold_map": "results/model_benchmark_v0/frozen_global_component_folds.tsv"
+  },
+  "expected_sha256": {
+    "train_manifest": "2b58aab1ee29c6c7604eaf3c8c5d9a279bb2673a22f23b0d01ae1ad8dbf435a9",
+    "train_fasta": "fd6b091293bb056185860406a64b04a2c0c1e17daefcba7497882535c6a10602",
+    "fold_map": "c97561cccc7c0ad0d9f0a534d33cbaec50a7aa7ce7c5948ed057c15c426ba2b1"
+  },
+  "registry": "configs/model_benchmark_v0.yaml",
+  "registry_sha256": "bcd5feb7f78ff6b10dd38824bf76b91012b952780002bc77b39670e41f1e550c",
+  "methods": {"v0": "esmc_6b", "v01_candidate": "esm2_3b"},
+  "classifier": {
+    "head1_alpha": 0.00001,
+    "head1_epochs": 20,
+    "head1_negative_ratio": 3,
+    "head2_c": 0.01,
+    "head3_c": 10.0,
+    "logistic_max_iter": 5000,
+    "head3_known_acceptance": 0.95
+  }
+}
