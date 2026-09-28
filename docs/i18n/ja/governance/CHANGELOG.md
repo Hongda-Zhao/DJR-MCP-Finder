@@ -13,6 +13,36 @@ versions を維持します。
 
 ## [未リリース]
 
+## [0.2] - 2026-09-28
+
+### 追加
+
+- Train 内の component 分離による短配列 benchmark。検証済み embedding の再利用、
+  対応のある切断の準備、元の配列長別評価を実装しました。
+- MCP 陽性 560 例（Train 336 例）の長さ統計。保留データでは長さだけを調べ、評価しません。
+- <250、250–299、300–349、350–399、400–449、450–499、≥500 aa の集計表と英語図。
+  V0.1 は Train の 331/336 MCP を検出し、偽陽性は 0/6,298。切断性能の評価は未完了です。
+- 任意の `djrmcp-predict-v02-preview` は 250 aa 未満に `mcp_unreliable_short_sequence`
+  と `NA` を返しモデルを実行しません。それ以上は固定 V0.1 を使用します。陰性ではなく保留です。
+- 三言語の V0.2 設計とポリシー文書、および従来の比較形式を使った性能表と英語図。
+
+### 変更
+
+- ソフトウェア `v0.2`、研究パッケージ `0.2.0`、候補推論パッケージ `0.3.0` に更新。
+  正式 V0 パッケージは `0.1.0` のままです。
+- 引用メタデータとバージョン対応を更新。科学モデル ID、重み、校正、bundle は維持し、
+  科学モデル V0.2 の学習は行っていません。
+- 主図の FP 列を削除し、全体の偽陽性はキャプションに残しました。
+
+### 検証
+
+- ローカルでコア 236、正式 V0 33、候補推論 69、合計 338 テストに合格。
+- 文書、メタデータ、Ruff と三つの wheel/sdist の検査に合格。
+- 境界長、混合入力順序、モデルの省略、不正 FASTA、スコア維持、checksum、上書きを検証。
+
+### v0.1 以降のその他のエンジニアリング更新
+
+
 ### 追加
 
 - 階層化した `docs/` 情報アーキテクチャと機械可読 release manifest。
@@ -49,5 +79,6 @@ versions を維持します。
 - 凍結済み `model-v0` user-inference package を含む、最初の正式な GitHub release。
 - 二言語のランディング README、MIT license、citation metadata、third-party notices、baseline CI。
 
-[未リリース]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/compare/v0.1...HEAD
+[未リリース]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/compare/v0.2...HEAD
+[0.2]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/compare/v0.1...v0.2
 [0.1]: https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1

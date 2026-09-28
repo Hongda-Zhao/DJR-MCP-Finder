@@ -1,7 +1,7 @@
 **English** | [简体中文](docs/repository/README.cn.md) | [日本語](docs/repository/README.ja.md)
 
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1)
+[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/latest)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -13,6 +13,8 @@ DJR-MCP Finder screens protein FASTA files for double-jelly-roll major capsid pr
 - [Model V0](user-inference-v0/README.md) is the released, frozen baseline. It uses ESM-C 6B throughout and remains supported.
 
 Both versions still await independent external validation.
+
+**Software v0.2** adds an optional length-protection preview: <250 aa returns `mcp_unreliable_short_sequence` with `NA` scores; ≥250 aa uses frozen V0.1. This is abstention, not a non-MCP label, and no model has been retrained.
 
 ## Prediction workflow
 
@@ -80,10 +82,25 @@ The development dataset contains 11,060 proteins after removal of exact duplicat
 
 Data composition, the 14-encoder comparison, and further evaluation are in the [scientific evidence](docs/SCIENTIFIC_EVIDENCE.md) documentation.
 
-A separate [short-sequence benchmark](benchmarks/short_sequence_v1/README.md) measures
-MCP recall and false-positive rate across 50–300 aa fragments under Train-only
-component-disjoint cross-fitting. Observed-length evaluation is complete using
-cached embeddings on CPU; paired truncation results are still pending.
+### Performance by protein length
+
+Original-length evaluation reuses historical embeddings on CPU, with Train-only component-disjoint cross-fitting. Each cell shows MCP recall and detected/positive counts; this is separate from the model-selection CV above.
+
+| Length / aa | Model V0 | Model V0.1 Candidate |
+| --- | ---: | ---: |
+| <250 | N/A (n=0) | N/A (n=0) |
+| 250–299 | **100.0%** (13/13) | **100.0%** (13/13) |
+| 300–349 | **93.3%** (14/15) | **93.3%** (14/15) |
+| 350–399 | **100.0%** (38/38) | **100.0%** (38/38) |
+| 400–449 | **98.7%** (76/77) | **97.4%** (75/77) |
+| 450–499 | **97.2%** (69/71) | **100.0%** (71/71) |
+| ≥500 | **99.2%** (121/122) | **98.4%** (120/122) |
+
+Across all lengths, V0.1 detects **331/336 MCPs (98.5%)**, with **0/6,298 observed false positives** (V0: 3/6,298). Below 250 aa there are no positive reference samples; 250–299 aa has only 13. These are internal development estimates, not proof of zero population error or independent validation. Paired truncation results remain pending.
+
+![MCP detection by protein length](benchmarks/short_sequence_v1/results/length_bins_250_500_20260928/visualization_en_v2/overview.en.png)
+
+[Protocol, confidence intervals and source tables](benchmarks/short_sequence_v1/README.md).
 
 ## Documentation
 

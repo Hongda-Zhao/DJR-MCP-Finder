@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "djrmcp-user-inference-v01"
-version = "0.2.1"
+version = "0.3.0"
 description = "Mixed-encoder DJR-MCP V0.1 candidate inference for user protein FASTA"
 readme = "README.md"
 license = "MIT"

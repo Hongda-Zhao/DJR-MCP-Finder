@@ -13,8 +13,8 @@
 | --- | --- | --- |
 | **Model V0.1 Candidate** | `model-v0.1-candidate` | 探索的スクリーニングで優先する実験的候補。独立した外部検証は未実施 |
 | **Model V0** | `model-v0` | リリース済みで固定された科学的ベースライン、およびサポート対象のフォールバック |
-| リポジトリリリース `v0.1` | `repository_release.tag` | GitHub ソフトウェアリリースのバージョンであり、科学モデルに関する主張ではない |
-| Candidate パッケージ `0.2.1` | `djrmcp-user-inference-v01==0.2.1` | Candidate 推論 distribution のエンジニアリング改訂であり、「Model V0.2」ではない |
+| リポジトリリリース `v0.2` | `repository_release.tag` | GitHub ソフトウェアリリースのバージョンであり、科学モデルに関する主張ではない |
+| Candidate パッケージ `0.3.0` | `djrmcp-user-inference-v01==0.3.0` | Candidate 推論 distribution のエンジニアリング改訂であり、「Model V0.2」ではない |
 
 マシン向けメタデータとエビデンス記録では、常に完全な科学 ID `model-v0.1-candidate` を使用してください。ユーザー向けナビゲーションで短い **V0.1** を使用できるのは、隣接する表または文章で、外部検証を待つ Candidate であることを明記している場合に限ります。正式な表示名は **Model V0.1 Candidate** です。
 
@@ -24,7 +24,7 @@
 
 | レイヤー | 形式 | 例 | 変更されるタイミング |
 | --- | --- | --- | --- |
-| リポジトリ／ソフトウェアリリース | `vMAJOR.MINOR` | `v0.1` | GitHub ソフトウェアリリース系列が変わるとき |
+| リポジトリ／ソフトウェアリリース | `vMAJOR.MINOR` | `v0.2` | GitHub ソフトウェアリリース系列が変わるとき |
 | Python distribution | PEP 440 バージョン | `djrmcp-user-inference==0.1.0` | 対象のインストール可能パッケージが変わるとき |
 | 科学モデル | `model-v<scientific line>[-candidate]` | `model-v0`、`model-v0.1-candidate` | 固定モデルの識別子またはエビデンス状態が変わるとき |
 | Bundle リビジョン | `<model-id>-<encoder>-rN` | `model-v0-esmc6b-r1` | エクスポート済みファイルまたはパッケージングのリビジョンが変わるとき |
@@ -36,14 +36,16 @@
 
 | コンポーネント | バージョン / ID | 状態 |
 | --- | --- | --- |
-| GitHub リポジトリ | `v0.1` | リリース済みソフトウェアスナップショット |
-| 研究パイプライン distribution | `djrmcp-finder==0.1.0` | Alpha ソフトウェア |
+| GitHub リポジトリ | `v0.2` | リリース済みソフトウェアスナップショット |
+| 研究パイプライン distribution | `djrmcp-finder==0.2.0` | Alpha ソフトウェア |
 | 正式推論 distribution | `djrmcp-user-inference==0.1.0` | `model-v0` を同梱 |
-| Candidate 推論 distribution | `djrmcp-user-inference-v01==0.2.1` | `model-v0.1-candidate` のエンジニアリング改訂 |
+| Candidate 推論 distribution | `djrmcp-user-inference-v01==0.3.0` | `model-v0.1-candidate` のエンジニアリング改訂 |
 | 正式 bundle | `model-v0-esmc6b-r1` | リリース済み・固定済み |
 | Candidate bundle | `model-v0.1-mixed-r1` | 外部検証が必要 |
 
-Candidate パッケージバージョン `0.2.1` は、科学モデルが V0.2 としてリリースされたことを意味しません。パッケージバージョンを下げたり、リポジトリタグと同じ値に強制したりはしません。
+Candidate パッケージバージョン `0.3.0` は、科学モデルが V0.2 としてリリースされたことを意味しません。パッケージバージョンを下げたり、リポジトリタグと同じ値に強制したりはしません。
+
+リポジトリ v0.2 は短配列 benchmark と任意の `djrmcp-predict-v02-preview` 長さポリシーを含みます。250 aa 未満は判定保留、それ以上は固定 V0.1 を使います。ポリシー ID は `v02-preview-length-guard-250-v1` で、科学モデル `model-v0.2` を新設しません。モデル一覧と bundle ID は維持します。
 
 ## マシン可読な正規情報源
 
@@ -82,4 +84,4 @@ python scripts/check_project_metadata.py
 
 ## 日本語要約
 
-リポジトリリリース、Python パッケージ、科学モデル、bundle revision は別々のレイヤーです。現在の正式表示名は **Model V0.1 Candidate**、マシン ID は `model-v0.1-candidate` です。これは探索的スクリーニングで優先する実験的候補ですが、独立した外部検証は未実施です。**Model V0**（`model-v0`）は、リリース済みで固定された正式なベースラインとして維持されます。リポジトリタグ `v0.1` と Candidate パッケージ `0.2.1` は、いずれも科学モデルのエビデンス状態を表しません。すべての対応関係は `release-manifest.json` で一元管理され、CI によって検証されます。
+リポジトリリリース、Python パッケージ、科学モデル、bundle revision は別々のレイヤーです。現在の正式表示名は **Model V0.1 Candidate**、マシン ID は `model-v0.1-candidate` です。これは探索的スクリーニングで優先する実験的候補ですが、独立した外部検証は未実施です。**Model V0**（`model-v0`）は、リリース済みで固定された正式なベースラインとして維持されます。リポジトリタグ `v0.2` と Candidate パッケージ `0.3.0` は、いずれも科学モデルのエビデンス状態を表しません。すべての対応関係は `release-manifest.json` で一元管理され、CI によって検証されます。

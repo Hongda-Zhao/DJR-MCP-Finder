@@ -12,17 +12,17 @@ FASTA -> ESM-2 3B -> H1 -> H2 -> [passing sequences only] ESM-C 6B -> H3
 This package is the preferred current experimental candidate for exploratory screening. It has not
 undergone independent external validation and does not replace or deprecate the released V0.
 
-The workstation package completed online and fully network-disabled reruns on 12 proteins on
+The historical workstation package (`0.2.1`) completed online and fully network-disabled reruns on 12 proteins on
 2026-07-29. Both runs matched the frozen golden standard with zero label mismatches and zero
 probability delta. Original host, image, and GPU details are retained as historical validation
 evidence in `workstation/VALIDATION.json`; they are not runtime requirements. V0.1 is the scientific
-candidate version, while Python wheel version `0.2.1` identifies its engineering package revision.
+candidate version, while Python wheel version `0.3.0` identifies its engineering package revision.
 
 | Layer | Identifier |
 | --- | --- |
 | Scientific model | `model-v0.1-candidate` (not released as a formal model) |
 | Frozen bundle revision | `model-v0.1-mixed-r1` |
-| Python distribution | `djrmcp-user-inference-v01==0.2.1` |
+| Python distribution | `djrmcp-user-inference-v01==0.3.0` |
 | CLI | `djrmcp-predict-v01` |
 
 The full `candidate` qualifier is required. See the repository
