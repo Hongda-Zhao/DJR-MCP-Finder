@@ -11,16 +11,16 @@ FASTA -> ESM-2 3B -> H1 -> H2 -> [仅通过者] ESM-C 6B -> H3
 这是当前优先用于探索性筛查的实验候选包。它尚未经过独立外部验证，也不取代或弃用
 已发布的 V0。
 
-工作站封装已于 2026-07-29 完成 12 条蛋白的在线与完全断网复跑；两次预测与冻结金标准
+历史工作站封装（`0.2.1`）已于 2026-07-29 完成 12 条蛋白的在线与完全断网复跑；两次预测与冻结金标准
 均为 0 mismatch / 0 probability delta。原始主机、镜像和 GPU 信息作为历史验证证据保存在
 `workstation/VALIDATION.json`，不是运行时要求。这里的 V0.1 是科学候选版本，Python wheel
-的 `0.2.1` 是其工程封装修订号。
+的 `0.3.0` 是其工程封装修订号。
 
 | 层次 | 标识 |
 | --- | --- |
 | 科学模型 | `model-v0.1-candidate`（尚未作为正式模型发布） |
 | 冻结 bundle revision | `model-v0.1-mixed-r1` |
-| Python distribution | `djrmcp-user-inference-v01==0.2.1` |
+| Python distribution | `djrmcp-user-inference-v01==0.3.0` |
 | CLI | `djrmcp-predict-v01` |
 
 必须保留完整的 `candidate` 限定词。科学模型版本与包版本的区别见仓库

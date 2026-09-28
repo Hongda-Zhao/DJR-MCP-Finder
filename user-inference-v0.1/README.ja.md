@@ -12,18 +12,18 @@ FASTA -> ESM-2 3B -> H1 -> H2 -> [passing sequences only] ESM-C 6B -> H3
 これは探索的スクリーニングで現在優先する実験的候補パッケージです。独立した外部検証は
 まだ行われておらず、リリース済み V0 を置き換えたり非推奨にしたりするものではありません。
 
-workstation package は、2026-07-29 に 12 個の protein を使った online run と、network を完全に
+履歴 workstation package（`0.2.1`）は、2026-07-29 に 12 個の protein を使った online run と、network を完全に
 無効化した rerun を完了しました。両方の実行は、label mismatch ゼロ、probability delta ゼロで
 凍結 golden standard と一致しました。元の host、image、GPU の詳細は、履歴 validation evidence
 として `workstation/VALIDATION.json` に保持されており、runtime requirement ではありません。
-V0.1 は scientific candidate version であり、Python wheel version `0.2.1` は engineering package
+V0.1 は scientific candidate version であり、Python wheel version `0.3.0` は engineering package
 revision を識別します。
 
 | レイヤー | 識別子 |
 | --- | --- |
 | 科学モデル | `model-v0.1-candidate`（正式モデルとしては未リリース） |
 | 凍結 bundle revision | `model-v0.1-mixed-r1` |
-| Python distribution | `djrmcp-user-inference-v01==0.2.1` |
+| Python distribution | `djrmcp-user-inference-v01==0.3.0` |
 | CLI | `djrmcp-predict-v01` |
 
 完全な `candidate` qualifier が必要です。科学モデルと package version が異なる理由は、

@@ -15,8 +15,8 @@ safely represent all of them.
 | --- | --- | --- |
 | **Model V0.1 Candidate** | `model-v0.1-candidate` | Preferred experimental candidate for exploratory screening; independent external validation pending |
 | **Model V0** | `model-v0` | Released, frozen scientific baseline and supported fallback |
-| Repository release `v0.1` | `repository_release.tag` | Version of the GitHub software release, not a scientific model claim |
-| Candidate package `0.2.1` | `djrmcp-user-inference-v01==0.2.1` | Engineering revision of the candidate inference distribution, not “Model V0.2” |
+| Repository release `v0.2` | `repository_release.tag` | Version of the GitHub software release, not a scientific model claim |
+| Candidate package `0.3.0` | `djrmcp-user-inference-v01==0.3.0` | Engineering revision of the candidate inference distribution, not “Model V0.2” |
 
 Machine metadata and evidence records must always use the complete scientific ID
 `model-v0.1-candidate`. Human-facing navigation may use the shorter **V0.1** only when the adjacent
@@ -30,7 +30,7 @@ model and does not replace or deprecate Model V0.
 
 | Layer | Format | Example | Changes when |
 | --- | --- | --- | --- |
-| Repository/software release | `vMAJOR.MINOR` | `v0.1` | The GitHub software release line changes |
+| Repository/software release | `vMAJOR.MINOR` | `v0.2` | The GitHub software release line changes |
 | Python distribution | PEP 440 version | `djrmcp-user-inference==0.1.0` | That installable package changes |
 | Scientific model | `model-v<scientific line>[-candidate]` | `model-v0`, `model-v0.1-candidate` | Frozen model identity or evidence status changes |
 | Bundle revision | `<model-id>-<encoder>-rN` | `model-v0-esmc6b-r1` | Exported files or packaging revision changes |
@@ -42,15 +42,17 @@ Use lowercase machine IDs in metadata and the formal display names above in scie
 
 | Component | Version / ID | Status |
 | --- | --- | --- |
-| GitHub repository | `v0.1` | Released software snapshot |
-| Research pipeline distribution | `djrmcp-finder==0.1.0` | Alpha software |
+| GitHub repository | `v0.2` | Released software snapshot |
+| Research pipeline distribution | `djrmcp-finder==0.2.0` | Alpha software |
 | Formal inference distribution | `djrmcp-user-inference==0.1.0` | Packages `model-v0` |
-| Candidate inference distribution | `djrmcp-user-inference-v01==0.2.1` | Engineering revision for `model-v0.1-candidate` |
+| Candidate inference distribution | `djrmcp-user-inference-v01==0.3.0` | Engineering revision for `model-v0.1-candidate` |
 | Formal bundle | `model-v0-esmc6b-r1` | Released and frozen |
 | Candidate bundle | `model-v0.1-mixed-r1` | External confirmation required |
 
-The candidate package version `0.2.1` is not a claim that the scientific model is released as
+The candidate package version `0.3.0` is not a claim that the scientific model is released as
 V0.2. Package versions are not downgraded or forced to equal the repository tag.
+
+Repository v0.2 packages the short-sequence benchmark and the opt-in `djrmcp-predict-v02-preview` length policy. Inputs <250 aa abstain; inputs ≥250 aa retain the frozen V0.1 pipeline. The policy has its own identity (`v02-preview-length-guard-250-v1`); it does not create a scientific `model-v0.2`. The scientific model list and bundle identities remain unchanged.
 
 ## Machine-readable authority
 
@@ -109,5 +111,5 @@ configured with a protected GitHub environment.
 仓库 release、Python 包、科学模型和 bundle revision 是不同层次。当前正式显示名为
 **Model V0.1 Candidate**，机器 ID 必须写作 `model-v0.1-candidate`；它是探索性筛查的优先实验候选，
 但仍待独立外部验证。**Model V0**（`model-v0`）仍是已发布、冻结的正式
-基线。仓库 tag `v0.1` 与 candidate package `0.2.1` 都不是科学模型证据状态。所有映射由
+基线。仓库 tag `v0.2` 与 candidate package `0.3.0` 都不是科学模型证据状态。所有映射由
 `release-manifest.json` 集中维护并由 CI 校验。

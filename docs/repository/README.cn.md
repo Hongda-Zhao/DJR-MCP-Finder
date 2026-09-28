@@ -1,7 +1,7 @@
 [English](../../README.md) | **简体中文** | [日本語](README.ja.md)
 
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1)
+[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/latest)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../../LICENSE)
 
@@ -13,6 +13,8 @@ DJR-MCP Finder 从蛋白 FASTA 文件中筛选双果冻卷主要衣壳蛋白（d
 - [Model V0](../../user-inference-v0/README.cn.md) 是已发布、冻结的基线模型，全程使用 ESM-C 6B，仍受支持。
 
 两个版本都尚未经过独立外部验证。
+
+**软件 v0.2** 增加可选长度保护预览：<250 aa 返回 `mcp_unreliable_short_sequence`（MCP 不可信），分数为 `NA`；≥250 aa 使用冻结 V0.1。这是不予判定，不是非 MCP，也没有重训模型。
 
 ## 预测流程
 
@@ -80,7 +82,25 @@ run_output/my_sample/
 
 数据组成、14 个编码器的比较及其他评估见[科研证据说明](../SCIENTIFIC_EVIDENCE.cn.md)。
 
-[短序列 benchmark](../../benchmarks/short_sequence_v1/README.cn.md) 使用 Train 内按 component 分折的评测。原始长度分层已复用 embedding 在 CPU 上完成；配对截短结果仍待完成。
+### 不同蛋白长度的性能
+
+原始长度评测复用历史 embedding，在 CPU 上进行 Train 内按 component 隔离的分折评测。每格展示 MCP 召回率和检出数/阳性数；它与上方的模型选择交叉验证是两项评测。
+
+| 长度 / aa | Model V0 | Model V0.1 Candidate |
+| --- | ---: | ---: |
+| <250 | N/A (n=0) | N/A (n=0) |
+| 250–299 | **100.0%** (13/13) | **100.0%** (13/13) |
+| 300–349 | **93.3%** (14/15) | **93.3%** (14/15) |
+| 350–399 | **100.0%** (38/38) | **100.0%** (38/38) |
+| 400–449 | **98.7%** (76/77) | **97.4%** (75/77) |
+| 450–499 | **97.2%** (69/71) | **100.0%** (71/71) |
+| ≥500 | **99.2%** (121/122) | **98.4%** (120/122) |
+
+全长度合计，V0.1 检出 **331/336 条 MCP（98.5%）**，观察到的假阳性为 **0/6,298**（V0 为 3/6,298）。<250 aa 没有阳性参考，250–299 aa 仅有 13 条阳性。这是内部开发结果，不能证明总体错误率为零，也不能替代独立验证。配对截短评测仍待完成。
+
+![MCP detection by protein length](../../benchmarks/short_sequence_v1/results/length_bins_250_500_20260928/visualization_en_v2/overview.en.png)
+
+[评测方案、置信区间和原始汇总表](../../benchmarks/short_sequence_v1/README.cn.md).
 
 ## 文档
 

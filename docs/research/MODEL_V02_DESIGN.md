@@ -43,7 +43,7 @@ The output remains `predictions.tsv`, `run_metadata.json`, and `CHECKSUMS.sha256
 The TSV keeps its columns but adds an abstention value; downstream label readers
 must accept it. Metadata uses `schema_name=djrmcp_v02_policy_preview` and records
 the policy, coverage, abstention count and nested eligible-subset baseline run.
-The V0.1 command and frozen weights are unchanged. No release is published.
+The V0.1 command and frozen weights are unchanged. The preview is packaged in software v0.2; it is not a new scientific model release.
 
 For evaluation, preserve the existing unfiltered V0/V0.1 diagnostic benchmark.
 A policy evaluation must separately report scoring coverage and abstentions per
@@ -169,8 +169,8 @@ a separately versioned relaxation of the deployment guard.
 
 Only then assign a scientific candidate identity and update the model card,
 bundle and [version mapping](../VERSIONING.md). The existing inference package
-version `0.2.1` is an engineering version, not scientific Model V0.2. This design
-does not change `release-manifest.json` or existing package versions.
+version `0.3.0` is an engineering version, not scientific Model V0.2. Software v0.2 records research package `0.2.0` and candidate package `0.3.0` in
+`release-manifest.json`; scientific model and frozen bundle identities are unchanged.
 
 The observed-length benchmark is now complete using historical embeddings on CPU.
 It contains no MCP positives below 250 aa; the 250–299 aa group has only 13.

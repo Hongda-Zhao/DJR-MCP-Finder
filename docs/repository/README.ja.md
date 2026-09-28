@@ -1,7 +1,7 @@
 [English](../../README.md) | [简体中文](README.cn.md) | **日本語**
 
 [![CI](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/tag/v0.1)
+[![Release](https://img.shields.io/github/v/release/Hongda-Zhao/DJR-MCP-Finder?display_name=tag&sort=semver&label=release&color=2ea44f)](https://github.com/Hongda-Zhao/DJR-MCP-Finder/releases/latest)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../../LICENSE)
 
@@ -13,6 +13,8 @@ DJR-MCP Finder は、タンパク質 FASTA から double-jelly-roll major capsid
 - [Model V0](../../user-inference-v0/README.ja.md) は、リリース済み・凍結済みのベースラインです。すべての段階で ESM-C 6B を使い、引き続きサポートしています。
 
 どちらのバージョンも、独立した外部検証はまだ行われていません。
+
+**ソフトウェア v0.2** は任意の長さ保護プレビューを追加します。250 aa 未満は `mcp_unreliable_short_sequence` と `NA` スコアを返し、それ以上は固定 V0.1 を使います。これは陰性ではなく判定保留であり、モデルの再学習は行っていません。
 
 ## 予測フロー
 
@@ -80,7 +82,25 @@ run_output/my_sample/
 
 データ構成、14 種のエンコーダーの比較、その他の評価は、[科学的エビデンス](../SCIENTIFIC_EVIDENCE.ja.md)にまとめています。
 
-[短配列 benchmark](../../benchmarks/short_sequence_v1/README.ja.md) は Train 内の component 分割を用います。元の配列長別評価は保存済み embedding で CPU 上で完了し、対応のある切断評価は未完了です。
+### タンパク質長別の性能
+
+元の配列長別評価は保存済み embedding を CPU 上で再利用し、Train 内の component 分離による cross-fit を使います。各セルは MCP 再現率と検出数/陽性数を示し、上のモデル選択 CV とは別の評価です。
+
+| 長さ / aa | Model V0 | Model V0.1 Candidate |
+| --- | ---: | ---: |
+| <250 | N/A (n=0) | N/A (n=0) |
+| 250–299 | **100.0%** (13/13) | **100.0%** (13/13) |
+| 300–349 | **93.3%** (14/15) | **93.3%** (14/15) |
+| 350–399 | **100.0%** (38/38) | **100.0%** (38/38) |
+| 400–449 | **98.7%** (76/77) | **97.4%** (75/77) |
+| 450–499 | **97.2%** (69/71) | **100.0%** (71/71) |
+| ≥500 | **99.2%** (121/122) | **98.4%** (120/122) |
+
+全長区間で V0.1 は **331/336 MCP（98.5%）** を検出し、観測された偽陽性は **0/6,298**（V0 は 3/6,298）でした。250 aa 未満には陽性例がなく、250–299 aa も 13 例です。内部開発結果であり、母集団での誤りゼロや独立検証を意味しません。対応のある切断評価は未完了です。
+
+![MCP detection by protein length](../../benchmarks/short_sequence_v1/results/length_bins_250_500_20260928/visualization_en_v2/overview.en.png)
+
+[評価手順、信頼区間と集計表](../../benchmarks/short_sequence_v1/README.ja.md).
 
 ## ドキュメント
 

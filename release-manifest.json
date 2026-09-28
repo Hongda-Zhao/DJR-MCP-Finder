@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "repository_release": {
-    "version": "0.1",
-    "tag": "v0.1",
+    "version": "0.2",
+    "tag": "v0.2",
     "versioning": "major.minor"
   },
   "packages": [
     {
       "distribution": "djrmcp-finder",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "path": ".",
       "module": "src/djrmcp_finder",
       "artifact_directory": "root",
@@ -24,7 +24,7 @@
     },
     {
       "distribution": "djrmcp-user-inference-v01",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "path": "user-inference-v0.1",
       "module": "user-inference-v0.1/src/djrmcp_predict_v01",
       "artifact_directory": "candidate-v01",
