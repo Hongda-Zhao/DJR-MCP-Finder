@@ -1,0 +1,346 @@
+{
+  "manifest_path": "/aptmp/hongda/DJR-MCP-Finder/data/processed/v0/master_manifest.tsv",
+  "manifest_sha256": "94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7",
+  "rows": 11060,
+  "excluded_matched": 30,
+  "excluded_by_split": {
+    "train": 16,
+    "validation": 7,
+    "test": 7
+  },
+  "excluded_by_phylum": {
+    "Produgelaviricota": 2,
+    "Preplasmiviricota": 5,
+    "Nucleocytoviricota": 23
+  },
+  "excluded_known_by_split": {
+    "train": 14,
+    "validation": 7,
+    "test": 7
+  },
+  "base_positive_by_split": {
+    "train": 336,
+    "validation": 112,
+    "test": 112
+  },
+  "base_h3_known_by_split": {
+    "train": 319,
+    "validation": 107,
+    "test": 106
+  },
+  "filtered_positive_by_split": {
+    "train": 320,
+    "validation": 105,
+    "test": 105
+  },
+  "filtered_h3_known_by_split": {
+    "train": 305,
+    "validation": 100,
+    "test": 99
+  },
+  "hit_component_count": 26,
+  "mapped_rows": [
+    {
+      "protein_id": "VMA__SEQ_2ff2d86a5b8281f5",
+      "sequence_sha256": "2ff2d86a5b8281f5f223ed097d86074887c1b98a8509f6b647e1db8a7a043821",
+      "global_component_id": "V0GC_7430fc8f54af768f",
+      "split": "train",
+      "head3_phylum_label": "Produgelaviricota",
+      "head3_known_mask": "0",
+      "head3_unknown_diagnostic_mask": "1",
+      "tree_tip_id": "Gold__Belfryvirales_C0001"
+    },
+    {
+      "protein_id": "VMA__SEQ_332beb62ad0d9ce3",
+      "sequence_sha256": "332beb62ad0d9ce3ad61af29e9942c3ff46d6b6c897c3197892df9402a13539b",
+      "global_component_id": "V0GC_5e025d012e4e1131",
+      "split": "train",
+      "head3_phylum_label": "Preplasmiviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Priklausovirales_C0174"
+    },
+    {
+      "protein_id": "VMA__SEQ_39a8b8854d27dbf4",
+      "sequence_sha256": "39a8b8854d27dbf4d57e517d3962cbc3b0eb1e3fad869b1e6d86231b41da91db",
+      "global_component_id": "V0GC_670033d51835d039",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Chitovirales_C0013"
+    },
+    {
+      "protein_id": "VMA__SEQ_45e02f8e3f42a715",
+      "sequence_sha256": "45e02f8e3f42a715bda7fa7d178cadfc70dd506689b91d07652db61c7a49be4d",
+      "global_component_id": "V0GC_b890c6b34d67ceb5",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0756"
+    },
+    {
+      "protein_id": "VMA__SEQ_4a17bf3780b7ad15",
+      "sequence_sha256": "4a17bf3780b7ad1535830415d7c9b24be1917c889a29f4f49f77a334530bd825",
+      "global_component_id": "V0GC_c3093baeb2fe02c6",
+      "split": "train",
+      "head3_phylum_label": "Produgelaviricota",
+      "head3_known_mask": "0",
+      "head3_unknown_diagnostic_mask": "1",
+      "tree_tip_id": "Gold__Lautamovirales_C0001"
+    },
+    {
+      "protein_id": "VMA__SEQ_575356bcf0d420b0",
+      "sequence_sha256": "575356bcf0d420b0baeadc7f48bdf11aa691e94cc8c852d79bbc4020c319b855",
+      "global_component_id": "V0GC_670033d51835d039",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C0579"
+    },
+    {
+      "protein_id": "VMA__SEQ_599cb5275548c227",
+      "sequence_sha256": "599cb5275548c227a3e0ae3572c75bc4b51b59837c225e46df1a0b204e6b32de",
+      "global_component_id": "V0GC_8e5a166ee099e401",
+      "split": "train",
+      "head3_phylum_label": "Preplasmiviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Gold__Archintovirales_C0002"
+    },
+    {
+      "protein_id": "VMA__SEQ_69f967d2c446d548",
+      "sequence_sha256": "69f967d2c446d548ad510332118c2c4f50f8a759b85825c4e4854a9c5f3e1ed7",
+      "global_component_id": "V0GC_b6908161e8d2ee0c",
+      "split": "train",
+      "head3_phylum_label": "Preplasmiviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Priklausovirales_C0082"
+    },
+    {
+      "protein_id": "VMA__SEQ_82870cd908756f34",
+      "sequence_sha256": "82870cd908756f34c64fca3163c459bd48e66b7a51e4689be4c6fd1f26134a90",
+      "global_component_id": "V0GC_670033d51835d039",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0741"
+    },
+    {
+      "protein_id": "VMA__SEQ_8b840f28309986e3",
+      "sequence_sha256": "8b840f28309986e3fdcb71153f41c72fd7621c42a0e1cce7f48fc56f566141e2",
+      "global_component_id": "V0GC_b9fff02b838168fc",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C1049"
+    },
+    {
+      "protein_id": "VMA__SEQ_9e9a72a7cebe2ee5",
+      "sequence_sha256": "9e9a72a7cebe2ee55d6cd1e670651e08cef61c9a77c3483f92b470fdeb4c6a58",
+      "global_component_id": "V0GC_a23548683eb1c2c3",
+      "split": "train",
+      "head3_phylum_label": "Preplasmiviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Priklausovirales_C0052"
+    },
+    {
+      "protein_id": "VMA__SEQ_bb50e3a7c32f74ec",
+      "sequence_sha256": "bb50e3a7c32f74eccd4638a6a2ffba86fcc75d424268583949bc8e46a97c62a3",
+      "global_component_id": "V0GC_981d9760f62e7e97",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Asfuvirales_C0011"
+    },
+    {
+      "protein_id": "VMA__SEQ_c3283d88583a35d4",
+      "sequence_sha256": "c3283d88583a35d460f63af0f7db46b00b278b0397530b19480ef2ef1c402822",
+      "global_component_id": "V0GC_c59f358d3833b4c3",
+      "split": "train",
+      "head3_phylum_label": "Preplasmiviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Archintovirales_C0005"
+    },
+    {
+      "protein_id": "VMA__SEQ_c900d54e1c09448a",
+      "sequence_sha256": "c900d54e1c09448a489c5a49234869285b3b2646d5a6c10f98c704e1d1bc056f",
+      "global_component_id": "V0GC_d64dd74224bcab7d",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C0116"
+    },
+    {
+      "protein_id": "VMA__SEQ_cec225a0c94e39a4",
+      "sequence_sha256": "cec225a0c94e39a48be7801267a60d5662f519532273e7f8c93945cca9a1acad",
+      "global_component_id": "V0GC_d5d86d3fee986aa5",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C0731"
+    },
+    {
+      "protein_id": "VMA__SEQ_f5264a970e2cf25a",
+      "sequence_sha256": "f5264a970e2cf25a6560b96a89637be5512f5135580d23c55558156d8d475741",
+      "global_component_id": "V0GC_670033d51835d039",
+      "split": "train",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Chitovirales_C0021"
+    },
+    {
+      "protein_id": "VMA__SEQ_2792785834f1dd55",
+      "sequence_sha256": "2792785834f1dd55142ade5adcb1e872a9c2d9b58fea1313f017c1ea5f84747c",
+      "global_component_id": "V0GC_f7e7e656dabb42c1",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C1246"
+    },
+    {
+      "protein_id": "VMA__SEQ_42429f0559bf9303",
+      "sequence_sha256": "42429f0559bf9303cf8a753a599b32f2f2bba2a6dfd14e6128cde8e59c3dab6b",
+      "global_component_id": "V0GC_95690d78227b7649",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0385"
+    },
+    {
+      "protein_id": "VMA__SEQ_485a99255ea577be",
+      "sequence_sha256": "485a99255ea577be3bf0fac116bec6e23e8b475b833646478eb182beb814931f",
+      "global_component_id": "V0GC_95690d78227b7649",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0475"
+    },
+    {
+      "protein_id": "VMA__SEQ_4f2feaa10cc48aaa",
+      "sequence_sha256": "4f2feaa10cc48aaacbc37d2897bfd9522fb8d01e33a3191e2ac13b5fbf3423ea",
+      "global_component_id": "V0GC_fa30527751f2487e",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Yaraviridae_C0008"
+    },
+    {
+      "protein_id": "VMA__SEQ_5f780f680ba2c4a6",
+      "sequence_sha256": "5f780f680ba2c4a69f62b0ad42146fb40611c93ece9c1c32fc1183f3a77fac93",
+      "global_component_id": "V0GC_bf380a28cada0a96",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Chitovirales_C0017"
+    },
+    {
+      "protein_id": "VMA__SEQ_8bafc87724435750",
+      "sequence_sha256": "8bafc87724435750eb6622acafca0ebe27e62b5e7d6a95c4d14f1f8db6003bfb",
+      "global_component_id": "V0GC_72a782a06d185d06",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Pimascovirales_C0042"
+    },
+    {
+      "protein_id": "VMA__SEQ_b9fb178d8d3b58d7",
+      "sequence_sha256": "b9fb178d8d3b58d71f3440126f8cad551a0d661d649a3947a4670cda82e02a94",
+      "global_component_id": "V0GC_2d997c953ac8eca5",
+      "split": "validation",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0034"
+    },
+    {
+      "protein_id": "VMA__SEQ_4506d7658d2d72fb",
+      "sequence_sha256": "4506d7658d2d72fb63eddce6e4adb7b579b17f0a0f6d81faca4da5db7450a750",
+      "global_component_id": "V0GC_b3a53717c0ede176",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Gold__Chitovirales_C0003"
+    },
+    {
+      "protein_id": "VMA__SEQ_5615c3513ca8e1e3",
+      "sequence_sha256": "5615c3513ca8e1e3c95d6999f9a3f7edb789ac0fe04500224c30d6552ed1ee47",
+      "global_component_id": "V0GC_2dda01f3a72c7c04",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Chitovirales_C0030"
+    },
+    {
+      "protein_id": "VMA__SEQ_6bc7619cbdc22d55",
+      "sequence_sha256": "6bc7619cbdc22d556dae0eab5cb1914774d9aff5684800db392672e9b927db6e",
+      "global_component_id": "V0GC_51579a06628aa424",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Yaraviridae_C0007"
+    },
+    {
+      "protein_id": "VMA__SEQ_911e858b9b25b8fb",
+      "sequence_sha256": "911e858b9b25b8fbd0dc07f27f22cad2cb14acab96a86d53b7d551f73e106d9f",
+      "global_component_id": "V0GC_1d9a5aba3c0fb530",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0629"
+    },
+    {
+      "protein_id": "VMA__SEQ_9dfa5c10e3da99e7",
+      "sequence_sha256": "9dfa5c10e3da99e769d3dd370678bfaebe428ced5bc216c6c15128399ff3815d",
+      "global_component_id": "V0GC_d771b4e58927c2fc",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Algavirales_C0459"
+    },
+    {
+      "protein_id": "VMA__SEQ_af44a46ea051bf02",
+      "sequence_sha256": "af44a46ea051bf02f737e702ea37558085d2dab0d1e3ea43b13ad6cc307fdcf1",
+      "global_component_id": "V0GC_0cbf4018492a979e",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0771"
+    },
+    {
+      "protein_id": "VMA__SEQ_fc7df54a856bb8c2",
+      "sequence_sha256": "fc7df54a856bb8c210121b3778c59cc51fd97578ee0bc2330ef6dd96b97b34bc",
+      "global_component_id": "V0GC_15e5a91a0b15c828",
+      "split": "test",
+      "head3_phylum_label": "Nucleocytoviricota",
+      "head3_known_mask": "1",
+      "head3_unknown_diagnostic_mask": "0",
+      "tree_tip_id": "Silver_R3__Imitervirales_C0370"
+    }
+  ],
+  "test_predictions_or_metrics_read": false,
+  "manifest_modified": false
+}

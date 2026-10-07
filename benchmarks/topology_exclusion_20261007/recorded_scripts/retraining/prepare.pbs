@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N djr-pruned30-prep
+#PBS -q SMALL
+#PBS -l select=1:ncpus=4:mem=8gb
+#PBS -l walltime=00:30:00
+#PBS -j oe
+set -euo pipefail
+RUN_ROOT=/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007
+VENV_ROOT=/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0
+cd "$RUN_ROOT"
+source /usr/share/Modules/init/bash
+module load Python/3.11.7
+export PATH="$VENV_ROOT/bin:$PATH"
+export VIRTUAL_ENV="$VENV_ROOT"
+export OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4
+python scripts/prepare_experiment.py

@@ -1,0 +1,83 @@
+{
+  "bundle_reports": [
+    {
+      "exact_subset_verified": true,
+      "metadata_sha256": "ce52f4859275a24a73014d58f09df5080eb8910fa9680fc7386020d05b5a03a5",
+      "model": "esmc_6b",
+      "shape": [
+        11037,
+        2560
+      ],
+      "source_bundle": "/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/data/processed/embeddings/v0_benchmark_esmc_6b",
+      "source_checksums_verified": true
+    },
+    {
+      "exact_subset_verified": true,
+      "metadata_sha256": "7e1a958816c5f6cad9884248c258e45b90fb21b4684d65f5f5145de4232caf2d",
+      "model": "esm2_650m",
+      "shape": [
+        11037,
+        1280
+      ],
+      "source_bundle": "/aptmp/hongda/DJR-MCP-Finder/data/processed/embeddings/v0_benchmark_esm2_650m",
+      "source_checksums_verified": true
+    }
+  ],
+  "config_sha256": "1cc52a99fad24e5c82ca35b81529da2bd7d96cfcaeb95caa12ecdb0204332a4b",
+  "counts": {
+    "h3_known_by_split": {
+      "test": 106,
+      "train": 305,
+      "validation": 100
+    },
+    "rows": 11037,
+    "split_counts": {
+      "test": 2214,
+      "train": 6618,
+      "validation": 2205
+    },
+    "vma_by_split": {
+      "test": 112,
+      "train": 320,
+      "validation": 105
+    }
+  },
+  "fold_contract": {
+    "fold_map_path": "/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.tsv",
+    "fold_map_sha256": "f53ecceaea94d2b7d1f3884244fbae9c3d40ad406d5c85aa1583330fef3ed540",
+    "fold_metadata_path": "/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.json",
+    "fold_metadata_sha256": "bb3443087b4954340a2dbd606b847596f2db0d28a2c9a061c89f80e9c7f5f09f",
+    "folds": 5,
+    "group_field": "global_component_id",
+    "manifest_sha256": "100b6fc3e18d1e8d3b4cdbbae75cdae6860e2ee2374767d9b4eb3ad940724193",
+    "method": "StratifiedGroupKFold_on_train_hierarchy_stratum",
+    "schema_version": 1,
+    "seed": 20260722,
+    "split": "train",
+    "status": "frozen_now",
+    "train_global_component_count": 5560
+  },
+  "new_manifest_sha256": "100b6fc3e18d1e8d3b4cdbbae75cdae6860e2ee2374767d9b4eb3ad940724193",
+  "source_code_sha256": {
+    "code/src/djrmcp_finder/__init__.py": "4db6c29f26c8a22166eb1a79981eb90addebae3c701bcf862c3e78cb5edba14e",
+    "code/src/djrmcp_finder/archive.py": "e1689b95735cca3ebd6077fac87ebc5f4dc80f026fa6deeacf7bc94e8f8897fe",
+    "code/src/djrmcp_finder/benchmark_config.py": "76fa8dac2390053a220a822514d6980c490f4f06e7c90fd3867cafbbfa7b748e",
+    "code/src/djrmcp_finder/benchmark_selection.py": "9eb61c8ea8949a8456a6f94d93e13b0c228b86b89d088a93b16c694643c6c99b",
+    "code/src/djrmcp_finder/cli.py": "7bd4a1b68fd8b3bdaefad6ea6db3d1ffec8fabb3a9d443e2b5631e7de6b0242f",
+    "code/src/djrmcp_finder/config.py": "fd280f55c65f3b582b8c447891dac37111a878b674676d0abf9a0df807df9916",
+    "code/src/djrmcp_finder/cv_folds.py": "f2e9c8ded2a15742e076290f86d47f6a486785ea689c61986176a71b7071bbe9",
+    "code/src/djrmcp_finder/stages/__init__.py": "c7c6ddcde9c41d80ca0e2c4cec27055691de17d94bc0a67d36792291b2d2571f",
+    "code/src/djrmcp_finder/stages/benchmark_embedding.py": "c2ece329a74fc1975079bc39cab010ec6587f0c4c8b4c7e6030439201294bd6c",
+    "code/src/djrmcp_finder/stages/classifier.py": "5f700c53a447d2040bca26de5c816458239966aba559c286e0aff97695800c30",
+    "code/src/djrmcp_finder/stages/embedding.py": "40d19ee87ddbd7e4157a30346b3531854e68339b6268a5d881c3fb750d529dae",
+    "code/src/djrmcp_finder/stages/esm3_adapter.py": "7de3a7c63f350b2512a2abb7ce9577ca7febfecef2c2bd8c07dacbcef0463663",
+    "code/src/djrmcp_finder/stages/esmc_adapter.py": "6108814b19f1b602e5f46689e7434013e372cd6b5695d8029b3cd86ae740795d",
+    "code/src/djrmcp_finder/stages/mimic_adapter.py": "653d8e86905384eae4cfa12e3eb07acf0181f0c7f120b1b06ec9c315547edc87",
+    "code/src/djrmcp_finder/test_ledger.py": "77b5ef70ec5b3c4927e5bca555f50cd0afdcb71ec61ee7cec237a31f63ab5f3a",
+    "code/src/djrmcp_finder/validation_family_robustness.py": "4b50aed8c614b8bda52e76047040d4b32167d2204e7b49be8b3de029c7a38d46"
+  },
+  "source_manifest_unchanged": true,
+  "status": "prepared_and_validated",
+  "test_predictions_or_metrics_computed": false,
+  "test_rows_unchanged": true
+}

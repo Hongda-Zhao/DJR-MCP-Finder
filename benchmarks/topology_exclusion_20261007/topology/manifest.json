@@ -1,0 +1,25 @@
+{
+  "input_tips": 550,
+  "ranks": [
+    "Phylum",
+    "Class"
+  ],
+  "candidate_tips": 22,
+  "priority_audit_tips": 5,
+  "prior_secondary_promoted": [
+    "Gold__Chitovirales_C0003",
+    "Silver_R3__Priklausovirales_C0052",
+    "Silver_R3__Priklausovirales_C0082"
+  ],
+  "new_priority_ids": [
+    "Silver_R3__Asfuvirales_C0011",
+    "Silver_R3__Imitervirales_C0475"
+  ],
+  "further_deletion": false,
+  "tree_reinferred": false,
+  "supports_from_original_558_tip_analysis": true,
+  "sha256": {
+    "outputs/Three_Phylum_pruned8_20261007/trees/aa.pruned8.unrooted.nwk": "be196aa9d78a8cb92422d7772e272d4b491c7bf60c4064c2ebfceec262d27c8c",
+    "outputs/Three_Phylum_pruned8_20261007/trees/3di.pruned8.unrooted.nwk": "cd1406225c3883226a25d4d47aedee44530ffb80dc751739121b9491d953258d"
+  }
+}

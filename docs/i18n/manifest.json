@@ -8,6 +8,7 @@
     "authority": "Translations are provided for reading. The source-language document and frozen artifacts remain authoritative."
   },
   "documents": [
+    {"source": "benchmarks/topology_exclusion_20261007/README.md", "source_language": "en", "en": "benchmarks/topology_exclusion_20261007/README.md", "cn": "benchmarks/topology_exclusion_20261007/README.cn.md", "ja": "benchmarks/topology_exclusion_20261007/README.ja.md", "mode": "sibling"},
     {"source": "benchmarks/short_sequence_v1/README.md", "source_language": "en", "en": "benchmarks/short_sequence_v1/README.md", "cn": "benchmarks/short_sequence_v1/README.cn.md", "ja": "benchmarks/short_sequence_v1/README.ja.md", "mode": "sibling"},
     {"source": "docs/research/MODEL_V02_DESIGN.md", "source_language": "en", "en": "docs/research/MODEL_V02_DESIGN.md", "cn": "docs/research/MODEL_V02_DESIGN.cn.md", "ja": "docs/research/MODEL_V02_DESIGN.ja.md", "mode": "sibling"},
     {"source": ".github/pull_request_template.md", "source_language": "en", "en": ".github/pull_request_template.md", "cn": "docs/i18n/cn/governance/pull_request_template.md", "ja": "docs/i18n/ja/governance/pull_request_template.md", "mode": "mirror"},

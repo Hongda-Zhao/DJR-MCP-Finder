@@ -1,0 +1,3 @@
+tips	diameter	diameter_tip_1	diameter_tip_2	max_pairwise_distance_error	max_split_length_error	midpoint_error	supported_unrooted_splits	support_mapping	tree	outgroup_tips	pure_outgroup_edges	max_display_geometry_error	host_tips	environment_tips	blank_context_tips	length_bars	min_length_aa	max_length_aa	length_scale_max_aa
+528	19.9037809743	Silver_R3__Coyopavirales_C0001	Silver_R3__Rowavirales_C0010	8.88178419700125e-15	0	1.77635683940025e-15	516	PASS	Three_Phylum_AA	0	0	8.88178419700125e-16	54	413	61	528	254	2906	3000
+528	8.797341122	Silver_R3__Priklausovirales_C0143	Silver_R3__Vinavirales_C0002	4.44089209850063e-15	0	1.77635683940025e-15	514	PASS	Three_Phylum_3DI	0	0	4.44089209850063e-16	54	413	61	528	254	2906	3000

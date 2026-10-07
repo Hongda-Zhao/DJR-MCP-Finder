@@ -6,6 +6,7 @@
 
 | Need | Document |
 | --- | --- |
+| Inspect the topology-exclusion retraining experiment | [English](../benchmarks/topology_exclusion_20261007/README.md) · [中文](../benchmarks/topology_exclusion_20261007/README.cn.md) · [日本語](../benchmarks/topology_exclusion_20261007/README.ja.md) |
 | Run the preferred experimental Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | Run the released, frozen Model V0 baseline | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | Understand benchmarks and limitations | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |

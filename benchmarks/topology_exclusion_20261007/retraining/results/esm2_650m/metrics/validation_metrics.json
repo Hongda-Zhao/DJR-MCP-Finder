@@ -1,0 +1,127 @@
+{
+  "created_utc": "2026-10-07T07:00:51.237127+00:00",
+  "heads": {
+    "head1": {
+      "average_precision": 0.9997460905411258,
+      "balanced_accuracy": 0.9951219512195122,
+      "confusion_matrix": [
+        [
+          2000,
+          0
+        ],
+        [
+          2,
+          203
+        ]
+      ],
+      "f1_by_class": [
+        0.9995002498750625,
+        0.9950980392156863
+      ],
+      "fpr_at_90pct_recall": 0.0,
+      "fpr_at_95pct_recall": 0.0,
+      "mcc": 0.9946128130037503,
+      "n": 2205,
+      "negative": 2000,
+      "positive": 205,
+      "precision_by_class": [
+        0.999000999000999,
+        1.0
+      ],
+      "ranking_score_source": "raw_decision_function",
+      "recall_by_class": [
+        1.0,
+        0.9902439024390244
+      ],
+      "roc_auc": 0.9999731707317073,
+      "support_by_class": [
+        2000,
+        205
+      ],
+      "threshold": 0.994897265580184
+    },
+    "head2": {
+      "average_precision": 0.9999999999999998,
+      "balanced_accuracy": 1.0,
+      "confusion_matrix": [
+        [
+          100,
+          0
+        ],
+        [
+          0,
+          105
+        ]
+      ],
+      "f1_by_class": [
+        1.0,
+        1.0
+      ],
+      "fpr_at_90pct_recall": 0.0,
+      "fpr_at_95pct_recall": 0.0,
+      "mcc": 1.0,
+      "n": 205,
+      "negative": 100,
+      "positive": 105,
+      "precision_by_class": [
+        1.0,
+        1.0
+      ],
+      "ranking_score_source": "raw_decision_function",
+      "recall_by_class": [
+        1.0,
+        1.0
+      ],
+      "roc_auc": 1.0,
+      "support_by_class": [
+        100,
+        105
+      ],
+      "threshold": 0.8258069861157927
+    },
+    "head3_phylum": {
+      "balanced_accuracy_unknown_as_error": 0.9451754385964912,
+      "closed_set_balanced_accuracy": 0.9791666666666667,
+      "closed_set_macro_f1": 0.9860937282714504,
+      "ece": 0.006146775291292663,
+      "macro_f1_unknown_as_error": 0.9715942028985507,
+      "multiclass_brier": 0.012921334475346795,
+      "n": 100,
+      "per_class": {
+        "Nucleocytoviricota": {
+          "precision": 1.0,
+          "precision_naive_row_level_descriptive_wilson_95pct_ci": [
+            0.9506502206036139,
+            1.0000000000000002
+          ],
+          "predicted": 74,
+          "recall": 0.9736842105263158,
+          "recall_naive_row_level_descriptive_wilson_95pct_ci": [
+            0.9090337890134195,
+            0.9927533409248717
+          ],
+          "support": 76,
+          "true_positive": 74
+        },
+        "Preplasmiviricota": {
+          "precision": 1.0,
+          "precision_naive_row_level_descriptive_wilson_95pct_ci": [
+            0.8513451253913791,
+            1.0
+          ],
+          "predicted": 22,
+          "recall": 0.9166666666666666,
+          "recall_naive_row_level_descriptive_wilson_95pct_ci": [
+            0.741511978067893,
+            0.9768411847029566
+          ],
+          "support": 24,
+          "true_positive": 22
+        }
+      },
+      "unknown_rejection_fraction": 0.04,
+      "unknown_rejections": 4,
+      "unknown_threshold": 0.9528524214644416
+    }
+  }
+}

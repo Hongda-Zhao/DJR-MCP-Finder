@@ -1,0 +1,14 @@
+{
+  "candidate_tips": 22,
+  "priority_rule_matches_saved_list": true,
+  "same_three_tip_sides_verified": 3,
+  "attachment_arms_rows": 176,
+  "attachment_arm_size_sums": 549,
+  "input_hashes_unchanged": true,
+  "tier_counts": {
+    "A_priority_audit": 5,
+    "B_support_limited_audit": 4,
+    "C_special_topology_review": 3,
+    "D_weak_or_context_sensitive": 10
+  }
+}
