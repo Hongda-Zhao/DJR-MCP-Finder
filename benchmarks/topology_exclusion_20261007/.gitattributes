@@ -1,0 +1,4 @@
+# Preserve checksum-bound evidence bytes, including CSV-generated CRLF records.
+* -text
+# Empty final TSV fields and CRLF record terminators are meaningful table bytes.
+*.tsv whitespace=-blank-at-eol,cr-at-eol

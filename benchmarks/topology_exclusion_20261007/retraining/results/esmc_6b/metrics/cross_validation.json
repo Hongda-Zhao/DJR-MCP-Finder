@@ -1,0 +1,432 @@
+{
+  "binary_ranking_score_source": "raw_decision_function",
+  "created_utc": "2026-10-07T07:00:51.236849+00:00",
+  "cv_fold_contract": {
+    "fold_map_path": "/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.tsv",
+    "fold_map_sha256": "f53ecceaea94d2b7d1f3884244fbae9c3d40ad406d5c85aa1583330fef3ed540",
+    "fold_metadata_path": "/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.json",
+    "fold_metadata_sha256": "bb3443087b4954340a2dbd606b847596f2db0d28a2c9a061c89f80e9c7f5f09f",
+    "folds": 5,
+    "group_field": "global_component_id",
+    "manifest_sha256": "100b6fc3e18d1e8d3b4cdbbae75cdae6860e2ee2374767d9b4eb3ad940724193",
+    "method": "StratifiedGroupKFold_on_train_hierarchy_stratum",
+    "schema_version": 1,
+    "seed": 20260722,
+    "split": "train",
+    "train_global_component_count": 5560
+  },
+  "heads": {
+    "head1": {
+      "candidates_ranked": [
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            0.9983074823104461,
+            0.9991893629096777,
+            0.9931902199124927,
+            0.9944161581280965
+          ],
+          "mean_score": 0.9970206446521427,
+          "parameter": 0.0001,
+          "standard_deviation": 0.002708924217037536
+        },
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            1.0,
+            0.9998319598852816,
+            0.9868383850689192,
+            0.996054805337699
+          ],
+          "mean_score": 0.99654503005838,
+          "parameter": 1e-06,
+          "standard_deviation": 0.00508206295730708
+        },
+        {
+          "fold_scores": [
+            0.9993495939355678,
+            0.9995467040807253,
+            0.9995476616406849,
+            0.9855526923033628,
+            0.9949593331980251
+          ],
+          "mean_score": 0.9957911970316731,
+          "parameter": 1e-05,
+          "standard_deviation": 0.005411026235184027
+        }
+      ],
+      "fold_diagnostics": [
+        {
+          "fold": 1,
+          "heldout_class_count": {
+            "0": 1200,
+            "1": 111
+          },
+          "heldout_global_component_count": 826,
+          "heldout_record_count": 1311,
+          "train_class_count": {
+            "0": 4800,
+            "1": 507
+          },
+          "train_global_component_count": 4734,
+          "train_record_count": 5307
+        },
+        {
+          "fold": 2,
+          "heldout_class_count": {
+            "0": 1200,
+            "1": 113
+          },
+          "heldout_global_component_count": 1160,
+          "heldout_record_count": 1313,
+          "train_class_count": {
+            "0": 4800,
+            "1": 505
+          },
+          "train_global_component_count": 4400,
+          "train_record_count": 5305
+        },
+        {
+          "fold": 3,
+          "heldout_class_count": {
+            "0": 1200,
+            "1": 172
+          },
+          "heldout_global_component_count": 1177,
+          "heldout_record_count": 1372,
+          "train_class_count": {
+            "0": 4800,
+            "1": 446
+          },
+          "train_global_component_count": 4383,
+          "train_record_count": 5246
+        },
+        {
+          "fold": 4,
+          "heldout_class_count": {
+            "0": 1200,
+            "1": 111
+          },
+          "heldout_global_component_count": 1197,
+          "heldout_record_count": 1311,
+          "train_class_count": {
+            "0": 4800,
+            "1": 507
+          },
+          "train_global_component_count": 4363,
+          "train_record_count": 5307
+        },
+        {
+          "fold": 5,
+          "heldout_class_count": {
+            "0": 1200,
+            "1": 111
+          },
+          "heldout_global_component_count": 1200,
+          "heldout_record_count": 1311,
+          "train_class_count": {
+            "0": 4800,
+            "1": 507
+          },
+          "train_global_component_count": 4360,
+          "train_record_count": 5307
+        }
+      ],
+      "fold_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "folds": 5,
+      "group_field": "global_component_id",
+      "primary_metric": "average_precision",
+      "primary_metric_input": "raw_decision_function",
+      "splitter": "FrozenGlobalComponentFoldMap"
+    },
+    "head2": {
+      "candidates_ranked": [
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            1.0,
+            1.0,
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "mean_score": 1.0,
+          "parameter": 0.01,
+          "standard_deviation": 1.7199501139797033e-16
+        },
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            1.0,
+            1.0,
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "mean_score": 1.0,
+          "parameter": 0.1,
+          "standard_deviation": 1.7199501139797033e-16
+        },
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            1.0,
+            1.0,
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "mean_score": 1.0,
+          "parameter": 1.0,
+          "standard_deviation": 1.7199501139797033e-16
+        },
+        {
+          "fold_scores": [
+            1.0000000000000002,
+            1.0,
+            1.0,
+            1.0000000000000002,
+            1.0000000000000002
+          ],
+          "mean_score": 1.0,
+          "parameter": 10.0,
+          "standard_deviation": 1.7199501139797033e-16
+        }
+      ],
+      "fold_diagnostics": [
+        {
+          "fold": 1,
+          "heldout_class_count": {
+            "0": 59,
+            "1": 52
+          },
+          "heldout_global_component_count": 95,
+          "heldout_record_count": 111,
+          "train_class_count": {
+            "0": 239,
+            "1": 268
+          },
+          "train_global_component_count": 291,
+          "train_record_count": 507
+        },
+        {
+          "fold": 2,
+          "heldout_class_count": {
+            "0": 62,
+            "1": 51
+          },
+          "heldout_global_component_count": 47,
+          "heldout_record_count": 113,
+          "train_class_count": {
+            "0": 236,
+            "1": 269
+          },
+          "train_global_component_count": 339,
+          "train_record_count": 505
+        },
+        {
+          "fold": 3,
+          "heldout_class_count": {
+            "0": 59,
+            "1": 113
+          },
+          "heldout_global_component_count": 64,
+          "heldout_record_count": 172,
+          "train_class_count": {
+            "0": 239,
+            "1": 207
+          },
+          "train_global_component_count": 322,
+          "train_record_count": 446
+        },
+        {
+          "fold": 4,
+          "heldout_class_count": {
+            "0": 59,
+            "1": 52
+          },
+          "heldout_global_component_count": 88,
+          "heldout_record_count": 111,
+          "train_class_count": {
+            "0": 239,
+            "1": 268
+          },
+          "train_global_component_count": 298,
+          "train_record_count": 507
+        },
+        {
+          "fold": 5,
+          "heldout_class_count": {
+            "0": 59,
+            "1": 52
+          },
+          "heldout_global_component_count": 92,
+          "heldout_record_count": 111,
+          "train_class_count": {
+            "0": 239,
+            "1": 268
+          },
+          "train_global_component_count": 294,
+          "train_record_count": 507
+        }
+      ],
+      "fold_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "folds": 5,
+      "group_field": "global_component_id",
+      "primary_metric": "average_precision",
+      "primary_metric_input": "raw_decision_function",
+      "splitter": "FrozenGlobalComponentFoldMap"
+    },
+    "head3_phylum": {
+      "candidates_ranked": [
+        {
+          "fold_scores": [
+            1.0,
+            1.0,
+            1.0,
+            0.9744392279603546,
+            1.0
+          ],
+          "mean_score": 0.994887845592071,
+          "parameter": 10.0,
+          "standard_deviation": 0.010224308815858141
+        },
+        {
+          "fold_scores": [
+            1.0,
+            1.0,
+            0.9774358974358974,
+            0.9744392279603546,
+            1.0
+          ],
+          "mean_score": 0.9903750250792503,
+          "parameter": 0.1,
+          "standard_deviation": 0.011826166586521294
+        },
+        {
+          "fold_scores": [
+            1.0,
+            1.0,
+            0.9774358974358974,
+            0.9744392279603546,
+            1.0
+          ],
+          "mean_score": 0.9903750250792503,
+          "parameter": 1.0,
+          "standard_deviation": 0.011826166586521294
+        },
+        {
+          "fold_scores": [
+            0.9744392279603546,
+            1.0,
+            0.9774358974358974,
+            0.9744392279603546,
+            1.0
+          ],
+          "mean_score": 0.9852628706713213,
+          "parameter": 0.01,
+          "standard_deviation": 0.012082466261469705
+        }
+      ],
+      "fold_diagnostics": [
+        {
+          "fold": 1,
+          "heldout_class_count": {
+            "0": 36,
+            "1": 13
+          },
+          "heldout_global_component_count": 45,
+          "heldout_record_count": 49,
+          "train_class_count": {
+            "0": 204,
+            "1": 52
+          },
+          "train_global_component_count": 143,
+          "train_record_count": 256
+        },
+        {
+          "fold": 2,
+          "heldout_class_count": {
+            "0": 35,
+            "1": 13
+          },
+          "heldout_global_component_count": 43,
+          "heldout_record_count": 48,
+          "train_class_count": {
+            "0": 205,
+            "1": 52
+          },
+          "train_global_component_count": 145,
+          "train_record_count": 257
+        },
+        {
+          "fold": 3,
+          "heldout_class_count": {
+            "0": 97,
+            "1": 13
+          },
+          "heldout_global_component_count": 14,
+          "heldout_record_count": 110,
+          "train_class_count": {
+            "0": 143,
+            "1": 52
+          },
+          "train_global_component_count": 174,
+          "train_record_count": 195
+        },
+        {
+          "fold": 4,
+          "heldout_class_count": {
+            "0": 36,
+            "1": 13
+          },
+          "heldout_global_component_count": 43,
+          "heldout_record_count": 49,
+          "train_class_count": {
+            "0": 204,
+            "1": 52
+          },
+          "train_global_component_count": 145,
+          "train_record_count": 256
+        },
+        {
+          "fold": 5,
+          "heldout_class_count": {
+            "0": 36,
+            "1": 13
+          },
+          "heldout_global_component_count": 43,
+          "heldout_record_count": 49,
+          "train_class_count": {
+            "0": 204,
+            "1": 52
+          },
+          "train_global_component_count": 145,
+          "train_record_count": 256
+        }
+      ],
+      "fold_ids": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "folds": 5,
+      "group_field": "global_component_id",
+      "primary_metric": "macro_f1",
+      "primary_metric_input": "uncalibrated_probabilities",
+      "splitter": "FrozenGlobalComponentFoldMap"
+    }
+  },
+  "schema_version": 3
+}

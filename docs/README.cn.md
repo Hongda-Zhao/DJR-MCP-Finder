@@ -6,6 +6,7 @@
 
 | 需求 | 文档 |
 | --- | --- |
+| 查看拓扑排除与重训实验 | [English](../benchmarks/topology_exclusion_20261007/README.md) · [中文](../benchmarks/topology_exclusion_20261007/README.cn.md) · [日本語](../benchmarks/topology_exclusion_20261007/README.ja.md) |
 | 运行优先用于探索性筛查的 Model V0.1 Candidate | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | 运行已发布并冻结的 Model V0 基线 | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | 了解 Benchmark 和局限性 | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |

@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N djr-pruned30-train
+#PBS -q SMALL
+#PBS -l select=1:ncpus=8:mem=24gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+set -euo pipefail
+RUN_ROOT=/aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007
+VENV_ROOT=/aptmp/hongda/DJRMCP_Develope/project-V0__data-curation-V3__final-minimization__20260724/05_archived_paths/.venv-v0
+cd "$RUN_ROOT"
+source /usr/share/Modules/init/bash
+module load Python/3.11.7
+export PATH="$VENV_ROOT/bin:$PATH"
+export VIRTUAL_ENV="$VENV_ROOT"
+export PYTHONPATH="$RUN_ROOT/code/src"
+export OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 OPENBLAS_NUM_THREADS=8
+case "${BENCHMARK_MODEL_ID:-}" in esmc_6b|esm2_650m) ;; *) echo 'Unexpected model'; exit 2;; esac
+test -f PREPARED.json
+python scripts/calibrate_benchmark_model.py --config configs/experiment.yaml --model "$BENCHMARK_MODEL_ID"

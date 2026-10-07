@@ -6,6 +6,7 @@
 
 | 目的 | ドキュメント |
 | --- | --- |
+| 系統樹に基づく除外と再学習実験 | [English](../benchmarks/topology_exclusion_20261007/README.md) · [中文](../benchmarks/topology_exclusion_20261007/README.cn.md) · [日本語](../benchmarks/topology_exclusion_20261007/README.ja.md) |
 | 探索的スクリーニングで優先する Model V0.1 Candidate を実行する | [English](../user-inference-v0.1/README.md) · [中文](../user-inference-v0.1/README.cn.md) · [日本語](../user-inference-v0.1/README.ja.md) |
 | リリース済みで固定された Model V0 ベースラインを実行する | [English](../user-inference-v0/README.md) · [中文](../user-inference-v0/README.cn.md) · [日本語](../user-inference-v0/README.ja.md) |
 | Benchmark と制約を理解する | [English](SCIENTIFIC_EVIDENCE.md) · [中文](SCIENTIFIC_EVIDENCE.cn.md) · [日本語](SCIENTIFIC_EVIDENCE.ja.md) |

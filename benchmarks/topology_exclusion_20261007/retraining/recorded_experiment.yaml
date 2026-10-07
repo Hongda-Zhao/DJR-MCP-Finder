@@ -1,0 +1,110 @@
+project:
+  name: DJR-MCP-Finder
+  version: pruned30-development-three-head-retraining-20261007
+  seed: 20260722
+  metric_revision_id: raw-score-stable-calibration-v1
+  test_evaluation_permitted: false
+  experiment_status: experimental_not_production
+paths:
+  v0_manifest: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/master_manifest.tsv
+  v0_fasta: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/model_representatives.faa
+  embedding_output: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/embeddings/placeholder
+  result_output: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/results/placeholder
+  benchmark_cv_fold_map: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.tsv
+  benchmark_cv_fold_metadata: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/frozen_global_component_folds.json
+  known_output: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data/unused_known
+  dataset_output: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/data
+  benchmark_embedding_root: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/embeddings
+  benchmark_embedding_overrides: {}
+  benchmark_result_root: /aptmp/hongda/DJR-MCP-Finder/experiments/pruned30_dev_20261007/results
+embedding:
+  benchmark_model_id: placeholder
+  model_name: placeholder
+  model_revision: main
+  backend: transformer_residue
+  model_loader: auto
+  tokenizer_loader: auto
+  sequence_format: raw
+  sequence_prefix: ''
+  replace_rare_with_x: false
+  trust_remote_code: false
+  record_batch_size: 1
+  window_batch_size: 1
+  window_residues: 1022
+  stride: 511
+  precision: float16
+  output_dtype: float16
+  device: auto
+classifier:
+  cross_validation_folds: 5
+  head1_alpha_grid:
+  - 1.0e-06
+  - 1.0e-05
+  - 0.0001
+  head1_epochs: 20
+  head1_negative_ratio: 3
+  logistic_c_grid:
+  - 0.01
+  - 0.1
+  - 1.0
+  - 10.0
+  logistic_max_iter: 5000
+  head3_known_recall_target: 0.95
+  binary_ranking_score: raw_decision_function
+  temperature_objective: stable_label_smoothed_logit_nll
+  temperature_label_smoothing: 0.001
+  temperature_log10_min: -6.0
+  temperature_log10_max: 6.0
+  temperature_coarse_points: 481
+  temperature_fine_points: 401
+  temperature_boundary_policy: fail
+known_mcps: {}
+dataset: {}
+benchmark:
+  common:
+    model_revision: main
+    tokenizer_loader: auto
+    sequence_format: raw
+    sequence_prefix: ''
+    replace_rare_with_x: false
+    trust_remote_code: false
+    window_residues: 1022
+    stride: 511
+    output_dtype: float16
+    device: auto
+  models:
+    esmc_6b:
+      label: ESM-C 6B
+      model_name: Biohub/ESMC-6B
+      model_revision: 45b0fa5d7fb06faefbd5e3b89bdcef35d564e79a
+      backend: esmc_transformer
+      model_loader: masked_lm
+      transformers_code_revision: ef32577f55da19a4989cd7b22e004dc43a4998cb
+      precision: bfloat16
+      record_batch_size: 1
+      window_batch_size: 1
+      license: MIT
+      source_kind: sequence MLM
+    esm2_650m:
+      label: ESM-2 650M
+      model_name: facebook/esm2_t33_650M_UR50D
+      model_revision: 08e4846e537177426273712802403f7ba8261b6c
+      backend: transformer_residue
+      model_loader: auto
+      precision: float16
+      record_batch_size: 8
+      window_batch_size: 12
+      reported_parameter_count: 650000000
+      license: MIT
+      source_kind: sequence MLM
+experiment:
+  excluded_sequence_sha_count: 30
+  development_excluded: 23
+  test_flagged_but_unchanged: 7
+  policy: exclude_from_all_three_development_heads
+  group_components: retain_original_component_and_outer_split_membership
+  cv_policy: rebuild_train_only_5_fold_map_once_shared_by_both_models
+  source_manifest_sha256: 94aa5aff80a18367d36c06fb2f51155f3b52bd8fff4b5be2aa682d891ab84dc7
+  source_config_sha256: c52f937888166a9097d207bb772ca89b5eededef5d8140baba1f7ac72732cc8c
+  test_performance_prohibited: true
+  post_hoc_phylogeny_guided_curation: true

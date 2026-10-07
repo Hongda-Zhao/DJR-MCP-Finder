@@ -1,0 +1,61 @@
+{
+  "status": "both_models_three_heads_completed_and_verified",
+  "models": [
+    {
+      "model": "esmc_6b",
+      "CV_H1_AP": 0.9970206446521427,
+      "CV_H2_AP": 1.0,
+      "CV_H3_macro_F1": 0.994887845592071,
+      "CV_composite_S": 0.9977011713504927,
+      "Validation_H1_AP": 0.9925442857999461,
+      "Validation_H1_MCC": 0.9648434099642943,
+      "Validation_H2_macro_F1": 1.0,
+      "Validation_H3_closed_macro_F1": 1.0,
+      "Validation_H3_unknown_as_error_macro_F1": 0.9864864864864865,
+      "Validation_H3_unknown_recall": 0.8,
+      "Validation_H3_unknown_n": 5,
+      "test_evaluated": false
+    },
+    {
+      "model": "esm2_650m",
+      "CV_H1_AP": 0.9961976530605299,
+      "CV_H2_AP": 1.0,
+      "CV_H3_macro_F1": 0.9126634983660665,
+      "CV_composite_S": 0.9889849416729246,
+      "Validation_H1_AP": 0.9997460905411258,
+      "Validation_H1_MCC": 0.9946128130037503,
+      "Validation_H2_macro_F1": 1.0,
+      "Validation_H3_closed_macro_F1": 0.9860937282714504,
+      "Validation_H3_unknown_as_error_macro_F1": 0.9715942028985507,
+      "Validation_H3_unknown_recall": 0.8,
+      "Validation_H3_unknown_n": 5,
+      "test_evaluated": false
+    }
+  ],
+  "data_counts": {
+    "h3_known_by_split": {
+      "test": 106,
+      "train": 305,
+      "validation": 100
+    },
+    "rows": 11037,
+    "split_counts": {
+      "test": 2214,
+      "train": 6618,
+      "validation": 2205
+    },
+    "vma_by_split": {
+      "test": 112,
+      "train": 320,
+      "validation": 105
+    }
+  },
+  "same_manifest_and_cv_folds": true,
+  "six_model_checksums_verified": true,
+  "test_rows_unchanged": true,
+  "test_predictions_or_metrics_computed": false,
+  "original_manifest_unchanged": true,
+  "production_model_replaced": false,
+  "execution": "PBS SMALL; workstation available but training had already completed before migration",
+  "new_manifest_sha256": "100b6fc3e18d1e8d3b4cdbbae75cdae6860e2ee2374767d9b4eb3ad940724193"
+}
